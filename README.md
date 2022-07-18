@@ -1,7 +1,6 @@
 # MonetaryPolicy
 1.	Project Title
-Behavior of Fed Funds, other policy rates – the FED repo and reverse repo facilities, and other short term interests – SOHR,
-GCrepo, under different monetary regimes and policy rules
+Behavior of Fed Funds, other policy rates – the FED repo and reverse repo facilities, and other short term interests – SOFR, GCrepo, under different monetary regimes and policy rules
 
 This is the name of the project. It describes the whole project in one sentence, and helps people understand what the main goal and aim of the project is.
 2.	Project Description

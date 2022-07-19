@@ -1,7 +1,18 @@
 # MonetaryPolicy
 1.	Project Title
-Behavior of Fed Funds, other policy rates – the FED repo and reverse repo facilities, and other short term interests – SOFR, GCrepo, under different monetary regimes and policy rules
+Behavior of Fed Funds, other policy rates – the FED repo and reverse repo facilities, and other short term interests – overnight secured and unsecured rates like SOFR, under different monetary regimes and policy rules
 
+The Secured Overnight Financing Rate (SOFR) is a broad measure of the cost of borrowing cash overnight collateralized by Treasury securities. Reported by the Federal Reserve Bank of New York, this is a volume-weighted median of interest rates applied to transactions where the borrower offers Treasury securities as collateral for repayment.
+
+Other US  overnight lending rates include:
+Unsercure rates:
+Secured rates: EFFR, OBFR
+Unsecured rates: TGCR, BGCR, SOFR
+ 
+Additional Information about Reference Rates Administered by the New York Fed.
+https://www.newyorkfed.org/markets/reference-rates/additional-information-about-reference-rates#tgcr_bgcr_sofr_calculation_methodology
+
+Suggested README format:
 This is the name of the project. It describes the whole project in one sentence, and helps people understand what the main goal and aim of the project is.
 2.	Project Description
 

@@ -42,17 +42,25 @@ sdate <- as.Date(date, format, tryFormats = c("%m-%d-%Y", "%m/%d/%Y"), optional 
 #str(mshocks)
 
 # -------------- WRANGLE DATA
+k<-1:5
 rrbp<-  select(spread,EFFR,OBFR,TGCR,BGCR,SOFR)
 rrbp<-rrbp*100;
 vold<-select(spread, volumeEFFR,volumeOBFR,volumeTGCR,volumeBGCR,volumeSOFR);
+
 ior<-mutate(spread,IORR*100);
-#sofr<-spread[1:1711,43]*100;
 rrpreward<-mutate(spread,RRPONTSYAWARD*100);
-target<- select(spread,TargetD,TargetU);
+iorsofr<-ior-rrbp[,k[5]];
+rrppsofr<-rrpreward-rrbp[,k[5]];
+
+
+#discount<-(spread,DPCREDIT*100)
+#z<-rrbp[,1]/discount
+target<- select(spread,TargetDe,TargetUe);
 target(isnan(target))=0; # ind <- is.na(z)
 targetbp<-target*100;
 vdsum=sum(vold(1:1711,1:5),2); #wrates1(:,2:2:10),2);                %
 begintarget = 789-447+1;
+
 quantileeffr=select(spread,Percentile1,Percentile25,Percentile75,Percentile99)
 #5:8)*100; 
 quantileobfr=spread(1:1711,13:16); # NaN until 4/19/2019
@@ -188,6 +196,9 @@ volrates2(begn(k)+1:endn(k),2)  <-  movstd(measure(,2),252);
 volrates3(begn(k)+1:endn(k),)  movstd(measure3(begn(k)+1:endn(k),),252);
 
 # ---------------------- EGARCH model
+
+
+
 # 1) ------------------- univariate garch
 simpleegarch_spec <- ugarchspec(variance.model = list(model = "eGARCH", garchOrder = c(1, 1)),
                        mean.model = list(armaOrder = c(0, 0)),
@@ -214,7 +225,7 @@ egarch30d<-mean(forecast@forecast$sigmaFor)*sqrt(252)
 # see stockoverflow
 # y ~ x + I(x^2)
 
-# 2) ------------------- Multivariate garch
+# 2) ------------------- Multivariate garch - simple
 # Create a multivariate specification for five assets
   multireturn_spec <- rmgarchspec(
     variance.model = list(model = c("eGARCH", "eGARCH"), garchOrder = c(1, 1)),
@@ -246,86 +257,6 @@ multivariate_returns <- data.frame(
 # Create an xts object with the time index
 multivariate_returns_xts <- xts(multivariate_returns, order.by = sdate)
 
-# Now, you can fit the multivariate EGARCH model as shown in the previous response
-# Fit the multivariate EGARCH model
-#multifit <- rmgarchfit(spec =  multireturn_spec, data = multivariate_returns)
-
-
-# Create a multivariate EGARCH specification
-library(fGarch)
-
-# Create a multivariate EGARCH specification
-multivar_egarch_spec <- multvariance.spec(
-  model = list(egarchOrder = c(1, 1)),
-  distribution = "norm"
-)
-
-
-multivar_egarch_spec <- multvariance.spec(
-  model = list(egarchOrder = c(1, 1)),
-  distribution = "norm"
-)
-
-multifit <- multfGarch(multivar_egarch_spec, data = multivariate_returns_xts)
-summary(multifit)
-
-
-# TRY ADAIN
-library(fGarch)
-
-# Create a multivariate EGARCH specification
-multivar_egarch_spec <- multvariance.spec(
-  model = list(egarchOrder = c(1, 1)),
-  distribution = "norm"
-)
-
-multifit <- multfGarch(multivar_egarch_spec, data = multivariate_returns_xts)
-summary(multifit)
-
-
-# 3) Try rmgarch
-# # Create a multivariate EGARCH model specification
-# multivar_egarch_spec <- rmgarchspec(
-#   variance.model = list(model = "eGARCH", garchOrder = c(1, 1)),
-#   distribution.model = "mvnorm"
-# )
-
-# Load the fGarch package
-library(fGarch)
-
-# Create a multivariate EGARCH specification using garchSpec
-multivar_egarch_spec <- garchSpec(
-  model = list(order = c(1, 1), archm = TRUE, external.regressors = NULL),
-  cond.dist = "norm"
-)
-
-
-# Fit the multivariate EGARCH model
-#multifit <- rmgarchfit(spec = multivar_egarch_spec, data = multivariate_returns_xts)
-# Fit the multivariate EGARCH model
-multifit <- rmgarchfit(spec = multivar_egarch_spec, data = multivariate_returns_xts)
-
-
-# 5_ dccgarch
-# Create a multivariate DCC-GARCH model specification
-multivar_dcc_garch_spec <- dccspec(
-  uspec = multispec(
-    replicate(2, ugarchspec(variance.model = list(model = "sGARCH", garchOrder = c(1, 1)))))
-)
-
-# Fit the multivariate DCC-GARCH model
-multifit <- dccfit(multivar_dcc_garch_spec, data = multivariate_returns_xts)
-# multifit <- dccfit(multivar_dcc_garch_spec, data = multivariate_returns_xts)
-# Error in dimnames(x) <- dn : 
-#   length of 'dimnames' [2] not equal to array extent
-
-
-str(multivariate_returns_xts)
-
-
-# 6)
-# Load the rmgarch package
-library(rmgarch)
 
 # Create a multivariate DCC-GARCH model specification
 multivar_dcc_garch_spec <- dccspec(
@@ -342,8 +273,6 @@ multivar_dcc_garch_spec <- dccspec(
 # Fit the multivariate DCC-GARCH model
 multifit <- dccfit(multivar_dcc_garch_spec, data = multivariate_returns_xts)
 
-# Fit the multivariate DCC-GARCH model
-multifit <- dccfit(multivar_dcc_garch_spec, data = multivariate_returns_xts)
 
 summary(multifit)
 # Length  Class   Mode 
@@ -375,45 +304,86 @@ parameter_estimates_table <- xtable(parameter_estimates_df)
 # Print the table
 print(parameter_estimates_table)
 
+# 3) ------------------- Multivariate garch - add penalty, Duffie-Krishnamurth indes, IOR spreads?
+
+# NOTE: ADD BERTOLINI DAYS VARIABLE h
+
+# Combine the returns into a multivariate data frame
+# multivariate_returns <- data.frame(
+#   effr,
+#   obfr,
+#   tgcr,
+#   bgcr,
+#   sofr
+# )
+
+penalty<-1- rrbp[,k[1]]/discount;
+
+multivariate_returns3 <- data.frame(
+  effr,
+  obfr,
+  tgcr,
+  bgcr,
+  sofr,
+  penalty,
+  dkindex,
+  iorsofr,
+  rrppsofr,
+  
+)
+
+
+# Create an xts object with the time index
+multivariate_returns_xts3 <- xts(multivariate_returns3, order.by = sdate)
+
+
+# Create a multivariate DCC-GARCH model specification
+multivar_dcc_garch_spec3 <- dccspec(
+  uspec = multispec(
+    replicate(
+      5,
+      ugarchspec(variance.model = list(model = "sGARCH", garchOrder = c(1, 1)))
+    )
+  ),
+  dccOrder = c(1, 1),
+  distribution = "mvnorm"
+)
+
+# Fit the multivariate DCC-GARCH model
+multifit3 <- dccfit(multivar_dcc_garch_spec3, data = multivariate_returns_xts3)
+
+
+summary(multifit3)
+# Length  Class   Mode 
+# 1 DCCfit     S4 
+
+conditional_correlation <- rcor(multifit3)
+parameter_estimates <- coef(multifit3)
+log_likelihood <- logLik(multifit3)
+str(multifit)
+
+
+
+
+
+
 
 
 # 2.2 EGARCH 
 # The exponential GARCH (EGARCH) may generally be specified as 
-# \epsilon[t] = \sigma[t] *z[t]
-# ; 𝑙𝑛𝜎2 = ω + 𝛼𝑖𝜀𝑡−𝑖
-# 𝑝 2
-# 𝑖=1 + 𝛽𝑗
-# 𝑞
-# 𝑗=1 𝑙𝑛𝜎2
-# 𝑡−𝑗 . (3) 
 # This model differs from the GARCH variance structure because of the log of the variance. 
 # The following specification also has been used in the financial literature (Dhamija and 
 #                                                                             Bhalla [24]). 
-# 𝜀𝑡 = 𝜎𝑡𝑧𝑡
-# ; 𝑙𝑛𝜎2 = ω + 𝛼𝑖εt−i
-# 2 + 𝜆𝑗
-# 𝑞
-# 𝑗=1 ln 𝜎
-# 2
-# 𝑡−𝑗 + 𝛾𝑖
-# 𝑝
-# 𝑖=1 
-# |𝜀𝑡−i
-# |
-#   𝜎𝑡−𝑖
-# − 
-# 2
-# 𝜋
-# . (4)
-mm
-\epsilon[t]<--\sigma[t]*z[t]
-log(\sigma^2[t}])<=\omega + $\sum_{i=1}^{p}\alpha[i]*\epsilon^2[t-i] + $\sum_{j=1}^{q} \beta[j] log(\sigma^2[t-j}])$
-  
-  or
+# see Dan Nelson
 
-\epsilon[t]<--\sigma[t]*z[t]
-log(\sigma^2[t}])<-\omega + \alpha[i] \epsilon[t-i+ \sum_{j=1}^{p}\lamba[j]*\epsilon^2[t-j] + \sum_{i=1}^{p} \gamma[i] (\frac{\|epsilon[t-i]|}{sigma[t-i}}-\sqrt(\frac{2}{n}})])$
-  
+# \epsilon[t]<--\sigma[t]*z[t]
+# log(\sigma^2[t}])<=\omega + $\sum_{i=1}^{p}\alpha[i]*\epsilon^2[t-i] + $\sum_{j=1}^{q} \beta[j] log(\sigma^2[t-j}])$
+#   
+#   or
+# 
+# \epsilon[t]<--\sigma[t]*z[t]
+# log(\sigma^2[t}])<-\omega + \alpha[i] \epsilon[t-i+ \sum_{j=1}^{p}\lamba[j]*\epsilon^2[t-j] + \sum_{i=1}^{p} \gamma[i] (\frac{\|epsilon[t-i]|}{sigma[t-i}}-\sqrt(\frac{2}{n}})])$
+#   
 # Bertolini, Prati --------------------------------------
 # Bertolini et al Time series methodology: 
 #   volatility of interest rates - rises in advance of reserve
@@ -444,14 +414,6 @@ Variance of the EFFR $\sigma^2_t=E[(r_t-\mu_t)^2]$
 In this code:
   
 #   sigma2_t represents the variable for 
-# �
-# �
-# 2
-# σ 
-# t
-# 2
-# ​
-# .
 # r_t and mu_t should be replaced with your actual variables representing 
 # �
 # # �
@@ -540,6 +502,31 @@ rstar <- targetbp
 aigma2 <- square(r-mu)
 $$log(\sigma^2_t -\omega h_t -\psi \nu_t -(1+\gamma N_t)=\sigma^2_{t=1}  -\omega h_{t-1} -\psi \nu_{t-1}  -(1+\gamma N_{t-1} )+\alpha \abs(\nu_{t-1} ) + \Theta \nu_{t-1} 
       
+      
+# -----------------Note  
+#Add to garch
+# Analyze the model residuals and check for goodness-of-fit:
+#   R
+# Copy code
+# # Extract the residuals from the model fit
+# residuals <- residuals(egarch_fit)
+# 
+# # Plot the residuals to check for patterns and autocorrelation
+# plot(residuals)
+# 
+# # Conduct Ljung-Box test to assess residual autocorrelation
+# Box.test(residuals, lag = 20, type = "Ljung-Box")
+# The Box.test function tests the null hypothesis that the residuals are independently distributed.
+# 
+# Remember that fitting and interpreting time series models, including EGARCH models, require careful consideration of the underlying data and potential model assumptions. It's essential to validate the model and assess its adequacy for your specific use case.
+
+# egarch_spec <- ugarchspec(variance.model = list(model = "eGARCH"), mean.model = list(armaOrder = c(0, 0)))
+# egarch_fit <- ugarchfit(spec = egarch_spec, data = rrbpts)
+# egarch_fit <- ugarchfit(spec = egarch_spec, data = rrbpts)
+# residuals <- residuals(egarch_fit)
+# plot(residuals)
+# Box.test(residuals, lag = 20, type = "Ljung-Box")
+
       
 # --------------- Notes ---------------------
 # is the matrix of element by element products and

@@ -1,0 +1,77 @@
+ ```{r}  
+ ```
+ ```{r} 
+ ``` 
+
+
+<!--  
+##Test for mean reversion: variance ratio test
+#sum 1 weighted sum of autocorrelation up to the optimal order
+Variance ratio tests exploit the fact that if the logarithm of the cumulated dividends, follows a random walk then the return variance should be proportional to the return horizon. 
+Assuming you have the necessary variables defined (Var(R), Var(R2), k, i)
+equation_result <- (Var(R) / k) / (Var(R2) / 12) * k * (k - i)
+
+where Rt = Rt... Rt denoting the total return in month. This statistic converges to unity if returns are uncorrelated through time. If some of the price variation is due to transitory factors, this will generate negative autocorrelations at some lags and yield a variance ratio below one.
+Poterba and Sommers find, for the testing for transitory components in stock prices, variance ratio tests as used by Fama and French (1986a) and Lo and MacKinlay (1987) come close to being the most powerful tests of the null hypothesis of market efficiency cum constant required returns against plausible alternative hypotheses such as the "fads" model suggested by Shiller (1984) and Summers (1986). 
+
+ 
+FF used nominal. We consider nominal returns on these indices, excess returns with the risk-free rate measured as the Treasury bill yield, as well as real returns measured using the CPI inflation rate..
+
+Fama and French (1986a) and Lo and MacKinlay (1987) compare the relative variability of returns (1987) over different horizons using variance ratio tests. Using excess or real returns, returns at long horizons exhibit negative serial correlation if the variance ratio is less than 1
+
+I compare daily to weekly returns.  No  negative serial correlation as the variance ratio is close to 1
+-->
+<!--
+Var_ratio <-var.test(rrbpts, rrbpwts, ratio = 1,
+         alternative = c("two.sided", "less", "greater"),
+         conf.level = 0.95)
+F test to compare two variances
+data:  rrbpts and rrbpwts
+F = 0.99719, num df = 8549, denom df = 1784, p-value = 0.9328
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.9269649 1.0708920
+sample estimates:
+ratio of variances 
+         0.9971941 
+-->
+
+<!--
+Reference: variance ratio tests with high frequency data
+
+The variance ratio is closely related to earlier tests based on estimated 
+ autocorrelations. Cochrane (1986) shows that the ratio of the k—month return
+variance to k times the one-month return variance is approximately equal to a
+linear combination of sample autocorrelations. Using his results, it is straightforward to show that (1) can be approximated by: of returns This statistic applies negative weight to autocorrelations up to order 2kj3,followed by increasing positive weight up to lag k, followed by decaying positive weights.
+-->
+
+<!--
+``` {r}
+Varratiok2 <- var.test(x = column_rrbp, y = column_y, ratio = 1, alternative = "two.sided")
+print(Varratiok2)
+
+F test to compare two variances
+
+data:  column_rrbp and column_y
+F = 0.57863, num df = 1709, denom df = 196, p-value = 3.025e-08
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.4651291 0.7072374
+sample estimates:
+ratio of variances 
+          0.578628 
+          
+testk2 <- data.frame(
+  Group1_Variance = Varratiok2$estimate[1],
+  Group2_Variance = Varratiok2$estimate[2],
+  F_statistic = Varratiok2$statistic,
+  p_value = Varratiok2$p.value
+)
+``` 
+-->
+
+``` {r}
+``` 
+
+``` {r}
+``` 

@@ -1,0 +1,1176 @@
+RESERVES
+\subsection{Weekly rates and reserves}
+%(Hypothesis 1 continued 
+With weekly data on reserves, I explore the behavior of reference rates and transactions in these instruments joint with the time series characteristics of reserves. Since daily reserve data are available only to Federal Reserve staff, NYFed staff recommended this analysis use  the weekly series of reserves Reserve Balances with Federal Reserve Banks: Week Average (WRESBAL) $\$S$ billions normalized by deposits of commercial banks (DPSACBW027SBOG) $\$S$ billions to control for the growth of the banking industry. Both weekly series ending on Wednesday.
+
+Total reserves in the U. S. banking system now exceed  $\$$3.081237 trillion (Totresns). At the beginning of 2009, reserves were $\$$800 billion, compared to approximately $\$$10 billion pre-crisis. Reserves continued to increase until late 2014. Fed’s quantitative easing programs raised reserves to  a peak of $\$$2.8 trillion in September 2014.  Peak reserves peaked $\$$4.275 at then end of 2021 In November 2022, From late 2017, when the Federal Open Market Committee began implementing its policy of “balance sheet normalization” aggregate reserves began to decline, reaching a low of $\$$1.4 trillion in early September 2019. 
+
+The sample shows evidence that rates are higher when reserves are low, and the converse when reserves are high or 'ample'. During 2016 and 2017 reserves were $\$$180 to $\$$200 million reaching a low of $\$$160 million on 1/4/2017
+During the initial years of the sample from 3/02/2016 until. reserves were around $\$$200 million until 9/28/2016 when reserves fell to $\$$180 million. Then returned to $\$$200 million on 2/15/2017 until  6/24/2018.
+From 7/28/2017 to 6/24/2018, volume weighted median overnight money market rates are higher and normalized reserves are low,  0.19 or $\$$190 million  the week of 7/26/2017 (Figure \ref{figure:vmrates}). All rates reach a maximum at the end of June or first week of July 2018. The EFFR and OBFR reach their maximum value 179.56  and 387.74 basis points respectively during the week 6/24/2018.  The money market rates TGCR, BGCR, and SOFR reach their maxima the following  week 7/1/2018,  Reserves per deposits fell to 0.16 or $\$$160 million on 6/27/2018. All rates then decline, reaching their lowest level 4/5/2020 just as reserves begin to increase to 0.18 or or $\$$180 million . The EFFR reaches a low of 1.74 basis points. Reserves increase from  4/5/2020 to 9/15/2021, 0.24 or $\$$240 million then begin to decline.  From 3/13/2022 to the present, all rates rise steeply with the successive increases in the Fed policy rate response to inflation. The EFFR rises on 3/13/2022 from 1,74 to	27.36 basis points. Reserves decline slightly to 0.17 or $\$$170 million at the end of the sample 12/29/2022 (revise data)
+
+\begin{comment}
+\emph{Transactions}
+\input{ONweeklyratevolumewgt_reserves.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0, bb=108   268   473   567]{ONweeklyratevolumewgt_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Weekly overnight rate volumes EFFR, OBFR, TGCR, BGCR, SOHR}
+\label{fig:weeklyrateVolumes_all}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+
+% sample2 mid 2017-2022
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c} 
+\hline
+Year& WRESBAL ($\$$ billions)& DPSACBW027SBOG ($\$$ billions) (1.0e+04 ) & Normalized\\
+\hline\hline % time 1e+04 billions, mormalize millions
+2016& && \\			
+mean&    0.2592&    1.4275&		0.1786\\
+median&  0.2309&    1.3047& 	0.0349 \\	
+stdev&   0.0840&    0.2503&	    0.0349\\	
+2017& && \\			
+mean&    0.2622&    1.4486&		0.1777\\
+median&  0.2334&    1.3249&		0.0358\\	
+stdev&   0.0861&    0.2465&		0.0358\\
+2018& && \\			
+mean&    0.2697&    1.5041&		0.1749\\
+median&  0.2857&    1.5507& 	0.0386\\	
+stdev&   0.0927&    0.2346& 	0.0386\\
+2019& && \\			
+mean&    0.2882&    1.5757&		0.1783\\
+median&  0.3117&    1.6149&		0.0418\\\	
+stdev&   0.0948&    0.2079&		0.0418\\
+2020& && \\			
+mean& 	 0.3327&    1.6743&     0.1975\\
+median&  0.3268&    1.7144& 	0.0293\\	
+stdev&   0.0637&    0.1367&		0.0293\\
+2021& && \\			
+mean&    0.3646&    1.7571&		0.2077\\
+median&  0.3796&    1.7788&		0.0242\\	
+stdev&   0.0405&    0.0550&		0.0242\\
+2022& && \\			
+mean&    0.3387&    1.7962&		0.1885\\
+median&  0.3285&    1.8008&		0.0165\\	
+stdev&   0.0312&    0.0117&		0.0165\\
+\hline\hline
+Sample 1 3/9/2016 - 12/29/2022 && \\
+mean&	    0.2580&    1.4093&   0.1807\\
+median&	    0.2332&    1.2812&	 0.1858\\
+stdev&	    0.8159&    2.5530&   0.0349\\
+\end{tabular}
+\caption{Statistics: Weekly reserves, 	WRESBAL ($\$$ billions 1.0E+04), commercial bank deposits	DPSACBW027SBOG  ($\$$ billions 1.0E+04),  normalized reserves WRESBAL/DPSACBW027SBOG Sample 2 7/28/2016 - 12/29/2022 (basis points)}
+\label{fig:weeklyrates}
+\end{table}
+
+\begin{comment}
+Above sample is correct but annual values wrong
+% sample1 mid 3/2016-2022  1.0e+04 *		
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c} 
+\hline
+Year& WRESBAL ($\$$ billions)& DPSACBW027SBOG ($\$$ billions) (1.0e+04 ) & Normalized ($\$$ millions)\\
+\hline\hline % time 1e+04 billions, mormalize millions	   
+2016&			
+mean&	    0.2287&    1.1301&    0.2058\\		
+median&	    0.2333&    1.1348&    0.2025\\		
+stdev&	    0.0148&    0.0121&    0.0148\\		
+2017&			
+mean&	    0.2249&    1.1771&    0.1921\\	
+median&	    0.2258&    1.1755&    0.191\\		
+stdev&	    0.0097&    0.0151&    0.0078\\		
+2018&			
+mean&	    0.1969&    1.2186&    0.1597\\		
+median&	    0.1951&    1.2192&    0.1618\\		
+stdev&	    0.0171&    0.0134&    0.0158\\	
+2019&			
+mean&	    0.1555&    1.2803&    0.1198\\		
+median&	    0.1536&    1.2780&    0.1215\\		
+stdev&	    0.0078&    0.0242&    0.0073\\		
+2020&			
+mean&	    0.2669&    1.5047&    0.1819\\		
+median&	    0.2855&    1.5501&    0.1759\\		
+stdev&	    0.0552&    0.0972&    0.0289\\		
+2021&			
+mean&	    0.3884&    1.7152&    0.2302\\		
+median&	    0.3944&    1.7130&    0.2302\\		
+stdev&	    0.0337&    0.0543&    0.0138\\		
+2022&			
+mean&	    0.3396&    1.7963&    0.1827 \\		
+median&	    0.3287&    1.8002&   0.189\\		
+stdev&	    0.0316&    0.0116&    0.0168\
+\hline\hline
+Sample 1 3/9/2016 - 12/29/2022 && \\
+mean&	    0.2580&    1.4093&   0.1807\\
+median&	    0.2332&    1.2812&	 0.1858\\
+stdev&	    0.8159&    2.5530&   0.0349\\
+\end{tabular}
+\caption{Statistics: Weekly reserves, 	WRESBAL ($\$$ billions 1.0E+04), commercial bank deposits	DPSACBW027SBOG  ($\$$ billions 1.0E+04),  normalized reserves WRESBAL/DPSACBW027SBOG Sample 2 7/28/2016 - 12/29/2022 (basis points)}
+\label{fig:weeklyrates}
+\end{table}\	
+\end{comment}
+
+		
+%(Table \ref{table:statsweeklyratesannual} )
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c c c } 
+\hline
+ Year & EFFR & OBFR & TGCR & BGCR & SOHR \\ [0.5ex] 
+ \hline\hline			
+2016& &&&& \\	
+mean full&	40.11& 33.29&  33.59& 39.26& 40.55\\	
+median&	    39.00& 30.00&  30.60& 37.80& 39.00\\	
+stdev&	     6.10&  9.09&   9.19& 10.02&  6.76\\
+2017& &&&& \\				
+mean&	101.86&  87.95&  88.30&   91.00&  101.52\\	
+median&	114.20& 101.50& 101.30&  102.10&  114.20\\	
+stdev&	 22.53&  24.14&  24.20&   24.90&   22.65\\	
+2018& &&&& \\				
+mean&	186.46& 185.06& 183.85&  186.31&  185.88\\	
+median&	191.00& 187.20& 187.20&  189.20&  191.00\\	
+stdev&	 31.22&  33.94&  31.31&   30.29&   31.86\\	
+2019& &&&& \\				
+mean&	214.68& 214.36& 216.35&  216.22&  217.82\\
+median&	236.90& 236.80& 237.80&  237.80&  237.40\\	
+stdev&	 33.29&  34.07&  35.51&   35.42&   34.66\\	
+2020& &&&& \\				
+mean&	 34.98&  34.83&  34.31&   33.58&   33.96\\	
+median&	  8.80&   9.00&   8.00&    6.80&    6.70\\	
+stdev&	 56.82&  56.58&  56.42&   56.76&   57.59\\	
+2021& &&&& \\				
+mean&	  5.99&   4.85&   4.82&    3.68&    6.66\\	
+median&	  6.90&   5.00&   5.00&    5.00&    7.60\\	
+stdev&	  2.01&   2.28&   2.19&    1.92&    2.66\\	
+2022& &&&& \\				
+mean&	168.20& 168.34& 164.14&  163.88&  164.50\\	
+median&	158.00& 157.00& 150.20&  150.30&  152.10\\	
+stdev&	142.67& 144.09& 139.10&  139.45&  141.71\\
+\hline\hline
+Sample 1 3/9/2016 - 12/29/2022 &&&& \\
+mean&	108.92&  105.57&  105.08&  106.20& 108.70\\	
+median&	 91.00&   79.42&   79.00&   79.80& 91.00\\	
+stdev&	 98.57&   99.93&   98.68&   98.71&   98.64\\
+\end{tabular}
+\caption{Annual weekly statistics rates of policy and money market transactions ($\$$ billions)}
+\label{table:statsweeklyratesannual}
+\end{table}
+		
+% numbers disagree win onratesw_tablev3 Sample 2 7/28/2016-12/29/2022
+ref{table:statsweeklyvolumesannual})
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c c c}  
+\hline
+Year & EFFR & OBFR & TGCR & BGCR & SOHR \\ [0.5ex] 
+2016&	&&&& \\	
+mean&	235.73& 286.84& 328.84& 681.06&  68.41\\
+median&	247.00& 288.80& 337.20& 685.70&  666.00\\
+stdev&	 50.42&  27.42&  21.56&  31.50&   8.42\\
+2017&	&&&& \\	
+mean&	203.73& 332.06& 353.10& 747.44&  85.17\\
+median& 206.20& 342.00& 358.80& 760.30& 851.00\\
+stdev&	 12.84&  33.42&  29.85&  49.57&   8.18\\
+2018&	&&&& \\	
+mean&	183.26& 426.91& 365.23&  744.37& 105.34\\
+median&	159.00& 383,00&  393.20& 803.00& 786.00\\
+stdev&	 76.08& 162.42&   94.21& 187.91&  88.93\\
+2019&	&&&& \\	
+mean&	178.12& 388.87&  335.15& 371.76& 906.20\\
+median&	707.00& 171.50&  431.90& 456.50&  1048.30\\
+stdev&	175.12& 355.91&  174.29& 158.84&  310.07\\
+2020&	&&&& \\	
+mean&	590.90& 185.77&  444.78& 308.41&  539.62\\
+median&	687.50& 114.50&  280.50& 339.40&  361.60\\
+stdev&	376.13& 161.21&  372.8&  136.25&  386.99\\
+2021&	&&&& \\	
+mean&	419.26&  284.82& 319.75& 747.43&  147.15\\
+median&	260.80&  337.20& 363.10& 887.30&  730.00\\
+stdev&	285.26&  146.76&  84.57& 260.42&  128.45\\
+2022&	&&&& \\	
+mean&	165.55&  460.33& 282.60& 345.43&  795.08\\
+median&	990.00&  280.30& 353.80& 368.80&  960.80\\
+stdev&	116.29&  301.49& 136.13&  63.15& 297.65\\
+ \hline\hline			
+ \hline\hline
+Sample March 4,2016 to December 29, 2022& &&&& \\
+mean&	283.38&  338.95&  347.51&  561.26&  385.09\\
+median&	208.32&  311.30&  358.80&  634.40&  104.50\\
+stdev&	249.79&  223.37&  178.02&  245.80&  405.98\\
+\end{tabular}
+\caption{Annual weekly  median rates of policy and money market transactions ($\$$ billions)}
+\label{table:statsweeklyvolumeannual}
+\end{table}	
+			
+
+
+%\subsection{Weekly demand for these overnight money market instruments}
+\subsection{Demand for reserves: Weekly rates versus reserves}
+The Alonso hypothesis for demand for reserves, elastic when reserves are scarce, inelastic when ample. Fed trades off balance sheet and FF rate volatility
+
+DEMAND EQUATIONS FOR DAILY RATES AND VOLUMES
+Unsecured rates:  EFFR, OBFR
+Secured rates: TGCR, BGCR, SOFR
+But only one graphs each for all rates or volumes vs reserves
+REDO for 2016-2022
+\input{ONweeklyratevolumewgt_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0 , bb=108   268   473   567]{ONweeklyratevolumewgt_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Weekly Volume Weighted rates EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:vmrates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+%The times series behavior of billions of dollars of transactions in overnight rate securities is similar to that of the rates themselves (Figure \ref{figure:volrates}). Its notable how low are the transactions in the unsecured rates, the EFFR and OBFR. As rates and volumes increase from 7/28/2017. BGCR volume exceed TGCR volume until rates achieve their maximum, then fall as rates and volumes of transactions decline.  During the period of the zero lower bound, there is little trading in any of the overnight rate products. Then TCGR and BGCR volumes surge as the FOMC raises the Federal Funds rate in 2022.
+
+REDO for 2016-2022
+%Figure \ref{figure:volrates} 
+\input{ONweeklyratevolumeall_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{ONweeklyratevolumeall_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Weekly Volume Weighted rates EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:volrates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+
+CHANGES IN RESERVES
+Reserves can decline with “reserve draining” demands such as Treasury issuances, daily changes in TGA balances, and daily changes in the Federal Reserve’s holdings of Treasuries and Agencies in its System Open Market Account (SOMA)(Correa, Du and Liao, 2020), precautionary demands for reserves to meet intraday payment obligations (Ashcraft, McAndrews and Skeie, 2011), and regulatory liquidity requirements (Ihrig, 2019; d’Avernas and Vandeweyer, 2020). 
+ 
+On the demand side of the repo market, large U.S. government fiscal deficits had caused a significant secular increase in the outstanding stock of marketable Treasury securities, which in turn increases the amount of Treasury securities for which dealers required repo financing. In particular, the Treasury issuances on September 16 and 17, 2020, increased the demand by dealers for repo financing.
+
+
+DEMAND PLOTS
+As reserves increase,volume weighted rates decline at each level of reserves, evidence that demand for reserves varies with the price of overnight money market instruments during the full sample 2016-2022 (Figure \ref{figure:vmrates}).  
+
+Investment tradeoffs of banks and nonbanks, where to place cash overnight, affect the demand for rserves. Banks trade off placing money in reserves and earn IOR or  investing cash in alternatives.  Non banks who cannot hold reserve ONRRP and bills. Participants in these markets include financial firms with large pools of cash to earn interest. Repo markets also allow financial institutions to borrow cheaply to fund short-term needs. Other non bank institutions who cannot hold reserves at the Fed include, hedge funds, money market funds, and insurance companies.
+
+Hence, the name ”repurchase agreement” or repo.
+Lenders such as shadow banks, money market funds can lend to the Fed and receive collateral from
+the Fed which the Fed repurchases the next day. The difference in the Fed sale price of a security and its repurchase price is the reverse repurchase rate.
+Lenders such as money market mutual funds (MMFs) treat Fed reverse repo transactions sales of securities in the ON RPP facility as loans collateralized with high-quality securities. [see Veronesi for the transaction] Borrowers such as securities dealers treat the transactions as simultaneous sales and commitments to repurchase the securities (most often, the next day). Hence, the name ”repurchase agreement” or
+repo.
+https://fredblog.stlouisfed.org/2021/02/visualizing-the-feds-new-monetary-policy-tools/
+In the recently established repo fa-
+https://libertystreeteconomics.newyorkfed.org/2022/01/the-feds-latest-tool-a-standing-repo-faci$\#$:~:text=The$\%$20SRF$\%$20serves$\%$20as$\%$20a,above$\%$20the$\%$20FOMC’s$\%$20target$\%$20range.
+Sets a a ceiling... 
+
+
+\url{https://www.bankrate.com/banking/federal-reserve/why-the-fed-pumps-billions-into-repo-market/} 
+% volume weighted rates versus reserves  
+ 
+ %Discuss EFFR, OBFR, and repo rates.
+Figure \ref{figure:WeeklyReservesONratesscatter}
+\input{ONweeklyrates_reservesn_scatterv5.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.25, bb=108   268   473   567]{ONweeklyrates_reservesn_scatterv5.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Weekly reserves, the Federal Fund rates, and other overnight rates}
+\label{fig:WeeklyReservesONratesscatter}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+[DISCUSS DEMAND FOR RESERVES TABLES AND SCATTER PLOTS]
+
+\begin{comment}
+FIND THAT ALTERNATIVE TO SCATTER PLOTS
+Scatter plots for unsecured and secured rates'
+Figure \ref{figure:WeeklyReservesONratesscatter}
+\input{ONweeklyratesES_reservesn_scatterv5.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.25, bb=108   268   473   567]{ONweeklyratesES_reservesn_scatterv5.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Weekly reserves, the Federal Fund rates, and other overnight rates}
+\label{fig:WeeklyReservesONratesscatter}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Figure ~\ref{Figure:WeeklyReservesONratesscatter}
+\input{ONweeklyratesOTB_reservesn_scatterv5.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.25, bb=108   268   473   567]{ONweeklyratesOTB_reservesn_scatterv5.tex}
+\caption{Weekly reserves, the Federal Fund rates, and other overnight rates}
+\label{fig:WeeklyReservesONratesscatter}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+
+FOMC
+\section{Introduction}
+\section{Events where corridor system breaks down}
+%How effective are the ON RPP and the SFR in managing theEFFR?
+Does the ON RRP effective floor on the EFFR or FR? Does the standing repurchase agreement (repo) facility (SRF) provide an effective ceiling on the EFFR or FR? 
+
+We have three recent events to examine the behavior of the EFFR...
+1) The repo market disturbance September 2019
+2) The dash for cash March 2020
+3) Use of reverse repo March 2021 to present May 2022 to counter zero bound
+
+ 
+Events:
+On September 17, 2019, SOFR suddenly jumped above IOR by 315 basis points and interdealer repo rates reached over 700 basis points above IOR during the course of the day.
+A similar pattern is observed on March 17, 2020, when SOFR again spiked above IOR during the “dash for cash” induced by news of the Covid pandemic
+
+
+\emph{later discuss new Fed repo facility}
+How did repo facility do to reduce repo rate spikes, and set SOHR - IOR? introduction of a “standing repo facility,” at which a broad set of market participants could get repo financing directly from the Fed.  Section 8: Establish a standing repo facility, which would offer financing to a designated set of repo market participants at a rate slightly above IOR.43 The facility rate could be set high enough that the Fed’s balance sheet expands only as needed to address temporary liquidity crunches. 
+CHECK: Does the recent Fed repo facility provide a broad repo central counterparty and broadly accessible trading platforms, significantly improve
+passthrough to repo markets, and free a significant amount of “high-rent” space on the balance sheets of large regulated dealers
+\subsection{ The September 2019 disruption in...}  Duffie Ample Reserves weren’t so ample afterall Adam (Copeland, Darrell Duffie, and Yilin Yang, 2021) examine the significant disruption in Treasury repo markets in mid-September 2019.
+[]2019 spike in repo rates generated a lot of discussion Pozsar, Duffie]. The Federal Reserve’s “balance-sheet normalization,” that reduced aggregate reserves between 2017 and September 2019, increased repo rate distortions, the severity of rate spikes, and intraday payment timing stresses,
+culminating with repo rates rising above efficient-market levels when the total reserve balances held at the Federal Reserve by the largest repo-active bank holding companies declined and that repo rate spikes were strongly associated with delayed intraday payments of reserves to these large bank holding companies. Intraday payment timing stresses are magnified by early morning settlement of Treasury security issuances. Substantially higher aggregate levels of reserves than existed in the period leading up to September 2019 would likely have eliminated most or all of these payment timing stresses and repo rate spikes
+This event motivated the Federal Open Market Committee (FOMC)in July 2021 meeting to establish the SRF to
+serve as a backstop in money markets. 
+\url{https://www.newyorkfed.org/markets/repo-agreement-ops-faq}
+
+\begin{comment}
+Duffie ample reserves:
+ post-crisis liquidity regulations and the Federal Reserve’s “balance-sheet normalization” stressed the intraday management of reserve balances held at the Federal Reserve (Fed) by large bank holding companies (BHCs) that are active in repo markets. This led to spikes in Treasury repo rates during 2018-2019. After an especially large and prominently reported1 disruption in repo markets during September 16-18, 2019, the Fed reversed its balance-sheet normalization.
+ 
+ Despite this change in policy, our analysis implies that the reserve balances held at the Fed by the large BHCs that are active intermediaries in the Treasury repo market were still not sufficiently large to avoid repo liquidity crunches until the Fed created a large quantity of additional reserves in response to the Covid shock of March 2020. Whether the Fed should aim, over the long run, for a small or large balance sheet remains controversial. 
+Plot Sohr-IOR vs reserves, GCF-IOR, others
+In an efficient wholesale funding market, Treasury repo rates would be essentially equated by arbitrage with the overnight interest rate offered by the Fed on balances held at the Fed (IOR). This is so because Treasury repos and balances held at the Fed are nearly equivalent risk-free overnight investments available to banks. From 2015 to 2020, however, we find that the Secured Overnight Financing Rate (SOFR), a broad measure of overnight Treasury repo rates, was typically well above IOR whenever the total balances held at the Fed of the ten largest repo-active BHCs was below roughly $\$$580 
+\end{comment}
+
+ 
+\subsection{The March 2020 dash for cash}
+Duffie?
+The COVID-19 Pandemic Caused Market Disruptions across Sovereign Bond Markets At the start of the COVID-19 pandemic in late February 2020, and in response to the economic repercussions of impending
+lockdown measures, investors began to demand higher-quality, safe assets. In particular, they shifted their portfolios toward sovereign bonds, and the resulting buying pressure drove sovereign yields to decline broadly.
+As the crisis intensified in March 2020, however, investors’ demand for cash surged, leading to selling pressure on sovereign bonds and therefore increases in their yields. 
+This down-and-up pattern in yields is illustrated for ten-year U.S., German, U.K., and Japanese bonds in the chart below. 
+Alongside these changes in yields, sovereign bond liquidity deteriorated significantly in March 2020. For example, bid-ask spreads increased for U.S., German, U.K., and Japan ten-year sovereign bonds over late February and March 2020 (see the chart
+below).
+
+\subsection{Growth in RRP transacions after March 2021}
+ ON RRP usage steadily increased after March 2021 and reached an unprecedented $\$$1.6 trillion in September 2021. This hints at an excess supply of nonbank savings that is not intermediated by banks or absorbed by Treasuries, which has ultimately flowed into the ON RRP facility. The Fed becoming the borrower-of-last-resort has prompted concerns about how the U.S. banking system is functioning during the pandemic. Concerns include, for example, bank capital regulation being too tight or the Fed's actions creating asset dislocation
+ 
+\url{https://www.richmondfed.org/press_room/press_releases/2021/eb_20210928}
+\url{https://www.richmondfed.org/publications/research/economic_brief/2021/eb_21-31}
+The ON RRP facility has been effective in helping maintain control of the fed funds rate well within the target policy range. More recently, however, one of the ON RRP's primary uses has been to absorb funds that would otherwise end up as reserves on bank balance sheets, with the Fed effectively becoming the largest borrower in the repo market,
+An important shift linked to the ON RRP is that the Fed now directly interacts with a much broader set of institutions in the repo market. Traditionally, primary dealers were the only admissible counterparties in open market operations. Access to the ON RRP, however, has been extended to banks, GSEs and other qualified financial institutions. Through this expansion, MMFs have become the main repo counterparty.3
+
+% move to srf
+Figure  shows how repos 
+1) effected (lowered?) the Fed Funds rate during the September 2019 episode, establishing a lower bound for the FF rate,
+and 
+2) the March 2020 dash for cash
+
+1. September 2019
+\subsection{Standing Repo Facility}
+Overnight Repurchase
+
+\url{https://latex-tutorial.com/tutorials/tables/}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ l c r } 
+\hline
+\textbf{Date} & \textbf{US Treasury repo} & \textbf{Total repo} \\
+9/2/2019 &.& .\\
+9/3/2019 &. &. \\
+9/4/2019 &. &. \\
+9/5/2019 &. &. \\
+9/6/2019 &. &. \\
+9/9/2019 &. &. \\
+9/10/2019 &. &. \\
+9/11/2019 &. &. \\
+9/12/2019 &. &. \\
+9/13/2019 &. &. \\
+9/16/2019 &. &. \\
+9/17/2019 & 40.85 & 53.15 \\
+9/18/2019 & 51.55 & 75 \\
+9/19/2019 & 55.843 & 75 \\
+9/20/2019 & 59.15 &  75 \\
+9/23/2019 & 49.7 & 65.75 \\
+9/24/2019 & 58.75 & 75 \\
+9/25/2019 & 44.35 & 75 \\
+9/26/2019 & 34.55 & 50.1 \\
+9/27/2019 & 14.45 & 22.7 \\
+9/30/2019 & 49.75 & 63.5 \\
+\end{tabular}
+\caption{Repos during the September 2019 spike}
+\end{center}
+\end{table}
+
+RPTSYD (= RPONTSYD)
+Citations: Suggested Citation: Federal Reserve Bank of New York, Repurchase Agreements: Treasury Securities Purchased by the Federal Reserve in the Temporary Open Market Operations [RPTSYD],
+retrieved from FRED, Federal Reserve Bank of St. Louis; \url{https://fred.stlouisfed.org/series/RPTSYD}, July
+16, 2022. Daily UST and total repos versus total reserves of depository institutions at the Fed from 5/16/2017
+to 5/17/2022 UPDATE 7/15/2017 SOFR4/3/2018 to 7/17/2017
+Repurchase Agreements: Treasury Securities Purchased by the Federal Reserve in the Temporary
+10
+Open Market Operations (RPTSYD) Source: Federal Reserve Bank of New York \url{https://fred.stlouisfed.org/graph/?g=RSet}
+Release: Temporary Open Market Operations Units: Billions of US Dollars, Not Seasonally Adjusted Frequency: Daily This series is constructed as the aggregated daily amount value of the RP transactions reported
+by the New York Fed as part of the Temporary Open Market Operations.
+\url{https://fred.stlouisfed.org/series/EFFR}
+Suggested Citation: Federal Reserve Bank of New York,
+Effective Federal Funds Rate [EFFR], retrieved from FRED, Federal Reserve Bank of St. Louis;
+July 19, 2022.
+Agreements: Total Securities Purchased by the Federal Reserve in the Temporary Open Market Operations
+(RPONTTLD) Suggested Citation: Federal Reserve Bank of New York, Overnight Repurchase Agreements:
+Total Securities Purchased by the Federal Reserve in the Temporary Open Market Operations [RPONTTLD],
+retrieved from FRED, Federal Reserve Bank of St. Louis; ,
+July 16, 2022.
+Reserves of Depository Institutions: Total (TOTRESNS) Suggested Citation: Board of Governors
+of the Federal Reserve System (US), Reserves of Depository Institutions, Nonborrowed [NONBORRES],
+retrieved from FRED, Federal Reserve Bank of St. Louis; c
+July 16, 2022.
+Federal Funds Effective Rate (FEDFUNDS) monthly Suggested Citation: Board of Governors of
+the Federal Reserve System (US), Federal Funds Effective Rate [FEDFUNDS], retrieved from FRED, Federal
+Reserve Bank of St. Louis; \url{https://fred.stlouisfed.org/series/FEDFUNDS}, July 16, 2022.
+
+2. The March 10-18, 2020 Dash for Cash raised yields as investors sold Treasury securities. Everyone stepped back. Fed only buyer, which LOWERED rates. March 10-18, 2020
+\url{https://libertystreeteconomics.newyorkfed.org/2022/07/the-global-dash-for-cash-in-march-2020/}
+Event: significant disruption in Treasury repo markets in mid-September 2019.
+\url{https://texblog.org/2017/02/06/proper-tables-with-latex/}
+
+Figure  The value of the volume of daily US Treasury security and total repurchase agreements(Billions of US Dollars, Not Seasonally Adjusted) bought by the Federal Reserve in the Temporary Open Market
+Operations versus total reserves of depository institutions at 
+
+Figure 2 shows how repos raised ??? the Fed Funds rate during the March 2020 dash for cash episode episode, establishing a lower bound for the FF rate.
+
+
+
+\begin{comment}
+% --------- Notes from articles -------------
+Note: Hedge Funds and Treasury Market Price Impact:
+Evidence from Direct Exposures
+Ron Alquist and Ram Yamarthy$\ast$
+August 2022
+Risk premia on specific assets are determined by the degree to which banks, mutual funds, pension funds, broker-dealers,
+and other non-bank financial intermediaries (NBFI) transact and display demand for them.
+In this study we focus our attention on another prominent type of NBFI, hedge funds, and ask how their demand for safe assets affects the valuation of a central asset in the global marketplace, U.S. Treasury securities
+
+As leveraged and well-informed investors, hedge funds impound information into prices through their trades, rendering prices more informative and the market more efficient. At the same time, recent events have raised questions about whether hedge funds increase systemic risk. For example, as the COVID-related financial turbulence hit U.S. markets in March 2020, a flight to quality into the most liquid safe assets led to Treasury market volatility that widened the Treasury cash-future basis. This widening forced several relative value hedge funds to unwind their positions, causing additional market disruptions.1 The financial
+press has also suggested that risk parity and short volatility funds, through their dynamic
+rebalancing, cut back on their positions in response to market volatility. Such deleveraging may have exacerbated the market turmoil.2
+% --------- Notes from articles -------------
+\end{comment}
+
+
+DUPLICATION??
+\begin{comment}
+\begin{figure}[h]
+\includegraphics[scale=.75]{FF_repos_v2.png}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{The effective Federal Fund rate, US Treasury and total repos}
+\label{fig:Repos}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ l c r } 
+\hline
+\textbf{Date} & \textbf{US Treasury repo} & \textbf{Total repos} \\
+3/10/2020 & 95.225 & 123.625 \\
+3/11/2020 & 94.875 & 103.1 \\
+3/12/2020 & 73.25 & 45.15 \\
+3/16/2020 & 100.8 & 149 \\
+3/17/2020 & 90.15 & 152.75 \\
+3/18/2020 & 8.55 & 13.2 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Repo during the Sept 2019 and March 20 dash for cash}
+\label{tab:repo}
+\end{table}
+
+Table  Caption below table.
+\begin{table}
+\begin{center}
+\begin{tabular}{ l c r } 
+\hline
+\textbf{Date} & \textbf{US Treasury reverse} & \textbf{repo Total reverse repos} \\
+3/10/2020 & 0.151 & 0.151 \\
+3/11/2020 & 1.325 & 1.325 \\
+3/12/2020 & 21.05 & 21.05 \\
+3/13/2020 & 15.1 & 15.1 \\
+3/16/2020 & 1.425 & 1.425 \\
+3/17/2020 & 5.7 & 5.7  \\
+3/18/2020 & 0.477 & 0.477  \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Reverse repo during the March 20 dash for cash}
+\label{tab:reverserepo}
+\end{table}
+
+%Table 3.5: Caption below table.
+%RRPONTTLD 0.151 1.325 21.05 15.1 %1.425 5.7 0.477 1.195
+
+Citation:
+?? from 5/17/2017 to 7/22/2022
+The effective Fed Funds rate, and the value of the volume of repurchase and reverse repurchase transactions, both US Treasury securities and total securities are from FRED. \url{https://fred.stlouisfed.org/series/TOTRESNS}
+\url{https://fred.stlouisfed.org/series/EFFR} \url{https://fred.stlouisfed.org/series/RRPONTSYD}
+\url{https://fred.stlouisfed.org/series/RRPONTTLD}
+
+
+3. The growth in RRP transactions after March 2021
+Figure shows the value of the volume of daily US Treasury security (by inference total reverse repurchase transactions equal UST transactions) sold by the Federal Reserve in the Temporary Open Market Operations versus total reserves of depository institutions at the Federal Reserve versus total reserves of depository institutions at the Fed
+
+Citations:
+The Fed Funds rate at the Federal Reserve from FRED. 
+
+Figure graphs the EFFR and the RRP.
+\begin{figure}[h]
+\includegraphics[scale=.75]{FF_reverserepos_v3.png}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{The effective Federal Fund rate, US Treasury reverse repos}
+\label{fig:Repos}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+Suggested Citation: Overnight Reverse Repurchase Agreements: Treasury Securities Sold by the
+Federal Reserve in the Temporary Open Market Operations (RRPONTSYD) Suggested Citation: Federal
+Reserve Bank of New York, Overnight Reverse Repurchase Agreements: Treasury Securities Sold by the
+Federal Reserve in the Temporary Open Market Operations [RRPONTSYD], retrieved from FRED, Federal
+Reserve Bank of St. Louis; , July 16, 2022.
+Overnight Reverse Repurchase Agreements: Total Securities Sold by the Federal Reserve in the
+Temporary Open Market Operations (RRPONTTLD)
+Federal Reserve Bank of New York, Overnight Reverse Repurchase Agreements: Total Securities
+Sold by the Federal Reserve in the Temporary Open Market Operations [RRPONTTLD], retrieved from
+FRED, Federal Reserve Bank of St. Louis; 
+\url{https://www.newyorkfed.org/markets/desk-operations/reverse-repo}
+
+\subsection{How did repo facility do to reduce repo rate spikes, and set SOHR - IOR?}
+introduction of a “standing repo facility,” at which a broad set of market participants could get repo financing directly from the Fed.  Section 8: Establish a standing repo facility, which would offer financing to a designated set of repo market participants at a rate slightly 
+
+\section{REPO}
+Lenders and borrowers in the ON RPP Richmond Fed: ACTORS IN ON RPP? Repos and reverse repos are actively used by other participants. A critical part of the global financial system is financing debt
+securities issued by the U.S. Treasury and by government- sponsored entities (GSEs). Lenders in the ON RPP facility such as money market mutual funds (MMFs) treat these transactions as loans collateralized with high-quality securities. Borrowers, such as securities dealers treat the transactions as simultaneous sales and commitments to repurchase the securities (most often, the next day).
+Hence, the name ”repurchase agreement” or repo.
+Lenders such as shadow banks, money market funds can lend to the Fed and receive collateral from the Fed which the Fed repurchases the next day. The difference in the Fed sale price of a security and its repurchase price is the reverse repurchase rate.
+Lenders such as money market mutual funds (MMFs) treat Fed reverse repo transactions sales of
+securities in the ON RPP facility as loans collateralized with high-quality securities. [see Veronesi for the transaction] Borrowers such as securities dealers treat the transactions as simultaneous sales and commit-
+ments to repurchase the securities (most often, the next day). Hence, the name ”repurchase agreement” or
+repo.
+https://fredblog.stlouisfed.org/2021/02/visualizing-the-feds-new-monetary-policy-tools/
+In the recently established repo fa-
+https://libertystreeteconomics.newyorkfed.org/2022/01/the-feds-latest-tool-a-standing-repo-faci$\#$:~:text=The$\%$20SRF$\%$20serves$\%$20as$\%$20a,above$\%$20the$\%$20FOMC’s$\%$20target$\%$20range.
+Sets a a ceiling... Under the FOMC’s ample reserve regime for monetary policy implementation,
+the Standing Repo Facility (SRF) serves as a backstop in money markets to dampen upward interest rate pressures that emerge in overnight U.S. dollar funding markets such as repo markets and spillover into the Fed Funds market.
+As a backstop tool, the facility’s minimum bid rate should be set above rates in overnight repo
+markets under normal market conditions, so as not to unduly influence price discovery in short-term funding markets on most days, while still providing effective control of the fed funds rate.
+[Merge, edit these subsections]
+
+5.3 The Overnight Reverse Repo Facility (ON RRP)
+The Fed offers a broad set of large financial institutions the opportunity to deposit funds at the Fed overnight (with a security held as collateral) in the overnight reverse repurchase agreement (ON RRP) facility. Many of these financial institutions do not have access to interest on reserves. The Fed announces the capacity of the facility and an offering rate. Institutions then place bids that include the amount of their deposit and the minimum interest rate they would receive from the Fed. As long as the total amount of funds that institutions bid is less than the Fed’s set capacity, institutions’ full bid amounts are placed in the facility and the funds earn the ON RRP offering rate. However, if there is more demand than capacity, the Fed sorts the bids by their rates, lowest to highest, and awards funds to institutions in that order. The bid rate for the last institution to be accepted into the facility (once capacity is reached) becomes the award rate for all institutions. The Fed has set a large capacity, though, and the ON RRP offering rate has been the award rate in all auctions to date
+As with the IORB rate, institutions use the ON RRP offering rate to help them arbitrage other
+short-term rates. Because it is set below the IORB rate, it serves as a supplementary rate and acts like a floor for the FFR.] RPTSYD (= RPONTSYD) RRPONTSYD (=RRPTSYD) RRPONTTLD
+Event? Zero bound? a floor? No, rather Total reverse repos huge start 3/30/2021 104.725 to 2153.75 7/15/2022
+The Desk conducts ON RRP operations at a pre-announced offering rate set by the FOMC. The Desk offers U.S. Treasury securities held in the System Open Market Account (SOMA) portfolio to settle ON RRP
+
+We have three recent events to examine the behavior of the EFFR...
+1) The repo market disturbance September 2019
+2) The dash for cash March 2020
+3) Use of reverse repo March 2021 to present May 2022 to counter zero bound
+
+%%
+
+
+
+\begin{figure}[h]
+\includegraphics[scale=.75]{FF_repos_v2.png}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{The effective Federal Fund rate, US Treasury and total repos}
+\label{fig:Repos}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ l c r } 
+\hline
+\textbf{Date} & \textbf{US Treasury repo} & \textbf{Total repos} \\
+3/10/2020 & 95.225 & 123.625 \\
+3/11/2020 & 94.875 & 103.1 \\
+3/12/2020 & 73.25 & 45.15 \\
+3/16/2020 & 100.8 & 149 \\
+3/17/2020 & 90.15 & 152.75 \\
+3/18/2020 & 8.55 & 13.2 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Repo during the Sept 2019 and March 20 dash for cash}
+\label{tab:repo}
+\end{table}
+
+Table  Caption below table.
+\begin{table}
+\begin{center}
+\begin{tabular}{ l c r } 
+\hline
+\textbf{Date} & \textbf{US Treasury reverse} & \textbf{repo Total reverse repos} \\
+3/10/2020 & 0.151 & 0.151 \\
+3/11/2020 & 1.325 & 1.325 \\
+3/12/2020 & 21.05 & 21.05 \\
+3/13/2020 & 15.1 & 15.1 \\
+3/16/2020 & 1.425 & 1.425 \\
+3/17/2020 & 5.7 & 5.7  \\
+3/18/2020 & 0.477 & 0.477  \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Reverse repo during the March 20 dash for cash}
+\label{tab:reverserepo}
+\end{table}
+
+%Table 3.5: Caption below table.
+%RRPONTTLD 0.151 1.325 21.05 15.1 %1.425 5.7 0.477 1.195
+
+Citation:
+?? from 5/17/2017 to 7/22/2022
+The effective Fed Funds rate, and the value of the volume of repurchase and reverse repurchase transactions, both US Treasury securities and total securities are from FRED. \url{https://fred.stlouisfed.org/series/TOTRESNS}
+\url{https://fred.stlouisfed.org/series/EFFR} \url{https://fred.stlouisfed.org/series/RRPONTSYD}
+\url{https://fred.stlouisfed.org/series/RRPONTTLD}
+
+
+3. The growth in RRP transactions after March 2021
+Figure shows the value of the volume of daily US Treasury security (by inference total reverse repurchase transactions equal UST transactions) sold by the Federal Reserve in the Temporary Open Market Operations versus total reserves of depository institutions at the Federal Reserve versus total reserves of depository institutions at the Fed
+
+Citations:
+The Fed Funds rate at the Federal Reserve from FRED. 
+
+Figure graphs the EFFR and the RRP.
+\begin{figure}[h]
+\includegraphics[scale=.75]{FF_reverserepos_v3.png}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{The effective Federal Fund rate, US Treasury reverse repos}
+\label{fig:Repos}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+Suggested Citation: Overnight Reverse Repurchase Agreements: Treasury Securities Sold by the
+Federal Reserve in the Temporary Open Market Operations (RRPONTSYD) Suggested Citation: Federal
+Reserve Bank of New York, Overnight Reverse Repurchase Agreements: Treasury Securities Sold by the
+Federal Reserve in the Temporary Open Market Operations [RRPONTSYD], retrieved from FRED, Federal
+Reserve Bank of St. Louis; , July 16, 2022.
+Overnight Reverse Repurchase Agreements: Total Securities Sold by the Federal Reserve in the
+Temporary Open Market Operations (RRPONTTLD)
+Federal Reserve Bank of New York, Overnight Reverse Repurchase Agreements: Total Securities
+Sold by the Federal Reserve in the Temporary Open Market Operations [RRPONTTLD], retrieved from
+FRED, Federal Reserve Bank of St. Louis; 
+\url{https://www.newyorkfed.org/markets/desk-operations/reverse-repo}
+
+\subsection{How did repo facility do to reduce repo rate spikes, and set SOHR - IOR?}
+introduction of a “standing repo facility,” at which a broad set of market participants could get repo financing directly from the Fed.  Section 8: Establish a standing repo facility, which would offer financing to a designated set of repo market participants at a rate slightly 
+\end{comment}
+
+
+\begin{comment}
+Empirical studies of recent years suggest that large-scale asset purchases can affect real economic outcomes via a bank lending channel. Like an interest rate cut in a conventional monetary policy setting, QE can lead to additional bank lending, which in turn translates into additional economic activity.
+\end{comment}
+
+\begin{comment}
+ Measures of market efficiency:
+ efficient price formation. A number of distinct efficiency measures have been developed in the literature. Some of these measures are designed to 
+ - capture the extent to which stock prices deviate from a random walk (e.g., return predictability, variance ratios),
+ - while others aim to measure pricing errors relative to the efficient market benchmark (e.g.,
+ Hasbrouck 1993) or 
+ - violations of the law of one price across different markets
+ (e.g., put-call parity deviations)
+ \end{comment}
+
+\section{Treasury}
+MOMA in NY Fed Markets Group
+\url{https://www.newyorkfed.org/aboutthefed/org_markets.html}
+MOMA:
+Market Operations, Monitoring, and Analysis  (MOMA) 
+\begin{enumerate}
+\item Implements domestic open market and foreign currency operations for the System Open Market Account (SOMA) in a manner that is consistent with the Federal Open Market Committee (FOMC) authorization and directives.
+\item  Monitors and analyzes global financial markets to inform the formulation and implementation of monetary and financial stability policy.
+\item  Provides capital markets-related fiscal agency and other services to the U.S. Treasury.
+\item Publishes reference rates for the U.S. money markets.
+\item Manages the U.S. foreign currency reserves on behalf of the Federal Reserve and U.S. Treasury.
+\item Transacts on behalf of foreign and international monetary authorities.
+\end{enumerate}
+
+API documentation \url{https://fiscaldata.treasury.gov/api-documentation/}
+Site \url{https://fiscaldata.treasury.gov/datasets/monthly-statement-public-debt/summary-of-treasury-securities-outstanding}
+\url{https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/debt/mspd/mspd_table_1}
+Base url \url{https://api.fiscaldata.treasury.gov/services/api/fiscal_service/}
+
+\subsection{The Federal Reserve Balance Sheet} \url{https://www.federalreserve.gov/monetarypolicy/bst_fedsbalancesheet.htm}
+Table 5. Consolidated Statement of Condition of All Federal Reserve Banks
+Table 5 presents the balance sheet of the Federal Reserve System. 
+\begin{enumerate}
+\item The first page of table 5 presents the assets held by the Federal Reserve. The assets listed largely parallel the factors supplying reserve balances from table 1. 
+table 1 is of interest because it presents a detailed breakout of the assets held by the Federal Reserve. These assets include: 
+- holdings of Treasury, agency, and mortgage-backed securities; 
+- discount window lending; lending to other institutions; 
+- assets of limited liability companies (LLCs) that have been consolidated onto the Federal Reserve's balance sheet, and 
+- foreign currency holdings associated with reciprocal currency arrangements with other central banks (foreign central bank liquidity swaps).
+\item The second page presents the liabilities of the Federal Reserve. 
+- Federal Reserve notes--that is, U.S. currency--is the first liability listed and has historically been the largest liability. 
+ - Depository institutions maintain balances on deposit with the Federal Reserve, and these balances are reported in either term deposits held by depository institutions or other deposits held by depository institutions. A term deposit is a deposit with a specific maturity date. Balances held in term deposits are separate and distinct from balances placed in a master account; balances held in term deposits cannot be used to satisfy a reserve balance requirement or clear payments. The U.S. Treasury general account, from which the Treasury makes most of its payments, is also presented.
+ \end{enumerate}
+
+Table 5
+Interactive Guide (Accessible Version) | Current release
+Table 5 continued
+Interactive Guide (Accessible Version) | Current release
+Also included are 
+- the capital accounts of the Federal Reserve. Each member bank of the Federal Reserve is required, by law, to subscribe to shares of its local Reserve Bank in an amount equal to 6 percent of its own paid-in capital and surplus. Member banks with consolidated assets less than $\$$10 billion, annually adjusted for inflation, receive a statutory 6 percent dividend and member banks with consolidated assets greater than that amount receive a dividend rate that is equal to the smaller of the 10-year Treasury note rate at the last auction prior to dividend payment and 6 percent. Of the capital requirement for member banks, half must be paid to the Federal Reserve and half remains subject to call by the Board of Governors. The Federal Reserve Act requires that aggregate Federal Reserve Bank surplus not exceed a cap. After providing for the costs of operations, payment of dividends, and the amount necessary to maintain the surplus cap, any residual net earnings will be remitted to the U.S. Treasury. The Federal Reserve's Annual Report presents the cumulative payments to the Treasury as "Earnings remittances to the Treasury." Statistical table 10 in that report provides the remittances by Federal Reserve Bank, and table 11 presents historical data on the remittances.
+
+Managing the debt. Determining Maturity Mix
+Newly issued Treasury securities, sold to finance the operations of the federal government, are offered at a mix of maturities in order to satisfy the provisions of the regular and predictable debt  management strategy and to minimize interest payments over time. The profile of securities is 
+also important due to its influence on liquidity. In addition, Treasury must make sure that it has 
+adequate cash balances available to pay federal obligations. Balancing all of these objectives 
+leads to a strategy which offers a mix of short- and long-term securities. 
+Longer-term securities generally command higher interest rates compared to shorter-term 
+securities because investors demand greater compensation for incurring risk over a longer period 
+of time. Generally, a strong economy will be accompanied by higher interest rates. If Treasury 
+issues long-term debt during this time, they are committing to paying higher interest rates for a 
+longer period and may decide to purchase short-term securities. However, this leads to 
+uncertainties over the longer term, since the interest rate will likely change. During periods of 
+economic downturn and low interest rates, Treasury may decide to finance at longer maturities to 
+take advantage of lower borrowing costs. This, however, may lead to more volatile and uncertain 
+yearly interest payments because Treasury has to enter the market more often
+
+
+ \begin{comment}Figure plots the latest values of the Federal Reserve's balance sheet. [DO] 
+ Since August of that year, the New York Fed has been reinvesting all the principal payments from maturing agency debt and mortgage-backed securities into purchasing short-term Treasuries. %Figure 3 shows how 
+The balance on Treasuries has increased while the holding of mortgage-backed securities (MBS) has continued to decrease. 
+\end{comment}
+%\printbibliography
+
+\end{document}
+
+
+OTHEER FED
+[EDIT THIS SECTION]
+\emph{EFFR epoch, target, percentiles}
+\emph{OBFR, TGCR, BGCR, SOFR, epoch, target, percentiles?  only for SOFR, OBFR?}
+The following figures illustrate the different pattern in distribution of all daily overnight rates, EFFR, OBFR, TGCR, BGCR, and SOHR during these epochs of FOMC rate changes, in basis points , from December 4, 2017 to December 29, 2022. Holidays and weekends are excluded. Plots are truncated at 350 basis points for improved visualization.
+
+\begin{comment} 
+Add Duffie Krishnamurthydiversity index  during different economic environments and Fed policies.
+
+Discuss  Duffie table of rate spikes HERE or in SPREADs.
+\end{comment} 
+%Figure \pageref{fig:FOMCchanges_normalcy} 
+%Figure \pageref{fig:FOMCchanges_covid} 
+%Figure\pageref{fig:FOMCchanges_inflation}
+Figures 
+%Figure \pageref{fig:FOMCchanges_normalcy} 
+%Figure \pageref{fig:FOMCchanges_covid} 
+%Figure\pageref{fig:FOMCchanges_inflation}
+compare the federal fund rate to the target rates and the dispersion of the EFFR between the 25th and 75 percentiles. During the period of normalization after the financial crisis of 2008-2009 (GFC), the first subplot shows the declining EFFR was at first [DATE] was withing the upper and lower target rates. The second subplot shows little dispersion between the 25 and 75 percentiles. Target rates were not set until [DATE].
+
+
+%Figure ~\pageref{fig:effrnorms}
+\input{dailyeffrnorms.tex}
+\begin{figure}[ht]
+\includegraphics[scale=.75\textwidth]{dailyeffrnorms}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily EFFR, target rates, percentiles Normalization}
+\label{fig:effrnorms}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+During the period of covid [DATE], the first subplot shows a volatile  EFFR, especially  [DATE], but well was within the upper and lower target rates. The second subplot shows substantial dispersion from the mean rate and between the 25 and 75 percentiles.
+
+
+%Figure ~\ref{figure:effrcovds}
+\input{dailyeffrcovds.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0\textwidth]{dailyeffrcovds}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily EFFR, target rates, percentiles, Covid}
+\label{fig:effrcovds}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+During the period of taming inflation [DATE], the first subplot shows a EFFR rising within each of a series of rate hikes and well was within the upper and lower target rates. The second subplot shows almost no dispersion  between the 25 and 75 percentiles. Although the series of increases in the policy rate diverge from the mean rate.
+
+
+Figure ~\pageref{fig:effrpis}
+\input{dailyeffrpis.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0\textwidth]{dailyeffrpis}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily EFFR, target rates, percentiles, Taming inflation}
+\label{fig:effrpis}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+ANNOTATE  2017-2019, March 2020 dates on graphs:
+
+[ADD FIGURES FOR OTHER RATES BY EPOCH]
+
+[WHERE DO THESE GO? CHECK IF THEY ARE IN RESERVES SECTION]
+\begin{comment}
+These are in reserves section
+\input{ONweeklyratevolumewgt_reserves.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0\textwidth]{ONweeklyratevolumewgt_reserves}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily overnight rate volumes EFFR, OBFR, TGCR, BGCR, SOHR}
+\label{fig:dailyrateVolumes_all}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+%\begin{comment}
+\input{ONweeklyratevolumewgtnorm_reserves.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0\textwidth]{ONweeklyratevolumewgtnorm_reserves}
+\caption{Weekly overnight rate volumes Normalcy}
+\label{fig:weeklyVolumes_norm}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+
+\input{ONweeklyratevolumewgtcovd_reserves.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0\textwidth]{ONweeklyratevolumewgtnormcovd_reserves}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Weekly overnight rate volumes coping with covid}
+\label{fig:weeklyVolumes_covd}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+
+\input{ONweeklyratevolumewgtpi_reserves.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0\textwidth]{ONweeklyratevolumewgtnormpi_reserves}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Weekly overnight rate volumes taming inflation}
+\label{fig:weeklyVolumes_pi}
+\centering
+\footnotesize{}
+%\begin{singlespace
+
+
+
+
+Find authors:
+Issues:
+a. low real interest rate trend
+b. low inflation expectation
+c. long-term inflation expectation
+d. unemployment and u$\ast$
+e. ZLB and vulnerability to a substantial fiscal shock and unexpected inflation
+f. problems with alternative policies: quantitative easing and forward guidance, financial repression
+g. debt potential default monetization inflation
+h. tail risk
+% --------------
+a. \emph{low real interest rate trend}
+The trend decline in global real interest rates has allowed governments to manage high debt levels more easily than in the past. Central banks have been undershooting their inflation targets, thereby muting inflation expectations. The major story is equilibrium short-term real (inflation-adjusted) interest rate has collapsed, now closer to -1 percent on average across the advanced countries. Very different from than to Taylor’s (1993) estimate of $r^{\ast}$ = 2$\%$ (Rogoff?).
+
+%
+Laubach and Williams (2016) jointly to examine the empirical relationship between estimated unob-
+served series - the natural rate of interest, potential output, and its trend growth rate, They find substantial
+variation in the natural rate of interest over the past four decades in the United States. Their natural rate
+estimates vary about one-for-one with changes in the trend growth rate. Policymakers’ mismeasurement of
+the natural rate of interest can cause a significant deterioration in macroeconomic stabilization.
+
+%
+Clarida measuring inflation expectations from breakeven rates and surveys (). Quotes from the
+Treasury Inflation-Protected Securities (TIPS) market can provide valuable information about two key inputs
+to monetary policy analysis: long-run R$\ast$ and expected inflation.
+University of Michigan, Surveys of Consumers, survey of inflation expectations represent median
+responses. https://data.sca.isr.umich.edu/
+TIPS is Treasury Inflation-Protected Securities; CPI is consumer price index. Adjusted for lagged
+5
+ context of John Taylor (1993) first estimation of his famous “Taylor rule” for monetary policy in 1993, that a normal central bank policy interest rate ought to be around 4 percent, which represented a combination of 2 percent target inflation rate and 2 percent “neutral” short-term real interest rate. For many years, major inflation-targeting floating-exchange-rate central banks used versions of the Taylor rule to benchmark their policies. But especially in the aftermath of the financial crisis, setting policy interest rates has not been nearly so straightforward.
+Today’s near-zero nominal short-term interest rates partly reflect the fact that
+FINISH QUOTE
+%
+
+  
+Values of $r^{\ast}$ derived from TIPS spot rates and forward rates  signal the levels of real interest rates that investors expect at various horizons.(also OIS swap rates, the float leg, and Fed futures) (they can be used to complement model-based estimates of r$\ast$.)
+UPDATE:
+For example, the interest rate on a 10-year inflation-indexed Treasury security fell from 2.7 percent before the financial crisis to almost –0.9 percent at the end of 2012; it rose subsequently, but by early March 2017 was still only 0.5 percent. 
+
+(Rogoff) suggests Potential explanations include:
+- increases in global savings due to the demographic cycle (Carvalho, Ferrero, and Nechio 2016); 
+- emerging-market demand for safe advanced-country assets (for example, Bernanke 2005); 
+- The effect of price inflation helps reduce real interest rates.
+- lower trend productivity growth (Gordon 2016); 
+- the falling cost of investment goods (Karabarbounis and Neiman 2014); 
+- secular stagnation in world aggregate demand, (Summers 2013)
+- debt supercycle
+- tail risk
+
+
+Rogoff argues that much of the recent drop in real interest rates is a legacy of the 2008 financial crisis, and of an ongoing debt supercycle that was originally centered in the United States and then in the eurozone, and now perhaps has reached China (Rogoff 2016)
+
+Reinhart, Reinhart, and Rogoff (2015) also suggest that investors place a greater weight on tail risks after the financial crisis. This can lead to a sharp drop in safe real interest rates even with normal risk aversion parameters (for discussion, see , who build on Barro 2006).
+% -------------------------
+Indeed, options prices reveal that even though market volatility has greatly abated since the peak of the crisis.... FINISH
+% -----------------
+
+Laubach and Williams (2016) jointly to examine the empirical relationship between estimated unobserved series -  the natural rate of interest, potential output, and its trend growth rate, They find substantial variation in the natural rate of interest over the past four decades in the United States. Their natural rate estimates vary about one-for-one with changes in the trend growth rate. Policymakers’ mismeasurement of the natural rate of
+interest can cause a significant deterioration in macroeconomic stabilization.
+
+The Laubach-Williams (2003) model indicate the natural rate in the United States fell to close to zero during the crisis and has remained there into 2016. Explanations for this decline include
+shifts in demographics, a slowdown in trend productivity growth, and global factors affecting real interest rates.
+- \url{https://www.newyorkfed.org/research/policy/rstar}
+
+Kathryn Holston Thomas Laubach John C. Williams December 15, 2016 Abstract U.S. estimates of
+the natural rate of interest – the real short-term interest rate that would prevail absent transitory disturbances
+– have declined dramatically since the start of the global financial crisis. In the United States and three other advanced economies – Canada, the Euro Area, and the United Kingdom. they find that large declines in trend GDP growth and natural rates of interest have occurred over the past 25 years in all four economies http://
+www.frbsf.org/economic-research/publications/working-papers/wp2016-11.pdf (e.g., see, Laubach
+and Williams 2016 and Holston, Laubach, and Williams 2017).
+
+\url{http://www.frbsf.org/economic-research/publications/working-papers/wp2016-11.pdf}
+(e.g., see, Laubach and Williams 
+2016 and Holston, Laubach, and Williams 2017).
+
+\begin{figure}[h]
+\includegraphics[scale=.55]{POL_2018_natural-rate-of-interest-LW_ch1_williams.png}
+\caption{The NY Federal Reserves Laubach-Williams $R^{\ast}$ estimates}
+\label{fig:rstar}
+\centering
+\footnotesize{ Measuring the Natural Rate of Interest:
+International Trends and Determinants $\ast$
+Kathryn Holston Thomas Laubach
+John C. Williams
+December 15, 2016}
+\end{figure}
+
+Mertens, Williams [citation] chap 3 note the sizable decline in the natural rate of interest in many countries over the past quarter century, warns that central banks are now likely to be constrained by the lower bound on nominal interest rates. This of course severely limits central banks'   ability to offset negative shocks to the economy.
+
+The challenge of inflation expectations potentially becoming anchored at too low a level further limits the policy space available to react to negative shocks to the economy.
+
+b. \emph{low inflation expectation}
+Clarida measuring inflation expectations from breakeven rates and surveys (). Quotes from the Treasury Inflation-Protected Securities (TIPS) market can provide valuable information about two key inputs to monetary policy analysis: long-run $R^{\ast}$  and expected inflation.
+
+University of Michigan, Surveys of Consumers, survey of inflation expectations represent median responses.
+\url{https://data.sca.isr.umich.edu/}
+
+TIPS is Treasury Inflation-Protected Securities; CPI is consumer price index. Adjusted for lagged indexation of Treasury Inflation-Protected Securities (the carry effect).
+Source: Federal Reserve Bank of New York; Federal Reserve Board staff calculations;
+
+GET:
+FIGURE 1.5. Market- and Survey-Based Measures of Longer-Run Inflation Expectations
+Note: Estimates based on smoothed nominal and inflation-indexed Treasury yield curves. 
+ Bloomberg 
+Finance LP; 
+
+TABLE 2.2. Survey-Based Inflation Expectations Surveys of Professional Forecasters
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ l l l l l } 
+\hline
+\textbf{Date} & textbf{(Average
+Long Term} & textbf{Household forecast (Average Long Term)}\\ 
+\hline
+textbf{Country} & textbf{2005–2007} &
+textbf{2016–2019} & textbf{2005–2007} & textbf{2016–2019} \\
+\hline
+United States & 2.46$\%$ & 2.22$\%$ & 3.0$\%$ & 2.5$\%$\\
+Europe & 1.91$\%$ & 1.83$\%$ & NA \\
+Japan & NA & NA 2.9$\%$ & 2.0$\%$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+c. \emph{long-term inflation expectations}
+DUPLICATE OF b?
+The Treasury Inflation Protected Securities [TIPS] market shows steady decline in long-term inflation expectations. 
+The ten year breakeven inflation rate in the United States has declined from around 2.4 percent before the crisis to 1.8 percent today. UPDATE
+Breakevens that begin in ten years’ time, looking beyond the
+contemporaneous cycle, have declined by a larger amount. 
+The thirty-year breakeven inflation rate from TIPS has fallen from over 2.5 percent in 2011 to under 2 percent as of April 2019
+[LOOK AT BREAKEVEN RATES NOW AND COMPARE TO PAST]
+
+d. unemployment and u$\ast$
+Michaillat and Saez. Unemployment u and Labor force share becomes more severe if affected countries themselves hit the zero bound, thereby losing their own capacity for countercyclical monetary policy.
+Some triggers could include a catastrophic climate event, a cyberwar that spins out of control, a
+pandemic, a meltdown in the Chinese economy that leads to a deep global recession, or a new-age financial crisis. In the main, abrupt events, these events can trigger fiscal pressures to create higher inflation. They could also evolve very slowly over a long period of a decade or more. The United States excessive reliance on short-term debt to finance social programs, a greener society, tax cuts must ultimately have its limits. 
+Consider the recent collapse in monetary policy interest rates to near zero in the context of John Taylor (1993)
+first estimation of his famous “Taylor rule” for monetary policy in 1993, that a normal central bank policy interest rate ought to be around 4 percent, which represented a combination of 2 percent target inflation rate and 2 percent “neutral” short-term real interest rate. For many years, major inflation-targeting floating-
+
+Michaillat and Saez show the US labor market remains too tight. The vacancy unemployment ratio v/u was great than one but is cooling down toward efficiency (v/u closer to 1). v/u peaked at 2 in March 2022. 
+An update on the state of the US labor market (Aug 03, 2022, based on yesterday's JOLTS numbers, June 2022 v/u ratio = 1.81$\%$ remained tight where
+u = 3.6$\%$
+v = 6.5$\%$
+Their calculation of  u$\ast$, u$\ast$ = $\sqrt{uv}$ = 4.8$\%$
+%\url{https://t.co/14n5nHJGFJ
+%\url{https://twitter.com/pmichaillat/status/1555008804512677891?t=aOcYsddaTEdQRj4VChffUQ&s=03} 
+%https://t.co/14n5nHJGFJ
+%(https://twitter.com/pmichaillat/status/1555008804512677891?t=aOcYsddaTEdQRj4VChffUQ&s=03) 
+
+Comment on graph: variation, cycles of above and below ustar.
+
+Figure 5.4: Unemployment u and Labor force share Michaillat and Saenz
+\begin{figure}[h]
+\includegraphics[scale=.3]{LaborForceShare_1b.jpg}
+\caption{Unemployment u and Labor force share Michaillat and Saenz}
+\label{fig:labor_u}
+\centering
+\footnotesize{}
+\end{figure}
+
+Figure 5.5: Labor Market tightness Michaillat and Saenz
+exchange-rate central banks used versions of the Taylor rule to benchmark their policies. But especially in the aftermath of the financial crisis, setting policy interest rates has not been nearly so straightforward. Today’s near-zero nominal short-term interest rates partly reflect the fact that FINISH QUOTE
+\begin{figure}[h]
+\includegraphics[scale=.4]{LaborMarket4.jpg}
+\caption{Labor Market tightness Michaillat and Saenz}
+\label{fig:labor4}
+\centering
+\footnotesize{}
+\end{figure}
+
+e. \emph{ZLB and vulnerability to a substantial fiscal shock and unexpected inflation}
+The zero  lower bound (ZLB) has been an active discussion. 
+\url{https://www.brookings.edu/blog/ben-bernanke/2017/04/13/the-zero-lower-bound-on-interest-rates-how-should-the-fed-respond/}
+
+
+In many advanced economies, conventional rules called for a negative nominal policy rate in response to the extreme shock of the crisis.
+AS countries approach the zero bound, they lose their own capacity for counter cyclical monetary policy. 
+Rogoff  
+Potential shocks include a catastrophic climate event, a cyberwar that spins out of control, a pandemic, a meltdown in the Chinese economy 
+that leads to a deep global recession, or a new-age financial crisis. 
+
+Although the shocks may be abrupt, fiscal shocks create unexpected inflation. Events could also evolve slowly over time.  The United States excessive reliance on short-term debt to finance social programs, a greener society, tax cuts must ultimately have its limits. 
+
+For much of the 2000s, market clearing for advanced-country bonds has required an ever-falling interest rate. Once the zero bound becomes binding, 
+though, a lower interest rate can no longer clear the market. Advanced economies can still meet the demand by allowing their debts to outstrip their income growth, but then the “safe assets” they issue may eventually become risky. Rajan (2016) has emphasized that there is so little agreement about how major central banks should deal with the zero bound creates greater uncertainty about the future and creates volatility for emerging markets.
+
+% ------------ Taylor rule digression
+Consider the recent collapse in monetary policy interest rates to near zero in the 
+1 Introduction
+The Federal Reserve System is conducting a review of the strategy, tools, and communication practices
+deployed to pursue the dual mandate goals of maximum employment and price stability. 
+Find monetary policy and finance journals Look at papers in email
+The Federal Reserve responded with alternative approaches to monetary policy to the major increase
+in liquidity resulting from asset purchases to the 2008-2009 crisis. Before the crisis, monetary policy adjusted the scarcity value of a limited supply of central bank deposits (reserves),
+Unconventional policy tools adopted by central banks included forward guidance and large-scale asset purchases. But asset purchases resulted in central banks changing their overall frameworks for controlling short-term interest rates.
+This paper is motivated by Stuhl () argument that under a  policy of ample reserves the Federal Reserve faces a tradeoff of the volatility of the Federal Funds and the size of its balance
+sheet. ? Conventional rules indicated called a negative nominal policy rate in response to the financial crisis.
+%------------------------------------------
+
+
+f. \emph{problems with  alternative monetary policies:  quantitative easing and forward guidance, financial repression g. debt potential default monetization inflation h. tail risk} 
+
+Problems with alternative policies quantitative easing and forward guidance, financial repression.
+See Rogoff. Reinhart and Rogoff 2009), using regulation and political pressure to force private agents to hold government debt at below-market interest rates.
+
+In this post crisis economy with increased liquidity (DEFINE), the US and many central banks have implemented These unconventional policy tools policies: quantitative easing and forward guidance, Rogoff. Reinhart and Rogoff 2009),
+
+Asset purchases under QE resulted in central banks changing their overall frameworks for controlling short-term interest rates: Pre-crisis, these frameworks were typically based on adjusting the scarcity value of a limited supply of central bank deposits (reserves), but the substantial increase in liquidity resulting from asset purchases in response to the crisis made 
+other techniques necessary. 
+
+(financial repression using regulation and political pressure to force private agents 
+to hold government debt at below-market interest rates.)
+
+Quantitative easing, large-scale asset purchases, involves issuing central 
+bank reserves (essentially very short-term government debt) to purchase both public and private assets.
+
+Another form of quantitative easing,“fiscal quantitative easing”, the acquisition of private-sector stocks and bonds, can be decomposed into normal quantitative easing (issuance of central bank reserves to buy longer-term government debt), combined with issuance of government debt to 
+buy private debt assets (normally viewed as directed credit). 
+
+Forward guidance to  raise inflation expectations can stimulate consumption and investment just as effectively as nominal interest rate cuts, since both work by lowering the real interest rate. Unfortunately, it is hard to make forward guidance credible, 
+A way to implement “forward guidance.” to drive down real interest rates (when nominal rates are stuck at zero is to  not to raise interest rates too quickly, even after the economy returns to full employment.
+
+\emph{Higher Inflation Targets}
+A more radical idea is to raise central bank inflation targets from 2 percent to 
+4 percent.
+'''
+
+REPETITIVE, EDIT
+(1)  Lilley and Rogoff 2019), markets viewed there as being a small but measurable possibility that quantitative easing (QE) could lead to very high inflation for a decade.
+[IDENTIFY QE EPISODES IN DATA]. Interesting. Did quasi fiscal QE postpone inflation part of the problem? Exchange of long term for short term assets, reserves
+(2) Until now, central banks up against the effective zero lower bound have been relying mainly on various forms of quasi-fiscal policy, but the weight of evidence suggests these are far less effective than normal interest rate policy 
+(3)“fiscal quantitative
+easing” policies where the central bank buys private assets; the same equivalent policy can be achieved by
+having the Treasury trade government debt for private debt at face value, then having the central bank buy
+up the government debt via quantitative easing, 
+(4) having the central bank engage in pure fiscal policy via (market interest-bearing) helicopter money, 
+(5) policies that genuinely relate to monetary policy, including
+forward guidance and changing the inflation target.
+(6) 2. The credibility struggles that major central banks have had in keeping inflation expectations at target over the medium term, arguably greatly exacerbated by investor skepticism that central banks have
+the tools to create inflation, even when the situation warrants it.
+(7) radical alternatives that have been proposed (e.g., 
+the inherent difficulties implementing precisely calibrated, well-timed, and highly credible countercyclical
+
+They examine in part 2 alternatives to negative interest rate policy.
+alternatives that have been proposed. We divide 
+these into four broad classes: (1) “pure quantitative easing” policies that (we argue) do little more than change the maturity structure of government debt in a way the Treasury can do at least as effectively.
+In any given year, the US Treasury typically has to roll over debt roughly equal to the Fed’s $\$$4 trillion post crisis balance sheet, and should it desire to move faster, it buys up long-term 
+debt before it matures, issuing very short-term debt to do so. The central bank is very much a junior partner when it comes to debt maturity management. 
+
+(2) “fiscal quantitative easing” policies where the central bank buys private assets; the same equivalent policy can be achieved by 
+having the Treasury trade government debt for private debt at face value, then having the central bank buy up the government 
+
+There is no real debate about the fact that fiscal QE played a critical role during the financial crisis in preventing markets from freezing up and collapsing with potentially dire consequences. Nor should there be any debate that emergency credit policy is a perfectly valid function of the central bank in a crisis.
+Outside of emergencies, fiscal QE can perfectly well be executed by the central government through a variety of mechanisms, most commonly by having the central government issue debt guarantees. 
+Fiscal QE certainly has an effect, but outside of crises, it once again is much less powerful than normal interest rate policy
+
+debt via quantitative easing, 
+
+(3) having the central bank engage in pure fiscal policy via (market interest-bearing) helicopter money.
+In its crudest form, 
+helicopter money involves having the central bank print money to issue pro-rata transfers to the public. This is, of course, equivalent to having the central government use debt finance to issue the same transfers to the public, then having the Federal Reserve engage in open market operations to buy up the debt. 
+It is true that there is a strong theoretical presumption that temporary fiscal policy stimulus is more effective at the zero bound (mainly because the fiscal multiplier is not muted by a rise in interest rates).
+...Of course, one can argue that there is no reason for the central bank to do anything at the zero bound since fiscal policy becomes 
+more potent, in theory at least.
+
+(4) policies that genuinely relate to monetary policy, including forward guidance and changing the inflation target

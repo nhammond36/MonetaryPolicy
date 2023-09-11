@@ -1,0 +1,1696 @@
+\subsection{Similar cross section behavior of overnight rates}
+HYPOTHESIS2: Our first discussion provided evidence  daily volume weighted median  policy and money market reference rates -  EFFR, OBFR, TGCR, BGCR, and SOHR vary widely over time,  However annually, daily money market rates hover around Fed targets and quickly revert to them in times of shocks.
+
+Both unsecured and secured rates median rates during the sample period 2016-2022 are at most 15 basis points of each other in any year. For example, 10 bp in 2016, 15 bp in  2017 5 bp in  2018, 1 bp in 2019 2 bp in 2020, 3 bp in  2021, 8 bp in 2022.  But the sample 25th and 75th percentiles of the median EFFR and SOFR are large, some 250 basis points. In contrast, the dispersion among volumes traded (the bottom plot) is relatively small except for SOFR (Figure). The New York Fed only provides quintiles for the EFFR and SOFR.
+
+The sample standard deviations of the EFFR and SOFR (Figure) vary about 50 basis points between the 25th and 75th percentiles. The real story is the volatility of trade in these securities.  Yhe dispersion of the  standard deviation of transactions in the sample (bottom figure),  EFFR, OBFR, and SOFR, vary around $\$$400 billion daily. The puzzle is the relatively smaller volatility in rates compared to this volatility in volumes of securities traded daily.
+
+Figure \ref{fig:dispersionEFFR}
+%\input{dispersionEffr.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dispersionEffr.png}
+\caption{Daily EFFR, FOMC target rates, 25th and 75 percentiles}
+\label{fig:dispersionEFFR}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+ Figure \ref{fig:dispersionSOFR}
+\input{dispersionSofr.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dispersionSofr.png}
+\caption{Daily EFFR, FOMC target rates, 25th and 75 percentiles}
+\label{fig:dispersionSOFR}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Random walk argument:The hypothesis that Federal Funds  are perfect substitutes on any business day for  satisfying banks' liquidity needs, $i_t = E_t i_{t+1}$.  A natural hypothesis would be that the federal funds rate on day t  should be equal to the rate that banks' funds traders expect to hold the following day. Otherwise, profits for trading.  If $i_t > E_t i_{t+}$, it would pay a bank to lend one more dollar on today's federal funds market. That leaves the bank the possibilities of borrow one more dollar at date t + 1 to fulfill its desired level at an expected lower cost $i_{t+}$, or it leaves the bank with one less dollar of excess reserves available for lending tomorrow, an expected opportunity cost $i_{t+}$ of  forgone revenue. In either case, the bank would profit by lending today. 
+
+But Hamilton (1996) and others have concluded that the martingale hypothesis is clearly inconsistent with observed daily changes in the federal funds rate. (Bertolini,Bertola, Prati ,) also conclude  the FFR does not follow a martingale process due to frictions such as  transacions costs, interbank credit limits, overdraft penalties, obstacles to intra-period arbitrage.
+
+
+%From the point of view of finance, overnight federal funds represent the shortest-term security that is actively traded and thus form the base of any term structure relation. Indeed, recent papers by Balduzzi, Bertola, and Foresi (1993), Roberds, Runkle, and Whiteman (1994), and Rudebusch (1994) suggest that several well-known puzzles in the term structure of interest rates can be resolved by tracking these relations back to daily changes in the federal funds rate.
+
+To gain insight into the random walk properties of these rates and how they respond to other rates, I repeated Fama French regressions for 1, 2, 3, 5, 7, 10 days of daily rate data for  EFFR, OBFR, TGCR, BGCR, SOFR 
+\begin{equation*}
+r_{t(t+k)} = a + b_t r_{(t-k),t}
+\end{equation*}
+
+%ADD t,se F stats
+Regressing the daily EFFR on prior days, yields coefficients close to 1, different from other evidence the Fed Funds rate is not a martingale (Hamilton, 1996 and others).  The regression coefficient of the EFFR on the prior day is 1.02, 1.06 two days, 1.07 three days, and  1.12 five days (Table ~\ref{table:dailyratesvar}).  This suggests the Federal Funds rate is a martingale over one or two trading days. With 1710 observations, standard errors are small.  But intercepts, or $gamma_0$ are non zero.
+The high frequency  evidence other rates are substitutes for bank liquidity needs is low on a daily basis but the adjustment to the EFFR increases at longer lags. All rates OBFR, TGCR, BGCR, SOFR load significantly on the prior lag of the EFFR. For a one day lag, the OBFR coefficient on the EFFR is 0.4, TGCR 0.53, BGCR 0.54 but 0.85 on SOFR. Loadings on longer lags are higher, on five days the OBFR reaching 0.78, 0.81 TGCR, 0.84 BCGR, and 1.06  SOFR.%(Table \ref{table:dailyratesvar})
+
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c c c c c c c c c}  
+\hline
+&& gamma0&  EFFR & OBFR & TGCR & BGCR & SOHR &&&\\ [0.5ex]
+\hline
+1 day &	&&&& &&&&&&\\
+	&&	gamma&	beta1&	beta2&	beta3&	beta4&	beta5&	R2adj& 	chi2&	df&	p\\
+EFFR&	coefficient&	0.29&	1.02&	0.01&	0.03&	0.02&  -0.08&	0.996&	704478.60&	5&	0\\
+&	standard deviation&	0.18&	0.13&	0.14&	0.15&	0.06&	0.14& & & \\				
+OBFR&	coefficient&   -0.86&	0.40&	0.64&	0.18&	0.03&  -0.24&	0.995&	377463.04&	5&	0\\
+&	standard deviation&	0.28&	0.09&	0.10&	0.11&	0.05&	0.09&	& & \\				
+TGCR&	coefficient&	-0.63&	0.53&	0.23&	0.56&	0.00&	-0.33&	0.989&	396161.34&	5&	0\\
+&	standard deviation&	0.30&1	0.13&	0.10	0.11&	0.054&	0.12&		& & \\			
+BGCR&	coefficient&	-0.52&	0.54&	0.22&	-0.27&	0.83&	-0.33&	0.989&	396105.19&	5&	0\\
+&	standard deviation&	0.29&	0.13&	0.10&	0.11&	0.06&	0.12&	& & \\			
+SOFR&	coefficient&	-0.28&	0.85&	-0.01&	-0.02&	0.04&	0.14&	0.992&	264058.72&	5&	0\\
+&	standard deviation&	0.27&   0.11&	0.10&	0.12&	0.04&	0.09&	& & \\		
+2 days &	&&&& &&&&&&\\									
+EFFR&	coefficient&	0.42&	1.06&	0.07&	-0.08&	0.11&	-0.15&	0.993&	191091.52&	5&	0\\
+&	standard deviation&	0.33&	0.21&	0.24&	0.26&	0.07&	0.20&  & & \\					
+OBFR&	coefficient&	-1.29&	0.60&	0.54&	0.22&	-0.05&	-0.30&	0.991&	113581.86&	5&	0\\
+&	standard deviation&	 0.45&	0.13&	0.16	0.18&	0.06&	0.14& & & \\					
+TGCR&	coefficient&	-0.82&	0.58&	0.42&	0.20&	-0.02&	-0.27&	0.985&	149327.88&	5&	0\\
+&	standard deviation&	0.47&	0.15&	0.18&	0.19&	0.07&	0.15& & & \\					
+BGCR&	coefficient&	-0.68&	0.60&	0.40&	-0.49&	0.75&	-0.26&	0.985&	152047.97&	5&	0\\
+&		standard deviation&	0.44&	0.15&	0.18&	0.20&	0.08&	0.15& & & \\				
+SOFR&	coefficient&	0.10&	0.90&	0.15&	-0.16	0.08&	0.03&	0.988&	139321.66&	5&	0\\
+&	standard deviation&	0.38&	0.20&	0.21&	0.22&	0.06&	0.19& & & \\				
+3 days &	&&&& &&&&&&\\																								EFFR&	coefficient&	0.49&	1.07&	0.07&	-0.09&	0.11&  -0.16&	0.990&	80998.54&	5&	0\\
+&	standard deviation&	0.43&	0.21&	0.25&	0.27&	0.07&	0.20& & & \\				
+OBFR&	coefficient&   -1.70&	0.68&	0.47&	0.25&  -0.14&  -0.25&	0.987&	52944.95&	5&	0\\
+&	standard deviation&	0.66&	0.16&	0.20&	0.23&	0.10&	0.17&	 & & \\			
+TGCR&	coefficient&   -1.23&	0.66&	0.38&	0.27&  -0.11&  -0.21&	0.982&	76868.51&	5&	0\\
+&	standard deviation&	0.65&	0.16&	0.21&	0.23&	0.10&	0.18&  & & \\			
+BGCR&	coefficient&   -1.06&	0.69&	0.36&  -0.45&	0.60&  -0.20&	0.982&	78734.43&	5&	0\\
+&&	standard deviation&	0.60&	0.17&	0.21&	0.23&	0.11&	0.17&  & & \\			
+SOFR&	coefficient&	0.08&	0.98&	0.09&  -0.15&	0.14&	-0.07&	0.985&	80680.11&	5	0\\
+&	standard deviation&	0.46&	0.21&	0.25&   0.26&	0.08&	0.21&  & & \\				
+5 days &	&&&&&&&&&&\\																								EFFR&	coefficient&	0.55&	1.12&	0.07&	-0.08&	0.11&	-0.21&	0.985&	29175.87&	5&	0\\
+&	standard deviation&	0.69&	0.21&	0.26&	0.27&	0.09&	0.21&	& & \\			
+OBFR&	coefficient&	-1.73&	0.78&   0.41&	0.34&  -0.22&  -0.30&	0.982&	21739.70&	5&	0\\
+&	standard deviation&	0.90&	0.18&	0.21&	0.23&	0.12&	0.17& & & \\				
+TGCR&	coefficient&	-1.34&	0.81&	0.28&	0.40&	-0.18&	-0.32&	0.977&	26547.55&	5&	0\\
+&	standard deviation&	0.86&	0.17&	0.20&	0.22&	0.12&	0.16& & & \\				
+BGCR&	coefficient*	-1.19&	0.84&	0.25&	-0.28&	0.48&	-0.29&	0.977&	26814.02&	5&	0\\
+&	standard deviation&	0.81&	0.17&	0.21&	0.24&	0.15&	0.17 & & \\				
+SOFR&	coefficient&	0.10&	1.06&	0.05&	-0.10&	0.13&	-0.13&	0.980&	28707.10&	5&	0\\
+&	standard deviation&	0.68&	0.21&	0.25&	0.27&	0.09&	0.20& & \\		
+\end{tabular}
+\caption{Daily policy and money market rates regressed on lagged rates}
+\label{table:dailyratesvar}
+\end{table}
+																		
+In spite of the close relation among money market rates to lagged values of the EFFR, (Alonso et al,) call attention dispersion among rates with respect to policy implementation, the dispersion $D_t$ of the daily median volume-weighted federal funds rate (EFFR) from the target range. Target rates were first set 3/29/2018. The deviation from target on day t $D_t$ represents the deviation between the value weighted daily fed funds rate and the FOMC target, the shaded area. $D_t$ shows how well the Fed manages the EFFR within the FOMC target range, the  upper and lower target rates (Figure).  %(\ref{fig:dispersionGara}).
+% FF > upper target TU
+\begin{equation*}
+D_t = \overline{r_t}  -target_{max,t}
+\end{equation*}
+if the EFFR is greater than the $target_{max,t}$
+% FF < upper target TU
+\begin{equation*}
+D_t = \overline{r_t} - target_{min,t} 
+\end{equation*}
+if $r_t$ is less than the lower targer rate $target_{min,t}$
+$D_t=0$ if the EFFR is within the target range, $target_{min,t}<\overline{r}_t <target_{max,t} $
+
+
+MY GRAPH FOR WHOLE SAMPLE for  dispersion section
+%\begin{comment}
+%(Figure \ref{fig:effrpercentiles}).
+%\input{dailyeffrnorms.tex}
+\begin{figure}[ht]
+\includegraphics[scale=.75, bb=108   268   473   567]{images/dispersionEffr.png}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily EFFR, target rates, percentiles}
+\label{fig:effrpercentiles}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+%\end{comment}
+
+The daily value of $D_t$ ,the deviations between the value weighted daily fed funds rate and weighted fed funds rate, the actual policy target (the EFFR, the effective fed funds rate published by the Federal Reserve Bank of New York) FOMC  (Figure), for 2016-2022 suggests that hitting the policy target may have become more challenging during stress in repo markets in 2019. ADD OBSERVATIONS
+
+\ref{fig:dispersionEffrGara}
+%\input{dispersionEffrGara.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dispersionEffrGara.png}
+\caption{Monetary policy implementation with an ample supply of reserves
+Gara Afonso, Kyungmin Kim, Antoine Martin, Ed Nosal, Simon Potter, and Sam Schulhofer-Wohl dispersion index- daily EFFR from upper and lower target rates}
+\label{fig:dispersionGara}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+( Duffie Krishamurthy, ) provide another view of dispersion of overnight rates, the transmission of policy to the economy through other short term rates. Their measures of dispersion  $D_t$ is a primary indicator of the level of passthrough inefficiency.
+%\cite{DuffieKrishnamurthi} 
+Duffie Krishamurthy measure the absolute deviation of the cross rates of overnight reference and money market rates, to measure the passthrough effectiveness of the Federal Reserve’s monetary policy, They argue that the current setting of U.S.-dollar money markets limits the transmission of Fed policy to the economy. 
+
+Their index of rate dispersion $D_t$ for day t in U.S. short-term money markets is the weighted mean absolute deviation of the cross-sectional distribution of overnight-equivalent rates on that day. $DK_t$ is constructed from overnight equivalent rates $\hat{r}_{i,t}$. Rates are adjusted for term and credit spreads. 
+
+%after adjusting for premia associated with credit risk and term structure.frictions associated with imperfect competition, regulation, infrastructure, and other forms of institutional segmentation within money markets.
+
+\begin{comment}
+%\begin{equation*}
+%DK_t=\frac{1}%{\sum_{i}^{v_{i,t}}+\sum_{i}%^{v_{i,t}} +\hat{r}_{i,t}-%\bar{y}_t
+%\end{equation*}
+\end{comment}
+ 
+They show between the end of 2012 and December 17, 2015, dispersion ranged between 4 and 7 basis points. Dispersion increased by over 10 basis points, immediately after the first passthrough event in the current Fed monetary policy setting, when the interest rate paid by the Fed on excess reserves (IOER) was increased from 25 to 50 basis basis points on December 17, 2015.
+
+In our sample from 2016 through 2022, the Duffie Krishnamurthy diversity index registers low dispersion, under 4 basis points, among the five overnight rates  EFFR, OBFR, TGCR, BGCR, and SOHR during 2016 and the first quarter of 2017 before jumping to around 5 during the last 2 weeks of March 2017 
+%(Figure \ref{fig:dispersionDK}.
+Then rises to over 50 basis points during December 2018 to mid April 2019. The index triples to 151.14 basis on April 19, 2019 and remains at this high level, reaching a high 254.83 points during the spike in repo rates Septemeber 19, 2019. The index tapers off after of the dash for cash on March 17, 2020 after spiking 27.5 basis points. Throughout 2020 and 2021, the index was under 1 point. The level of dispersion rose steadily during March 2022, reaching over 200 basis points during the last part of December 2022 as the FOMC raised the target range for the  Federal Funds rate to fight inflation. The index rose  from 14.57 April 15, 2022 to 209.25 on December 29, 2022.
+
+DISCUSS
+These results are consistent with Duffie Krishnamurthy findings that  dispersion is high during crises, positively related to the level of rates, and higher at quarter ends and after 2014 (CHECK).
+
+%\input{dispersionDK.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dispersionDK.png}
+\caption{Duffie Krishnamurthy dispersion index- all daily rates EFFR, OBFR, TGCR, BGCR, SOFR}
+\label{fig:dispersionDK}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+DISCUSS
+%\input{dispersionshocks.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dispersionshocks.png}
+\caption{Dispersion of daily overnight rate volumes EFFR, OBFR, TGCR, BGCR, SOHR}
+\label{fig:dispersionshocks}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+\begin{comment}
+Observations:
+- Reference rates change dramatically over time but cluster within periods (years or regimes)
+- Dispersion from target range and percentiles
+- mean reverting  behavior of all unsecured and secured overnight rights
+- rates violation of martingale behavior attributed to frictions such as  transactions costs, interbank credit limits, overdraft penalties, obstacles to intra-period arbitrage
+
+ Bertolini, the tendency of short term rates to hover around official targets and quickly revert to them in times of shocks.
+
+-Increasing volatility from sensitivity of rates to reserves.
+Early (late) in period liquidity shocks yield little (large) volatility.
+Banks use reserve buffers if expect Fed intervention
+-Banks don't expect Fed offsets shocks perfectly elastically at the current target rate.
+- Fed may intervene incompletely because limited by institutional features or because it wanted the rate to absorb part of the shock. Study by limiting injection [low m, high m]
+a. Fed repos (add reserves) limited by limited capital of the counterparties Bank, not primary dealers are not asa limited.
+b. Fed reverse repos (lower reserves) to avoid taking a reverse position in response to later information, pre 1994 or send mixed signals about policy
+- changes in volatility patterns in response to changes in Fed's operating procedures (or policy?)
+
+- if Fed changes target in response to shocks, these spill over into higher interest rates
+
+Other characteristics of short rates
+Bertolini, Bertola, Prati () 
+and Hamilton (1996) document the  deviation of the federal funds rate from martingale behavior: keep target rate constant
+
+Bertolini:  short rates mean reversing return to targets after shocks
+Bertolini, Bertola, Prati ()  and Hamilton (1996) document the  deviation of the federal funds rate from martingale behavior: keep target rate constant
+\end{comment}
+ 
+
+%During the period of normalization after the financial crisis of 2008-2009 (GFC), the declining EFFR was at first [DATE] was within the upper and lower target rates 
+%Continue..covid, taming inflation. Introduce epochs as policy regimes
+
+
+
+\begin{comment}
+Pozsar
+%The biggest risk we see to the plumbing is the Fed cutting rates aggressively, without pledging an open-ended liquidity support through its balance sheet: due to the inversion, money funds have seen $\$$600 billion of inflows last year, most of which went to fund dealers’ and hedge funds holdings of Treasuries. Aggressive rate cuts could send those funds back to the bond market, just when the funds are needed in the money market due to missed payments.
+\url{https://research-doc.credit-suisse.com/docView?language=ENG&format=PDF&sourceid=em&document_id=1082246841&serialid=0b2M%2FIRv1F1JMLaFoTy3mEGVTSi%2B3ukuNkZS%2F9SbuUw%3D&cspId=null}
+
+%Duffie and Krishnamurthy () note that the Federal Funds Effective Rate (FFER) has become an unreliable gauge of the overnight unsecured wholesale cost of funds for the U.S. The Fed's alternative benchmark, the Overnight Bank Financing Rate (OBFR),  relies heavily on Eurodollar transaction rate data. Banks prefer to fund themselves in the Eurodollar market rather than federal funds (interbank deposits) because Eurodollar deposits are not subject to reserve requirements, and the FDIC insurance fee applied to domestic bank liabilities. Money market funds and other large cash pools also tend to invest in bank deposits in the Eurodollar market.
+\end{comment}
+
+\begin{comment}
+%\emph{Dispersion}
+Duffie Krishnamurthy dispersion index a time-series regression of dispersion on various explanatory variables: the Markit CDX index (as a measure of crisis severity); the target federal funds rate (which, in the post-2008 period, is set at the middle of the Fed’s target range for EFFR); an end-of-quarter dummy; and a post-2014 dummy. The first of these dummies captures the effect of the quarter-end window-dressing of bank balance sheets, described in Section 6. The second dummy picks up the change in dispersion since 2014, after which several significant new bank regulations came into force, notably
+SLR and LCR. As illustrated, dispersion has climbed almost continually since 2014. The three columns presented in  Table 1 differ in the lag structure used to adjust standard errors. 
+\end{comment}
+
+ 
+
+\section{Federal Reserve policy and intervention procedures and other shocks - arbitrage, spreads}
+Insight how rates move with target rates, administered rates, spreads
+Maybe EFFR percentile target rates graph goes here?
+Discuss recent Vars
+Discuss spreads
+Discuss arbitrage opportunities
+
+\subsection{Monetary policy shocks}
+QE date for analysis
+FIND DATES, link to table and figure above
+TABLE of monetary policy decisions and events
+CHECK:UPDATE TABLE DO!
+\emph{Which epoch, Sep 2019, Mar 2020, series of QE}
+2019
+March 15, 2020
+March 23, 2020
+June 2020
+December 2020 slow purchase
+November 2021
+December 2021
+
+EVENTS
+1) 96 9/16/2019 Repo spike SOHR 2.42 +13 over 9/15, EFFR 2.23 +11
+   97 9/17/2019 Repo spike    SOFR 5+                  EFFR 2.3   
+\url{https://www.federalreserve.gov/econres/notes/feds-notes/what-happened-in-money-markets-in-september-2019-20200227.html}
+On Monday, September 16, SOFR printed at 2.43 percent, 13 basis points higher than the previous business day. With pressures in the repo market spilling over into the fed funds market, the EFFR printed at 2.25 percent, 11 basis points above the Friday print and at the top of the FOMC's target range. On September 17, the EFFR moved above the top of the target range to 2.3 percent and the SOFR increased to above 5 percent.
+
+
+2) Mar 10-18 2020  Dash for cash 
+121 3/8/2020 0:00 subtract 5 from coordinate
+122 3/15/2020 0:00
+The COVID-19 Pandemic Caused Market Disruptions across Sovereign Bond Markets
+At the start of the COVID-19 pandemic in late February 2020, and in response to the economic repercussions of impending lockdown measures, investors began to demand higher-quality, safe assets. In particular, they shifted their portfolios toward sovereign bonds, and the resulting buying pressure drove sovereign yields to decline broadly. As the crisis intensified in March 2020, however, investors’ demand for cash surged, leading to selling pressure on sovereign bonds and therefore increases in their yields. This down-and-up pattern in yields is illustrated for ten-year U.S., German, U.K., and Japanese bonds in the chart below.
+\url{https://libertystreeteconomics.newyorkfed.org/2022/07/the-global-dash-for-cash-in-march-2020/#:~:text=The$\%$20economic$\%$20disruptions$\%$20associated$\%$20with,number$\%$20of$\%$20central$\%$20bank$\%$20actions.}
+
+
+-122 March 15, 2020 On March 15, 2020, the Fed shifted the objective of QE to supporting the economy. It said that it would buy at least $\$$500 billion in Treasury securities and  $\$$200 billion in government-guaranteed mortgage-backed securities over “the coming months.” 
+ - 123 3/22/2020  March 23, 2020, it made the purchases open-ended, saying it would buy securities “in the amounts needed to support smooth market functioning and effective transmission of monetary policy to broader financial conditions,” expanding the stated purpose of the bond buying to include bolstering the economy. 
+
+- June 2020 - In June 2020, the Fed set its rate of purchases to at least $\$$80 billion a month in Treasuries and  $\$$40 billion in residential and commercial mortgage-backed securities until further notice. 
+ - December 2020 slow: The Fed updated its guidance in December 2020 to indicate it would slow these purchases once the economy had made “substantial further progress” toward the Fed’s goals of maximum employment and price stability. 
+ - November 2021 taper: In November 2021, judging that test had been met, the Fed began tapering its pace of asset purchases by  $\$$10 billion in Treasuries and  $\$$5 billion in MBS each month. 
+ - December 2021 double taper: At the subsequent FOMC meeting in December 2021, the Fed doubled its speed of tapering, reducing its bond purchases by  $\$$20 billion in Treasuries and  $\$$10 billion in MBS each month
+
+December 2020 slow purchase
+November 2021
+December 2021
+
+GCF repo - IOR
+
+The SOFR-IOR spread was
+mostly negative 2015-2017 because of the large supply of federal reserve balances and the low outstanding amount of Treasury bills during most of this period. Government money market funds substitute between Treasury bills and Treasury repos, which places downward pressure on the spread between Treasury repo rates and IOR when the outstanding supply of Treasury bills is low (Duffie and Krishnamurthy, 2016)
+but from 2015 to 2020, the SOHR, was typically well above IOR whenever the total balances held at the Fed of the ten largest repo-active BHCs was below roughly $\$$580 billion.
+
+2017- Sep 2019 ++ With the decline in reserves from 2017 to September 2019, the spread between SOFR and IOR crept higher and occasionally spiked up, particularly on Treasury issuance dates
+
+0/17/2019 SOFR suddenly jumped above IOR by 315 basis points during the extraordinary repo rate spikes of September 2019 and March 2020. On September 17, 2019, interdealer repo rates reached over 700 basis points above IOR during the course of the day. The Fed reacted quickly by supplying a large amounts of reserves, driving SOFR-IOR spreads back to moderately low levels.
+
+
+Because the March 2020 covid crisis news also caused severe illiquidity in the secondary market for Treasury securities, the Fed purchased enormous quantities of Treasuries and Agencies, expanding the total supply of reserves from mid-March by about  $\$$1 trillion in just three weeks. As a by-product of this huge asset purchase program, the total reserve balances of our sample of the ten largest repo-active BHCs increased dramatically, 
+%as shown in Figure 1.
+
+After March 2020 SOFR-IOR spread disappeared
+With this and other aggressive actions by the Fed to restore market liquidity, dealer banks provided reserves much more elastically into the repo market and the spread between SOFR and IOR essentially disappeared, as shown in Figure 1.
+
+%%
+volatility:  the Markit CDX index (as a measure of crisis severity)
+Chicago Fed index
+
+Global Supply Chain Pressure Index (GSCPI) was to develop a parsimonious measure of global supply chain pressures that could be used to gauge the importance of supply constraints with respect to economic outcomes. Our research indicates, for example, that changes in the GSCPI are associated with goods and producer price inflation in the United States and the euro area, both during the pandemic period and stretching back to 1997 (the starting point of our data set).
+ \url{https://www.newyorkfed.org/research/policy/gscpi#/overview}
+
+To identify these in the United States, researchers have used high frequency movements in Federal Funds
+futures in a narrow time window around announcements by the Federal Reserve
+2Guvenen et al. (2014) show that income risk is countercyclical in the US.
+5
+Electronic copy available at: \url{https://ssrn.com/abstract=3422687}
+(e.g. Kuttner, 2001; Nakamura and Steinsson, 2018a)
+
+
+Table and figures display changes in the Fed funds rate and the administered rates IOR and the reward rate ON RRP
+Table \ref{table:FOMCratechanges} lists FOMC rates changes, monetary regimes, and events over the four year period, 2018-2022.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c c} 
+\hline
+FOMC rates changes \\
+%Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex] 
+ \hline\hline
+\textbf{2015 to 2018: Returning to Normalcy} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+20-Dec-18 &	 25 &		2.25 to 2.50\\
+Sept. 27, 2018 &		25 &		2.0 to 2.25\\
+Jun. 14, 2018&		25 &		1.75 to 2.0\\	
+22-Mar-18 &		25&		1.50 to 1.75\\	
+Dec. 14, 2017 &		2&	5	1.25 to 1.50\\	
+15-Jun-17&		25&		1.00 to 1.25\\	
+16-Mar-17&		25 &		0.75 to 1.00\\	
+Dec. 15, 2016 &		25 &		0.5 to 0.75\\
+Dec. 17, 2015 &		25&		0.25 to 0.50\\
+\hline
+\textbf{2019  Mid-Cycle Adjustment} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+31-Oct-19 &		-25	&	1.50 to 1.75\\	
+Sept. 19, 2019&		-25&		1.75 to 2.0\\	
+Aug. 1, 2019&		-25	& 2.0 to 2.25\\	
+\hline			
+\textbf{2020 Coping with Covid} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+16-Mar-20&		-100&		0 to 0.25\\	
+3-Mar-20&		-50&		1.0 to 1.25\\	
+\hline		
+\textbf{2022 Taming Inflation} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+14-Dec-22&		50&		4.25 to 4.50\\	
+2-Nov-22&		75&		3.75 to 4.00\\	
+21-Sep-22&		75&		3.00 to 3.25\\	
+27-Jul-22&		75&		2.25 to 2.5\\	
+16-Jun-22&		75&		1.5 to 1.75\\	
+5-May-22&		50&		0.75 to 1.00\\	
+17-Mar-22&		25&		0.25 to 0.50\\
+\end{tabular}
+\caption{FOMC rates changes 2018 to 2022}
+\label{table:FOMCratechanges}
+\end{table}
+
+\begin{comment}
+NEED COVARIANCE GRAPH?  SOMETHING BETTER?
+(Figure \ref{figure:covdrate})
+\input{ONweeklyratevolumecovd_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumecovd_reserves.tex}
+\caption{Fed interventions, changes in the policy rate EFFR, and the administered rates IOR, ON RPP}
+\label{fig:covdrate}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+ALSO
+\begin{itemize}
+\item January 2019 FOMC's Statement Regarding Monetary Policy Implementation and Balance Sheet Normalization. The Committee intends to continue to implement monetary policy in a regime in which an ample supply of reserves ensures that control over the level of the federal funds rate and other short-term interest rates is exercised primarily through the setting of the Federal Reserve's administered rates, and in which active management of the supply of reserves is not required.
+ \item 2019, resumed Quantitative easing (QE), responding to the acute dysfunction of the Treasury and mortgage-backed securities (MBS) markets after the outbreak of COVID-19, These actions initially aimed to restore smooth functioning to these markets, which play a critical role in the flow of credit to the broader economy as benchmarks and sources of liquidity.
+\item March 15, 2020, the Fed shifted the objective of QE to supporting the economy. It committed to buying at least $\$$500 billion in Treasury securities and  $\$$200 billion in government-guaranteed mortgage-backed securities over “the coming months.” 
+\item March 23, 2020, it made the purchases open-ended, saying it would buy securities “in the amounts needed to support smooth market functioning and effective transmission of monetary policy to broader financial conditions,” expanding the purpose of the bond buying to  bolstering the economy. 
+\item
+June 2020, the Fed set its rate of purchases to at least $\$$80 billion a month in Treasuries and  $\$$40 billion in residential and commercial mortgage-backed securities. 
+\item December 2020 he Fed updated its guidance in  to indicate it would slow these purchases once the economy had made “substantial further progress” toward the Fed’s goals of maximum employment and price stability. 
+\item November 2021, the Fed began tapering its pace of asset purchases by  $\$$10 billion in Treasuries and  $\$$5 billion in MBS each month. 
+\item FOMC meeting December 2021, the Fed doubled its speed of tapering, reducing its bond purchases by  $\$$20 billion in Treasuries and  $\$$10 billion in MBS each month
+\item late 2019 and expanded again in early 2020, ranging from 8$\%$ (2010 and 2019) to 19$\%$ (2014 and 2021) of banks’ assets. These movements reflect the Federal Reserve balance-sheet expansions in response to the 2008 and 2020 crises, as well as the interim normalization period (2015-2019). 
+\end{itemize}
+
+
+FIND DATES, link to table and figure above
+TABLE of monetary policy decisions and events
+
+% --------- JC IR ----------
+\emph{Cochrane FLMP notes incorp shocks, see all lucas}
+\begin{equation}
+s_{t+1}=a_s(L)\epsilon^s_{t+1}+a_i(L)\epsilon^i_{t+1}
+a_s(\rho)=\beta_s
+a_i(\rho)=\beta_i
+\end{equation}
+
+\begin{equation}
+i_t=\theta_{i\pi}\pi_t + \theta_{ix}x_t u^i_t
+u^i_{t+1}= \rho_i u^i_t +\epsilon^i_{t+1}
+u^i_{t+1}=a_i(L)\epsilon^i_{t+1}in eqilibrium
+u^i interest rate disturbance
+\end{equation}
+parameters p 13
+monetary shock $\epsilon^i_1$
+get online appendix for Blanchard Kahn (1980) solution to model
+
+Define monetary policy shock  $\epsilon^i_1$ as innovation in the monetary policy rule $\epsilon^i_1$ that does not move the fiscal policy disturbance $\epsilon^s_1=0$
+
+Specify $\beta_i$ via $\Delta E_1\ast{\pi_1}=\beta_i \epsilon^i_1$
+Choose $\beta_i$ such that weighted response of inflation is zero:
+    
+\begin{equation}
+\Delta \sum_{j=0}^{\infty} \omega^j E_1\ast{\pi_{1+j}}=0
+\end{equation}
+
+Run $ftmp_modelnew$
+Blanchard-Kahn method
+% Solve by eigenvalues
+\begin{equation}
+A1 = inv(A); 
+F = A1*B; 
+[Q L] = eig(F); 
+Q1 = inv(Q); 
+if show_results
+    disp('Eigenvalues');
+    disp(abs(diag(L)'));
+\end{equation}
+Calculates:
+\begin{equation}
+ze = Eb*Q1*A1*(C-D*inv(Ef*Q1*A1*D)*Ef*Q1*A1*C);
+ if rules
+        shock = [0.01;0];
+    end
+    if ~rules
+        shock = [0.01;0];
+    end
+\end{equation}
+Calls impulse response function:
+zbt(2,:) = (ze*shock)';
+
+
+\emph{add shocks to epochs to test sub samples}
+The FOMC planned reduction of holdings of these securities by holding them to maturity, rather than by selling them back in financial markets. This 'balance sheet normalization' began October 2017. 
+
+One of many shocks, But this reduction of reserves engendered a disruption in repurchase (repo) markets in September 2019. To resolve this crisis, In October 2019, the Fed resumed purchasing massive amounts of debt securities.
+
+Net borrowing in fed funds and CDs are also strongly associated with increases in reserve balances, but with lower pass-through rates.12
+Gara: time-varying vector autoregressive (TV-VAR) model of the joint dynamics of reserves and federal funds rates. 
+
+%INSERT FIGURE with annotations of QE and TAPER:  in rates, Federal Reserve reserves plots of 
+
+\subsection{Spreads}
+SOHR-IOR measure of ample reserves
+EFFR-IOR stance of monetary policy
+Fed trades off balance sheet and volatility of FF rate
+
+\emph{SOFR-IOR}
+Although arbitrage should drive to SOHR to equal the IOR, the SOFR-IOR spread was negative during most of 2015-2017.  Government money market funds substitute between Treasury bills and Treasury repos. This places downward pressure on the spread between Treasury repo rates and IOR when the outstanding supply of Treasury bills is low (Duffie and Krishnamurthy, 2016) (and supply of reserve balances is sufficiently large relative to the supply of Treasury bills). The supply of federal reserve balances was large and the outstanding amount of Treasury bills low during most of this period. Money funds and most other investors cannot hold Federal reserves, whereas banks are subject to significant capital requirements for reserves. So, when the supply of reserve balances is sufficiently large relative to the supply of Treasury bills, SOFR-IOR easily becomes negative.
+
+The spread between SOFR  and the IOR, negative during most of 2015-2017 (not shown).is at first negative, turned positive during the covid epochs 2019-2020,  
+The SOFR-IOR spread suddenly jumped above IOR by 315 basis points during the extraordinary repo rate spikes of September 2019 and March 2020. 
+Large repo rate spikes occurred with the disruption in mone markets in September 2019 and the dash for cash episode. March 2020. After 2020m the SOFR-IOR spread disappeared as Fed LSAPs and QE restored liquidity. The SOFR-IOR spread has become slightly negative after 2022 as the Fed began taming inflation.
+
+- SOHR-IOR negative 2015-2017. Positive covid epoch, repo rate spikes.  Equal near ZLB, slightly negative Taming inflation. 
+
+When the supply of reserve balances is sufficiently large relative to the supply of Treasury bills, SOFR-IOR easily becomes negative. Government money market funds substitute between Treasury bills and Treasury repos. This places downward pressure on the spread between Treasury repo rates and IOR when the outstanding supply of Treasury bills is low (Duffie and Krishnamurthy, 2016) (and supply of reserve balances is sufficiently large relative to the supply of Treasury bills).
+
+With this and other aggressive actions by the Fed to restore market liquidity, dealer banks provided reserves much more elastically into the repo market and the spread between SOFR and IOR essentially disappeared from April ? 2020 to December 29, the end of my sample period.
+
+%For example, consider the “Long-Run Monetary Policy Implementation Frameworks” discussion recorded in the minutes of the FOMC meeting of January 2019.
+With the decline in reserves from 2017 to September 2019, the spread between SOFR and IOR crept higher, occasionally spiking up, particularly on Treasury issuance dates. Appendix Table 11 lists dates on which Treasury repo rates spiked relative to IOR.
+
+SOFR suddenly jumped above IOR by 315 basis points during the extraordinary repo rate spikes of September 2019 and March 2020. On September 17, 2019, interdealer repo rates reached over 700 basis points above IOR during the course of the day. The Fed reacted quickly by supplying a large amounts of reserves, driving SOFR-IOR spreads back to moderately low levels.
+
+Because the March 2020 covid crisis news also caused severe illiquidity in the secondary market for Treasury securities, the Fed purchased enormous quantities of Treasuries and Agencies, expanding the total supply of reserves from mid-March by about  $\$$1 trillion in just three weeks. As a by-product of this huge asset purchase program, the total reserve balances of our sample of the ten largest repo-active BHCs increased dramatically. 
+%as shown in Figure 1. 
+With this and other aggressive actions by the Fed to restore market liquidity, dealer banks provided reserves much more elastically into the repo market and the spread between SOFR and IOR essentially disappeared from April ? 2020 to December 29, the end of my sample period.
+
+DKar. The days on which repo rates spiked (Table \ref{table:spikes}), spreads of the SOFR, (GCF?), and Tri-Party General Collateral Rate (TGCR),  in basis points (bps) over IOR,  and the for all days in our sample on which at least one of these repo rate spreads was above its previous 14 days rolling average by at least 15 basis points. The table also includes days for which SOFR or TGCR spread is above 20 basis points and for which GCF spread is above 30 basis points. Also shown are three key covariates: issuance and redemption of Treasuries and total opening reserve balances of the sample of ten large repo-active dealer banks. Source: Fedwire Funds Service, FRBNY, and Tradition.
+
+\emph{EFFR-IOR}
+Vissing Jordon obs on EFFR-IOR spread.(Figure(~\ref{figure:spreadsall}). The spread of the daily average federal funds rate EFFR and the IOR rate portrays  the monetary policy stance, and EFFR-IOR spread mechanically shifts the curve up and down by moving its lower bound. The over night reverse repo rate (ONRRP) - IOR spread. 
+\begin{comment}
+Figure \ref{figure:spreadsall}
+\input{spreadsIOR.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{spreadsIOR}
+\caption{Daily spreads EFFR-IOR, SOFR-IOR, ONRPP-IOR the Federal Fund rates}
+\label{fig:spreadsall}
+%\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+
+\emph{Other spreads}
+- spread between daily market yields on 1-year U.S. Treasury securities and the IORB rate
+%the ten - 2 year spread
+%the ten - 3 month bill spread
+%see comment on 10 yr rate spread vs 6 week T bill 
+
+
+
+NOTES< REMINDER when Fed changes reserves...
+\emph{QE, QT} on inflation, short rates...bond sales raise rates but delay inflation to future; bond purchases lower rates, increase inflation but delay deflation to future?
+At the zlb exposes you to shocks, tail risk. Trust issue with FG about letting future inflation rise, fall
+remember security purchases lower current r, raise current inflation security sales raise current r, lower current inflation but postpone inflation to future. Are there functions for OMO?
+%\end{comment}
+
+%\begin{comment}
+\input{spreadsSOHR_IOR.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{spreadsSOHR_IOR}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily spreads EFFR-IOR, SOFR-IOR, ONRPP-IOR the Federal Fund rates}
+\label{fig:spreads}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+%the General Collateral Finance (GCF) repo rate,
+
+Table ~\ref{table:spikes}
+\begin{table}[h!]
+\centering
+\begin{tabular}{ c c c c } 
+\hline
+Date &	SOFR & 	GCF&	TGCR\\
+%&	_IOR &	_IOR &	_IOR\\
+&	(bps) &	 (bps) &	 (bps) \\
+\hline
+12/29/2017&	-3&	-33.6&	-12\\
+3/29/2018&	5&	31.8&	4\\
+5/31/2018&	6&	23.5&	3\\
+6/29/2018&	17&	28.3&	15\\
+12/6/2018&	14&	24.7&	11\\
+12/31/2018&	60&	274.9&	55\\
+1/2/2019&	75&	83.1&	70\\
+1/3/2019&	30&	24.2&	30\\
+1/31/2019&	18&	29.3&	15\\
+2/28/2019&	18&	21.8&	15\\
+3/29/2019&	25&	21.1&	18\\
+4/30/2019&	36&	40.7&	35\\
+7/1/2019&	7&	52&	3\\
+7/3/2019&	21&	30.6&	20\\
+7/5/2019&	24&	29.2&	23\\
+9/16/2019&	33&	77.6&	32\\
+9/17/2019&	315&	390.7&	315\\
+9/18/2019&	45&	90&	40\\
+9/25/2019&	21&	21&	20\\
+9/30/2019&	55&	66&	55\\
+10/15/2019&	20&	37&	15\\
+10/16/2019&	25&	26.9&	22\\
+10/31/2019&	21&	25.7&	18\\
+3/16/2020&	16&	75.9&	13\\
+3/17/2020&	44&	53.8&	40\\
+\end{tabular}
+\caption{Dates when repo rates spiked: the Secured Overnight Financing Rate (SOFR), of the General Collateral Finance (GCF) repo rate, and the
+Tri-Party General Collateral Rate (TGCR)}
+\label{table:spikes}
+\end{table}
+Source: 
+\url{https://www.federalreserve.gov/econres/notes/feds-notes/implementing-monetary-policy-in-an-ample-reserves-regime-the-basics-note-1-of-3-20200701.html}
+%NEED UST DATA for Duffie spikes table?
+
+
+\url{https://www.richmondfed.org/publications/research/economic_brief/2021/eb_21-31}
+
+\subsection{Arbitrage arguments}
+Hypothesis 4 Volatility in the federal funds rate also also reflect banks' optimizing behavior. Banks' opportunity costs include both exogenous and intervention-induced shocks to liquidity.
+%function of response to
+
+Hypothesis 5 arbitrage influences rate volatility and management of FF within its range.
+
+Banks' choice of whether to hold cash in reserve accounts at the Fed  depends on their  liquidity needs and the opportunity cost of holding reserves, relative returns available on alternative investments. Banks can choose to invest overnight cash  at the Fed and earning IOR - loaning the cash to another bank and earning the negotiated (market) FFR  or invest their cash in alternative money market instrument, such as Treasury bills or commercial paper.
+
+Banks minimize opportunity cost of liquidity shortfall or regulatory violations and maximize IOR versus other money market investment. They trade in the interbank market in response to both exogenous and intervention- induced shocks to liquidity of  reserves.
+
+Misalignment of spreads, SOFR-IOR, EFFR-IOR, ONRRP-IOR invite arbitrage that invites banks' trading in interbank markets. 
+
+\emph{FHLBs, MMFs main lenders ONRRP}
+The introduction of the ONRRP facility, instead, offers FHLBs and MMFs
+the opportunity to invest with the Federal Reserve through overnight repos, likely increasing their
+bargaining power over borrowing banks and leading to higher federal funds rates for any reserve
+level (Schulhofer-Wohl and Clouse (2018)). For this reason, persistent increases in the ONRRP rate
+relative to the IORB rate, such as those occurred over June 2018-May 2019, would improve FHLBs’
+and MMFs’ bargaining power over time, pushing $\ast(p)$ up.
+
+More generally, changing conditions in the repo and Treasury markets, in addition to affecting banks’ demand for reserves, also affect the level of reserves by changing the incentives of FHLBs to lend in the federal funds market and of MMFs to invest in the ONRRP facility. These institutions, in fact, hold a sizable share of their portfolios in Treasuries and are the main lenders to banks in the overnight repo market. Overnight Treasury repos are especially relevant because they are a close substitute to overnight federal funds borrowing, and their relative importance in both banks’ funding demand and MMF’s lending supply has increased significantly after the 2014 SEC reform of the MMF industry (Cipriani and La Spada (2021); Anderson et al. (2020)).8
+The endogeneity due to non-reserve Federal Reserve accounts has become more severe since 2008.
+One reason is that the repo and Treasury markets have increased substantially over the past decade.
+For example, in the Tri-party segment of the repo market, the volume of lending collateralized by
+Treasuries and agency debt increased from $\$$1.3 trillion in May 2010 to $\$$1.9 trillion from in March
+2021, reaching a peak of $\$$2.4 trillion in March 2020.9
+
+\emph{Arbitrage arguments, management in an ample-reserves implementation regime}
+The Fed sets the stance of monetary policy by choosing a target range for the federal funds rate (EFFR), the interest rate at which depository institutions, hereafter "banks" for short, lend funds to each other on an overnight basis. In 2013, the Federal Reserve introduced the ON RRP facility to set a floor under the EFFR. The overnight reverse repurchase agreement (ON RRP) facility offering rate is the Fed's supplementary tool for interest rate control.  To implement monetary policy in an ample reserves regime, the Fed manages the federal funds rate EFFR between the FOMC target upper and lower bounds by adjusting the ONRRP and IORB rates.
+The IOR is the upper bound for the Fed funds rates, equal to FF upper target. By adjusting the rate paid on IOR, the Fed can raise or lower the value of reserves held by banks on deposit at the Fed. After the Fed's major increase in liquidity increasing measures to support the economy, the resulting large increase in the aggregate amount of reserve balances in the banking system put downward pressure on the EFFR. 
+
+In order to provide a floor for the federal funds rate in an environment of abundant excess reserves, the effective date of the authority to pay interest on reserves was accelerated from October 2011 to October 2008 allowing the Fed to use IOR as a monetary policy tool to keep the federal funds rate close to the target rate. 
+
+Because of their role in the maintenance of the Fed funds rates within its target range. The administered rates IOR  and the ONRRP are the upper and lower bounds for the Federal funds rate.
+
+The upper bound is the SOFR-IOR spread which changes across periods?. The SOFR-IOR spread is equal to the average realized federal funds EFFR-IOR spread in the period. The lower bound is the same for all periods and is equal to the minimum ONRRP-IOR spread.
+
+?also TOMO, repo and reverse repo operations 
+The IOR sets a ceiling on the Fed Funds rate, the ONRRP a floor.
+
+
+%No bank should borrow at a higher rate than the IOR (or SOFR?).  No bank should lend at a lower rate than the ONRPP.  Competition among borrowers should drive rates to the discount window (DW) rate.?
+
+ Thus Banks have little or no incentive to lend their reserves to other banks at rates lower than the IOR rate. In this sense, the IOR rate is in effect a reservation rate for banks' intermediation activities. 
+ 
+ A similar argument,banks and non-bank financial institutions should be unwilling to invest funds in private markets below the ONRRP. Competition among borrowers should drive rates to the discount window (DW) rate. ??
+
+Thus, no bank would lend at rates on overnight cash lower than the IOR, the rate they can receive from the Fed.
+No bank should be borrow at a higher rate than the  ONRRP. 
+% No bank should lend at a lower rate than the ONRPP.
+
+Thus, the IOR is a ceiling on managing the EFFR, the ONRRP rate a floor.
+
+As long as the supply of reserves remains ample, cash lenders should compete with each other so that trading in the federal funds market occurs at rates that are never too far above the IOR rate. As a result, in an ample-reserves regime, the EFFR is expected to trade near the IOR rate.
+
+
+- EFFR-IOR arbitrage.  The spread between the EFFR-IOR represents a measure of the stance of monetary policy but also presents an opportunity for arbitrage. Competition on cash lenders (reverse repo) in an ample-reserves regime, drives  the EFFR to trade near the IOR rate. Whenever the fed funds rate moves lower than IOR, institutions with access to IOR compete to attract the funds of those that do not, arbitrage would put upward pressure on the fed funds rate as...  The spread between the EFFR and the IOR, presents an opportunity for arbitrate. regulated versus IOR arbitrage Competition among banks borrowing to fund IOR arbitrage should bid up money market rates very close to the IOR rate. Overall, the volume of IOR arbitrage trades is concentrated at U.S. branches and agencies of foreign banks. This near complete pass-through of Eurodollar funding to overnight reserve holdings suggests that banks use Eurodollar borrowing to fund IOR arbitrage.Competition on cash lenders (reverse repo) in an ample-reserves regime, drives  the EFFR to trade near the IOR rate. Whenever the fed funds rate moves lower than IOR, institutions with access to IOR compete to attract the funds of those that do not. Arbitrage puts upward pressure on the fed funds rate.
+
+- ONRRP-IOR  arbitrage. The spread between the ON RRP and the IOR presents ON an  alternative investment opportunity for non banks, money market funds, hedge funds, cash lenders, when rates fall below the interest on reserve balances (IOR) rate.   Through the ON RRP facility, FHLBs and money market funds (MMFs), lenders to banks in other key money markets, can invest at the Federal Reserve via overnight repos at a fixed-rate below the IOR rate.
+\url{https://www.dtcc.com/charts/dtcc-gcf-repo-index}
+5 indicators of sufficient or ample reserves or arbitrate
+Spreads as indicators of policy stance (EFFR-IOR),  sufficient reserves (SOFR-IOR) and arbitrage.
+ONRRP and the IOR presents an alternative investment opportunity for non banks, money market funds, hedge funds, cash lenders, when rates fall below the interest on reserve balances (IOR) rate.
+
+- the SOFR-IOR
+By arbitrage the SOHR should equal the IOR in an efficient wholesale funding market since Treasury repos and balances held at the Fed are nearly equivalent risk-free overnight investments available to banks. IOR eligible banks earn the positive spread between the IOR rate and the overnight funding rate SOFR by borrowing in overnight wholesale funding markets and holding the funds as reserve balances. These trades, "IOR arbitrage trades",  do not involve credit or interest rate risk.
+
+The upper bound is the SOFR-IOR spread which changes across periods?. The SOFR-IOR spread is equal to the average realized federal funds EFFR-IOR spread in the period. The lower bound is the same for all periods and is equal to the minimum ONRRP-IOR spread.
+
+Duffie and Krishnmurthy (2016) propose the  spread between the measure of overnight repo rates and interest on reserves is a  measure of sufficient or ample reserves. The Secured Overnight Financing Rate (SOHR) serves a broad measure of overnight Treasury repo rates.  SOFR is a measure of wholesale funding costs. IOR is the interest rate offered by the Fed on balances held at the Fed  The SOFR-IOR spread is a gauge of the sufficiency of reserve balances of large BHCs active in repo markets to meet counterparty funding. 
+
+When the outstanding supply of Treasury bills is low, money market substitution between Treasury bills and repos, exert downward pressure on the spread between Treasury repo rates and IOR.
+
+%They found the spread between SOFR and IOR to be much more highly correlated with the sum of the reserve balances associated with the ten largest BHCs that are active in repo markets than with the balances of the other 90 large banks. Large bank holding companies (BHCs) active in repo markets require sufficent reserve balances to meet counterparty funding.
+
+
+
+%Thomas Keating and Marco Macchiavelli
+\url{https://www.federalreserve.gov/econres/notes/feds-notes/interest-on-reserves-and-arbitrage-in-post-crisis-money-markets-20180301.html}
+Keating and Macchiavelli (2017) 
+\url{https://libertystreeteconomics.newyorkfed.org/2019/07/from-policy-rates-to-market-ratesuntangling-the-us-dollar-funding-market/}
+
+
+ 
+CHECK LOGIC
+ No bank should be borrow at a higher rate, Banks and non-bank financial institutions should be unwilling to invest funds in private markets below the ON RPP. 
+ 
+No bank should lend at a lower rate than the ONRPP. and competition among borrowers should drive rates to the discount window (DW) rate.
+
+Thus, the IOR is a ceiling on managing the EFFR, the ON RRP a floor.
+INSERT FIGURE
+
+
+\emph{IOR arbitrage}
+Monajola Tase:
+We hypothesize that part of the seemingly IOR arbitrage activity could reflect other types of motives which are not distinguishable from IOR arbitrage when IOR arbitrage is profitable.
+We account for these trading motives by presenting a model of demand segmentation with two types of borrowers - the “IOR arbitrage” type and the “regulatory” type - which cannot always be
+separated. The “IOR arbitrage” type borrows to earn the spread between the fed funds rate and IOR. Its reservation price is IOR. The “regulatory” type borrows to satisfy reserve requirements
+or internally set targets about its liquidity portfolio. Its reservation price is the interest rate at the discount window which is higher than IOR. If the fed funds rate is below IOR, then the two types are pooled in as “IOR arbitrage” types with IOR as the reservation price. If the fed funds rate is above IOR, which could be the case during a monetary policy tightening cycle, the “regulatory”
+type, and its true reservation price, is revealed. As this new information is embedded in the price, the probability of an increase in the fed funds rate increases.
+Arbitrage:  EFFR<IOR
+Regulatory: EFFR>IOR
+...more
+Some institutions, such as Government Sponsored Enterprises (GSEs), are
+eligible to lend funds in the fed funds market but are not eligible to earn IOR. Bech and Klee
+(2011) show that if GSEs command low interest rates and their share is sufficiently large, then
+EFFR would be below the IOR rate. Under these conditions, fed funds market participants who
+are not eligible to earn IOR on their balances at the Fed (such as the GSEs) become the primary
+sellers of fed funds. These institutions sell fed funds to DIs who have an incentive to borrow funds
+at below the IOR rate and hold the funds in their reserve account at the Fed to earn the IOR rate,
+a trading strategy referred to as IOR arbitrage...While the reveal of the “regulatory” type increases the probability of an increase in the fed
+funds rate when fed funds trade above IOR, an increase in demand for IOR arbitrage counteracts
+the downward pressure on the fed funds rate when fed funds trade below IOR. Specifically, when
+EFFR is less than IOR, as the spread between EFFR and IOR widens (EFFR-IOR becomes more
+negative), IOR arbitrage becomes profitable for a larger number of banks inducing an increase in
+demand for IOR arbitrage. As a result, the initial downward pressure on the fed funds rate is
+then counteracted by such increase in demand for IOR arbitrage. Indeed, using market-level daily
+data for the period April 2018 to February 2020, we find that when fed funds trade below IOR, a widening of the EFFR-IOR spread is associated with a decrease in the probability of a decrease in the fed funds rate.
+
+Manjola Tase
+First, since October 2008, the Fed has been
+paying IOR to depository institutions holding reserve balances at the Fed. Second, since September 2013, the Fed operates an overnight reverse repo (ON RRP) facility that offers an overnight rate ionrrp < IOR. The ON RRP facility is available to a broad range of counterparties including depository institutions, primary dealers, money funds and GSEs.2 The ON RRP rate has a direct effect on the fed funds market as it sets the minimum rate at which GSEs are willing to lend in the
+fed funds market.3 Lastly, the Fed lends to banks at the discount window (DW) at an overnight interest rate i DW > IOR.
+
+emph{Notes on supply of short term Treasuries}
+Evidence that both the supply of reserves and the supply of short-term Treasury securities are important factors for explaining short-term rates.
+Short-term Treasury securities and reserves have opposing effects on short-term rates. the intuition for this result is as follows: as would be expected, increases in reserves lower short-term rates through the mechanism described by the balance sheet cost theory. More reserves raise banks’ balance sheet costs, which leads to lower bank deposit rates. However, wholesale bank deposits are not the only investment option for institutions seeking to invest in short-term instruments. Money market mutual funds (MMFs) offer an investment alternative to bank deposits and hold a large amount of short-term Treasury securities as assets. When the supply of Treasury securities increases, everything else being equal, Treasury yields tend to increase to attract investors. MMF shares become more attractive than bank deposits and investors reduce the amount of such deposits they hold. (Greenwood, Hanson, and Stein provide evidence of the substitutability of short-term Treasury securities and bank deposits in this paper.) This reduces the size of banks’ balance sheets (banks may reduce, on the asset side, their investments in repos, for example), and induces banks to raise their wholesale deposit rate to remain competitive.
+
+Since MMFs can only hold assets with a maturity of up to one year, it is this segment of the Treasury market that we expect to be an important determinant of money market rates. This segment includes Treasury bills that have been issued with maturities of up to one year, as well as outstanding Treasury notes and bonds that have less than a year remaining until maturity. 
+The key explanatory variables are the changes in the outstanding amount of Treasury securities with less than a year to maturity, which we dub as “short-term Treasuries,” and the changes in the outstanding amounts of bank reserves issued by the Fed. We posit that changes in short-term Treasuries tend to have a positive effect on the interest rate spread, and changes in reserves a negative effect. The empirical specification is discussed in detail in Section 5 of this Staff Report. For this post, we extend the time period over which we conduct the estimation through June 2020.
+
+The actual and fitted fed funds rates from our regression are displayed in the chart below, which shows the fed funds rate relative to the IOR rate. The chart also displays the FOMC’s target range for the fed funds rate fits relative to the IOR rate. Our estimation shows that a trillion dollars of additional reserves tends to reduce the fed funds rate by 8 basis points relative to the IOR rate, while an additional trillion dollars of Treasuries with less than a year to maturity tends to increase the fed funds rate by about 3 basis points, confirming the opposing effects these two variables impart on short-term rates.
+\url{https://libertystreeteconomics.newyorkfed.org/2020/08/explaining-the-puzzling-behavior-of-short-term-money-market-rates/}
+
+\emph{outstanding amount of Treasury securities with less than a year to maturity, which we dub as “short-term Treasuries}
+\url{https://www.statista.com/statistics/1277338/outstanding-treasury-securities-type-usa/}
+
+
+\section{Fed's preference for offsetting volatility}
+test  on sub samples, the epochs Fed's inclination to accommodate rate volatility
+Hypotheses:
+Hypothesis: Fed tolerance for offsetting volatility?
+Sub samples as tests of different regimes
+
+\emph{Distribution of reference rates during different monetary policy regimes/event} The dynamics of weekly distribution of reference rates vary dramatically over different policy/events. With reserves we can, only weekly not daily reserves are available
+Figures onrate all plot for all rates:
+-full sample
+-epochs  onrate1all, onrate2all,onrate3all, 
+Tables and figures below illustrate the characteristics of the EFFR and all overnight money market rates, in both 1) the whole time series 2016-2022 and 2) and during the periods of normalcy (dates), coping with covid (dates) , and fighting inflation (dates).
+
+The history of FOMC rate changes (Table) suggested these subsamples of the data to examine for Fed appetite for offsetting risk. I have broken the daily times series into four different periods correspond to  Forbes description () date) of changes in monetary policy:
+
+\begin{enumerate}
+\item 1) 3/4/2016 - 8/01/2019  4 - 706 Normalcy, mid cycle adjustment
+\item 2) 8/02/2019 - 3/16/2020  707-1032 Coping with covid
+\item 3) 3/17/2020- 3/16/2022 1032-1516 ZLB
+\item 4) 03/17/2022 - 12/29/2022 1517-1741 Taming inflation
+\item 5) ALL 3/4/2016-12/29/2022 4-1714
+\end{enumerate}
+
+
+\begin{enumerate}
+\item 3/4/2016 - 8/01/2019  1 -   417
+Normalcy,  mid cycle adjustment
+\item   8/02/2019 - 05/04/2022  418-1108
+Coping with covid
+\item  05/05/2022 - 12/29/2022 1109 1271
+Taming inflation
+\end{enumerate}
+ to during the challenge of the zero lower bound. 
+\subsection{Rates and volumes by epoch}
+\subsection{Daily rates and volumes by epoch}
+\emph{full sample and epoch all rates}
+
+
+\begin{comment}
+\input{onrate_all.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0, bb=108   268   473   567]{onrate_all.tex}
+\caption{Daily overnight rates EFFR, OBFR, TGCR, BGCR, SOHR}
+\label{fig:dailyrates_all}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+
+% Duplicate?
+Figures plot rates against reserves normalized by commercial bank deposits illustrate demand for overnight instruments:
+\emph{volumes}(Figure \ref{figure:covdrate})
+\input{ONweeklyratevolumecovd_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumecovd_reserves.tex}
+\caption{Fed interventions, changes in the policy rate EFFR, and the administered rates IOR, ON RPP}
+\label{fig:covdrate}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Figure ~\ref{figure:pirates}
+\input{ONweeklyratevolumepi_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumepi_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Taming inflation: Weekly Volumes EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:pirates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+
+
+\subsection{Mean weekly reserves and volume weighted rates}
+Table %~\ref{table:epochmean}
+
+\emph{Volatility of weekly reserves and volume weighted rates}
+Table %~\ref{table:epochsd}
+The standard deviation of reserves during the normalization of policy is low, while the standard deviation of all rates high
+During the covid episode, there is a four fold increase in  the standard deviation  in reserves.  The volatility of EFFR and money market rates fall,
+
+As the Fed increases the policy rate to respond to inflation, the volatility of reserves is half of that in the normalcy period. Volatility??  all money market rates increase, esp BGCR, and SOHR with the policy rate EFFR while their standard deviations fall by half.
+
+\begin{comment}
+DO MEAN MEDIAN SD IN ON TABLE
+Normalcy &			
+mean&	    0.2287&    1.1301&    0.2058\\		
+median&	    0.2333&    1.1348&    0.2025\\		
+stdev&	    0.0148&    0.0121&    0.0148\\	
+\end{comment}
+Table %~\ref{table:epochmean}
+\begin{table}[h!] \centering
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\caption{Means of weekly reserves and volume weighted rates EFFR, IBFR, TGCR, BGCR, SOFR}
+\begin{tabular}{ l c c c c c c}
+\toprule \toprule
+\addlinespace
+ & \multicolumn{6}{c}{Mean} \\
+ %& \multicolumn{c}{c}{\makecell{Mean}} \\
+ \cmidrule(lr){2-7}
+ {Epoch}&{Reserves (1.0e03) } &{EFFR}& {OBFR}& {TGCR}& {BGCR} & {SOHR}
+\tabularnewline
+Norm&    1.8370& 0.2276& 0.5098& 0.3324& 0.5980& 0.372\\
+Covid&   3.0796& 0.0277& 0.0418& 0.0840& 0.0908& 0.2097\\
+Inflation& 3.1704& 0.1270& 0.3564& 0.4748& 0.4953& 1.2699\\
+ALL&     2.6913& 0.1028& 0.2267& 0.2069& 0.2982& 0.3792\\
+\addlinespace
+\bottomrule
+\label{table:epochmean}
+\end{tabular}
+\end{table}
+
+
+%~\ref{table:epochsd}
+\begin{table}[h!] \centering
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\caption{Standard deviations of weekly reserves and volume weighted rates EFFR, IBFR, TGCR, BGCR, SOFR}
+\begin{tabular}{ l c c c c c c } 
+\toprule \toprule
+\addlinespace
+ & \multicolumn{6}{c}{Standard deviation} \\
+ \cmidrule(lr){2-7}
+ {Epoch}&{Reserves (1.0e03) } &{EFFR}& {OBFR}& {TGCR}& {BGCR} & {SOHR}
+\tabularnewline
+Norm&  241.3023& 0.1683& 0.3589& 0.1550& 0.2808& 0.4156\\
+Covid& 926.4133& 0.0204& 0.0547& 0.1371& 0.1434& 0.3602\\
+Inflation& 108.7412& 0.0450 & 0.1142& 0.1649& 0.1736&    0.4585\\
+ALL&   923.5434& 0.1333& 0.3021& 0.2071& 0.3127& 0.5056\\
+\addlinespace
+\bottomrule
+\label{table:epochsd}
+\end{tabular}
+\end{table}
+
+
+\emph{rates versus reserves} 
+Volume weighted rates versus reserves during the normalization period (Figure \ref{figure:normrates})
+ GCF period, mean reserves low, while all mean rates high (wrt to what? targets? Other periods?) QUOTE TABLES
+ During the Normalcy post GCF period, mean reserves low, while all mean rates high (wrt to what? targets? Other periods?) Figures plot rates against reserves normalized by commercial bank deposits illustrate demand for overnight instruments: During the Normalcy post GCF period, mean reserves low, while all mean rates high (wrt to what? targets? Other periods?)
+%ONweeklyratevolumecovd_reserve
+\input{ONweeklyratevolumewgtnorm_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumewgtnorm_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Normalization: Weekly Volume Weighted rates EFFR, IBFR< TGCR> BGCR, SOFR, Reserves}
+\label{fig:normrates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Volume weighted rates versus reserves during the covid period (Figure \ref{figure:covdrate})
+During the Covid epoch, there is a three fold increase in reserves, while EFFR and overnight money market rates fall.
+\input{ONweeklyratevolumewgtcovd_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumewgtcovd_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Covid: Weekly Volume Weighted rates EFFR, IBFR< TGCR> BGCR, SOFR, Reserves}
+\label{fig:covdrate}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Volume weighted rates versus reserves as the Fed initiates multiple rate hikes to tame inflation steadily increased its policy rate (Figure \ref{figure:pirates}), reserves remain changed from levels in ?.  All overnight money market rates, TGCR, BGCR, and SOHR, increase in tandem with the policy rate hikes.
+\input{ONweeklyratevolumewgtpi_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumewgptpi_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Taming inflation: Weekly Volume Weighted rates EFFR, IBFR< TGCR> BGCR, SOFR, Reserves}
+\label{fig:pirates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+%\end{comment}
+
+
+\begin{comment}
+TABS FIGURES FOR EPOCHS
+Table \ref{table:meanvolumes}
+\begin{table}[h!] \centering
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\caption{Mean weekly reserves and volumes of weighted rates EFFR, IBFR, TGCR, BGCR, SOFR}
+\begin{tabular}{ l c c c c c c}
+\toprule \toprule
+\addlinespace
+ & \multicolumn{6}{c}{Mean} \\
+ %& \multicolumn{c}{c}{\makecell{Mean}} \\
+ \cmidrule(lr){2-7}
+ {Epoch}&{Reserves (1.0e03) } &{EFFR}& {OBFR}& {TGCR}& {BGCR} & {SOHR}
+\tabularnewline 
+Norm&    1.8370 & 210.7458&  468.4440&  328.9827&  591.8542&  339.5815 \\
+Covid&   3.0796&  401.6604&  296.3450&  356.4191&  480.6899&  487.1537\\
+Inflation& 3.1704& 96.7575&  275.3236&  374.6879&  390.3230& 990.1603\\
+ALL&     2.6913& 306.7024&  349.1950&  349.6448 & 506.3279&  495.5168\\
+\addlinespace
+\bottomrule
+\end{tabular}
+\label{table:meanvolumes}
+\end{table}
+
+%Figure ~ref{figure:statsvolumes}
+%Table ~\ref{table:sdvolumes}
+\begin{table}[h!] \centering
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\caption{Standard deviations of weekly reserves and volumes of weighted rates EFFR, IBFR, TGCR, BGCR, SOFR}
+\begin{tabular}{ l c c c c c c}
+\toprule \toprule
+\addlinespace
+ & \multicolumn{6}{c}{Standard deviation } \\
+ %& \multicolumn{c}{c}{\makecell{Mean}} \\
+ \cmidrule(lr){2-7}
+ {Epoch}&{Reserves (1.0e03) } &{EFFR}& {OBFR}& {TGCR}& {BGCR} & {SOHR}
+\tabularnewline 
+Norm&  241.3023& 134.5481& 274.6710& 146.3830& 279.1946&  381.1422\\
+Covid& 926.4133& 334.6106& 252.5356& 250.9619& 267.9428&  411.9279\\
+Inflation& 108.7412& 6.6296& 15.1004& 17.6591& 18.1397&   47.7760\\
+ALL&   923.5434& 286.8090& 258.7605& 206.8692& 264.1191&  421.5599\\
+\addlinespace
+\bottomrule
+\end{tabular}
+\label{table:sdvolumes}
+\end{table}
+
+
+% ------------------- another duplicate INSERT EPOCH FIGURES" -----------------------------
+%ONweeklyratevolumewgtnorm_reserves
+%ONweeklyratevolumenorm_reserves.tex
+Figure \ref{figure:normrates}
+\input{ONweeklyratevolumenorm_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1\textwidth]{ONweeklyratevolumenorm_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Normalization: Weekly Volumes EFFR, OBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:normrates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+% \begin{comment}
+Figure ~\ref{figure:covdrate}
+\input{ONweeklyratevolumecovd_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumecovd_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Covid: Weekly Volumes EFFR, IBFR< TGCR> BGCR, SOFR, Reserves}
+\label{fig:covdrate}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Figure ~\ref{figure:pirates}
+\input{ONweeklyratevolumepi_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumepi_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Taming inflation: Weekly Volumes EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:pirates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+% ---------------------------------
+
+
+
+\subsection{volatility}
+Three measures of rate volatility: percent change, log percent change, rolling standard deviation
+REDO FOR EPOCHS, SUBSAMPLES
+Table %~\ref{table:epochsd}
+The standard deviation of reserves during the normalization of policy is low, while the standard deviation of all rates high. During the covid episode, there is a four fold increase in  the standard deviation  in reserves.  The volatility of EFFR and money market rates fall,
+
+As the Fed increases the policy rate to respond to inflation, the volatility of reserves is half of that in the normalcy period. Volatility??  all money market rates increase, esp BGCR, and SOHR with the policy rate EFFR while their standard deviations fall by half.
+Introduce different policy epochs as subsamples
+
+ \begin{comment}
+repeat volatility measures, Alonso $D_t$, DK dispersion metric for each epoch
+During the period of normalization after the financial crisis of 2008-2009 (GFC), the declining EFFR was at first [DATE] was within the upper and lower target rates... continue.
+The dispersion of the EFFR between the 25 and 75th percentiles of the EFFR  (Figure ). or The median EFFR shows little dispersion between the 25 and 75 percentiles,
+(Figure subplot 1) 
+The dispersion of the daily median volume-weighted federal funds rate (EFFR) from the 25th and 75 percentiles (Figure subplot 2).
+Crises challenge the Fed, Deviations 2019, 2020 events.
+\end{comment}
+
+The following figures illustrate the different pattern in distribution of all daily overnight rates, EFFR, OBFR, TGCR, BGCR, and SOHR during these epochs of FOMC rate changes, in basis points , from December 4, 2017 to December 29, 2022. Holidays and weekends are excluded. Plots are truncated at 350 basis points for improved visualization.
+
+ During the period of normalization after the financial crisis of 2008-2009 (GFC), the declining EFFR was at first[DATE] was within the upper and lower target rates (Figure \ref{fig:effrnorms}).
+
+
+ANNOTATE  2017-2019, March 2020 dates on graphs: with candles for 25 and 75 percentiles, lines for  10 and 90 percentiles, 
+
+\begin{comment}
+\emph{EFFR and target rates}
+%(Figure \ref{fig:effrnorms}).
+\input{dailyeffrnorms.tex}
+\begin{figure}[ht]
+\includegraphics[scale=.75, bb=108   268   473   567]{dailyeffrnorms.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily EFFR, target rates, percentiles Normalization}
+\label{fig:effrnorms}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+During the period of covid [DATE], the first subplot shows a volatile daily EFFR is volatile, especially  [DATE], but well was within the upper and lower target rates (Figure ~\ref{figure:effrcovds}). The second subplot shows substantial dispersion from the mean rate and between the 25 and 75 percentiles.
+\input{dailyeffrcovds.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dailyeffrcovds.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily EFFR, target rates, percentiles, Covid}
+\label{fig:effrcovds}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+During the period of taming inflation [DATE], the EFFR rises within each of a series of rate hikes and well was within the upper and lower target rates (Figure \ref{fig:effrpis}). There is almost no dispersion  between the 25 and 75 percentiles. The series of increases in the policy rate diverge from the mean rate.
+\input{dailyeffrpis.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dailyeffrpis.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Daily EFFR, target rates, percentiles, Taming inflation}
+\label{fig:effrpis}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+ANNOTATE  2017-2019, March 2020 dates on graphs: 
+
+%with candles for 25 and 75 percentiles, lines for  10 and 90 percentiles, 
+%Figure \pageref{fig:dailyrateVolumes_all}
+
+\begin{comment}
+Reserves images:
+%\url{https://www.google.com/search?rlz=1C1RXQR_enUS952US952&sxsrf=AJOqlzWOzaWyZIa-bR6LH-r7L1jLRCdk-w:1674961780180&q=two+ways+fed+changes+reserves&tbm=isch&source=univ&fir=lxBprPEhRUZL2M%252C5ZNVNsijw7u6vM%252C_%253BDOQ5uT0ISmpDPM%252CR2RfrRxI1hXTlM%252C_%253BKYxfqEZP_sTPrM%252CN-S1gn_jP0zDyM%252C_%253BXfmwLY7lK6tJmM%252CR2RfrRxI1hXTlM%252C_%253BzwnzUvnitZ5xJM%252CFGFp7Htg9ZDyfM%252C_%253BXHVvpLF-vfA-XM%252ChhHO3SrYfAwfGM%252C_%253Be0TXm4YQveSWKM%252C5ZNVNsijw7u6vM%252C_%253BGyCMDdJMZ2IjAM%252C2a-z_zUdp475wM%252C_%253BHa7hN_QnLDolhM%252CR2RfrRxI1hXTlM%252C_%253BBSpR32HwfghKDM%252C4NoBIWceBuCBBM%252C_&usg=AI4_-kQeaIlPaX8Nb7PGhClnRubwWEUFug&sa=X&ved=2ahUKEwj24a3v5uv8AhWBmokEHWjLDX4QjJkEegQIJxAC&biw=1204&bih=921&dpr=1}
+
+%(LSAPs)
+%\url{https://libertystreeteconomics.newyorkfed.org/2019/05/ten-years-laterdid-qe-work/}
+\end{comment}
+
+
+%? the Fed began purchasing  shorter-term Treasury bills, about $\$$60 billion per month and up to $\$$20 billion each month to replace maturing securities. The balance sheet recovered about half of what it sold off 2017. 
+
+
+\section{Volatility of overnight rates}
+\section{Volatility}
+\subsection{Volatility response of overnight rates to Fed interventions}
+The Volatility3measures plot?
+intraday volatility, sd of EFFR and deviations of the effective federal funds from the target rate
+1) standard deviation of level
+2) log percent change
+3) standard deviation of log percent change
+4) (rolling window) standard  deviation "
+5) See Guyon
+volatility:  the Markit CDX index (as a measure of crisis severity)
+Chicago Fed index
+
+% Integrates
+\begin{comment}
+There is scant evidence that volatility of the Federal Funds rates is a response to central bank interventions
+ ( Figure
+%\lref{fig:shocks}
+).
+Three measures of volatility of the Federal Funds rate FF -EFFR pct change, standard deviation of the level of the FF, a 252 day window of the  standard deviation of the one day difference of the FF,' and a 252 day window of the standard deviation of the one day difference of the log of the FF shows quite the opposeite.  Volatility is low during FOMC interventsions, but quite volatile during the period 2020 to 2021 when there were no changes in the target or administered rates
+\end{comment}
+  \begin{comment}
+%\input{stackedbarrates.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0\textwidth]{Shocks.png}
+\caption{Daily changes in FOMC target range and administive rates IOR and ONRRP}
+\label{fig:shocks}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+Discuss  Duffie table of rate spikes HERE or in SPREADs. 
+%Figure \pageref{fig:FOMCchanges_normalcy} 
+%Figure \pageref{fig:FOMCchanges_covid} 
+%Figure\pageref{fig:FOMCchanges_inflation}
+Figures 
+%Figure \pageref{fig:FOMCchanges_normalcy} 
+%Figure \pageref{fig:FOMCchanges_covid} 
+%Figure\pageref{fig:FOMCchanges_inflation}
+
+Do plots of rate and volume volatility and shocks
+%
+
+Break down the volatility measures into epochs
+\begin{comment}
+\input{Volatility3measures.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{Volatility3measures.tex}
+\caption{Realized volatility of the Federal Funds rate}
+\label{fig:volatility}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+\emph{Shocks}
+To identify these in the United States, researchers have used high frequency movements in Federal Funds futures in a narrow time window around announcements by the Federal Reserve
+Guvenen et al. (2014) show that income risk is countercyclical in the US.5
+Electronic copy available at: https://ssrn.com/abstract=3422687
+(e.g. Kuttner, 2001; Nakamura and Steinsson, 2018a)
+
+
+Table and figures display changes in the Fed funds rate and the administered rates IOR and the reward rate ON RRP
+Table \ref{table:FOMCratechanges} lists FOMC rates changes, monetary regimes, and events over the four year period, 2018-2022.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c c} 
+\hline
+FOMC rates changes \\
+%Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex] 
+ \hline\hline
+\textbf{2015 to 2018: Returning to Normalcy} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+20-Dec-18 &	 25 &		2.25 to 2.50\\
+Sept. 27, 2018 &		25 &		2.0 to 2.25\\
+Jun. 14, 2018&		25 &		1.75 to 2.0\\	
+22-Mar-18 &		25&		1.50 to 1.75\\	
+Dec. 14, 2017 &		2&	5	1.25 to 1.50\\	
+15-Jun-17&		25&		1.00 to 1.25\\	
+16-Mar-17&		25 &		0.75 to 1.00\\	
+Dec. 15, 2016 &		25 &		0.5 to 0.75\\
+Dec. 17, 2015 &		25&		0.25 to 0.50\\
+\hline
+\textbf{2019  Mid-Cycle Adjustment} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+31-Oct-19 &		-25	&	1.50 to 1.75\\	
+Sept. 19, 2019&		-25&		1.75 to 2.0\\	
+Aug. 1, 2019&		-25	& 2.0 to 2.25\\	
+\hline			
+\textbf{2020 Coping with Covid} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+16-Mar-20&		-100&		0 to 0.25\\	
+3-Mar-20&		-50&		1.0 to 1.25\\	
+\hline		
+\textbf{2022 Taming Inflation} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+14-Dec-22&		50&		4.25 to 4.50\\	
+2-Nov-22&		75&		3.75 to 4.00\\	
+21-Sep-22&		75&		3.00 to 3.25\\	
+27-Jul-22&		75&		2.25 to 2.5\\	
+16-Jun-22&		75&		1.5 to 1.75\\	
+5-May-22&		50&		0.75 to 1.00\\	
+17-Mar-22&		25&		0.25 to 0.50\\
+\end{tabular}
+\caption{FOMC rates changes 2018 to 2022}
+\label{table:FOMCratechanges}
+\end{table}
+
+\subsection{Volatility hypotheses}
+Another hypothesis companion to volatility? 
+ADD Some absolute difference among policy and money market rates. Duffie's divergence metric
+
+Hypothesis: Discuss parallels among level of reserves and policy with volatility of reserves and rates.
+
+High frequency FF rate volatility patterns intriguing versus Fed effort to target rates
+
+Hypothesis how volatility of  Fed policy and  key short rates in the economy respond to FOMC targets for the federal funds rate, changes in  their administered rates – interest on reserves (IOR) and overnight reverse repurchase rate (ONRPP), and interventions in repo markets  to maintain the Fed Funds rate within its target range.
+
+
+\emph{Bertolini et al}
+Time series methodology: volatility of interest rates 
+-	rises in advance of reserve settlement days
+-	declines in high rate regimes
+-	biweekly periodicity when Fed is perceived as committed to keeping rates close to the target.
+- Most days the federal funds rate
+ changes very little: more than half the time, the federal funds rate is within 10 basis points of its value on the previous day. Notwithstanding, huge changes in the federal funds rate have been observed, the extreme observation being an 800-basis-point rise on December 30, 1986
+- settlement days, Wednesdays,are much more volatile than other days; the change exceeds 25 basis points in half the settlement days in the full sample
+ - End of quarter, end of year. At the end of the year, there is a surge in asset turnover and in corporations drawing on bank lines of credit, which can generate a huge demand for short-term loans of good funds around that date
+ - outliers, need to account for outliers very carefully in any analysis of such data
+ 
+\section{Methodology}
+Nelson EGARCH
+Econometric models of changing conditional variance.
+Volatility clustering, i.e., the fact that periods of large volatility tend to be followed by periods of large volatility, and periods of small volatility tend to be followed by periods of small volatility.
+In other words, asset price fluctuations display irregular interchanging between high volatility and low volatility episodes
+
+The family of ARCH (autoregressive conditionally
+heteroskedastic) models introduced by Engle (1982). ARCH models make the conditional variance $\xi_t$  of the time t model's (scalar) prediction errora function of time, system parameters b, exogenous and lagged endogenous variables $x_t$, past prediction errors. and $\sigma^2_t$, the variance of  $\xi_t$ given information at time t.
+
+
+ Engle (1982) equations 1-5 sets 
+ \begin{equation*}
+ (1.1) \xi_t = \sigma_t z_t,
+ (1.2) z_t - i.i.d. with E(z_t) =0, Var(z_t) = 1, (1.3) \sigma^2_t=\sigma^2(\xi_{t_1}, \xi_{t-2} ...,t. x_t,b)
+ =\sigma^2(\sigma_{t_1} z_{t-1}, \sigma_{t-2} z_{t-2} ...,t. x_t,b)) 
+ \end{equation*}
+ 
+ 
+ The system (1.1)-(1.3) can easily be given a multivariate interpretation, in which case $z_t$ is an n by one vector and $ \sigma^2_t$ is an n by n matrix. We refer to any model of the form (1.1)-(1.3), whether univariate or multivariate, as an ARCH model. The most widely used specifications for o.2(,*,..., ) are the linear ARCH and GARCH models introduced by Engle (1982) and Bollerslev (1986) respectively, which make ,$\sigma^2_t$ linear in lagged values of 62 = o,t2z2 by defining p 
+
+  \begin{equation*}
+ (1.4) \sigma^2_t=\omega_0+ 
+ (1.5) \sigma^2_t=\omega_0 + \sum_{i=1}^{q}\beta_i\sigma^2_{t-i} + \sum_{j=1}^{p} \alpha_j z^2_{t-j} \sigma^2_{t-j}  
+\end{equation*}
+respectively,
+
+%where w, the case of (1.5), we refer to both (1.4) and (1.5) as GARCH models, to distinguish them as special cases of (1.3). The GARCH-M model of Engle and Bollerslev (1986a), adds another equation (1.6) Rt =a +bcrt2+ t, in which o7t2, the conditional variance of Rt, enters the conditional mean as well. For example if Rt is the return on a portfolio at time t, its required of return may be linear in its risk as measured
+
+EXPONENTIAL ARCH For $\sigma^2_t$ 
+the conditional variance of (t given information clearly to be nonnegative with probability one. GARCH models ensure this by making $\sigma^2_t$  a linear combination (with positive weights) of positive random variables. We adopt another natural device for ensuring that $ \sigma^2_t$  remains nonnegative, by making ln (-t2) linear in some function of time and lagged zt's. That is, for some suitable function g: 00
+
+ \begin{equation*} % (2.1)
+ log\sigma^2_t) = \alpha_t +\sum_{k=1}^{\infty} \beta_k z_{t-k}
+\beta_1=1
+ \end{equation*}
+
+where ${\alpha_t}$, ${t -\infty, \infty}$ and ${\beta_k}$  ${k= 1, \infty}$ and ${\beta_k}$ are real, nonstochastic, scalar sequences.
+
+Pantula (1986) and Geweke (1986) have previously proposed ARCH models of this form; in their log-GARCH models, $g(z_t) = \ln |z_t^b|$ for some b
+
+
+To accommodate the asymmetric relation between stock returns and volatility changes noted in Section 1, the value of $g(z_t)$ must be a function of both magnitude and the sign of $z_t$. One choice, that in certain important cases turns out to give o-7 well-behaved moments, is to make $g(z_t)$  a linear combination $z_t$ and $z_t$: 
+
+\begin{equation*} %(2.2)
+g(z_t) = \theta z_t + \gamma \|z_t| -E(|z_t|)
+\end{equation*}
+
+ 
+ By construction, ${g(z_t)}= i$ s a zero-mean, i.i.d. random sequence. The two components of $g(z_t)$ are $\theta z_t$ and $ \gamma(|z_t| -E(|z_t|)))$, each with mean zero. If the distribution of $z_t$ is symmetric, the two components are orthogonal, though of course they are not independent. 
+ 
+ Over the range $0 < z_t < \infty$, $g(z_t)$ is linear in $z_t$  with slope $\theta+\gamma$, and over the range $-\infty z_t < 0$, $g(z_t)$ is linear with slope  $\theta-\gamma$. Thus, $g(z_t)$ allows the conditional variance process ${\sigma^2_t}$ to respond asymmetrically to rises and falls in stock price. 
+url{https://vlab.stern.nyu.edu/docs/volatility/EGARCH}
+ 
+ 
+\emph{Guyon}
+ Volatility notes 
+ Veronesi
+-  emprirical volatility the standard deviation of past realized changes in short term interest rates 
+unprices securities
+
+Ho-Lee model
+\begin{equation*}
+\sigma = std(r_{t+\Delta}- r_t)
+\end{equation*}
+
+Black, Derman Troy model
+\begin{equation*}
+\sigma = std(\ln(r_{t+\Delta})- \ln (r_t))
+\end{equation*}
+
+- implied volatility. the level of interest rate variation that correctly prices the security2
+
+- stochastic volatility
+Affine and quadratice models p 782-4
+affine factors
+
+quadratic specification ofthe short term interest rate as a function of factors 
+
+- future realized volatility
+
+JULIEN GUYON and JORDAN LEKEUFACK
+VOLATILITY IS (MOSTLY) PATH-DEPENDENT
+Bloomberg L.P., Quantitative Research
+Ecole des Ponts ParisTech, CERMICS
+
+ 
+ GARCH THE METRICS FOR CLUSTERING?
+ \url{https://www.econometrics-with-r.org/16-4-volatility-clustering-and-autoregressive-conditional-heteroskedasticity.html}
+ 
+volatility is mostly path-dependent: up to 90 percent of the variance of the implied volatility of equity indexes explained endogenously by past index returns, and up to 65 percent for (noisy estimates of) future daily realized volatility. The path-dependency that we uncover is remarkably simple: a linear combination of a weighted sum of past daily returns and the square root of a weighted sum of past daily squared returns with different time-shifted power-law weights capturing both short and long memory. This simple model, which is homogeneous in volatility, is shown to consistently outperform existing models across equity indexes and train/test sets for both implied and realized volatility. It suggests a simple continuous-time path-dependent volatility (PDV) model that may be fed historical or risk-neutral parameters. The weights can be approximated by superpositions of exponential kernels to produce Markovian models. In particular, we propose a 4-factor Markovian PDV model which captures all the important stylized facts of volatility, produces very realistic price and (rough-like) volatility paths, and jointly fits SPX and VIX smiles remarkably well. We thus show that a continuous-time Markovian parametric stochastic volatility (actually,
+PDV) model can practically solve the joint SPX/VIX smile calibration problem.
+
+It is crucial for the pricing, hedging, and risk-management of portfolios of derivatives to understand and correctly capture the joint dynamics of the underlying assets and their implied volatilities. For example pricing and hedging portfolios of S$\&$P 500 (SPX) derivatives requires to precisely understand the joint dynamics of the SPX and VIX indices. It is also very useful to build accurate predictors of future realized volatility
+
+We thus aim to empirically explain volatility as an endogenous factor as best as we can. Our empirical study covers (a) learning implied volatility from past asset returns (e.g., learn the VIX from
+the SPX path), and (b) learning future realized volatility from past asset returns. We prove that volatility is mostly path-dependent. A surprisingly simple linear PDV model explains up to 90 percent of the variance of the implied volatility (depending on the equity index), and up to 65 percent of the variance of the (more noisy) future daily realized volatility, even on our very challenging test set (2019–2022). This proves that volatility is mostly endogenous. The explicit path-dependency that we uncover is remarkably simple: a linear combination of a weighted sum R1 of past daily returns and the square root of a weighted sum R2 of past daily squared returns with different time-shifted power-law (TSPL) weights.
+
+Lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the resulting statistical 
+\url{https://www.bing.com/search?q=lasso%20regression&pc=0MDS&ptag=C15N1004AA4EDF50958&form=CONBNT&conlogo=CT3210127}
+
+\emph{Guyon model}
+where  historical volatility $\Sigma_t$.
+\begin{equation*}
+(3.12) Volatility_t = \beta_0 + \beta_1R_{1,t} + \beta_2\Sigma_t
+\end{equation*}
+
+where $Volatility_t$ denotes either some
+implied volatility (e.g., the VIX) observed at t, or some future realized volatility right after t (e.g., realized over day t + 1). The model states that the volatility—not its square, the variance—is simply an affine combination of the trend feature R1,t and the historical volatility $\Sigma_t$.
+
+
+\emph{Simple models}
+Volatility denotes either some
+implied volatility (e.g., the VIX) observed at t, or some future realized volatility right after t (e.g., realized
+over day t + 1). 
+\emph{Trend features} are features that capture a recent trend in the asset price in order to learn the
+leverage effect, i.e., the fact that volatility tends to rise when asset prices fall. The most important
+example of a trend feature is a weighted sum of past daily returns
+
+\begin{equation*}
+(3.1) R_{1,t} := \sum_{}^{} K_1(t − t_i) r_t_i
+%ti≤t
+\end{equation*}
+where
+
+\begin{equation*}
+(3.2) rti=Sti − Sti−1
+Sti−1
+\end{equation*}
+denotes the daily return between day ti−1 and day ti
+, and K1 : R≥0 → R≥0 is a convolution kernel
+that puts more or less weight on past daily returns based on the lag t − ti
+, i.e., on how far in the past the daily return was observed. The kernel K1 typically decreases towards zero: the impact of a
+given daily return fades away over time. Other examples o trend features include the weighted sum of negative parts of past daily returns
+(3.3) Nt := X
+ti≤t
+KN (t − ti)r
+−
+ti
+
+\emph{Activity features or volatility features} are features that capture recent activity (volatility) in the asset price, regardless of its trend, in order to learn volatility clustering, i.e., the fact that periods of large volatility tend to be followed by periods of large volatility, and periods of small volatility tend to be followed by periods of small volatility. Volatility clustering also materializes in the fact that implied volatility tends to be larger when historical volatility is larger. The most important example of a volatility feature is a weighted sum of past squared daily returns
+\begin{equation*}
+(3.5) R_{2,t} = \sum_{}^{}K_2(t − ti) r^2_{t_ti}
+%ti≤t
+\end{equation*}
+
+
+QARCH Model Quadratic GARCH:
+ARCH (QARCH) model of Sentana [52] expresses the
+instantaneous variance Volatility2
+t as a general quadratic form of the past daily returns:
+(3.12) Volatility2
+\begin{equation*}
+t = \beta_0 + \beta_1R_{1,t} + \beta_2R^Q_{2,t}
+R^Q_{2,t} = \sum_{t_i}^{t_j}K^_2(t-t_i,t-t_j)(r_t_i r_t_j)
+%t_i,t_jLEt
+\end{equation*}
+
+Chicheportiche and Bouchaud [16] have shown that in the US stock market the off-diagonal entries of the
+bidimensional kernel KQ2
+are one order of magnitude smaller than the diagonal entries. The corresponding
+diagonal QARCH model reads
+(M1) 
+\begin{equation*}
+Volatility^2_t = \beta_0 + \beta_1R_{1,t} + \beta_{2,t}
+ K_2(\tau ) := K^Q_2(\tau,\tau ).
+\end{equation*}
+Chicheportiche and Bouchaud do not provide explicit parametric forms for K1 and
+K2 but report power-law-like decays in [16, Figure 4]. The ZHawkes process of Blanc et al. [9]
+(M2)
+\begin{equation*}
+Volatility^2_tt = \beta_0 + \beta_1R^2_{1,t} + \beta_2R{2,t}
+\end{equation*}
+replaces the linear dependence of the variance $Volatility^2_
+t$ on the trend feature $R_{1,t}$ by a quadratic dependence.
+See [21] for a microstructural foundation of this model. The discrete-time version of the QRHM [30] with
+null θ0 can be written as
+(M3)
+\begin{equation*}
+ Volatility^2_t = \beta_0 + \beta_1(R1,t − \beta_2)^2
+\end{equation*}
+with a Mittag-Leffler kernel $K_1$ such that $K1(\tau ) ∼
+τ→0τ α−1$ and $K_1(\tau ) ∼τ→+∞τ−α−1 with α ∈ (12)$
+%\end{equation*}
+1); and the
+discrete-time version of the threshold EWMA Heston model [49, Section 2.3] reads as
+(M4) 
+\begin{equation*}
+Volatility_t = \beta_0 + \beta_1(\beta_2 − R_{1,t})+
+\end{equation*}
+with K1 an exponential kernel, K1(τ ) = λe−λτ
+.
+Our model differs from the above models in several 
+
+Peter Carr
+ 
+\emph{}{Empirical model of variance of the Federal Funds rate}
+Bertolini
+ Model of the Fed Funds rate
+ \begin{equation*}
+r_t=\mu_t + \sigma_t v_t
+\end{equation*}
+with mean $\mu_t=Er_t$
+and variance 
+$\sigma^2_t=E[(r_t-\mu_t)^2]$
+with mean $\mu_t=E(r_t)$
+$v-t$ is a unit variance i.i.d error term
+
+Conditional mean
+ \begin{equation*}
+\mu_t = r_{t-1}+\delta +\kappa k_t+\iota(r*_t-r*_{t-1})
+\end{equation*}
+
+ \begin{equation*}
+\mu_t = r_{t-1} +\phi_1 (r_{t-1}-r_{t-2})+\phi_2 (r_{t-2}-r_{t-3})+\kappa k_t +\iota(r*_t-r*_{t-1})
+\end{equation*}
+
+We model the conditional mean of $r_t,\mu_t=E(r_t) $ as the sum of the previous day's rate (martingale hypothesis, the only relevant variable known at t-1) plus calendar effects to account for  failure if martingale hypothesis) and  Control for level shift effects of target range changes r* changes in the target rates (ond adminiatered rates)
+- add change of IOR
+- add change of ONRRP
+
+K zero-one dummies for days before and after holidays, end of year, end of quarter window dressing
+
+Empirical model of variance of the Federal Funds rate Variance
+Bertelini 
+\begin{equation*}
+log(\sigma^2_t) - \Xi_{s_t} -\omega h_t-\zeta z_t - log(1-\gamma N_t)= 
+\lambda(log(\sigma^2_{t-1}) - \xi_{s_{t-1}} -\omega h_{t-1}-\zeta z_{t-1} - log(1-\gamma N_{t-1})+\alpha |v_{t-1}| + \theta v_{t-1}
+\end{equation*}
+
+$\xi$ maintenance period effects
+h calendar effects
+N non trading days
+z =1-ratio of target rate r* to penalty rate, or IOR, or EFFR-IOR
+
+Me unless another factor can substitute for  maintenance period effects, say smple reserves or SOFR-IOR $\xi$ 
+Empirical model of variance of the Federal Funds rate Variance
+Bertelini 
+\begin{equation*}
+log(\sigma^2_t)  -\omega h_{t-1}-\zeta z_t = 
+\lambda(log(\sigma^2_{t-1})  -\omega h_{t-1}-\zeta z_{t-1} +\alpha |v_{t-1}| + \theta v_{t-1}
+\end{equation*}
+
+Assume a t distribution for the innovations and obtain ML estimates of the parameters by numerical optimization
+
+\emph{Guyon}:  The path-dependency that we uncover is remarkably simple: a linear combination of a weighted sum of past daily returns and the square root of a weighted sum of past daily squared returns with different time-shifted power-law weights capturing both short and long memory.
+
+\emph{Gara et al}
+ADD Gara plot
+channels through which changes in the so-called administered rates reach rates in onshore and offshore U.S. dollar money markets? 
+
+Gara et all map the linkages between transactions in the fed funds market and in other money markets (Figure \ref{fig:GaraMM}) in order to grasp the broader flows within the U.S. dollar funding market.
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0\textwidth]{GaraMoneyMarkets.png}
+\caption{Mapping US dollar funding flows}
+\label{fig:dailyrateVolumes_ESl}
+\centering
+\label{fig:GaraMM}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Using our interactive map as a compass, we select the transaction type “Fed reserve account deposits” to explore the effect of a change in IOR on depository institutions within the onshore wholesale U.S. dollar money market. Noting that the top red arrow reflects the flow of deposits from domestic banks and foreign banking organizations into a Fed liability (“Reserve Balances”), we show how a change in IOR directly influences the rate at which these depository institutions are willing to engage in “Fed funds lending” (light green arrows).
+
+Gara plot: GaraAmpleReserves2022
+\begin{figure}[ht]
+\includegraphics[scale=1.0\textwidth]{GaraReserves.png}
+\caption{Reserves normalized by commercial deposits, Federal Fund rate EFFR-IOR spread and reserve demand curve}
+\label{fig:Gara}
+%\centering
+\label{fig:gara}
+\end{figure}
+Vertical and horizontal reserve demand shift of EFFR-IOR spread and reserve demand curve
+2015-2020
+2020=2022
+a)
+aggregate reserves normalized by banks’ total assets to control for the growth of the banking industry
+b) the daily average federal funds rate minus the IORB rate to control for changes in the monetary policy stance, which mechanically shift the curve up and down by moving its lower bound
+c) the relationship between spreads and normalized reserves.
+
+
+
+Results same as others
+\begin{itemize}
+\item calendar and EGarch effects to clean the data of effects we don't model
+\item Fed Funds rate  falls, vol high the last working day of the year, 17 times typical day
+\item rate rises last business day, and fall day after  of quarters 1, 2, 3 with vol 8 times typical day
+\item rate falls preceding holidays, rises after
+\item egarch params significant, persistence of underlying volatility shock
+\item fat tailed
+\item reject martingale hypothesis of r, due to Hamilton causes, transaction costs, lines of credit, other ff market imperfections
+\item volatility patterns less the greater the sense of Fed commitment to targets, i.e. when intervention takes place in a deeper market, targets transparently announced and altered on FOMC meetings
+\item higher target rate wrt penalty decreases the volatility of the ff rate
+\end{itemize}
+
+% FOR RESULTS SECTION HYPOTHESIS 1
+\subsection{Simple measures of volatility}
+intraday volatility, sd of EFFR and deviations of the effective federal funds from the target rate
+1) log percent change
+2) (rolling) standard  deviation
+
+Figure \ref{figure:Pctchnage}
+\input{onratePctchange.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{onratePctchange.tex}
+\caption{Daily log percent change overnight rates. EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:Pctchange}
+%\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}            
+
+Figure \ref{figure:Stdchange}
+\input{onrateStdchange.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{onrateStdchange.tex}
+\caption{244 day standard deviation change overnight rates. EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:Stdchange}
+%\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+\emph{simple models of FF rate volatility}
+% Log first differnce
+1 vol1= log(spread(2:endind,1:8:33))-log(spread(1:endind-1,1:8:33));
+% std dev of vol1, first difference for trailing window of 244 days?
+2 vol2= movstd(vol1,244); 
+%log(spread(2:endind,1:8:33))-log(spread(1:endind-1,1:8:33));
+
+
+
+\begin{comment}
+TREAST
+U.S. Treasury Securities: All: Wednesday Level (TREAST \url{https://fred.stlouisfed.org › series › TREAST}
+
+Graph and download economic data for Assets: Securities Held Outright: U.S. Treasury Securities: All: Wednesday Level (TREAST) from 2002-12-18 to 2022-11-09 ...
+2022-10-12: 5,629,841
+\end{comment}
+
+% ================================================================================================
+APPENDICES??
+\section{Research questions}
+Recent conferences, Strategies for Monetary Policy (Hoover Institute in 2020) and Conference on Monetary Policy Strategy, Tools, and Communication Practices (FrbChi 2019) set out a full agenda of issues for the conduct of monetary policy.   \url{https://www.federalreserve.gov/monetarypolicy/review-of-monetary-policy-strategy-tools-and-communications.htm} 
+\url{https://www.federalreserve.gov/conferences/conference-monetary-policy-strategy-tools-communications-20190605.htm}
+
+Notable problem for MP, trend decline in the natural rate of interest $r^{\ast}$ and low expections of inflation.
+
+THE issue?
+Asset purchases under QE resulted in central banks changing their overall frameworks for controlling short-term interest rates: Pre-crisis, these frameworks were typically based on adjusting the scarcity value of a limited supply of central bank deposits (reserves), but the substantial increase in liquidity resulting from asset purchases in response to the crisis made 
+other techniques necessary.
+
+
+Find authors:
+Issues:
+a. low real interest rate trend
+b. low inflation expectation
+c. long-term inflation expectation
+d. unemployment and u$\ast$
+e. ZLB and vulnerability to a substantial fiscal shock and unexpected inflation e. \emph{ZLB and vulnerability to a substantial fiscal shock and unexpected inflation}
+The zero  lower bound (ZLB) has been an active discussion. 
+\url{https://www.brookings.edu/blog/ben-bernanke/2017/04/13/the-zero-lower-bound-on-interest-rates-how-should-the-fed-respond/}
+
+In many advanced economies, conventional rules called for a negative nominal policy rate in response to the extreme shock of the crisis.
+AS countries approach the zero bound, they lose their own capacity for counter cyclical monetary policy. 
+Rogoff  
+Potential shocks include a catastrophic climate event, a cyberwar that spins out of control, a pandemic, a meltdown in the Chinese economy 
+that leads to a deep global recession, or a new-age financial crisis. 
+
+Although the shocks may be abrupt, fiscal shocks create unexpected inflation. Events could also evolve slowly over time.  The United States excessive reliance on short-term debt to finance social programs, a greener society, tax cuts must ultimately have its limits. 
+
+For much of the 2000s, market clearing for advanced-country bonds has required an ever-falling interest rate. Once the zero bound becomes binding,  though, a lower interest rate can no longer clear the market. Advanced economies can still meet the demand by allowing their debts to outstrip their income growth, but then the “safe assets” they issue may eventually become risky. Rajan (2016) has emphasized that there is so little agreement about how major central banks should deal with the zero bound creates greater uncertainty about the future and creates volatility for emerging markets.
+
+f. problems with alternative policies: quantitative easing and forward guidance, financial repression
+g. debt potential default monetization inflation
+h. tail risk
+Reinhart, Reinhart, and Rogoff (2015) also suggest that investors place a greater weight on tail risks after the financial crisis. This can lead to a sharp drop in safe real interest rates even with normal risk aversion parameters (for discussion, see , who build on Barro 2006).
+% -------------------------
+Indeed, options prices reveal that even though market volatility has greatly abated since the peak of the crisis.... FINISH
+% ---------------
+i. fall in r
+Rogoff argues that much of the recent drop in real interest rates is a legacy of the 2008 financial crisis, and of an ongoing debt supercycle that was originally centered in the United States and then in the eurozone, and now perhaps has reached China (Rogoff 2016)
+
+j. other factors that could affect the relationship between the federal funds rate and aggregate reserves, such as the repo and Treasury markets, 
+- deficit, deficit shocks
+- increase in deposits:
+- augment the forecasting model (3) by including daily repo rates (relative to the IORB rate)
+see comment on 10 yr rate spread vs 6 week T bill
+- other significant spreads cited: ON RPP, Tbill, arbitrage arguments in DK or Duffie ample reserves
+
+j. Factors/issues
+\begin{itemize}
+\item Fed normalization policy
+\item Overnight interest rates a measure of ample reserves
+\item The pass through of Fed policy rates is uneven across money market interest rates
+\item Eurodollars, The Effective Rate (FFER) has become an unreliable gauge of the overnight unsecured wholesale cost of funds for U.S. banks
+\item Role of Eurodollar, Libor, SOFR, the Federal Funds.
+\item Not all borrowers and lenders in funding markets are as accessible to each other as they would be in an efficient market
+\item Tradeoffs FF volatility and reserves balance
+\end{itemize}
+
+k.Duffie ()
+The spread between U.S. Treasury overnight repo rates and the interest rate paid by Federal Reserve Banks on reserve balances (IOR) is a gauge of the sufficiency of reserve balances of large BHCs active in repo markets to meet counterparty ?
+Duffie Ample reserves;
+Wholesale funding markets depend on repo market and other funding markets.. Dealers finance UST with repos. ??...pect, Correa, Du and Liao (2020) 
+The market for overnight Treasury repurchase agreements underpins the financing of US Treasuries and, with a total volume on the order of $\$$2 trillion per day, vastly exceeds the size of the federal funds market.6 
+
+Large U.S. government fiscal deficits also increase in the outstanding stock of marketable Treasury securities, which in turn increases the amount of Treasury securities for which dealers required repo financing. In particular, the Treasury issuances on September 16 and 17, 2020, increased the demand by dealers for repo financing…
+
+l.impact of substitution among short rates.  Other factors relevant to repo rate spreads Duffie and Krishnamurthy (2016) and Martin, McAndrews, Palida and Skeie (2019) consider the impact of substitution among Treasury bills, IOR, Treasury repos, the Fed’s Reverse Repurchase Facility, and unsecured bank deposits, suggesting a key role for the supply of short-term Treasury securities.
+Other pressures on SOFR-IOR
+Money funds and most other investors cannot hold Federal reserves, whereas banks are subject to significant capital requirements for reserves. So, when the supply of reserve balances is sufficiently large relative to the supply of Treasury bills, SOFR-IOR easily becomes negative. We explore this relationship in Section 7.?? Government money market funds substitute between Treasury bills and Treasury repos, which places downward pressure on the spread between Treasury repo rates and IOR when the outstanding supply of Treasury bills is low (Duffie and Krishnamurthy, 2016).
+Duffie Section 5 provides estimated relationships among repo rates, reserve balances, and intraday payment timing over the sample period, including a probit analysis of repo-spike events.
+
+Keys
+\begin{itemize}
+\item spread elasticity to reserves
+\item Duffie ()
+The spread between U.S. Treasury overnight repo rates and the interest rate paid by Federal Reserve Banks on reserve balances (IOR) is a gauge of the sufficiency of reserve balances of large BHCs active in repo markets to meet counterparty ?
+\item impact of substitution among short rate instruments
+\item large deficits, deficit shocks
+\item arbitrage among rates SOFR should equal IOR
+\end{itemize}
+
+Duffie Ample reserves  probit for repo strikes
+\url{https://www.econometrics-with-r.org/11-2-palr.html}
+
+Basic regression models for interdealer Treasury repo (GCF Repo) as a spread to IOR. 
+Estimated coefficients of an IV model of SOFR as a spread to IOR
+
+Duffie Krishnamurthi Disperson objective function subject to contraints for fast and slow inverstors
+
+
+So how did Fed purchases of bills, affect policy and administered rates and other money market rates? 
+\begin{itemize}
+\item Did UST issue Tbills for this purpose? (for QE)
+\item spreads key to ample reserves
+\item communication of changes in policy and administered rates to other money market rates and the economy
+\item But these FED purchases of bills, not QE, were repos from point of view of the bank, reverse repos for the counterparty 
+\item deficit shocks etc
+\item raising debt ceiling demand for this facility may continue, especially as Washington extends its negotiations over the debt ceiling. 
+\item One reason for the recent rush could be the Fed’s decision this year to raise the overnight reverse repo agreement size to a maximum of $\$$280 billion and boost the interest rate the U.S. central bank pays on those agreements to 0.05 percent from 0 percent. With interest rates low and liquidity excessive in the marketplace thanks to the Fed’s massive asset purchase plan, financial institutions are jumping at the opportunity to earn extra money on the cash that they have sitting around. 
+\item MM tradeoff betn Tbills and RRPs
+\item other paper Net bond purchases by the Federal Reserve can offset government budget surplus shocks. Unexpectedly selling or buying long term debt offsets current surplus shocks but at the cost of higher future inflation or deflation.
+\end{itemize}
+
+
+\begin{comment}
+OLD FIGURE
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Soma_data2.png}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Reserves, the Federal Fund rate EFFR,and the percent change in the EFFR}
+\label{fig:Reserves_pctchange}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+

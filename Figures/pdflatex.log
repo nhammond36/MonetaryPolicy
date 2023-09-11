@@ -1,0 +1,16 @@
+2023-07-01 19:35:02,340-0400 INFO  pdflatex - this process (29452) started by Rterm in directory C:\Users\Zenobia\Documents\Research\MonetaryPolicy\LaTeX with command line: C:\Users\Zenobia\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe -halt-on-error -interaction=batchmode ONrates.tex
+2023-07-01 19:35:02,341-0400 INFO  pdflatex - running on Windows 10.0.19042
+2023-07-01 19:35:02,392-0400 INFO  pdflatex - this is MiKTeX-PDFTEX 4.15.0 (1.40.25) (MiKTeX 23.4)
+2023-07-01 19:35:02,601-0400 INFO  pdflatex - allowing known shell commands
+2023-07-01 19:35:03,337-0400 INFO  pdflatex - going to create file: pdflatex.fmt
+2023-07-01 19:35:03,339-0400 INFO  pdflatex.core - start process: miktex formats build pdflatex --engine pdftex
+2023-07-01 19:35:37,848-0400 FATAL pdflatex.core - GUI framework cannot be initialized.
+2023-07-01 19:35:37,884-0400 FATAL pdflatex.core - Data: 
+2023-07-01 19:35:37,885-0400 FATAL pdflatex.core - Source: Libraries\MiKTeX\UI\Qt\mikuiqt.cpp:126
+2023-07-01 19:35:38,090-0400 FATAL pdflatex - GUI framework cannot be initialized.
+2023-07-01 19:35:38,092-0400 FATAL pdflatex - Info: 
+2023-07-01 19:35:38,092-0400 FATAL pdflatex - Source: Libraries\MiKTeX\UI\Qt\mikuiqt.cpp
+2023-07-01 19:35:38,092-0400 FATAL pdflatex - Line: 126
+2023-07-01 19:35:38,108-0400 INFO  pdflatex - this process (29452) finishes with exit code 1
+2023-07-01 19:35:38,226-0400 WARN  pdflatex.core - still open: ONrates.log
+2023-07-01 19:35:38,226-0400 WARN  pdflatex.core - still open: ONrates.tex

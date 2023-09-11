@@ -1,0 +1,114 @@
+---
+title: "Overnight rates"
+author: "Nancy Hammond"
+date: "2023-07-01"
+output: pdf_document
+number_sections:true
+header-includes:
+  \usepackage(caption)
+  \usepackage(multirow)
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+---# Introduction
+Level and volatility of overnight policy, administered, and wholesale money market rates move closely together but vary dramatically  with external shocks to these markets and different central bank policy regimes.  Goal: to find the willingness of the US central bank  to offset volatility to manage the Federal Funds rates within its target range. in different Federal Reserve policy regimes.
+
+The volume of trade in interbank markets even more volatile than rates
+
+Hypotheses 1 Volatility: the distributions of secured rates TGCR, BGCR, SOFR,similar to the unsecured rates EFFR and OBFR, changes with FOMC policy
+Hypotheses 2 Dispersion of rates but quick reversion to changes in the federal funds rate (FFR)
+Hypothesis 3 Fed's preference for offsetting volatility in the Federal Funds market to manage the FFR within its range
+Hypothesis 4: The demand for each instrument, price versus volume reveals,large changes in demand but relatively stable rates
+Hypothesis 5 The volatility response of overnight rates to Fed interventions is greater:  the lower reserves, the magnitude of the shock of the monetary policy interventions, the type of  change in policy intervention: the Fed Funds targets, or bounds of the channel for the EFFR rate or the administered rates, the IOR and ONRRP. A puzzle: price stable, demand fluctuates? 
+  
+Motivation for this work:
+- An efficient ample reserves regime minimizes frequency of operations, volatility of interest rates, and balance sheet costs (Schuhlhofer)
+-  Bertolini, Bertola, Prati () and Gara () observe the effect of Fed interventions on the volatility in interbank rates
+  
+    Structure of article: IMRAD:
+Introduction
+Methodology
+Results and
+Discussion
+
+Conclusion
+Acknowledgements
+References
+Supporting Materials
+
+
+
+# The time series properties/characteristics of overnight policy, interbank rates, and reserves held at the Federal Reserve
+
+## Rates
+
+The unsecured daily median effective Federal Funds rate (EFFR) is... The secured overnight financing rate (SOFR) is a broad measure of the general cost of financing Treasury securities for a broad range of repurchase market participants. SOFR is a measure of the the cost of borrowing cash overnight collateralized by Treasury securities. 
+
+Annual changes in median rates in the early years of the sample, 2016-2019, are not as volatile as the later years 2020-2022. Annual changes in EFFR rates changed some 70 to 87 bp (basis points) in 2017 and 2018, 46 to 52 basis points in 2019. The most volatile changes in the later years are the fall in the EFFR in 2020 of 228 bp and the 158 basis point increase in 2022.								
+This difference in rate volatility is borne out by the changes in the standard deviation of the EFFR,3.56				to 14.94 bp in the earlier years, but 24.07 bp in 2020, -55.07 in 2021, and 139.14 in 2022							
+
+### Times series behavior of rates within different FOMC policy regimes
+We can examine a more detailed look at the time series properties of reference rates and transactions by dividing the sample in subsets that reflect five distinct policy regimes in the data:
+1. normalcy              3/4/2016-7/31/2019     % 4  859
+2. mid cycle adjustment  8/1/2019-10/31/2019 737660  %860 - 923
+3. covid                 11/1/2019-3/16/2020   %924  1032
+4. Zero lower bound (zlb) 3/17/2020-3/16/2022     %1032-1516
+5. Taming inflation     03/17/2022-12/29/2022 %1517-1741
+
+
+Table \ref{table:FOMCratechanges} lists FOMC rates changes, monetary regimes, and events over the four year period, 2018-2022.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c c} 
+\hline
+FOMC rates changes \\
+%Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex] 
+ \hline\hline
+\textbf{2015 to 2018: Returning to Normalcy, mid cycle adjustment 3/4/2016 - 7/31/2019} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+20-Dec-18 &	 25 &		2.25 to 2.50\\
+Sept. 27, 2018 &		25 &		2.0 to 2.25\\
+Jun. 14, 2018&		25 &		1.75 to 2.0\\	
+22-Mar-18 &		25&		1.50 to 1.75\\	
+Dec. 14, 2017 &		2&	5	1.25 to 1.50\\	
+15-Jun-17&		25&		1.00 to 1.25\\	
+16-Mar-17&		25 &		0.75 to 1.00\\	
+Dec. 15, 2016 &		25 &		0.5 to 0.75\\
+Dec. 17, 2015 &		25&		0.25 to 0.50\\
+\hline
+\textbf{2019  Mid-Cycle Adjustment 8/1/2019-10/31/2019} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+31-Oct-19 &		-25	&	1.50 to 1.75\\	
+Sept. 19, 2019&		-25&		1.75 to 2.0\\	
+Aug. 1, 2019&		-25	& 2.0 to 2.25\\	
+\hline			
+\textbf{2020 Coping with Covid  11/01/2019 - 3/16/2020} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+16-Mar-20&		-100&		0 to 0.25\\	
+3-Mar-20&		-50&		1.0 to 1.25\\	
+\hline	
+\textbf{the zero lower bound (ZLB) 3/17/2020- 3/16/2022} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+\textbf{2022 Taming Inflation 03/17/2022 - 12/29/2022} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+14-Dec-22&		50&		4.25 to 4.50\\	
+2-Nov-22&		75&		3.75 to 4.00\\	
+21-Sep-22&		75&		3.00 to 3.25\\	
+27-Jul-22&		75&		2.25 to 2.5\\	
+16-Jun-22&		75&		1.5 to 1.75\\	
+5-May-22&		50&		0.75 to 1.00\\	
+17-Mar-22&		25&		0.25 to 0.50\\
+\end{tabular}
+\caption{FOMC rates changes 2018 to 2022}
+\label{table:FOMCratechanges}
+\end{table}
+
+

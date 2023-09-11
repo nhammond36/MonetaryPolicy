@@ -1,0 +1,2196 @@
+---
+title: "Overnight rates"
+author: "Nancy Hammond"
+date: "2023-08-17"
+output: 
+  pdf_document:
+    number_sections: true
+header-includes:
+  - "\\usepackage{caption}"
+  - "\\usepackage{multirow}"
+---
+
+
+
+
+# rmarkdown::render("C:/Users/Zenobia/Documents/Research/MonetaryPolicy/LaTeX/ONrates07352023.Rmd", 
+#                   output_format = "pdf_document", 
+#                   output_file = "ONrates07352023.pdf",
+#                    params = list(title = "Reference rates and FOMC policy", 
+#                                 author = "Nancy Hammond"))
+# 
+# 
+# 
+# ```{r setup, include=FALSE}
+# knitr::opts_chunk$set(echo = TRUE)
+# ```
+# 
+#  ```{r}
+#  library(knitr)
+#  #include_graphics(“https://edin.ac/37Ml3Q2”)
+# 
+# #include_graphics(“images/dougal.jpeg”)
+#  ``` 
+#   ```{r fig.align=“left”}
+#  #include_graphics(“https://edin.ac/37Ml3Q2”)
+#  ``` 
+#   ```{r fig.cap=“a picture of a brain…”}
+# # include_graphics(“https://edin.ac/37Ml3Q2”)
+#  ``` 
+ 
+ # Create the ggplot chart and save it as a variable
+# ggplot_chart <- ggplot(data, aes(x = Group, y = Rate)) +
+#   geom_bar(stat = "identity") +
+#   labs(title = "Rates by Group", x = "Group", y = "Rate")
+# 
+# # Print the ggplot chart
+# print(ggplot_chart)
+# vbnet
+# Copy code
+# 
+# Step 3: Save the RMarkdown file with a `.Rmd` extension.
+# 
+# Step 4: Knit the RMarkdown file by clicking the "Knit" button in RStudio or using the `knit()` function. This will generate an HTML output that includes the ggplot chart.
+# 
+# When you knit the RMarkdown document, it will create an output file (e.g., .html
+
+---# Introduction
+Level and volatility of overnight policy and wholesale money market rates move closely together but vary dramatically different central bank policy regimes and other external shocks to these markets.  To manage the Federal Funds rates within its target range, this paper investiages the willingness of the US central bank to offset volatility in its policy rate,
+
+-  Bertolini, Bertola, Prati () and Gara () observe the effect of Fed interventions on the volatility in interbank rates
+- An efficient ample reserves regime minimizes frequency of operations, volatility of interest rates, and balance sheet costs (Schuhlhofer)
+
+- The volume of trade in interbank markets even more volatile than rates
+
+Results section:
+Hypotheses 1 Volatility: Noteable is the high frequency of volatility of the Fed's policy rate EFFR as the FOMC manages the FF rate within target range. The volatility is especially high in the Fed October date ample reserves policy regime.  The EFFR and OBFR are respond to changes in FOMC target range for the Federal Funds rate (FFR) and the administered rates - interest on reserves (IOR) and the overnight reverse repurchase rate (ONRRP).But the distributions of secured rates TGCR, BGCR, SOFR share similar characteristics of the distribution of these unsecured rates. (Note mean reversion, no change in distribution. Dispersion, changes in distribution coef of variation standard deviation devided by the mean.)
+
+Hypotheses 2 Although overnight wholesale money market rates change in responese to monetary policy and other shocks, they quick revert to changes in the unsecured federal funds rate (FFR) or administered rates. DDuffie Krishnamuthy show evident that ispersion among these secured overnight rights impede passthough of monetary policy to the economy. Mean reverision versus dispersion hypothesis
+
+
+
+
+Hypothesis 3 The rate data provide evidence of Fed's difference preferences for offsetting volatility in the Federal Funds market to manage the FFR within its target range, The Fed may change target and administered rates. But sometimes temporarily changes in reserves (FF market, TGCR) to manage the FFR through repo markets. A a reverse repo increase in reserves through Fed purchase of reserves with securities, lowers the FFR, a decrease in reserves through a repo with dealers or () increases the FFR>
+ 
+Hypothesis 4: Puzzle: The demand for each instrument, price versus volume reveals,large changes in demand but relatively stable rates A puzzle: price stable, demand fluctuates? Daily rates versus dollar volumes of transactions illustrate demand for these overnight money market instruments. Volumes more volatile than rates
+
+Hypothesis 5 The volatility response of overnight rates to Fed interventions is greater:  the lower reserves, the magnitude of the shock of the monetary policy interventions, the type of  change in policy intervention: the Fed Funds targets, or bounds of the channel for the EFFR rate or the administered rates, the IOR and ONRRP. 
+  
+Other: 
+6. spreads, indicators of reserves, arbitrage
+7. another research question/hypothesie
+
+  
+    Structure of article: IMRAD:
+Introduction
+Methodology
+Results and
+Discussion
+
+Conclusion
+Acknowledgements
+References
+Supporting Materials
+
+
+```{r targetE, echo=FALSE, fig.cap="EFFR and target rates (shaded)"}
+                                targetE <-ggplot(metricE, aes(x = sdate)) +
+  geom_ribbon(aes(ymin =metricE[,2], ymax = metricE[,3]), fill = "grey70") +
+                    geom_line(aes(y = EFFR, color = "EFFR"), linetype ="solid", size = 1, alpha = 1.25) + 
+                                labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+                                scale_color_manual(values = c("EFFR" = "blue") )+
+  theme_minimal()
+  print(targetE)
+                
+                  
+
+### The time series properties/characteristics of overnight policy, interbank rates, and reserves held at the Federal Reserve
+
+The federal funds market consists of domestic unsecured borrowings by depository institutions from other depository institutions and certain other entities, primarily government-sponsored enterprises.
+The effective federal funds rate (EFFR) is calculated as a volume-weighted median of overnight federal funds transactions. 
+Overnight Bank Funding Rate
+The overnight bank funding rate is a measure of wholesale, unsecured, overnight bank funding costs. It is calculated using federal funds transactions, certain Eurodollar transactions, and certain domestic deposit transactions
+
+The Tri-Party General Collateral Rate (TGCR) is a measure of rates on overnight, specific-counterparty tri-party general collateral repurchase agreement (repo) transactions secured by Treasury securities. Fed uses this market for temporaty interventions according to David Gibbs, Education Director Chicago Mercantile Exchange (CME) 
+The Broad General Collateral Rate (BGCR) is a measure of rates on overnight Treasury general collateral repurchase agreement (repo) transactions. This market serves agents looking for specific cusip numbers.
+The Secured Overnight Financing Rate (SOFR) is a broad measure of the cost of borrowing cash overnight collateralized by Treasury securities. The SOFR includes all trades in the Broad General Collateral Rate plus bilateral Treasury repurchase agreement (repo) transactions cleared through the Delivery-versus-Payment (DVP) service offered by the Fixed Income Clearing Corporation (FICC), which is filtered to remove a portion of transactions considered “specials”. 
+
+The distributions of daily rates rates and tranasactions transactions, billions of dollars, their medians and standard deviations change dramatically from year to year (Figure \ref{fig:volumesample1}). And within differing FOMC policy regimes (Table \ref{table:FOMCdailyratesstats} ). Here volatility  as measured by the annual standard deviation of the series.
+
+The median effective Federal Funds rate (EFFR) for the sample of daily rates from 3/03/2016 through 12/29 2022 is some 108 basis points. VOlatility as measured by the standard deviation is 98 points.The overnight money market rates TGCR and BGCR share a similar distribution. The unsecured daily median effective Federal Funds rate (EFFR) is...  The secured overnight financing rate (SOFR) is a broad measure of the general cost of financing Treasury securities for a broad range of repurchase market participants. SOFR is a measure of the the cost of borrowing cash overnight collateralized by Treasury securities.TCGR and BCGR. The OBFR is designed to track the EFFR
+
+  ```{r ,  dailyrates, echo=FALSE, fig.cap="Overnight rates EFFR, OBFRm TGCR, BGCR, SOFR, 2016-2022"}                
+                  dailyrates<-ggplot(rrbp, aes(x = sdate)) +
+   geom_point(aes(y = rrbp[,1], color = "EFFR"), shape = 16, size = 1) + 
+   geom_point(aes(y = rrbp[,2], color = "OBFR"), shape = 16, size = 1) + 
+   geom_point(aes(y = rrbp[,3], color = "TGCR"), shape = 16, size = 1) + 
+   geom_point(aes(y = rrbp[,4], color = "BGCR"), shape = 16, size = 1) + 
+   geom_point(aes(y = rrbp[,5], color = "SOFR"), shape = 16, size = 1) + 
+   labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+   scale_color_manual(values = c("EFFR" = "black", "OBFR" = "blue", "TGCR" = "green", "BGCR" = "orange", "SOFR" = "red")) + 
+   theme_minimal()
+print(dailyrates_md)
+                  ```R  
+
+#{dailyratessample1brush.png}
+#Table \ref{table:FOMCdailyratesstats} DO
+
+\begin{table}[h!]
+\begin{tabular}{ c c c c c c } 
+\hline
+ Year & EFFR & OBFR & TGCR & BGCR & SOHR \\ [0.5ex]
+\hline
+\hline\hline
+ \hline\hline
+Sample  & &&&& \\
+mean&	91.00& 81.00&  79.00&  80.00&  91.00\\
+median&   108.29& 104.77&  104.39&  105.53&  108.09\\	
+stdev&	 98.14&  98.14&   98.14&   98.14&   98.14\\
+\end{tabular}
+\caption{Statistics: daily policy and money market overnight rates (basis points)}
+\label{table:FOMCdailyratestats}
+\end{table}
+
+The volume of transactions in these markets is even more volatile than the rates. Changes in the volume of transactions, is greater than changes in rates, both in median volumes and and their volatility #dailyvolumesample1brush.png}
+#Table \ref{table:FOMCdailyvolumestats}
+Median daily transactions, billions of dollars for the sample range from $283 billion in EFFR transactions to $562 in the BGCR.
+
+The level of rates  and changes in volatility as measured by the standard deviation is more evident in the latter three years of the sample, 2020, 2021, and 2022 than in the earlier years 2016 and 2017 Table \ref{table:FOMCdailyratestats} ). Annual changes in median rates in the early years of the sample, 2016-2019 (Table \ref{table:FOMCdailyratestats}), are not as volatile as the later years 2020-2022. Annual changes in EFFR rates changed some 70 to 87 bp (basis points) in 2017 and 2018, 46 to 52 basis points in 2019. The most volatile changes in the later years are the fall in the EFFR in 2020 of 228 bp and the 158 basis point increase in 2022
+
+This difference in rate volatility is borne out by the changes in the standard deviation of the EFFR,3.56				to 14.94 bp in the earlier years, but 24.07 bp in 2020, -55.07 in 2021, and 139.14 in 2022		
+
+.		
+\begin{table}[h!]
+\begin{tabular}{ c c c c c c } 
+\hline
+ Year & EFFR & OBFR & TGCR & BGCR & SOHR \\ [0.5ex]
+\hline
+\hline\hline
+\hline\hline
+Sample  & &&&& \\
+mean&	210.00&  312.00&  359.00&  637.00& 103.00\\	
+median&	283.83&  339.47&  347.78&  562.13& 383.56\\	
+stdev&  250.54&  225.27&  179.02&  247.01& 405.24\\
+\end{tabular}
+\caption{Statistics: daily policy and money market overnight transactions ($\$$ billions)}
+\label{table:FOMCdailyvolumestats}
+\end{table}
+
+
+## Rates
+
+
+
+
+#\includegraphics[scale=1.0\textwidth]{stackedbarrates}
+#\caption{Annual changes in daily median overnight rates-  EFFR, OBFR, TGCR, BGCR, SOHR}
+
+#{dailyratevolmnboxplot}
+#\caption{Daily overnight volumes EFFR,OBFE, TGCR, BGCR, SOHR ($\$$ billions)}
+ 
+\begin{table}[h!]
+\begin{tabular}{ c c c c c c } 
+\hline
+ Year & EFFR & OBFR & TGCR & BGCR & SOHR \\ [0.5ex]
+\hline
+\hline\hline
+2016 &	&&&&\\	
+mean&	   40.04&   32.73&    32.98&    38.73&    39.86\\				
+median&	   40.00&    30.00&    30.00&    36.00&    40.00\\				
+st dev&	    6.47&     6.47&     6.47&     6.47&     6.47\\	
+%mean&  39.47&   32.27&   32.52&   38.18&  39.30\\
+%median&40.00&   30.00&   30.00&   36.00&  40.00\\	
+%stdev&	7.98&    7.98&    7.98&   7.98&    7.98\\	
+2017& &&&& \\
+mean&  100.37&  86.29&   86.68&  89.31&  100.06\\
+median& 116&	101&	101&	101&	116\\
+stdev&   21.41&  23.51&  23.56&  24.17&  21.51\\
+2018&  &&&& \\
+mean& 183.12&  181.26&  180.62&  183.24&  182.85\\
+median& 191&	186&	186&	188&	191\\
+stdev&  29.59&  32.74&  31.47&  30.44&  29.07 \\
+2019&  &&&& \\
+mean&  216.55&  216.27&  217.84&  217.70& 219.89/\\
+median& 237&	237&	238&	238&	237\\
+stdev&   33.15&  33.98&  38.98&  38.89&  39.00\\
+2020&  &&&& \\
+mean& 35.96&  35.79&   35.25&  34.54& 34.95\\
+median& 9&	  9&	  8&	  7&	  7\\
+stdev&  57.22&  56.98&  56.84&  57.17&  58.03\\
+2021&  &&&& \\	
+mean&  5.97&    4.83&    4.74&    3.56&    6.64	\\
+median& 7&	  5&	  5&	  5&	  8\\
+stdev&  2.18&   2.34&   2.21&   1.96&   2.77\\
+2022&  &&&& \\	
+mean&  165.66&  165.24&  161.69&  161.43& 162.00\\
+median& 158&	157&    150&	150&	152\\
+stdev& 141.29& 141.76& 137.77& 138.12& 140.34\\
+ \hline\hline
+Sample 1 & &&&& \\
+mean&	91.00& 81.00&  79.00&  80.00&  91.00\\
+median&   108.29& 104.77&  104.39&  105.53&  108.09\\	
+stdev&	 98.14&  98.14&   98.14&   98.14&   98.14\\
+\end{tabular}
+\caption{Statistics: daily policy and money market overnight rates (basis points)}
+\label{table:FOMCdailyratestats}
+\end{table}
+
+'''{r}
+rates<-ggplot(rrbp, aes(x = sdate)) +
+  geom_point(aes(y = rrbp[,1], color = "EFFR"), shape = 16, size = 1) + 
+  geom_point(aes(y = rrbp[,2], color = "OBFR"), shape = 16, size = 1) + 
+  geom_point(aes(y = rrbp[,3], color = "TGCR"), shape = 16, size = 1) + 
+  geom_point(aes(y = rrbp[,4], color = "BGCR"), shape = 16, size = 1) + 
+  geom_point(aes(y = rrbp[,5], color = "SOFR"), shape = 16, size = 1) + 
+  labs(x = "X-axis", y = "Y-axis", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "OBFR" = "blue", "TGCR" = "green", "BGCR" = "orange", "SOFR" = "red")) + 
+  #scale_x_date(labels = date_format("%Y-%m-%d")) +
+  #scale_x_date(labels = date_format("%Y-%m-%d")) +
+  theme_minimal()
+  print(rates)
+'''
+
+'''{r}
+summary(rrbp)
+'''
+
+'''{r}
+ with(rrbp,boxplot(rrbp, 
++                   col= "lightgray",   
++                   main= "Overnight rates",
++                   xlab= "", 
++                   ylab= "basis points (bp)", 
++                   ylim= c(0,450), 
++                   #abline(h=quantile(rrbp,c(0.25,0.75)),col="blue"),
++                   names= c("EFFR","OBFR","TGCR","BGCR","SOFR"), # group names
++                   las= 1,  
++                   boxwex =0.6))
+'''
+
+#Figures
+#1 Median rates
+#includegraphics[scale=1.0\textwidth]{stackedbarrates}
+#\caption{Annual changes in daily median overnight rates-  EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:stackedmedrates}
+#2 Std rates
+#\includegraphics[scale=1.0\textwidth]{stackedbarrates}
+#\caption{Annual changes in daily median overnight rates-  EFFR, #OBFR, TGCR, BGCR, SOHR}
+#\label{fig:stackedratesd}
+#3 \includegraphics[scale=1.0\textwidth]{dailyratevolmnboxplot}
+#\caption{Daily overnight volumes EFFR,OBFE, TGCR, BGCR, SOHR ($\$$ billions)}
+#\label{fig:annualratevolmnboxplotsample1}
+
+## Times series behavior of rates within different FOMC policy regimes
+For the sample period 2016 through 2022, median transactions in unsecured rates were $\$$210 billion (EFFR), $\$$312 billion (OBFR) (Table \ref{table:FOMCdailyvolumestats}). Volumes in secured rights were much higher $\$$359 (TGCR), $\$$637 (BGCR). It's notable how lower were the volume of transactions in the unsecured rates, the EFFR and OBFR. Trade in SOFR was a small $\$$103 billion where volatility was also the highest, $\$$405 billion. The standard deviations for EFFR, OBFR and  BGCR were around $\$$250 billion,  TGCR a lower $\$$179 billion. The  dollar volume of transactions in the EFFR and SOFR exhibit more volatility than their rates (Table \ref{table:FOMCdailyvolumestats}). 
+
+The standard deviation of the volume of EFFR transactions increased 108 $\$62.5$ billion in 2019 and 197 $\$62.5$ billion in 2020 but fell 170$\$62.5$billion in 2022. SOFR 234 $\$62.5$ billion in 2019 and 168$\$62.5$ billion in 2022 but fell 258 $\$62.5$ billion in 2021.
+
+The largest increases in volatility in EFFR occurred in 2019, 108  billion and 197  billion in 2020.
+The standard deviation of EFFR fell 38 billion in 2017, 87 billion in 2021, and 170 billion in 2022. Volatility in SOFR fell in  
+2017, 9  billion , and 258 billion in 2021.  Major increases occurred in  2019, 234  billion, and  2022,  168	 billion.
+
+#1\includegraphics[scale=1.0, bb=108   268   473   567]{onrateDailyVolumeAll.tex}
+#\caption{Daily overnight rate volumes EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:dailyvolumesALL}
+
+DUPLICATE OF ABOVE OR INTEGRATE
+## Daily volumes of transactions in the interbank market
+The times series behavior of the dollar volume  in overnight rate securities is similar to that of the rates, high levels and volatility in 2020-2022, the tendency to cluster around volumes of the unsecured rates, EFFR and OBFR (Table ~\ref{table:FOMCdailyvolumestats}).
+#Figure \ref{fig:volumesample1}
+#(Figure \ref{fig:stackedmedvol}).
+
+The same can be said for the annual changes in volumes traded, small changes in 2016-1019, large changes in 2020-2022. Volumes in EFFR traded  increased by $\$$407 billion in 2020, then dropped off $\$$216 billion in 2021, and fell a further $\$$164 billion in 2022. Traded volumes are volatile during these years, the standard deviation increasing $\$$197,19 in 2020, falling $\$$87.03 billion in 2021, and dropping another $\$$170 billion in 2022.	
+
+During the earlier years 2016 and 2017,  BGCR volume exceeds TGCR volume until both rates achieve their maximum,  then the reverse as rates and volumes of transactions decline.  During the period of the zero lower bound, there is little trading in any of the overnight rate products. 
+The volume of Effective Federal Funds rate (EFFR) transactions rose 407 in 2020 and fell 216 in 2021 and 164 in 2022 \ref{table:FOMCdailyvolumestats}).
+Then TCGR and BGCR volumes surge as the FOMC raises the Federal Funds rate in 2022.
+(Figure \ref{fig:stackedmedvolumes}). mean, medias, and standard deviations daily volumes ($\$$ billions) characterize their distribution (Table \ref{table:FOMCdailyvolumestats}).
+ 
+The increases in SOFR volumes dwarf the EFFR  increased 068  %268 in 2019 and 878 in 2022. SOFR volumes fell 682 in 2020 and 292 in 2021. Daily SOFR trading volumes, $\$1.1$ trillion
+dwarf the Federal funds market, $\$62.5$ billion.
+(2020? Gibbs CME webinar on repo).
+
+
+## Daily volumes of transactions in the interbank market
+The times series behavior of the dollar volume  in overnight rate securities is similar to that of the rates, high levels and volatility in 2020-2022, the tendency to cluster around volumes of the unsecured rates, EFFR and OBFR (Table ~\ref{table:FOMCdailyvolumestats}).
+#Figure \ref{fig:volumesample1}
+#(Figure \ref{fig:stackedmedvol}).
+
+The same can be said for the annual changes in volumes traded, small changes in 2016-1019, large changes in 2020-2022 (Table \ref{table:FOMCdailyvolumestats}). Volumes in EFFR traded  increased by $\$$407 billion in 2020, then dropped off $\$$216 billion in 2021, and fell a further $\$$164 billion in 2022. Traded volumes are volatile during these years, the standard deviation increasing $\$$197,19 in 2020, falling $\$$87.03 billion in 2021, and dropping another $\$$170 billion in 2022.	
+
+During the earlier years 2016 and 2017,  BGCR volume exceeds TGCR volume until both rates achieve their maximum,  then the reverse as rates and volumes of transactions decline.  During the period of the zero lower bound, there is little trading in any of the overnight rate products. 
+The volume of Effective Federal Funds rate (EFFR) transactions rose 407 in 2020 and fell 216 in 2021 and 164 in 2022 \ref{table:FOMCdailyvolumestats}).
+Then TCGR and BGCR volumes surge as the FOMC raises the Federal Funds rate in 2022.
+(Figure \ref{fig:stackedmedvolumes}). mean, medias, and standard deviations daily volumes ($\$$ billions) characterize their distribution (Table \ref{table:FOMCdailyvolumestats}).
+ 
+The increases in SOFR volumes dwarf the EFFR  increased 068  %268 in 2019 and 878 in 2022. SOFR volumes fell 682 in 2020 and 292 in 2021. Daily SOFR trading volumes, $\$1.1$ trillion
+dwarf the Federal funds market, $\$62.5$ billion.
+(2020? Gibbs CME webinar on repo).
+
+Table \ref{table:FOMCdailyvolumestats}			
+\begin{table}[h!]
+\begin{tabular}{ c c c c c c } 
+\hline
+ Year & EFFR & OBFR & TGCR & BGCR & SOHR \\ [0.5ex]
+\hline
+\hline\hline			
+2016 & &&&& \\
+mean	  237.46&  287.31&  328.90&  682.20&   68.34\\
+median	  248&     290&     334&     683&      67\\
+st dev	   53.99&   27.39&   24.03&   33.23&   17.6699\\
+2017 & &&&& \\
+mean	  203.82&  331.35&  352.49&  744.82&   85.08\\
+median	  206&     340&     357&     756&      85\\
+st dev	   16.1908   34.5731   31.2719   50.5360    8.8775\\
+2018 & &&&& \\
+mean	  179.69&  413.85&  371.08&  759.5&   99.78\\
+median	  160&     382&     394&     804&     79\\
+st dev	   69.8150  140.5001   86.9368  173.7034   80.3122\\
+2019  & &&&& \\
+mean	  183.37&  401.34&  331.30&  368.31&  896.70\\
+median	   72&     175&     430&     456&    1047\\
+st dev	  177.66&  364.78&  176.10&  160.64&  313.27\\
+2020 & &&&& \\
+mean	  586.42&  186.74&  446.44&  308.84&  544.14\\
+median	  479&     148&     350&     341&     365\\
+st dev	  374.84&  160.51&  370.92&  136.61&  386.78\\
+2021 & &&&& \\
+mean	  419.83&  285.00&  319.51&  746.34&  147.5378\\
+median	  263&     339&    362&      879&          73\\
+st dev	  287.82&  146.76&   85.11&  260.05&  128.51\\
+2022 & &&&& \\
+mean&	  166.68&  463.54&  281.25&  344.80&  791.5743\\
+median&	      99&   282&    353&    368&         951\\
+st dev&	  117.04&  304.40&  135.86&   65.15&  297.0925\\
+\hline\hline
+Sample 1 & &&&& \\
+mean&	210.00&  312.00&  359.00&  637.00& 103.00\\	
+median&	283.83&  339.47&  347.78&  562.13& 383.56\\	
+stdev&  250.54&  225.27&  179.02&  247.01& 405.24\\
+\end{tabular}
+\caption{Statistics: daily policy and money market overnight transactions ($\$$ billions)}
+\label{table:FOMCdailyvolumestats}
+\end{table}
+ADD Table and figures display changes in the Fed funds rate and the administered rates IOR and the reward rate ON RRP
+
+
+A more detailed look at the time series properties of reference rates and transactions is evident subsets of the sample that reflect five distinct policy regimes in the data:
+1. normalcy              3/4/2016-7/31/2019     % 4  859
+2. mid cycle adjustment  8/1/2019-10/31/2019 737660  %860 - 923
+3. covid                 11/1/2019-3/16/2020   %924  1032
+4. Zero lower bound (zlb) 3/17/2020-3/16/2022     %1032-1516
+5. Taming inflation     03/17/2022-12/29/2022 %1517-1741
+
+The median EFFR changes from 116 bp during the normalcy period, increases to 212 bp during the adjustment period,then falls precipitously to 127 during covid, reaching a low 7 bp during the zero lower bound ( Table ]ref{table:FOMCrateepochs}). The Federal Funds rate has gone through several increases during the taming of inflation to 233 bp over the period.
+Volatility is low under the two earlier regimes 2016 to 2018. 55 bp during covid, 2 during the ZLB, then rising to 127 pb during the taming of inflation.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c c c c c} 
+\hline
+FOMC rate statistics by policy regimes (bps)\\
+%Date & Change &	$\&$ Federal Funds Rate (pct) \\ [0.5ex] 
+ \hline\hline
+& EFFR&	OBFR&	TGCR&	BGCR&	SOFR\\
+\textbf{2016 to 2018: Returning to Normalcy} & &&&&\\					
+mean&	  133.75&  127.42&  127.32&  130.22&  133.89\\				
+median&	  116.00&  104.00& 104.00&  109.50&  116.00\\				
+stdev&	   74.48&    74.48&   74.48&  74.48&    74.48\\				
+ \hline\hline
+\textbf{mid cycle adjustment 3/4/2016 - 7/31/2019} & &&&&\\				mean&	  200.09&  197.84&  206.30&  206.34&  208.22\\				
+median&	  212.00&  210.00&  207.50&  207.50&  210.00\\				
+stdev&	   15.62&   15.62&   15.62&   15.62&   15.62\\				
+ \hline\hline
+\textbf{Covid	} &  &&&&\\										
+mean&	155.00&  154.00&  152.00&  152.00&  155.00\\				
+median&	  127.40&  126.50&  124.84&  124.84&  127.04\\				
+stdev&	   54.92&   54.92&   54.92&   54.92&   54.92\\				
+ \hline\hline
+\textbf{ZLB	} &  &&&&\\											
+mean&	 6.4070    5.8678    6.1240    5.0599    6.37\\				
+median&	  7.00&    5.00&   7.00&    5.00&   7.00\\				
+stdev&	 2.40&     2.40&     2.40&     2.40&    2.40\\									
+\hline\hline
+\textbf{Inflation} &  &&&&\\												
+mean&	207.04&  206.54&  201.28&  201.21&  202.43\\				
+median&	233.00&  232.00&  226.00&  226.00&  227.00\\				
+stdev&	 129.33&  129.33&  129.33&  129.33&  129.33\\	
+\hline\hline
+\textbf{Sample} &  &&&& \\
+mean&	91.00& 81.00&  79.00&  80.00&  91.00\\
+median&   108.29& 104.77&  104.39&  105.53&  108.09\\	
+stdev&	 98.14&  98.14&   98.14&   98.14&   98.14\\
+\end{tabular}
+\caption{FOMC rate distributions by policy regime 2016 to 2022}
+\label{table:FOMCrateepochs}
+\end{table}
+
+
+REVIEW NEEDED FIGURES AND TABLES FROM BELOW ----------------------------------
+#Figures
+#1 %\includegraphics[scale=1.0, bb=108   268   473   567]{normalcyannotated.png}
+#\caption{Daily overnight rates 2018 Returning to normalcy, 2019 #mid cycle adjustment: EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:daily_onrates}
+#2 \includegraphics[scale=1.0, bb=108   268   473   567]{covidannotated.png}
+#%\caption{ Purchases or sales of U.S. Treasury securities by the #Federal Reserve Bank of New York 2000-2020}
+#\caption{Daily overnight rates  Coping with Covid: EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:FOMCcovid}
+# 3\includegraphics[scale=1.0, bb=108   268   473   567]{zlbannote.png}
+%\caption{ Purchases or sales of U.S. Treasury securities by the #Federal Reserve Bank of New York 2000-2020}
+#\caption{Daily overnight rates Taming inflation: EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:FOMCzlb}
+#4%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+#\caption{Daily overnight rates Taming inflation: EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:FOMCinflation}
+
+
+
+
+#older: integrate with above
+
+#2 Median
+#includegraphics[scale=1.0\textwidth]{stackedbarvolmn}
+#\caption{Annual changes in daily median overnight transactions -  EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:stackedmedvol}
+
+#3 Std dev3{stackedbarratesd.png}
+#\includegraphics[scale=1.0, bb=108   268   473   #567]{stackedbarratesd.png}
+#\caption{Annual changes in daily median overnight rates-  EFFR, #OBFR, TGCR, BGCR, SOHR}
+
+#4 {dailyratevolsdboxplot.png}
+#\includegraphics[scale=1.0, bb=108   268   473   567]{dailyratevolsdboxplot.png}
+#\caption{Daily overnight volumes EFFR,OBFE, TGCR, BGCR, SOHR ($\$$ billions)}
+#\label{fig:annualratevolsdboxplot}
+
+#https://tex.stackexchange.com/questions/246/when-should-i-use-input-vs-include
+#FIGURE
+#\includegraphics[scale=1.0, bb=108   268   473   #567]{Volatilitymeasures.png}
+#\caption{Daily log percent change overnight rates, rolling window of stdev EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+#\label{fig:volmeasures}
+            
+## Weekly rates and reserves}
+#(Hypothesis 1 continued 
+With weekly data on reserves, rates are higher when reserves are low, and the converse when reserves are high or 'ample' (Tables \ref{tab;e:weeklyreserves and \ref{table:statsweeklyratesannual}}). Daily reserve data are available only to Federal Reserve staff, NYFed staff recommended this analysis use  the weekly series of reserves Reserve Balances with Federal Reserve Banks: Week Average (WRESBAL) $\$S$ billions normalized by deposits of commercial banks (DPSACBW027SBOG) $\$S$ billions to control for the growth of the banking industry. Both weekly series ending on Wednesday.
+
+DISCUSS NUMBERS OF NORMALIZED RESERVES
+Total reserves in the U. S. banking system now exceed  $\$$3.081237 trillion (Totresns). At the beginning of 2009, reserves were $\$$800 billion, compared to approximately $\$$10 billion pre-crisis. Reserves continued to increase until late 2014. Fed’s quantitative easing programs raised reserves to  a peak of $\$$2.8 trillion in September 2014.  Peak reserves peaked $\$$4.275 at then end of 2021 In November 2022, From late 2017, when the Federal Open Market Committee began implementing its policy of “balance sheet normalization” aggregate reserves began to decline, reaching a low of $\$$1.4 trillion in early September 2019 (Table \ref{table:weeklyreserves}, Figure \ref{fig:weeklyreserves}). 
+
+During 2016 and 2017 reserves were $\$$180 to $\$$200 million reaching a low of $\$$160 million on 1/4/2017 (Table ~\ref{table:statsweeklyratesannual}).
+During the initial years of the sample from 3/02/2016 until. reserves were around $\$$200 million until 9/28/2016 when reserves fell to $\$$180 million. Then returned to $\$$200 million on 2/15/2017 until  6/24/2018 
+
+From 7/28/2017 to 6/24/2018, volume weighted median overnight money market rates are higher and normalized reserves are low,  0.19 or $\$$190 million  the week of 7/26/2017 (Figure \ref{figure:vmrates}). All rates reach a maximum at the end of June or first week of July 2018. The EFFR and OBFR reach their maximum value 179.56  and 387.74 basis points respectively during the week 6/24/2018.  The money market rates TGCR, BGCR, and SOFR reach their maxima the following  week 7/1/2018,  Reserves per deposits fell to 0.16 or $\$$160 million on 6/27/2018. All rates then decline, reaching their lowest level 4/5/2020 just as reserves begin to increase to 0.18 or or $\$$180 million . The EFFR reaches a low of 1.74 basis points. Reserves increase from  4/5/2020 to 9/15/2021, 0.24 or $\$$240 million then begin to decline.  From 3/13/2022 to the present, all rates rise steeply with the successive increases in the Fed policy rate response to inflation. The EFFR rises on 3/13/2022 from 1,74 to	27.36 basis points. Reserves decline slightly to 0.17 or $\$$170 million at the end of the sample 12/29/2022 (revise data)
+
+
+
+FIND WEEKLY RATES RESERVES FIGURE
+#\caption{Weekly overnight rate volumes EFFR, OBFR, TGCR, BGCR, SOHR}
+#\label{fig:weeklyrateVolumes_all}
+
+
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c} 
+\hline
+Year& WRESBAL ($\$$ billions)& DPSACBW027SBOG ($\$$ billions) (1.0e+04 ) & Normalized\\
+\hline\hline % time 1e+04 billions, mormalize millions
+2016& && \\			
+mean&    0.2592&    1.4275&		0.1786\\
+median&  0.2309&    1.3047& 	0.0349 \\	
+stdev&   0.0840&    0.2503&	    0.0349\\	
+2017& && \\			
+mean&    0.2622&    1.4486&		0.1777\\
+median&  0.2334&    1.3249&		0.0358\\	
+stdev&   0.0861&    0.2465&		0.0358\\
+2018& && \\			
+mean&    0.2697&    1.5041&		0.1749\\
+median&  0.2857&    1.5507& 	0.0386\\	
+stdev&   0.0927&    0.2346& 	0.0386\\
+2019& && \\			
+mean&    0.2882&    1.5757&		0.1783\\
+median&  0.3117&    1.6149&		0.0418\\\	
+stdev&   0.0948&    0.2079&		0.0418\\
+2020& && \\			
+mean& 	 0.3327&    1.6743&     0.1975\\
+median&  0.3268&    1.7144& 	0.0293\\	
+stdev&   0.0637&    0.1367&		0.0293\\
+2021& && \\			
+mean&    0.3646&    1.7571&		0.2077\\
+median&  0.3796&    1.7788&		0.0242\\	
+stdev&   0.0405&    0.0550&		0.0242\\
+2022& && \\			
+mean&    0.3387&    1.7962&		0.1885\\
+median&  0.3285&    1.8008&		0.0165\\	
+stdev&   0.0312&    0.0117&		0.0165\\
+\hline\hline
+Sample 1 3/9/2016 - 12/29/2022 && \\
+mean&	    0.2580&    1.4093&   0.1807\\
+median&	    0.2332&    1.2812&	 0.1858\\
+stdev&	    0.8159&    2.5530&   0.0349\\
+\end{tabular}
+\caption{Statistics: Weekly reserves, 	WRESBAL ($\$$ billions 1.0E+04), commercial bank deposits	DPSACBW027SBOG  ($\$$ billions 1.0E+04),  normalized reserves WRESBAL/DPSACBW027SBOG Sample 2 7/28/2016 - 12/29/2022 (basis points)}
+\label{tab;e:weeklyreserves}
+\end{table}
+
+
+#Above sample is correct but annual values wrong
+#sample1 mid 3/2016-2022  1.0e+04 *
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c} 
+\hline
+Year& WRESBAL ($\$$ billions)& DPSACBW027SBOG ($\$$ billions) (1.0e+04 ) & Normalized ($\$$ millions)\\
+\hline\hline % time 1e+04 billions, mormalize millions	   
+2016&			
+mean&	    0.2287&    1.1301&    0.2058\\		
+median&	    0.2333&    1.1348&    0.2025\\		
+stdev&	    0.0148&    0.0121&    0.0148\\		
+2017&			
+mean&	    0.2249&    1.1771&    0.1921\\	
+median&	    0.2258&    1.1755&    0.191\\		
+stdev&	    0.0097&    0.0151&    0.0078\\		
+2018&			
+mean&	    0.1969&    1.2186&    0.1597\\		
+median&	    0.1951&    1.2192&    0.1618\\		
+stdev&	    0.0171&    0.0134&    0.0158\\	
+2019&			
+mean&	    0.1555&    1.2803&    0.1198\\		
+median&	    0.1536&    1.2780&    0.1215\\		
+stdev&	    0.0078&    0.0242&    0.0073\\		
+2020&			
+mean&	    0.2669&    1.5047&    0.1819\\		
+median&	    0.2855&    1.5501&    0.1759\\		
+stdev&	    0.0552&    0.0972&    0.0289\\		
+2021&			
+mean&	    0.3884&    1.7152&    0.2302\\		
+median&	    0.3944&    1.7130&    0.2302\\		
+stdev&	    0.0337&    0.0543&    0.0138\\		
+2022&			
+mean&	    0.3396&    1.7963&    0.1827 \\		
+median&	    0.3287&    1.8002&   0.189\\		
+stdev&	    0.0316&    0.0116&    0.0168\
+\hline\hline
+Sample  3/9/2016 - 12/29/2022 && \\
+mean&	    0.2580&    1.4093&   0.1807\\
+median&	    0.2332&    1.2812&	 0.1858\\
+stdev&	    0.8159&    2.5530&   0.0349\\
+\end{tabular}
+\caption{Statistics: Weekly reserves, 	WRESBAL ($\$$ billions 1.0E+04), commercial bank deposits	DPSACBW027SBOG  ($\$$ billions 1.0E+04),  normalized reserves WRESBAL/DPSACBW027SBOG Sample 2 7/28/2016 - 12/29/2022 (basis points)}
+\label{table:weeklyreserves}
+\end{table}
+
+
+# numbers disagree win onratesw_tablev3 Sample 2 7/28/2016-12/29/2022		
+#(Table \ref{table:statsweeklyratesannual} )
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c c c } 
+\hline
+ Year & EFFR & OBFR & TGCR & BGCR & SOHR \\ [0.5ex] 
+ \hline\hline			
+2016& &&&& \\	
+mean full&	40.11& 33.29&  33.59& 39.26& 40.55\\	
+median&	    39.00& 30.00&  30.60& 37.80& 39.00\\	
+stdev&	     6.10&  9.09&   9.19& 10.02&  6.76\\
+2017& &&&& \\				
+mean&	101.86&  87.95&  88.30&   91.00&  101.52\\	
+median&	114.20& 101.50& 101.30&  102.10&  114.20\\	
+stdev&	 22.53&  24.14&  24.20&   24.90&   22.65\\	
+2018& &&&& \\				
+mean&	186.46& 185.06& 183.85&  186.31&  185.88\\	
+median&	191.00& 187.20& 187.20&  189.20&  191.00\\	
+stdev&	 31.22&  33.94&  31.31&   30.29&   31.86\\	
+2019& &&&& \\				
+mean&	214.68& 214.36& 216.35&  216.22&  217.82\\
+median&	236.90& 236.80& 237.80&  237.80&  237.40\\	
+stdev&	 33.29&  34.07&  35.51&   35.42&   34.66\\	
+2020& &&&& \\				
+mean&	 34.98&  34.83&  34.31&   33.58&   33.96\\	
+median&	  8.80&   9.00&   8.00&    6.80&    6.70\\	
+stdev&	 56.82&  56.58&  56.42&   56.76&   57.59\\	
+2021& &&&& \\				
+mean&	  5.99&   4.85&   4.82&    3.68&    6.66\\	
+median&	  6.90&   5.00&   5.00&    5.00&    7.60\\	
+stdev&	  2.01&   2.28&   2.19&    1.92&    2.66\\	
+2022& &&&& \\				
+mean&	168.20& 168.34& 164.14&  163.88&  164.50\\	
+median&	158.00& 157.00& 150.20&  150.30&  152.10\\	
+stdev&	142.67& 144.09& 139.10&  139.45&  141.71\\
+\hline\hline
+Sample 1 3/9/2016 - 12/29/2022 &&&& \\
+mean&	108.92&  105.57&  105.08&  106.20& 108.70\\	
+median&	 91.00&   79.42&   79.00&   79.80& 91.00\\	
+stdev&	 98.57&   99.93&   98.68&   98.71&   98.64\\
+\end{tabular}
+\caption{Annual weekly statistics rates of policy and money market transactions ($\$$ billions)}
+\label{table:statsweeklyratesannual}
+\end{table}
+		
+
+
+
+
+###Similar cross section behavior of overnight rates
+HYPOTHESIS2: The evidence that daily policy and money market reference rates vary widely with the prevailing monetary policy, a second puzzle is that daily money market rates hover around Fed targets and quickly revert to them in times of shocks.Bertolini et al note the tendency of short term rates to hover around official targets and quickly revert to them in times of shocks.
+
+Annual average daily median unsecured rates - EFFR, OBFR, and secured rates - TGCR, BGCR, and SOHR, median rates are at most 15 basis points of each other at any year during the sample period 2016-2022. For example, 10 bp in 2016, 15 bp in  2017 5 bp in  2018, 1 bp in 2019 2 bp in 2020, 3 bp in  2021, 8 bp in 2022.  But disperions of the EFFR and SOFR rate between the  25th and 75th percentiles  are large as 250 basis points (Figure \ref{fig:dispersionEFFR}, Figure \ref{fig:dispersionSOFR}). In contrast, the dispersion among volumes traded (the bottom plot) is relatively small except for SOFR (Figure). The New York Fed only provides quintiles for the EFFR and SOFR. The sample standard deviations of the EFFR and SOFR (Figure) vary about 50 basis points between the 25th and 75th percentiles. 
+
+'''{r, echo=FALSE}
+with(rrbp,boxplot(rrbp, 
+                  col= "lightgray",   
+                  main= "Overnight rates",
+                  xlab= "", 
+                  ylab= "basis points (bp)", 
+                  ylim= c(0,450), 
+                  #abline(h=quantile(rrbp,c(0.25,0.75)),col="blue"),
+                  names= c("EFFR","OBFR","TGCR","BGCR","SOFR"), # group names
+                  las= 1,  
+                  boxwex =0.6))
+
+boxplot<-ggplot(rrbp,aes(sdate,rrbp))
+...
+
+'''{r, echo=FALSE}
+plot +
+  geom_boxplot(outlier.col="red")+ stat_summary()
+# qqplot
+plot(sort(rrbp[,1]),sort(rrbp[,5]))
+abline(0,1)
+qq(plot)
+'''
+
+# {dispersionSofr.png}{dispersionffr.png}
+
+## Mean reversion tests:
+From the point of view of finance, overnight federal funds represent the shortest-term security that is actively traded and thus form the base of any term structure relation. 
+# Indeed, recent papers by Balduzzi, Bertola, and Foresi (1993), Roberds, Runkle, and Whiteman (1994), and
+# Rudebusch (1994) suggest that several well-known puzzles in the term structure of interest rates can be # resolved by tracking these relations back to daily changes in the federal funds rate.
+
+There is controversy if overight rates, the FFR in particular, follow a random walk. Hamilton (1996) and others have concluded that the hypothesis that the FFR follows a martingalemis inconsistent with observed daily changes in the federal funds rate. (Bertolini,Bertola, Prati ,) site frictions such as  transactions costs, interbank credit limits, overdraft penalties, obstacles to intra-period arbitrage preclude the FFR from following a martingale process.
+
+f the FFR were to follow a random walk, then  Federal Funds  are perfect substitutes on any business day for  satisfying banks' liquidity needs, $i_t = E_t i_{t+1}$.  A natural hypothesis would be that the federal funds rate on day t  should be equal to the rate that banks' funds traders expect to hold the following day. Otherwise, profits for trading.  If $i_t > E_t i_{t+}$, it would pay a bank to lend one more dollar on today's federal funds market. That leaves the bank the possibilities of borrow one more dollar at date t + 1 to fulfill its desired level at an expected lower cost $i_{t+1}$, or it leaves the bank with one less dollar of excess reserves available for lending tomorrow, an expected opportunity cost $i_{t+}$ of  forgone revenue. In either case, the bank would profit by lending today. 
+
+To test for mean reversion, Fama and French (1988b)Fama and French use regressions tests to study serial correlation in many-period returns. They regress multiperiod returns on lagged multiperiod returns. If R~ denotes the de-meaned k-period return, the regression coefficient is
+(3)  Regress R^k(t), the demeaned k period return,  on R^k(t-k).  Their regression tests reject the null hypothesis of serially independent returns. Their results are stronger than the variance-ratio test
+
+To gain insight into the idea that FFR rates on any day are subtsitutes, I repeated Fama French regressions of the five daily overnight rates on their lags of 1, 2, 3, 5, 7, up to 10 days;
+\begin{equation*}
+r_T = a + b_t r_(t-k)}
+\end{equation*}
+
+
+%ADD t,se F stats
+The coefficients of the EFFR on prior days are close to 1, different from other evidence the Fed Funds rate is not a martingale (Hamilton, 1996 and others).  The regression coefficient of the EFFR on the prior day is 1.02, 1.06 two days, 1.07 three days, and  1.12 five days (Table ~\ref{table:dailyratesvar}).  This suggests the Federal Funds rate is a martingale in the high frequency data, over one or two trading days. With 1710 observations, standard errors are small. Intercepts $gamma_0$, however,  are non zero.
+
+That other rates are substitutes for the FFR for bank liquidity needs is low on a daily basis but the adjustment to the EFFR increases at longer lags. All rates OBFR, TGCR, BGCR, SOFR load significantly on the prior lag of the EFFR. For a one day lag, the OBFR coefficient on the EFFR is 0.4, TGCR 0.53, BGCR 0.54 but 0.85 on SOFR. Loadings on longer lags are higher, on five days the OBFR reaching 0.78, 0.81 TGCR, 0.84 BCGR, and 1.06  SOFR.%(Table \ref{table:dailyratesvar})/ This high frequency evidenve that other rates adjust within days to settings of the FFR.
+
+\begin{table}[h!]
+%\centering
+\begin{tabular}{ c c c c c c c c c c c c}  
+\hline
+&& gamma0&  EFFR & OBFR & TGCR & BGCR & SOHR &&&\\ [0.5ex]
+\hline
+1 day &	&&&& &&&&&&\\
+	&&	gamma&	beta1&	beta2&	beta3&	beta4&	beta5&	R2adj& 	chi2&	df&	p\\
+EFFR&	coefficient&	0.29&	1.02&	0.01&	0.03&	0.02&  -0.08&	0.996&	704478.60&	5&	0\\
+&	standard deviation&	0.18&	0.13&	0.14&	0.15&	0.06&	0.14& & & \\				
+OBFR&	coefficient&   -0.86&	0.40&	0.64&	0.18&	0.03&  -0.24&	0.995&	377463.04&	5&	0\\
+&	standard deviation&	0.28&	0.09&	0.10&	0.11&	0.05&	0.09&	& & \\				
+TGCR&	coefficient&	-0.63&	0.53&	0.23&	0.56&	0.00&	-0.33&	0.989&	396161.34&	5&	0\\
+&	standard deviation&	0.30&1	0.13&	0.10	0.11&	0.054&	0.12&		& & \\			
+BGCR&	coefficient&	-0.52&	0.54&	0.22&	-0.27&	0.83&	-0.33&	0.989&	396105.19&	5&	0\\
+&	standard deviation&	0.29&	0.13&	0.10&	0.11&	0.06&	0.12&	& & \\			
+SOFR&	coefficient&	-0.28&	0.85&	-0.01&	-0.02&	0.04&	0.14&	0.992&	264058.72&	5&	0\\
+&	standard deviation&	0.27&   0.11&	0.10&	0.12&	0.04&	0.09&	& & \\		
+2 days &	&&&& &&&&&&\\									
+EFFR&	coefficient&	0.42&	1.06&	0.07&	-0.08&	0.11&	-0.15&	0.993&	191091.52&	5&	0\\
+&	standard deviation&	0.33&	0.21&	0.24&	0.26&	0.07&	0.20&  & & \\					
+OBFR&	coefficient&	-1.29&	0.60&	0.54&	0.22&	-0.05&	-0.30&	0.991&	113581.86&	5&	0\\
+&	standard deviation&	 0.45&	0.13&	0.16	0.18&	0.06&	0.14& & & \\					
+TGCR&	coefficient&	-0.82&	0.58&	0.42&	0.20&	-0.02&	-0.27&	0.985&	149327.88&	5&	0\\
+&	standard deviation&	0.47&	0.15&	0.18&	0.19&	0.07&	0.15& & & \\					
+BGCR&	coefficient&	-0.68&	0.60&	0.40&	-0.49&	0.75&	-0.26&	0.985&	152047.97&	5&	0\\
+&		standard deviation&	0.44&	0.15&	0.18&	0.20&	0.08&	0.15& & & \\				
+SOFR&	coefficient&	0.10&	0.90&	0.15&	-0.16	0.08&	0.03&	0.988&	139321.66&	5&	0\\
+&	standard deviation&	0.38&	0.20&	0.21&	0.22&	0.06&	0.19& & & \\				
+3 days &	&&&& &&&&&&\\																								EFFR&	coefficient&	0.49&	1.07&	0.07&	-0.09&	0.11&  -0.16&	0.990&	80998.54&	5&	0\\
+&	standard deviation&	0.43&	0.21&	0.25&	0.27&	0.07&	0.20& & & \\				
+OBFR&	coefficient&   -1.70&	0.68&	0.47&	0.25&  -0.14&  -0.25&	0.987&	52944.95&	5&	0\\
+&	standard deviation&	0.66&	0.16&	0.20&	0.23&	0.10&	0.17&	 & & \\			
+TGCR&	coefficient&   -1.23&	0.66&	0.38&	0.27&  -0.11&  -0.21&	0.982&	76868.51&	5&	0\\
+&	standard deviation&	0.65&	0.16&	0.21&	0.23&	0.10&	0.18&  & & \\			
+BGCR&	coefficient&   -1.06&	0.69&	0.36&  -0.45&	0.60&  -0.20&	0.982&	78734.43&	5&	0\\
+&&	standard deviation&	0.60&	0.17&	0.21&	0.23&	0.11&	0.17&  & & \\			
+SOFR&	coefficient&	0.08&	0.98&	0.09&  -0.15&	0.14&	-0.07&	0.985&	80680.11&	5	0\\
+&	standard deviation&	0.46&	0.21&	0.25&   0.26&	0.08&	0.21&  & & \\				
+5 days &	&&&&&&&&&&\\																								EFFR&	coefficient&	0.55&	1.12&	0.07&	-0.08&	0.11&	-0.21&	0.985&	29175.87&	5&	0\\
+&	standard deviation&	0.69&	0.21&	0.26&	0.27&	0.09&	0.21&	& & \\			
+OBFR&	coefficient&	-1.73&	0.78&   0.41&	0.34&  -0.22&  -0.30&	0.982&	21739.70&	5&	0\\
+&	standard deviation&	0.90&	0.18&	0.21&	0.23&	0.12&	0.17& & & \\				
+TGCR&	coefficient&	-1.34&	0.81&	0.28&	0.40&	-0.18&	-0.32&	0.977&	26547.55&	5&	0\\
+&	standard deviation&	0.86&	0.17&	0.20&	0.22&	0.12&	0.16& & & \\				
+BGCR&	coefficient*	-1.19&	0.84&	0.25&	-0.28&	0.48&	-0.29&	0.977&	26814.02&	5&	0\\
+&	standard deviation&	0.81&	0.17&	0.21&	0.24&	0.15&	0.17 & & \\				
+SOFR&	coefficient&	0.10&	1.06&	0.05&	-0.10&	0.13&	-0.13&	0.980&	28707.10&	5&	0\\
+&	standard deviation&	0.68&	0.21&	0.25&	0.27&	0.09&	0.20& & \\		
+\end{tabular}
+\caption{Daily policy and money market rates regressed on lagged rates}
+\label{table:dailyratesvar}
+\end{table}
+
+'''{r}
+k=1
+lhv<- rrbp[2:1710,1:5]
+ones_v <- rep(1, times = T-1)
+nrow(ones_v)
+rhv1<- rrbp[1:1709,1:5]
+
+result <-olsgmmv2(lhv,rhv,nlag,nw)  #constant
+#print(list_res)
+print(result[[1]]) # bv
+print(result[[2]]) # sebv
+print(result[[4]]) # R2adj
+print(result[[5]]) # v covariance
+print(result[[6]]) # Ftest
+
+bvtablek1<-xtable(result[[1]])
+sebvtablek1<-xtable(result[[2]])
+R2adjtablek1<-xtable(result[[4]])
+vtablek1<-xtable(result[[5]])
+Ftesttablek1<-xtable(result[[6]])
+rrbpk1table <- cbind(bvtablek1, sebvtablek1)
+
+ print(result[[1]]) # bv
+               EFFR       OBFR        TGCR       BGCR         SOFR
+EFFR    1.020054345  0.4023372  0.52838412  0.5455493  0.853947953
+OBFR    0.007762317  0.6388293  0.23396802  0.2168926 -0.009357355
+TGCR    0.039503984  0.1814876  0.55974443 -0.2697984 -0.021656582
+BGCR    0.015277354  0.0269446  0.00431224  0.8347329  0.035333200
+SOFR   -0.081238522 -0.2444673 -0.32714926 -0.3278894  0.144732618
+ones_v  0.291860317 -0.8579167 -0.62940967 -0.5214771 -0.282425829
+> print(result[[2]]) # sebv
+          [,1]       [,2]       [,3]      [,4]       [,5]
+[1,] 0.1268243 0.10705335 0.14167362 0.1400492 0.10528421
+[2,] 0.1366107 0.11064621 0.14119800 0.1396571 0.12352944
+[3,] 0.1470317 0.11653708 0.16355764 0.1739493 0.14179146
+[4,] 0.0515202 0.06648629 0.07764863 0.1045401 0.03906772
+[5,] 0.1243188 0.08974691 0.12046807 0.1213039 0.08634243
+[6,] 0.1721229 0.38636386 0.38481799 0.3553826 0.21189063
+> print(result[[4]]) # R2adj
+         EFFR     OBFR      TGCR      BGCR      SOFR
+[1,] 0.999998 0.999997 0.9999937 0.9999936 0.9999951
+	
+'''{r}
+ list_res <- list(bv, sebv, R2v, R2vadj, v, Ftest)
+bvtablek10<-xtable(result[[1]])
+sebvtablek10<-xtable(result[[2]])
+R2adjtablek10<-xtable(result[[4]])
+vtablek10<-xtable(result[[5]])
+Ftesttablek10<-xtable(result[[6]])
+rrbpk10table <- cbind(bvtablek2, sebvtablek2)
+bv
+               EFFR       OBFR        TGCR       BGCR         SOFR
+EFFR    1.020054345  0.4023372  0.52838412  0.5455493  0.853947953
+OBFR    0.007762317  0.6388293  0.23396802  0.2168926 -0.009357355
+TGCR    0.039503984  0.1814876  0.55974443 -0.2697984 -0.021656582
+BGCR    0.015277354  0.0269446  0.00431224  0.8347329  0.035333200
+SOFR   -0.081238522 -0.2444673 -0.32714926 -0.3278894  0.144732618
+ones_v  0.291860317 -0.8579167 -0.62940967 -0.5214771 -0.282425829
+
+ colMeans(lhv,  dim(lhv))
+    EFFR     OBFR     TGCR     BGCR     SOFR 
+108.3745 104.8578 104.4833 105.6173 108.1761 
+
+ s2
+     EFFR      OBFR      TGCR      BGCR      SOFR 
+ 33.14544  49.96864 104.78123 105.42146  80.68448 
+'''
+
+'''{r}
+k=2
+08122023
+lhv<- rrbp[3:1710,1:5]
+ones_v <- rep(1, times = T-2)
+nrow(ones_v)
+rhv1<- rrbp[1:1708,1:5]
+rhv<- cbind(rhv1, ones_v) # Add a column of ones
+nrow(lhv)
+nrow(rhv)
+
+lags<-1
+weight<-1
+
+nlag<-1
+nw<-1
+result <-olsgmm(lhv,rhv,nlag,nw) 
+
+ list_res <- list(bv, sebv, R2v, R2vadj, v, Ftest)  #[1]-[6]
+bvtablek2<-xtable(result[[1]])
+sebvtablek2<-xtable(result[[2]])
+R2adjtablek2<-xtable(result[[4]])
+vtablek2<-xtable(result[[5]])
+Ftesttablek2<-xtable(result[[6]])
+rrbpk2table <- cbind(bvtablek2, sebvtablek2)
+
+{[1}]}  ve
+              EFFR        OBFR        TGCR       BGCR        SOFR
+EFFR    1.05838713  0.59626619  0.58268091  0.5971366  0.89971230
+OBFR    0.06717057  0.53844503  0.41909588  0.4011174  0.15404395
+TGCR   -0.08049047  0.22014995  0.28875605 -0.4896946 -0.15930158
+BGCR    0.10801610 -0.04636221 -0.02173975  0.7500047  0.08037990
+SOFR   -0.15086465 -0.30099255 -0.26986483 -0.2594046  0.02803983
+ones_v  0.41546561 -1.29321787 -0.82156816 -0.6799750  0.10513175
+
+[[2]] sebv
+           [,1]       [,2]      [,3]      [,4]       [,5]
+[1,] 0.19224969 0.15112576 0.1589209 0.1573739 0.17288392
+[2,] 0.21710890 0.16754611 0.1733697 0.1724966 0.18417567
+[3,] 0.22907068 0.17925385 0.1902589 0.2033540 0.19962889
+[4,] 0.06178436 0.09139898 0.0954035 0.1209460 0.06360897
+[5,] 0.18627062 0.13622741 0.1396832 0.1417502 0.16737415
+[6,] 0.28059897 0.52877736 0.5134283 0.4702245 0.27187832
+
+ print(result[[4]]) # R2adj
+          EFFR      OBFR      TGCR      BGCR      SOFR
+[1,] 0.9999961 0.9999945 0.9999914 0.9999914 0.9999931
+
+
+[[6]] Ftest
+         [,1] [,2] [,3]
+[1,] 320519.5    6    0
+[2,] 201937.6    6    0
+[3,] 126780.2    6    0
+[4,] 122338.0    6    0
+[5,] 206765.7    6    0
+'''
+
+
+'''{r}
+print(list_res)
+print(result[[1]])
+print(result[[2]])
+print(result[[4]]) # R2adj
+print(result[[6]])
+bvtablek2<-xtable(result[[1]])
+sebvtablek2<-xtable(result[[2]])
+R2adjtablek2<-xtable(result[[4]])
+vtablek2<-xtable(result[[5]])
+Ftesttablek2<-xtable(result[[6]])
+rrbpk2table <- cbind(bvtablek2, sebvtablek2)
+'''
+'''{r}
+k=5  # k=5 r(6,11) = a +b_1 r(6,1)
+lhv<- rrbp[6:1710,1:5]
+ones_v <- rep(1, times = T-5)
+nrow(ones_v)
+rhv1<- rrbp[1:1705,1:5]
+
+result <-olsgmmv2(lhv,rhv,nlag,nw)  #constant
+#print(list_res)
+print(result[[1]]) # bv
+print(result[[2]]) # sebv
+print(result[[4]]) # R2adj
+print(result[[5]]) # v covariance
+print(result[[6]]) # Ftest
+
+bvtablek5<-xtable(result[[1]])
+sebvtablek5<-xtable(result[[2]])
+R2adjtablek5<-xtable(result[[4]])
+vtablek5<-xtable(result[[5]])
+Ftesttablek5<-xtable(result[[6]])
+rrbpk5table <- cbind(bvtablek5, sebvtablek5)
+
+
+> print(result[[1]]) # bv
+              EFFR       OBFR       TGCR       BGCR        SOFR
+EFFR    1.11654975  0.7857545  0.8143213  0.8432913  1.05668417
+OBFR    0.06870999  0.4139177  0.2829368  0.2548488  0.04792432
+TGCR   -0.08193113  0.3431323  0.4031973 -0.2786523 -0.09762650
+BGCR    0.11061654 -0.2255478 -0.1790322  0.4806834  0.13464187
+SOFR   -0.20653220 -0.3032504 -0.3155746 -0.2939348 -0.13238129
+ones_v  0.55366160 -1.7328341 -1.3366881 -1.1867142  0.10651422
+> print(result[[2]]) # sebv
+           [,1]       [,2]       [,3]      [,4]       [,5]
+[1,] 0.18815632 0.15957079 0.15612968 0.1572547 0.18620873
+[2,] 0.21735870 0.18291541 0.17979047 0.1818249 0.21784464
+[3,] 0.23104060 0.19471644 0.19556972 0.2118511 0.23618841
+[4,] 0.06537717 0.09766023 0.09726182 0.1188078 0.06932747
+[5,] 0.18389347 0.15261152 0.14583393 0.1495088 0.18356647
+[6,] 0.45027356 0.64010019 0.61466950 0.5746012 0.44359645
+> print(result[[4]]) # R2adj
+          EFFR      OBFR      TGCR      BGCR      SOFR
+[1,] 0.9999912 0.9999892 0.9999865 0.9999863 0.9999882
+> print(result[[5]]) # v covariance
+               EFFR         OBFR         TGCR         BGCR         SOFR       ones_v         EFFR         OBFR         TGCR
+EFFR    0.035402800 -0.039543474  0.041172082 -0.003187188 -0.033727551 -0.014756166  0.025462836 -0.027765601  0.025734858
+OBFR   -0.039543474  0.047244803 -0.048320216  0.002568084  0.037995561  0.015536165 -0.027765601  0.033458049 -0.031074632
+TGCR    0.041172082 -0.048320216  0.053379757 -0.005815532 -0.040270338 -0.006336693  0.025734858 -0.031074632  0.037914493
+BGCR   -0.003187188  0.002568084 -0.005815532  0.004274174  0.002078670 -0.001739719 -0.005278662  0.004370426 -0.007461339
+SOFR   -0.033727551  0.037995561 -0.040270338  0.002078670  0.033816808  0.006315559 -0.017992218  0.020922718 -0.024941154
+ones_v -0.014756166  0.015536165 -0.006336693 -0.001739719  0.006315559  0.202746282 -0.033232177  0.031438829 -0.008444274
+               BGCR        SOFR       ones_v         EFFR         OBFR        TGCR          BGCR          SOFR      ones_v
+EFFR   -0.005278662 -0.01799222 -0.033232177  0.024376478 -0.026714919  0.02508085 -0.0055840532 -0.0169704174 -0.03257839
+OBFR    0.004370426  0.02092272  0.031438829 -0.026714919  0.032324612 -0.03071401  0.0051773163  0.0197748800  0.03124856
+TGCR   -0.007461339 -0.02494115 -0.008444274  0.025080852 -0.030714010  0.03824752 -0.0087140801 -0.0236216506 -0.01116472
+BGCR    0.009537521 -0.00133455  0.025140280 -0.005584053  0.005177316 -0.00871408  0.0094598624 -0.0005392963  0.02378533
+SOFR   -0.001334550  0.02329027 -0.016535676 -0.016970417  0.019774880 -0.02362165 -0.0005392963  0.0212675354 -0.01278658
+ones_v  0.025140280 -0.01653568  0.409728251 -0.032578389  0.031248562 -0.01116472  0.0237853332 -0.0127865824  0.37781860
+               EFFR         OBFR        TGCR          BGCR          SOFR       ones_v         EFFR         OBFR         TGCR
+EFFR    0.024729048 -0.027230050  0.02659486 -0.0049254856 -0.0189899634 -0.026152659  0.034673692 -0.039180195  0.041213841
+OBFR   -0.027230050  0.033060295 -0.03240891  0.0045425539  0.0218919187  0.025235630 -0.039180195  0.047456287 -0.049395733
+TGCR    0.026594864 -0.032408908  0.04488088 -0.0136745354 -0.0250836090 -0.012483016  0.041213841 -0.049395733  0.055784967
+BGCR   -0.004925486  0.004542554 -0.01367454  0.0141153002 -0.0002733364  0.019982253 -0.003108522  0.002882239 -0.006751937
+SOFR   -0.018989963  0.021891919 -0.02508361 -0.0002733364  0.0223528837 -0.007988554 -0.033427693  0.038095821 -0.040555809
+ones_v -0.026152659  0.025235630 -0.01248302  0.0199822530 -0.0079885542  0.330166576 -0.016199528  0.016504878 -0.009439698
+                BGCR         SOFR        ones_v
+EFFR   -0.0031085220 -0.033427693 -0.0161995282
+OBFR    0.0028822394  0.038095821  0.0165048784
+TGCR   -0.0067519370 -0.040555809 -0.0094396980
+BGCR    0.0048062979  0.002031406 -0.0006291126
+SOFR    0.0020314064  0.033696651  0.0086863731
+ones_v -0.0006291126  0.008686373  0.1967778111
+> print(result[[6]]) # Ftest
+          [,1] [,2] [,3]
+[1,] 134541.92    6    0
+[2,]  85791.48    6    0
+[3,]  70282.36    6    0
+[4,]  67288.42    6    0
+[5,] 112508.82    6    0
+
+'''
+
+'''{r}
+#k=10 r(11,21) = a +b_1 r(11,1)                                
+lhv<- rrbp[11:1710,1:5]
+ones_v <- rep(1, times = T-10)
+nrow(ones_v)
+rhv1<- rrbp[1:1699,1:5]
+result <-olsgmmv2(lhv,rhv,nlag,nw)  #constant
+#print(list_res)
+print(result[[1]]) # bv
+print(result[[2]]) # sebv
+print(result[[4]]) # R2adj
+print(result[[5]]) # v covariance
+print(result[[6]]) # Ftest
+
+bvtablek10<-xtable(result[[1]])
+sebvtablek10<-xtable(result[[2]])
+R2adjtablek10<-xtable(result[[4]])
+vtablek10<-xtable(result[[5]])
+Ftesttablek10<-xtable(result[[6]])
+rrbpk10table <- cbind(bvtablek10, sebvtablek10)
+
+            EFFR       OBFR       TGCR       BGCR        SOFR
+EFFR    1.26397302  0.8871486  0.8995134  0.9291447  1.18176903
+OBFR    0.03960522  0.4309401  0.3199252  0.2908199  0.05302475
+TGCR   -0.07894851  0.3091551  0.3402906 -0.2885068 -0.12972998
+BGCR    0.11437529 -0.1608072 -0.1100620  0.5060088  0.14571479
+SOFR   -0.32272882 -0.4436946 -0.4348363 -0.4221668 -0.23234668
+ones_v  0.68430219 -1.3857355 -1.0509042 -0.8460216  0.21191251
+> print(result[[2]]) # sebv
+           [,1]      [,2]      [,3]      [,4]       [,5]
+[1,] 0.20892109 0.1743107 0.1581115 0.1589862 0.19683651
+[2,] 0.23489666 0.1908714 0.1798131 0.1824249 0.22692623
+[3,] 0.25757730 0.2124717 0.2029555 0.2232339 0.24951946
+[4,] 0.08281188 0.1092355 0.1117780 0.1378801 0.08324039
+[5,] 0.20855607 0.1695159 0.1504028 0.1537901 0.19981445
+[6,] 0.64079827 0.7850955 0.7672610 0.7361805 0.62942347
+> print(result[[4]]) # R2adj
+          EFFR      OBFR      TGCR      BGCR      SOFR
+[1,] 0.9999824 0.9999808 0.9999787 0.9999786 0.9999801
+> print(result[[5]]) # v covariance
+               EFFR         OBFR         TGCR         BGCR         SOFR       ones_v         EFFR         OBFR         TGCR
+EFFR    0.043648021 -0.043018561  0.044876819 -0.002980038 -0.042352198 -0.016850454  0.030384228 -0.026718386  0.024643024
+OBFR   -0.043018561  0.055176442 -0.056967020  0.002300389  0.042433692  0.013249259 -0.026718386  0.036431883 -0.034578487
+TGCR    0.044876819 -0.056967020  0.066346067 -0.008299396 -0.045658224  0.004202031  0.024643024 -0.034578487  0.045144215
+BGCR   -0.002980038  0.002300389 -0.008299396  0.006857808  0.001923460 -0.006200593 -0.005648924  0.004803758 -0.009974637
+SOFR   -0.042352198  0.042433692 -0.045658224  0.001923460  0.043495633  0.003507452 -0.022452684  0.019952278 -0.024911286
+ones_v -0.016850454  0.013249259  0.004202031 -0.006200593  0.003507452  0.410622419 -0.036221865  0.030371176  0.002714693
+               BGCR         SOFR       ones_v         EFFR         OBFR        TGCR         BGCR         SOFR      ones_v
+EFFR   -0.005648924 -0.022452684 -0.036221865  0.024999251 -0.026200757  0.02423891 -0.005692384 -0.017150087 -0.03570792
+OBFR    0.004803758  0.019952278  0.030371176 -0.026200757  0.032332743 -0.03036377  0.004968152  0.019153606  0.02988026
+TGCR   -0.009974637 -0.024911286  0.002714693  0.024238911 -0.030363771  0.04119093 -0.011051267 -0.023679124  0.00162691
+BGCR    0.011932395 -0.001406146  0.022052861 -0.005692384  0.004968152 -0.01105127  0.012494330 -0.001020262  0.02027733
+SOFR   -0.001406146  0.028735640 -0.021596199 -0.017150087  0.019153606 -0.02367912 -0.001020262  0.022620995 -0.01853874
+ones_v  0.022052861 -0.021596199  0.616374935 -0.035707922  0.029880257  0.00162691  0.020277331 -0.018538744  0.58868938
+               EFFR         OBFR         TGCR          BGCR          SOFR       ones_v         EFFR         OBFR         TGCR
+EFFR    0.025276621 -0.026812622  0.026333530 -0.0054174537 -0.0191910435 -0.029606005  0.038744613 -0.042025141  0.043799004
+OBFR   -0.026812622  0.033278840 -0.032737235  0.0046985136  0.0214675909  0.024099538 -0.042025141  0.051495515 -0.053116502
+TGCR    0.026333530 -0.032737235  0.049833366 -0.0178269473 -0.0252246126 -0.001231179  0.043799004 -0.053116502  0.062259961
+BGCR   -0.005417454  0.004698514 -0.017826947  0.0190109131 -0.0007930852  0.017449841 -0.002063489  0.001491353 -0.007667676
+SOFR   -0.019191044  0.021467591 -0.025224613 -0.0007930852  0.0236513871 -0.013094726 -0.038292451  0.042074539 -0.044937880
+ones_v -0.029606005  0.024099538 -0.001231179  0.0174498412 -0.0130947261  0.541961682 -0.017039334  0.012750243  0.004211474
+               BGCR         SOFR       ones_v
+EFFR   -0.002063489 -0.038292451 -0.017039334
+OBFR    0.001491353  0.042074539  0.012750243
+TGCR   -0.007667676 -0.044937880  0.004211474
+BGCR    0.006928963  0.001082769 -0.007041732
+SOFR    0.001082769  0.039925816  0.005116623
+ones_v -0.007041732  0.005116623  0.396173909
+> print(result[[6]]) # Ftest
+         [,1] [,2] [,3]
+[1,] 64835.24    6    0
+[2,] 45526.88    6    0
+[3,] 43793.99    6    0
+[4,] 40925.88    6    0
+[5,] 66505.90    6    0
+> 
+
+'''
+# second try with rolling average rates for k=2, 5, 10
+'''{r}
+T<-nrow(rrbp2) #[1] 1709
+lhv<- rrbp2[2:1709,1:5]
+ones_v <- rep(1, times = T-1)
+nrow(ones_v)
+rhv1<- rrbp2[1:1708,1:5]
+
+rhv<- cbind(rhv1, ones_v) # Add a column of ones
+nrow(lhv)
+nrow(rhv)
+nlag<-1
+nw<-1
+
+result <-olsgmmv2(lhv,rhv,nlag,nw)  #constant
+#print(list_res)
+print(result[[1]]) # bv
+print(result[[2]]) # sebv
+print(result[[4]]) # R2adj
+print(result[[5]]) # v covariance
+print(result[[6]]) # Ftest
+bvtablek2<-xtable(result[[1]])
+sebvtablek2<-xtable(result[[2]])
+R2adjtablek2<-xtable(result[[4]])
+vtablek2<-xtable(result[[5]])
+Ftesttablek2<-xtable(result[[6]])
+#rrbpk2table <- cbind(bvtablek2, sebvtablek2)
+'''
+#k=5
+'''{r}
+lhv<- rrbp5[2:1706,1:5]
+T<-nrow(lhv) 
+ones_v <- rep(1, times = T)
+nrow(ones_v)
+rhv1<- rrbp5[1:1705,1:5]
+
+rhv<- cbind(rhv1, ones_v) # Add a column of ones
+nrow(lhv)
+nrow(rhv)
+nlag<-1
+nw<-1
+
+result <-olsgmmv2(lhv,rhv,nlag,nw)  #constant
+#print(list_res)
+print(result[[1]]) # bv
+print(result[[2]]) # sebv
+print(result[[4]]) # R2adj
+print(result[[5]]) # v covariance
+print(result[[6]]) # Ftest
+
+bvtablek5<-xtable(result[[1]])
+sebvtablek5<-xtable(result[[2]])
+R2adjtablek5<-xtable(result[[4]])
+vtablek5<-xtable(result[[5]])
+Ftesttablek5<-xtable(result[[6]])
+rrbpk5table <- cbind(bvtablek5, sebvtablek5)
+'''
+#k=10
+'''{r}
+lhv<- rrbp10[2:1701,1:5]
+T<-nrow(lhv) 
+ones_v <- rep(1, times = T)
+nrow(ones_v)
+rhv1<- rrbp10[1:1700,1:5]
+rhv<- cbind(rhv1, ones_v) # Add a column of ones
+nrow(lhv)
+nrow(rhv)
+nlag<-1
+nw<-1
+
+result <-olsgmmv2(lhv,rhv,nlag,nw)  #constant
+#print(list_res)
+print(result[[1]]) # bv
+print(result[[2]]) # sebv
+print(result[[4]]) # R2adj
+print(result[[5]]) # v covariance
+print(result[[6]]) # Ftest
+
+bvtablek10<-xtable(result[[1]])
+sebvtablek10<-xtable(result[[2]])
+R2adjtablek10<-xtable(result[[4]])
+vtablek10<-xtable(result[[5]])
+Ftesttablek10<-xtable(result[[6]])
+rrbpk10table <- cbind(bvtablek10, sebvtablek10)
+'''
+##Test for mean reversion: variance ratio test
+#sum 1+ weighted sum of autocorrelation up to the optimal order
+Variance ratio tests exploit the fact that if the logarithm of the cumulated dividends, follows a random walk then the return variance should be proportional to the return horizon. 
+(k) = [Var(R)/k]/[Var(R2)/12) k k-i
+where Rt = Rt., Rt denoting the total return in month. This statistic converges to unity if returns are uncorrelated through time. If some of the price variation is due to transitory factors, this will generate negative autocorrelations at some lags and yield a variance ratio below one.
+Poterba and Sommers find, for the testing for transitory components in stock prices, variance ratio tests as used by Fama and French (1986a) and Lo and MacKinlay (1987) come close to being the most powerful tests of the null hypothesis of market efficiency cum constant required returns against plausible alternative hypotheses such as the "fads" model suggested by Shiller (1984) and Summers (1986). 
+
+ 
+FF used nominal. We consider nominal returns on these indices, excess returns with the risk-free rate measured as the Treasury bill yield, as well as real returns measured using the CPI inflation rate..
+
+Fama and French (1986a) and Lo and MacKinlay (1987) compare the relative variability of returns (1987) over different horizons using variance ratio tests. Using excess or real returns, returns at long horizons exhibit negative serial correlation if the variance ratio < 1
+
+
+I compare daily to weekly returns.  No  negative serial correlation as the variance ratio is close to 1
+
+'''{r}
+Var_ratio <-var.test(rrbpts, rrbpwts, ratio = 1,
+         alternative = c("two.sided", "less", "greater"),
+         conf.level = 0.95)
+	F test to compare two variances
+
+data:  rrbpts and rrbpwts
+F = 0.99719, num df = 8549, denom df = 1784, p-value = 0.9328
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.9269649 1.0708920
+sample estimates:
+ratio of variances 
+         0.9971941 
+'''
+
+Reference: variance ratio tests with high frequency data
+
+<!-- #The variance ratio is closely related to earlier tests based on estimated -->
+<!-- autocorrelations. Cochrane (1986) shows that the ratio of the k—month return -->
+<!-- variance to k times the one-month return variance is approximately equal to a -->
+<!-- linear combination of sample autocorrelations. Using his results, it is -->
+<!-- straightforward to show that (1) can be approximated by: -->
+<!-- of returns --> This statistic applies negative weight to autocorrelations up to order 2kj3,followed by increasing positive weight up to lag k, followed by decaying positive weights.7
+
+'''{r}
+Varratiok2 <- var.test(x = column_rrbp, y = column_y, ratio = 1, alternative = "two.sided")
+print(Varratiok2)
+
+F test to compare two variances
+
+data:  column_rrbp and column_y
+F = 0.57863, num df = 1709, denom df = 196, p-value = 3.025e-08
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.4651291 0.7072374
+sample estimates:
+ratio of variances 
+          0.578628 
+          
+testk2 <- data.frame(
+  Group1_Variance = Varratiok2$estimate[1],
+  Group2_Variance = Varratiok2$estimate[2],
+  F_statistic = Varratiok2$statistic,
+  p_value = Varratiok2$p.value
+)
+'''
+
+'''{r}
+'''
+
+'''{r}
+'''
+## Dispersion
+Figure median EFFR, 25th and 75the percentiles
+'''{r}
+ggplot(metricE, aes(x = sdatett)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linetype ="solid", linewidth = 1.5, alpha = 1.25) + 
+  geom_line(aes(y = metricE[,2], color = "TargetDe"),linetype ="dotted" , linewidth = 1) + 
+  geom_line(aes(y = metricE[,3], color = "TargetUe"),linetype = "dotted", linewidth = 1) + 
+  geom_line(aes(y = metricE[,4], color = "25 pct"), linetype = "dashed", linewidth = 1, alpha = 0.8) + 
+  geom_line(aes(y = metricE[,5], color = "75 pct"), linetype ="dashed", linewidth = 1, alpha = 0.8) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  #ylim= c(0,450)+
+  scale_color_manual(values = c("EFFR" = "black","Lower target" = "green","Upper target" = "blue", "25 pct" = "grey", "75 pct" = "grey" )) + 
+  theme_minimal()
+'''  
+Figure median EFFR, Lower and upper target rayes
+'''{r}
+ggplot(metricE, aes(x = sdatett)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linetype ="solid", linewidth = 1.5, alpha = 1.25) + 
+  geom_line(aes(y = metricE[,2], color = "TargetDe"),linetype ="dotted" , linewidth = 1) + 
+  geom_line(aes(y = metricE[,3], color = "TargetUe"),linetype = "dotted", linewidth = 1) +
+  #labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  #ylim= c(0,450)+
+  #scale_color_manual(values = c("EFFR" = "black","Lower target" = "green","Upper target" = "blue" )) + 
+  theme_minimal()
+'''
+
+A third method of detecting mean reversion involves computing a likelihood ratio test of the null hypothesis of serial independence against a particular alternative
+
+###Dispersion measures
+Dispersion of rates imply rates follow different distributions
+#Gara Afonso, Kyungmin Kim, Antoine Martin, Ed Nosal, Simon Potter, and Sam Schulhofer-Wohl propose  dispersion #index  $D_t$ of the daily EFFR from upper and lower target rates.
+The effectiveness of monetary policy to transmit the desired stance of monetary policy to financial markets and the real economy economy depends on efficient transmission of rate changes to other short rates in wholesale and consumer funding
+market. 
+
+Duffie, Krishnamurthi identify dispersion across money market interest rates as a primary indicator
+of the level of efficiency in how other key short-term interest rates reflect Fed policy changes. This paper
+examines the dispersion and volatility of short term rates.
+Duffie and Alonso study of dispersion of overnight wholesale money market rates from the policy rate that suggests problems for transmission of FONC policy to the broader economy.
+
+The daily value of $D_t$ ,the deviations between the value weighted daily fed funds rate and weighted fed funds rate, the actual policy target (the EFFR, the effective fed funds rate published by the Federal Reserve Bank of New York) FOMC  (Figure), During  2016-2022 managing the policy rate within its target range may have become more challenging during stress in repo markets in 2019 (\ref{fig:dispersionEffrGara}). ADD OBSERVATIONS
+
+
+Duffie and Alonso provide evidence that there exists significant dispersion of the awcuews nibwy market rates from the policy rate that suggest problems for transmission of FONC to the broader economy.
+
+
+Gara Afonso, Kyungmin Kim, Antoine Martin, Ed Nosal, Simon Potter, and Sam Schulhofer-Wohl propose  dispersion index  $D_t$ of the daily EFFR from upper and lower target rates.
+The daily value of $D_t$ ,the deviations between the value weighted daily fed funds rate and weighted fed funds rate, the actual policy target (the EFFR, the effective fed funds rate published by the Federal Reserve Bank of New York) FOMC  (Figure), During  2016-2022 managing the policy rate within its target range may have become more challenging during stress in repo markets in 2019 (\ref{fig:dispersionEffrGara}). ADD OBSERVATIONS
+
+The Federal Reserve's “balance-sheet normalization,” which reduced aggregate reserves between 2017
+and September 2019, increased repo rate distortions, the severity of rate spikes, and intraday payment
+timing stresses, culminating with a significant disruption in Treasury repo markets in mid-September
+2019.
+  
+After the introduction of IOER in 2008, the target federal funds rate is set at
+the middle of the Fed’s target range for FFER. Even during the challenging episodes in September16-18, 2019 and March 16-19, 2020, the Fed maintained the EFFR at the upper target:
+  9/16/2019	2.25	46	2.25	2
+9/17/2019	2.3	61	2.25	2
+9/18/2019	2.25	58	2.25	2
+
+the Fed created a large quantity of additional reserves in response to the Covid shock of
+March 2020.
+3/16/2020	0.25	80	0.25	0
+3/17/2020	0.25	85	0.25	0
+3/18/2020	0.25	82	0.25	0
+3/19/2020	0.2	103	0.25	0
+
+INSERT ggplot of median EFFR and upper and lower targets, 25 and 75 pct quintiles
+
+%\input{dispersionEffrGara.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dispersionEffrGara.png}
+\caption{Monetary policy implementation with an ample supply of reserves}
+Cs}
+\label{fig:dispersionGara}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Coefficient of variation, dispersion, if distribution has changed. Standard deviation divided by the mean,
+Mean reversion, return to mean vs disperion, change in distribution
+
+
+%\input{dispersionEffrGara.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1.0, bb=108   268   473   567]{dispersionEffrGara.png}
+\caption{Monetary policy implementation with an ample supply of reserves}
+Cs}
+\label{fig:dispersionGara}
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+
+# --------------------------------------------
+
+Duffie Krishamurthy ()) neasure the dispersion of overnight rates as the absolute deviation of the cross rates of overnight reference and money market rates. This indicator indiates the level of passthrough inefficiency, the passthrough effectiveness of the Federal Reserve’s monetary policy, the transmission of policy to the economy through other short term rates.
+%\cite{DuffieKrishnamurthi} 
+Their index of rate dispersion $DK_t$ for day t in U.S. short-term money markets is the weighted mean absolute deviation of the cross-sectional distribution of overnight-equivalent rates on that day. $DK_t$ is constructed from overnight equivalent rates $\hat{r}_{i,t}$. Rates are adjusted for term and credit spreads. They argue that the current setting of U.S.-dollar money markets limits the transmission of Fed policy to the economy. 
+
+#after adjusting for premia associated with credit risk and term structure.frictions associated with imperfect #competition, regulation, infrastructure, and other forms of institutional segmentation within money markets.
+
+\begin{equation*}
+DK_t=\frac{1}%{\sum_{i}^{v_{i,t}}+\sum_{i}%^{v_{i,t}} +\hat{r}_{i,t}-%\bar{y}_t
+\end{equation*}
+ 
+Their results show dispersion ranged between 4 and 7 basis points between the end of 2012 and December 17, 2015. Dispersion increased by over 10 basis points, immediately after the first passthrough event in the current Fed monetary policy setting, when the interest rate paid by the Fed on excess reserves (IOER) was increased from 25 to 50 basis basis points on December 17, 2015.
+
+In our sample from 2016 through 2022, the Duffie Krishnamurthy diversity index registers low dispersion, under 4 basis points, among the five overnight rates  EFFR, OBFR, TGCR, BGCR, and SOHR during 2016 and the first quarter of 2017 before jumping to around 5 during the last 2 weeks of March 2017 
+%(Figure \ref{fig:dispersionDK}.
+Their measure of dispersion rises to over 50 basis points during December 2018 to mid April 2019. The index triples to 151.14 basis on April 19, 2019 and remains at this high level, reaching a high 254.83 points during the spike in repo rates September 19, 2019. The index tapers off after of the dash for cash on March 17, 2020 after spiking 27.5 basis points. Throughout 2020 and 2021, the index was under 1 point. The level of dispersion rose steadily during March 2022, reaching over 200 basis points during the last part of December 2022 as the FOMC raised the target range for the  Federal Funds rate to fight inflation. The index rose  from 14.57 April 15, 2022 to 209.25 on December 29, 2022.
+
+# -------------------------------------------------------------------
+Mean reversion tests:
+  J.M. Poterba and LH. Summers, Mean reversion in stock prices
+We find consistent evidence that stock returns are positively
+serially correlated over short horizons, and negatively autocorrelated over long horizons. The point estimates suggest that the transitory components in stock prices have a standard deviation of between 15 and 25 percent and account for more than half of the variance in monthly returns. 
+
+The last part of the paper discusses two possible explanations for mean reversion: time varying required returns, and slowly—decaying "price fads" that cause stock prices to deviate from fundamental values for periods of several years  
+
+If divergences between market and fundamental values exist, but beyond some limit are eliminated by speculative forces, then stock prices will exhibit mean reversion. Returns must be negatively
+serially correlated at some frequency if "erroneous" market moves are eventually corrected.
+Section 3 uses our variance ratio estimates to gauge the substantive significance of transitory components in stock prices. For the United States we find that the standard deviation of the transitory price component varies between 15 and 25 percent of value, depending on what assumption we make about its persistence.
+The point estimates imply that transitory components account for more than half of the variance in monthly returns
+    pp30-31
+Sommers Poterba study the mean-reverting behavior of individual corporate securities in the U.S. The results consistently suggest the presence of transitory components in stock prices, with returns showing positive autocorrelation over short periods but negative autocorrelation over longer periods.
+Section 4 uses our variance-ratio
+
+If market and fundamental values diverge, but beyond some range the differences are eliminated by speculative forces, then stock prices will revert to their mean. Returns must be negatively serially correlated at some frequency if 'erroneous' market moves are eventually corrected. 
+The variance-ratio test exploits the fact that if the logarithm of the stock price, including cumulated dividends, follows a random walk, the return variance should be proportional to the return horizon.
+We study the variability of returns at different horizons, in relation to the variation over a one-year period. For monthly returns, the variance-ratio statistic is therefore
+where
+var( R~) I var( R~2 )
+VR(k) = k l2 ,
+k-1
+Rkt = "£.. ... R t-i•
+i=O
+(1)
+R1 denoting the total return in month t. This statistic converges to unity if returns are uncorrelated through time. If some of the price variation is due to transitory factors, however, autocorrelations at some lags will be negative and
+the variance ratio will fall below one. 
+
+The statistics reported below are corrected for small-sample bias by dividing by E[VR(k)].
+The variance ratio is closely related to earlier tests based on estimated autocorrelations. Using Cochrane's (1988) result that the ratio of the k-month return variance to k times the one-month return variance is approximately equal to a linear combination of sample autocorrelations, (1) can be written
+VR ( k) == 1 + 2 L --1 Pj- 2 L --1 Pj• k-l(k- ") ll (12- ")
+j=l k j=l 12
+(2)
+The variance ratio places increasing positive weight on autocorrelations up to and including lag 11, with declining positive weight thereafter. Our variance
+ratios for k-period annual returns place declining weight on all autocorrelations
+up to order k.
+# ---------------------------------------------------
+
+
+LATER Another hypothesis?
+The puzzle is the relatively smaller volatility in rates compared to the high volatility in volumes of these securities traded daily. The dispersion of the  standard deviation of transactions in the sample (bottom figure),  EFFR, OBFR, and SOFR, vary around $\$$400 billion daily. 
+
+
+### Monetary policy during the sample period 2016-2022
+ALTERNATIVE TO PARAGRAPH BELOW
+Fed Ample Reserves policy
+The QE1, QE2, and QE3 asset purchases challenged changed the bank’s ability to control short-term interest
+rates. Asset purchases under QE resulted in central banks changing their overall frameworks for controlling
+short-term interest rates. FOMC rate changes, monetary regimes, and events occurred during the six year period of our sample 2016-2022 (Table \ref{table:FOMCratechanges}) . 
+
+Asset purchases under QE resulted in central banks changing their overall frameworks for controlling short-term interest rates: Pre-crisis, these frameworks were typically based on adjusting the scarcity value of a limited supply of central bank deposits (reserves), but the substantial increase in liquidity resulting from asset purchases in response to the crisis made other techniques necessary
+
+Describe MP 2016-2019
+monetary policy
+adjusted the scarcity value of a limited supply of central bank deposits (reserves)
+2018 adopted target rates
+In 2019, the FOMC abandoned active management of scarce reserves and other short term
+interest rates and adopted a policy of ample reserves,
+A “floor” system To manages the federal funds rate within its target range, the upper and lower targets set by the Federal Open Market Committee (FOMC), 1).
+
+The Federal Reserve manages the Federal Funds rate (FFR) within its target range. The FFR is interest rate at
+which depository institutions or ”banks” lend funds to each other on an overnight basis. To implement monetary policy in an ample reserves regime, Administered rates are standing interest rates the Fed
+sets to guide the policy rate, the Federal Funds rates.  On October 1, 2008, Congress gave the Fed the power to pay interest on reserves (IOR) to help control the fed funds rate. The IOR rate is the interest rate that banks earn from the Fed on the funds they deposit in their reserve accounts. In 2013, the Federal Reserve introduced the ONRRP facility to set a floor under the EFFR.The overnight reverse repo rate (ONRRP) facility offering rate is the Fed’s supplementary tool for interest rate control.
+
+The ability to set the IOR and the ONRRP are key for the Fed’s implementation of monetary policy. The interest on reserves rate (IOR or IORB) is the Fed’s principal tool for interest rate control.the Fed adjusts administrative rates to manages the FFR between the FOMC target upper and lower bounds.The IOR. 
+In the ample reserves regime, teh Fed is able to manage the FFR is a “floor” system where the FOMC set the administered rates, interest on reserve balances (IOR) on deposits held at the bank, and the overnight reverse repurchase facility (ON RRP). 
+
+The administered rates, the IOR and the ON RPP, (and now the repo facility) along with an ample supply of reserves created a corridor system for managing the Fed Funds rate. The IOR is the ceiling, the ON RRP the floor. No bank would lend at rates on overnight cash lower than the IOR, the rate they can receive from the Fed. Thus Banks have little or no incentive to lend their reserves to other banks at rates lower than the IOR rate. In this sense, the IOR rate is in effect a reservation rate for banks’ intermediation activities,
+No bank should be borrow at a higher rate than the ONRRP. Banks and non-bank financial institutions should be unwilling to invest funds in private markets below the ONRRP. No bank should lend at a lower rate than the ONRPP. Competition among borrowers should drive rates to the discount window (DW) rate. 
+
+
+The level of reserves in the banking system can change either because
+1) the Federal Reserve buys or sells assets from banks, which changes the size of the Federal Reserve
+balance sheet
+2) because funds are transferred between reserves and non-reserve accounts at the Federal
+
+3) The Federal Reserve responds to volatility in the federal funds market by adjusting the reserve
+supply to keep the federal funds rate within its target range through repo and reverse repo operations each day
+The Federal Reserve changes the level of aggregate reserves by trading securities with banks.
+Federal Reserve purchases add assets to its balance sheet and issues reserves by crediting the Federal
+
+Temporary open market operations (TOMO), short-term repurchase and reverse repurchase agreements,
+support the Fed’s policy objectives for the desired range of the effective Federal Funds rate.
+Short-term repurchase and reverse repurchase agreements are designed to temporarily add or drain
+reserves available to the banking system and influence day-to-day trading in the Federal Funds market.
+
+Reserve accounts of the selling banks. (reverse repo, Fed is lender?)
+In a repo transaction, the Federal Reserve sells securities to banks. Aggregate reserves decline when the Fed debits the Federal Reserve accounts of the selling banks. (Fed repo as borrower)?
+The trading desk at the NY Fed dpnducts all repo and reverse repo operations, including small value exercises. https://www.newyorkfed.org/markets/desk-operations/
+
+In a repo transaction, the Desk purchases securities from a counterparty subject to an agreement to resell the securities at a later date, temporarily increasing the supply of reserve balances in the banking system and lowering the EFFR.
+
+
+Counterparties that lend to the Fed include money markets and dealers. 
+
+In the recently established repo facility n July 2021, the Standing Repo Facility (SRF), the Desk purchasew securities from a counterparty subject to an agreement to repurchase the securities at a later date,  temporarily increases the supply of reserve balances in the banking system and lowers the FFR. The repo rate. . Each repo transaction is economically similar to a loan collateralized by securities,interest” paid on that loan, is the difference between the original price and the second, higher price. In a reverse repo transaction, the Desk sells securities to a counterparty subject to an agreement to repurchase the securities at a later date.  temporarily decreases the supply of reserve balances in the banking system and raising the FFR.
+
+#-------------- check above paragraph with this one
+Control over the federal funds rate and other short-term interest rates
+The New York Fed conducts repo and reverse repo operations each day as a means to help keep
+the federal funds rate in the target range set by the Federal Open Market Committee (FOMC). Operation
+results include all repo and reverse repo operations conducted, including small value exercises. https:
+//www.newyorkfed.org/markets/desk-operations/reverse-repo
+In a repo transaction, the Desk purchases securities from a counterparty subject to an agreement
+to resell the securities at a later date. Each repo transaction is economically similar to a loan collateralized
+by securities, and temporarily increases the supply of reserve balances in the banking system.
+Conversely, in a reverse repo transaction, the Desk sells securities to a counterparty subject to an
+agreement to repurchase the securities at a later date. Reverse repo transactions temporarily reduce the
+supply of reserve balances in the banking system.
+The repo rate. interest” paid on that loan., is the difference between the original price and the
+second, higher price, Participants include
+https://www.bankrate.com/banking/federal-reserve/why-the-fed-pumps-billions-into-repo-market/
+The New York Fed, conducts the U.S. central bank’s open market operations. The New York Fed’s Open
+Market Trading Desk (the Desk) is authorized by the Federal Open Market Committee (FOMC) to conduct
+repurchase agreement (repo) and reverse repo transactions. These open market operations support
+effective monetary policy implementation and smooth market functioning by helping maintain the federal
+funds (fed funds) rate within the FOMC’s target range. https://www.newyorkfed.org/markets/
+domestic-market-operations/monetary-policy-implementation/repo-reverse-repo-agreements
+Repo markets are essential for the U.S. financing of it’s debt. Around $2 trillion to $4 trillion of
+debt are financed here each day. The cash that institutions receive goes toward funding daily operations.
+To support its policy objectives, the FOMC has established repo and reverse repo facilities. The
+Overnight Reverse Repo Facility (ON RRP) helps provide a floor under overnight interest rates by acting as
+an alternative investment for a broad base of money market investors when rates fall below the interest on
+reserve balances (IORB) rate. The Standing Repo Facility (SRF) serves as a backstop to dampen upward
+interest rate pressures that can occasionally emerge in overnight U.S. dollar funding markets and spillover
+into the fed funds market. The Desk generally conducts both the ON RRP and SRF operations each business
+day.
+
+#-------------- check above paragraph with this one
+
+These operations are quick and are put in place within a matter of days. For example, in September 2019, the federal funds rate spiked up on September 16 and 17. On September 18,
+21 LOOK FOR P22
+Dup?
+# ---------------------
+add shocks to epochs to test subsamples 
+
+The FOMC planned reduction of holdings of these securities
+by holding them to maturity, rather than by selling them back in financial markets. This ’balance sheet
+normalization’ began October 2017.
+One of many shocks, But this reduction of reserves engendered a disruption in repurchase (repo)
+markets in September 2019. To resolve this crisis, In October 2019, the Fed resumed purchasing massive
+amounts of debt securities.
+
+Reserve, which changes the composition of the Federal Reserve’s liabilities keeping the size of the balance
+sheet constant.
+
+
+#-------------- DUPLICATE check above paragraph with this one
+Participants include financial firms with large pools of cash to earn interest. Repo markets also
+allow financial institutions to borrow cheaply to fund short-term needs. Other non bank institutions who
+cannot hold reserves at the Fed include, hedge funds, money market funds, and insurance companies.
+Fed: Temporary open market operations (TOMO), short-term repurchase and reverse repurchase
+agreements, support the Fed’s policy objectives for the desired range of the effective Federal Funds rate. .
+Short-term repurchase and reverse repurchase agreements are designed to temporarily add or drain reserves
+available to the banking system and influence day-to-day trading in the Federal Funds market. In a reverse
+repo transaction, the Desk sells securities to a counterparty subject to an agreement to repurchase the
+securities at a later date. Each reverse repo transaction is economically similar to a loan collateralized by
+securities, temporarily decreases the supply of reserve balances in the banking system and raises the EFFR.
+Counterparties that lend to the Fed include money markets and dealers. In the recently established repo
+facility n July 2021, the Standing Repo Facility (SRF), the Desk purchase securities from a counterparty
+subject to an agreement to repurchase the securities at a later date. Each repo transaction is economically
+similar to a loan collateralized by securities, temporarily increases the supply of reserve balances in the
+banking system and lowers the EFFR or rates.
+22
+
+DUPLICATE
+The Federal Reserve also responds to volatility in the federal funds market by adjusting the reserve supply to keep the federal funds rate within its target range  by buying or selling assets from banks. These temoporary adjustments to reserves to offset volatility in the Fed Funds rate When the Federal Reserve changes the level of aggregate reserves by trading securities with banks, these Federal Reserve purchases or sales of assets from banks change the size of the Federal Reserve balance sheet.
+In a repo transaction, the Federal Reserve purchases securities from banks. It adds assets to its balance sheet and issues reserves by crediting the Federal Reserve accounts of the selling banks. Fed is lender?
+When the Federal Reserve sells securities to banks in reverse repo transaction, aggregate reserves decline. (Fed repo as borrower)?
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c c} 
+\hline
+FOMC rates changes \\
+%Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex] 
+ \hline\hline
+\textbf{2015 to 2018: Returning to Normalcy, mid cycle adjustment 3/4/2016 - 7/31/2019} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+20-Dec-18 &	 25 &		2.25 to 2.50\\
+Sept. 27, 2018 &		25 &		2.0 to 2.25\\
+Jun. 14, 2018&		25 &		1.75 to 2.0\\	
+22-Mar-18 &		25&		1.50 to 1.75\\	
+Dec. 14, 2017 &		2&	5	1.25 to 1.50\\	
+15-Jun-17&		25&		1.00 to 1.25\\	
+16-Mar-17&		25 &		0.75 to 1.00\\	
+Dec. 15, 2016 &		25 &		0.5 to 0.75\\
+Dec. 17, 2015 &		25&		0.25 to 0.50\\
+\hline
+\textbf{2019  Mid-Cycle Adjustment 8/1/2019-10/31/2019} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+31-Oct-19 &		-25	&	1.50 to 1.75\\	
+Sept. 19, 2019&		-25&		1.75 to 2.0\\	
+Aug. 1, 2019&		-25	& 2.0 to 2.25\\	
+\hline			
+\textbf{2020 Coping with Covid  11/01/2019 - 3/16/2020} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+16-Mar-20&		-100&		0 to 0.25\\	
+3-Mar-20&		-50&		1.0 to 1.25\\	
+\hline	
+\textbf{the zero lower bound (ZLB) 3/17/2020- 3/16/2022} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+\textbf{2022 Taming Inflation 03/17/2022 - 12/29/2022} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+14-Dec-22&		50&		4.25 to 4.50\\	
+2-Nov-22&		75&		3.75 to 4.00\\	
+21-Sep-22&		75&		3.00 to 3.25\\	
+27-Jul-22&		75&		2.25 to 2.5\\	
+16-Jun-22&		75&		1.5 to 1.75\\	
+5-May-22&		50&		0.75 to 1.00\\	
+17-Mar-22&		25&		0.25 to 0.50\\
+\end{tabular}
+\caption{FOMC rates changes 2018 to 2022}
+\label{table:FOMCratechanges}
+\end{table}
+# ------------ create new section on MP, shocks, etc
+
+We examine how these shocks, changes in monetary policy (Table \ref{table:FOMCratechanges}).affect rate volatility in different monetary policy regimes.
+
+
+Monetary policy shocks
+QE date for analysis
+FIND DATES, link to table and figure above
+TABLE of monetary policy decisions and events
+CHECK:UPDATE TABLE DO!
+\emph{Which epoch, Sep 2019, Mar 2020, series of QE}
+2019
+March 15, 2020
+March 23, 2020
+June 2020
+December 2020 slow purchase
+November 2021
+December 2021
+
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c c} 
+\hline
+FOMC rates changes \\
+%Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex] 
+ \hline\hline
+\textbf{2015 to 2018: Returning to Normalcy} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+20-Dec-18 &	 25 &		2.25 to 2.50\\
+Sept. 27, 2018 &		25 &		2.0 to 2.25\\
+Jun. 14, 2018&		25 &		1.75 to 2.0\\	
+22-Mar-18 &		25&		1.50 to 1.75\\	
+Dec. 14, 2017 &		2&	5	1.25 to 1.50\\	
+15-Jun-17&		25&		1.00 to 1.25\\	
+16-Mar-17&		25 &		0.75 to 1.00\\	
+Dec. 15, 2016 &		25 &		0.5 to 0.75\\
+Dec. 17, 2015 &		25&		0.25 to 0.50\\
+\hline
+\textbf{2019  Mid-Cycle Adjustment} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+31-Oct-19 &		-25	&	1.50 to 1.75\\	
+Sept. 19, 2019&		-25&		1.75 to 2.0\\	
+Aug. 1, 2019&		-25	& 2.0 to 2.25\\	
+\hline			
+\textbf{2020 Coping with Covid} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+16-Mar-20&		-100&		0 to 0.25\\	
+3-Mar-20&		-50&		1.0 to 1.25\\	
+\hline		
+\textbf{2022 Taming Inflation} & \\
+Date & Change &(bps)	$\&$ Federal Funds Rate (pct) \\ [0.5ex]
+\hline
+14-Dec-22&		50&		4.25 to 4.50\\	
+2-Nov-22&		75&		3.75 to 4.00\\	
+21-Sep-22&		75&		3.00 to 3.25\\	
+27-Jul-22&		75&		2.25 to 2.5\\	
+16-Jun-22&		75&		1.5 to 1.75\\	
+5-May-22&		50&		0.75 to 1.00\\	
+17-Mar-22&		25&		0.25 to 0.50\\
+\end{tabular}
+\caption{FOMC rates changes 2018 to 2022}
+\label{table:FOMCratechanges}
+\end{table}
+
+Other events or shocks that affected ratesL
+
+EVENTS
+1) 96 9/16/2019 Repo spike SOHR 2.42 +13 over 9/15, EFFR 2.23 +11
+   97 9/17/2019 Repo spike    SOFR 5+                  EFFR 2.3   
+\url{https://www.federalreserve.gov/econres/notes/feds-notes/what-happened-in-money-markets-in-september-2019-20200227.html}
+On Monday, September 16, SOFR printed at 2.43 percent, 13 basis points higher than the previous business day. With pressures in the repo market spilling over into the fed funds market, the EFFR printed at 2.25 percent, 11 basis points above the Friday print and at the top of the FOMC's target range. On September 17, the EFFR moved above the top of the target range to 2.3 percent and the SOFR increased to above 5 percent.
+
+
+2) Mar 10-18 2020  Dash for cash 
+121 3/8/2020 0:00 subtract 5 from coordinate
+122 3/15/2020 0:00
+The COVID-19 Pandemic Caused Market Disruptions across Sovereign Bond Markets
+At the start of the COVID-19 pandemic in late February 2020, and in response to the economic repercussions of impending lockdown measures, investors began to demand higher-quality, safe assets. In particular, they shifted their portfolios toward sovereign bonds, and the resulting buying pressure drove sovereign yields to decline broadly. As the crisis intensified in March 2020, however, investors’ demand for cash surged, leading to selling pressure on sovereign bonds and therefore increases in their yields. This down-and-up pattern in yields is illustrated for ten-year U.S., German, U.K., and Japanese bonds in the chart below.
+\url{https://libertystreeteconomics.newyorkfed.org/2022/07/the-global-dash-for-cash-in-march-2020/#:~:text=The$\%$20economic$\%$20disruptions$\%$20associated$\%$20with,number$\%$20of$\%$20central$\%$20bank$\%$20actions.}
+
+
+-122 March 15, 2020 On March 15, 2020, the Fed shifted the objective of QE to supporting the economy. It said that it would buy at least $\$$500 billion in Treasury securities and  $\$$200 billion in government-guaranteed mortgage-backed securities over “the coming months.” 
+ - 123 3/22/2020  March 23, 2020, it made the purchases open-ended, saying it would buy securities “in the amounts needed to support smooth market functioning and effective transmission of monetary policy to broader financial conditions,” expanding the stated purpose of the bond buying to include bolstering the economy. 
+
+- June 2020 - In June 2020, the Fed set its rate of purchases to at least $\$$80 billion a month in Treasuries and  $\$$40 billion in residential and commercial mortgage-backed securities until further notice. 
+ - December 2020 slow: The Fed updated its guidance in December 2020 to indicate it would slow these purchases once the economy had made “substantial further progress” toward the Fed’s goals of maximum employment and price stability. 
+ - November 2021 taper: In November 2021, judging that test had been met, the Fed began tapering its pace of asset purchases by  $\$$10 billion in Treasuries and  $\$$5 billion in MBS each month. 
+ - December 2021 double taper: At the subsequent FOMC meeting in December 2021, the Fed doubled its speed of tapering, reducing its bond purchases by  $\$$20 billion in Treasuries and  $\$$10 billion in MBS each month
+
+December 2020 slow purchase
+November 2021
+December 2021
+  Table and figures display changes in the Fed funds rate and the administered rates IOR and the reward rate ON RRP
+Table \ref{table:FOMCratechanges} lists FOMC rates changes, monetary regimes, and events over the four year period, 2018-2022.
+
+
+supply of reserves created a corridor system for managing the Fed Funds rate. The IOR is set equal to the
+upper range for the fed funds rate, The ONRRP rate is set equal to the lower range for the fed funds rate.
+
+
+
+
+DUPLICATE or ADDITION?:
+Each repo transaction is economically similar to a loan collateralized by securities, and temporarily increases the supply of reserve balances in the banking system.
+Conversely, in a reverse repo transaction, the Desk sells securities to a counterparty subject to an
+agreement to repurchase the securities at a later date. Reverse repo transactions temporarily reduce the
+supply of reserve balances in the banking system.
+These open market operations support effective monetary policy implementation and smooth market
+functioning by helping maintain the federal funds (fed funds) rate within the FOMC’s target range.
+https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation/
+repo-reverse-repo-agreements
+https://www.bankrate.com/banking/federal-reserve/why-the-fed-pumps-billions-into-repo-market/
+
+These temporary interventions  happened in September 2019 and March 2020. These responses are quick and are put in place within a matter of days. In September 2019, for example, the federal funds rate spiked up on the 16th and 17th; starting on the 18th, the Federal Reserve expanded the reserve supply by providing cash in the repo market, and rates returned to their prior levels
+(Afonso et al. (2020a)).  
+
+Because the March 2020 covid crisis news also caused severe illiquidity in the secondary market for Treasury securities, the Fed purchased enormous quantities of Treasuries and Agencies, expanding the total supply of reserves from mid-March by about $1 trillion in just three weeks. 
+
+DUFFIE As a by-product of this
+huge asset purchase program, the total reserve balances of our sample of the ten largest repo-active BHCs
+increased dramatically. With this and other aggressive actions by the Fed to restore market liquidity, dealer
+banks provided reserves much more elastically into the repo market and the spread between SOFR and IOR
+essentially disappeared from April ? 
+
+2020 to December 29, the end of my sample period.
+liquidity after the Fed’s post GFC attempt to support the economy through large-scale asset purchases
+(LSAPs), the Federal Reserve experimented with alternative monetary policies such as quantitative easing
+(QE) or forward guidance. Asset purchases under QE are essentially a swap of fixed rate securities US
+Treasury securities, mortgage-backed securities, and federal agency debt securities for floating securities,
+reserves. This increase in liquidity challenged the bank’s ability to control short-term interest rates. resulted
+in central banks to institute a new regime of ample reserves and a corridor system to manage its policy rate
+within FOMC selected target ranges, this large increase in liquidity,
+
+
+Total reserves in the U. S. banking system now exceed $3.081237 trillion (Totresns). At the beginning
+of 2009, reserves were $800 billion, compared to approximately $10 billion pre-crisis. Reserves continued
+to increase until late 2014. Fed’s quantitative easing programs raised reserves to a peak of $2.8 trillion in
+September 2014. Peak reserves peaked $4.275 at then end of 2021 In November 2022, From late 2017,
+when the Federal Open Market Committee began implementing its policy of “balance sheet normalization”
+aggregate reserves began to decline, reaching a low of $1.4 trillion in early September 2019.
+
+The level of reserves can also change when institutions that have non-reserve Federal Reserve accounts transact with private banks. When these transfers occur, reserves are either created or destroyed outside the Federal Reserve’s control.
+
+
+
+\begin(comment)
+No bank should be borrow at a higher rate, Banks and non-bank financial institutions should be
+unwilling to invest funds in private markets below the ONRPP.
+No bank should lend at a lower rate than the ONRPP. and competition among borrowers should
+drive rates to the discount window (DW) rate.
+Thus, the IOR is a ceiling on managing the EFFR, the ONRPP a floor. INSERT FIGURE
+IOR a ceiling on the EFFR, ONRRP a floor. See arbitrage arguments in section 1
+hold balances in an account at the Fed that earns IOR.
+Banks’ choice of whether to hold cash in reserve accounts at the Fed and earn the IOR rate or invest
+their cash in another money market instrument, such as Treasury bills, depend on their liquidity needs and
+the opportunity cost of holding reserves, relative returns available on alternative investments.
+Banks can choose to invest overnight cash at the Fed and earning IOR; loaning the cash to another
+bank and earning the negotiated (market) FFR; or investing the cash in another money market alternative,
+such as by purchasing a Treasury bill or commercial paper.
+No bank would accept a rate on overnight cash lower than the IOR. Banks should not accept an
+interest rate below what they can receive from the Fed. Thus Banks have little or no incentive to lend their
+reserves to other banks at rates lower than the IOR rate. In this sense, the IOR rate is in effect a reservation
+rate for banks’ intermediation activities,
+As long as the supply of reserves remains ample, cash lenders should compete with each other so
+that trading in the federal funds market occurs at rates that are never too far above the IOR rate. As a
+result, in an ample-reserves regime, the EFFR is expected to trade near the IOR rate.
+\end(comment)
+
+
+
+### Fed's preference for offsetting volatility
+Fed's inclination to accommodate rate volatility
+Hypothesis 3: Fed tolerance for offsetting volatility?
+Distribution of reference rates during different monetary policy regimes/event
+Sub samples as tests of different regimes
+
+The dynamics of reference rates vary dramatically over different policy/events.  The history of FOMC rate changes (Table) suggested these subsamples of the data to examine for Fed appetite for offsetting risk. the characteristics of the EFFR and all overnight money market rates, in both 1) the whole time series 2016-2022 and 2) and during the periods of normalcy (dates), adjusmtment, coping with covid (dates), the zero lower bound (ZLB), and fighting inflation (dates).
+I have broken the daily times series into five different periods correspond to  Forbes description () date) of changes in monetary policy:
+
+#begn = [4 860 924  1033 1517 4];
+#endn = [859 923 1032 1516 1714 1714];
+1. normalcy    3/4/2016		7/31/2019      4  859
+2. mid cycle adjustment 8/1/2019 - 10/31/2019 860 - 923
+3. coping with covid 11/1/2019	    3/16/2020   924  1032
+4. zlb         3/17/2020- 3/16/2022     1032-1516
+4. Taming inflation 03/17/2022 - 12/29/2022 1517-1714
+
+# Redo -3 for each position for nrow=1710
+
+'''{r, echo=FALSE}
+> library(xtable)
+> normtable <- xtable(momentsnorm)
+> normtable
+% latex table generated in R 4.3.1 by xtable 1.8-4 package
+% Fri Aug 11 22:28:41 2023
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ & EFFR & OBFR & TGCR & BGCR & SOFR \\ 
+  \hline
+constant & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 \\ 
+  Mean & 133.96 & 127.64 & 127.55 & 130.43 & 134.10 \\ 
+  Median & 23483.43 & 22547.57 & 22435.95 & 22922.78 & 23598.50 \\ 
+  Variance & 4684282.14 & 4568518.40 & 4518483.71 & 4606479.63 & 4732291.91 \\ 
+  Skew & 997791016.91 & 986831337.11 & 968589515.82 & 985640309.15 & 1014210815.70 \\ 
+  Kurtosis & 220844706535.85 & 220948689941.95 & 214808431050.68 & 218179197456.96 & 225985107686.05 \\ 
+  row7 & 50123884394922.00 & 50633598215414.28 & 48646109949534.55 & 49311300327246.49 & 51656364432979.84 \\ 
+   \hline
+\end{tabular}
+\end{table}
+'''{r}
+# -----------------------------------------------
+
+
+---
+title: "Distribution of rates in the adjust period"
+output: pdf_document
+---
+
+# adjust period
+moments_adjust<- all.moments(adjust, order.max=6)
+# Create a sample data frame with named rows
+momentsadjust<-as.data.frame(moments_adjust,row.names=c('constant','mean','variance','skew','kurtosis','r6','r7'))
+rownames(momentsadjust) <- metrics
+# Create a sample data frame with named columns
+momentsadjust$EFFR <- momentsadjust$ V1
+momentsadjust$OBFR <- momentsadjust$ V2
+momentsadjust$TGCR <- momentsadjust$ V3
+momentsadjust$BGCR <- momentsadjust$ V4
+momentsadjust$SOFR <- momentsadjust$ V5
+momentsadjust <- momentsadjust[, -(1:5)]
+str(momentsadjust)
+adjusttable <- xtable(momentsadjust)
+
+'''{r}
+
+
+---
+title: "Distribution of rates in the covid period"
+output: pdf_document
+---
+moments_covid <- all.moments(covid, order.max=6)
+# Create a sample data frame with named rows
+momentscovid<-as.data.frame(moments_covid,row.names=c('constant','mean','variance','skew','kurtosis','r6','r7'))
+# Create a sample data frame with named columns
+rownames(momentscovid) <- metrics
+momentscovid$EFFR <- momentscovid$ V1
+momentscovid$OBFR <- momentscovid$ V2
+momentscovid$TGCR <- momentscovid$ V3
+momentscovid$BGCR <- momentscovid$ V4
+momentscovid$SOFR <- momentscovid$ V5
+momentscovid <- momentscovid[, -(1:5)]
+str(momentscovid)
+covidtable <- xtable(momentscovid)
+'''{r}
+
+
+---
+title: "Distribution of rates in the zlb period"
+output: pdf_document
+---
+moments_zlb <- all.moments(zlb, order.max=6)
+# Create a sample data frame with named rows
+momentszlb<-as.data.frame(moments_zlb,row.names=c('constant','mean','variance','skew','kurtosis','r6','r7'))
+rownames(momentszlb) <- metrics
+# Create a sample data frame with named columns
+momentszlb$EFFR <- momentszlb$ V1
+momentszlb$OBFR <- momentszlb$ V2
+momentszlb$TGCR <- momentszlb$ V3
+momentszlb$BGCR <- momentszlb$ V4
+momentszlb$SOFR <- momentszlb$ V5
+momentszlb <- momentszlb[, -(1:5)]
+str(momentszlb)
+zlbtable <- xtable(momentszlb)
+
+'''{r}
+
+
+---
+title: "Distribution of rates in the inflation period"
+output: pdf_document
+---
+moments_inflation <- all.moments(inflation, order.max=6)
+# Create a sample data frame with named rows
+momentsinflation<-as.data.frame(moments_inflation,row.names=c('constant','mean','variance','skew','kurtosis','r6','r7'))
+rownames(momentsinflation) <- metrics
+# Create a sample data frame with named columns
+momentsinflation$EFFR <- momentsinflation$ V1
+momentsinflation$OBFR <- momentsinflation$ V2
+momentsinflation$TGCR <- momentsinflation$ V3
+momentsinflation$BGCR <- momentsinflation$ V4
+momentsinflationSOFR <- momentsinflation$ V5
+momentsinflation <- momentsinflation[, -(1:5)]
+str(momentsinflation)
+inflationtable <- xtable(momentsinflation)
+
+'''{r}
+
+---
+title: "Distribution of rates in the sample period 2016-2022"
+output: pdf_document
+---
+moments_rrbp <- all.moments(rrbp, order.max=6)
+# Create a sample data frame with named rows
+momentsrrbp<-as.data.frame(moments_rrbp,row.names=c('constant','mean','variance','skew','kurtosis','r6','r7'))
+rownames(momentsrrbp) <- metrics
+# Create a sample data frame with named columns
+momentsrrbp$EFFR <- momentsrrbp$ V1
+momentsrrbp$OBFR <- momentsrrbp$ V2
+momentsrrbp$TGCR <- momentsrrbp$ V3
+momentsrrbp$BGCR <- momentsrrbp$ V4
+momentsrrbpSOFR <- momentsrrbp$ V5
+momentsrrbp <- momentsrrbp[, -(1:5)]
+str(momentsrrbp)
+rrbptable <- xtable(momentsrrbp)
+'''{r}
+
+
+
+# or
+$ library(knitr)
+#kable(head(iris), format = "latex")
+
+---
+title: "LaTeX Table in R Markdown"
+output: pdf_document
+---
+
+```{r}
+
+
+#or
+#Print(plotname)
+---
+title: "GGPlot in R Markdown"
+output: html_document
+---
+```{r}
+#\emph{Volatility of weekly reserves and volume weighted rates}
+Plots by epoch, rates versus weekly reserves MAYBE SKIP
+
+
+
+STATS BY EPOCH
+Std dev:
+The standard deviation of reserves during the normalization of policy is low, while the standard deviation of all rates high (Table %~\ref{table:epochsd}).
+During the covid episode, there is a four fold increase in  the standard deviation  in reserves.  The volatility of EFFR and money market rates fall,
+
+As the Fed increases the policy rate to respond to inflation, the volatility of reserves is half of that in the normalcy period. Volatility??  all money market rates increase, esp BGCR, and SOHR with the policy rate EFFR while their standard deviations fall by half.
+Figures onrate all plot for all rates:
+
+With weekly distribution of reserves (only weekly not daily reserves are available)  we can...
+\begin{comment}
+\input{onrate_all.tex}
+\begin{figure}[ht]
+%\includegraphics[scale=2.0]
+\includegraphics[scale=1.0, bb=108   268   473   567]{onrate_all.tex}
+\caption{Daily overnight rates EFFR, OBFR, TGCR, BGCR, SOHR}
+\label{fig:dailyrates_all}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+
+Figures plot rates against reserves normalized by commercial bank deposits illustrate demand for overnight instruments:
+\emph{volumes}(Figure \ref{figure:covdrate})
+\input{ONweeklyratevolumecovd_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumecovd_reserves.tex}
+\caption{Fed interventions, changes in the policy rate EFFR, and the administered rates IOR, ON RPP}
+\label{fig:covdrate}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Figure ~\ref{figure:pirates}
+\input{ONweeklyratevolumepi_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumepi_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Taming inflation: Weekly Volumes EFFR, IBFR, TGCR, BGCR, SOFR, Reserves}
+\label{fig:pirates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+\end{comment}
+
+ # -----------------------------------------------
+%ONweeklyratevolumecovd_reserve
+\input{ONweeklyratevolumewgtnorm_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumewgtnorm_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Normalization: Weekly Volume Weighted rates EFFR, IBFR< TGCR> BGCR, SOFR, Reserves}
+\label{fig:normrates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Volume weighted rates versus reserves during the covid period (Figure \ref{figure:covdrate})
+During the Covid epoch, there is a three fold increase in reserves, while EFFR and overnight money market rates fall.
+\input{ONweeklyratevolumewgtcovd_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumewgtcovd_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Covid: Weekly Volume Weighted rates EFFR, IBFR< TGCR> BGCR, SOFR, Reserves}
+\label{fig:covdrate}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+
+Volume weighted rates versus reserves as the Fed initiates multiple rate hikes to tame inflation steadily increased its policy rate (Figure \ref{figure:pirates}), reserves remain changed from levels in ?.  All overnight money market rates, TGCR, BGCR, and SOHR, increase in tandem with the policy rate hikes.
+\input{ONweeklyratevolumewgtpi_reserves.tex}
+\begin{figure}[ht]
+\includegraphics[scale=1, bb=108   268   473   567]{ONweeklyratevolumewgptpi_reserves.tex}
+%\caption{ Purchases or sales of U.S. Treasury securities by the Federal Reserve Bank of New York 2000-2020}
+\caption{Taming inflation: Weekly Volume Weighted rates EFFR, IBFR< TGCR> BGCR, SOFR, Reserves}
+\label{fig:pirates}
+\centering
+\footnotesize{}
+%\begin{singlespace
+%The volatility of the Fed Funds %rate is the month on month }
+\end{figure}
+%\end{comment}
+# -----------------------------------------------
+
+STATS FOR EPOCHS
+Volatility or std dev:
+#~\ref{table:epochsd}
+
+ Where is rates vs reserves?
+%Figure ~ref{figure:statsvolumes}
+%Table ~\ref{table:sdvolumes}
+\begin{table}[h!] \centering
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\caption{Standard deviations of weekly reserves and volumes of weighted rates EFFR, IBFR, TGCR, BGCR, SOFR}
+\begin{tabular}{ l c c c c c c}
+\toprule \toprule
+\addlinespace
+ & \multicolumn{6}{c}{Standard deviation } \\
+ %& \multicolumn{c}{c}{\makecell{Mean}} \\
+ \cmidrule(lr){2-7}
+ {Epoch}&{Reserves (1.0e03) } &{EFFR}& {OBFR}& {TGCR}& {BGCR} & {SOHR}
+\tabularnewline 
+Norm&  241.3023& 134.5481& 274.6710& 146.3830& 279.1946&  381.1422\\
+Covid& 926.4133& 334.6106& 252.5356& 250.9619& 267.9428&  411.9279\\
+Inflation& 108.7412& 6.6296& 15.1004& 17.6591& 18.1397&   47.7760\\
+ALL&   923.5434& 286.8090& 258.7605& 206.8692& 264.1191&  421.5599\\
+\addlinespace
+\bottomrule
+\end{tabular}
+\label{table:sdvolumes}
+\end{table}
+
+
+Fed actions:
+Test variance model on subsamples like the epochs To manage the [MAGNITUDE NUMBERS]
+  
+
+
+###volatility
+
+# -------------- notes on volatility
+
+## Clustering, Other measures of volatility
+# Add dispersion?
+Other measures of volatility %(Figure \ref{fig:volmeasures})
+Intraday volatility, standard deviation of EFFR and deviations of the effective federal funds from the target rate
+1) simple standard deviation
+2) log percent change
+\begin{equation*}
+vol_1= log(r_{t+1})- log(r_t) 
+\end{equation*}
+3) standard deviation of log percent change 
+$vol_2=standard deviation of vol_1$
+4) standard  deviation of log percent change with trailing window of 244 days?   
+$vol_3= movstd(vol_2,244) $
+%4) deviations of the effective federal funds from the target rate? 
+Three measures of rate volatility: percent change, log percent change, rolling standard deviation
+
+Volatility clustering, one of the most important stylized facts in financial markets, refers to the observation that large changes in price tend to be followed by large changes and small changes tend to be followed by small changes. Evidence of clustering of annual volatility across reference rates. Evidence of clusters within these periods (\ref{fig:volmeasures}).  High volatility follows periods of high volatility.Low volatility follows periods of low volatility. 
+ From 2017 to 2018, volatility as measured by the annual standard deviation  increased only 8.18 bp, increasing to 29.59 from 21.41 bp  (\ref{table:FOMCratessd}) ).  From 2018 to 2019, volatility of the EFFR fell 3.56 basis points.
+
+Three measures of rate volatility: percent change, log percent change, rolling standard deviation
+REDO FOR EPOCHS, SUBSAMPLES
+Table %~\ref{table:epochsd}
+The standard deviation of reserves during the normalization of policy is low, while the standard deviation of all rates high. During the covid episode, there is a four fold increase in  the standard deviation  in reserves.  The volatility of EFFR and money market rates fall,
+
+As the Fed increases the policy rate to respond to inflation, the volatility of reserves is half of that in the normalcy period. Volatility??  all money market rates increase, esp BGCR, and SOHR with the policy rate EFFR while their standard deviations fall by half.
+Introduce different policy epochs as subsamples
+
+###7 Volatility of overnight rates
+Another hypothesis companion to volatility? ADD Some absolute difference among policy and money market
+rates. Duffie’s divergence metric
+Hypothesis: Discuss parallels among level of reserves and policy with volatility of reserves and rates.
+High frequency FF rate volatility patterns intriguing versus Fed effort to target rates
+This section examines how volatility of Fed policy and key short rates in the economy respond to
+FOMC targets for the federal funds rate, changes in their administered rates – interest on reserves (IOR) and
+overnight reverse repurchase rate (ONRPP), and interventions in repo markets to maintain the Fed Funds
+rate within its target range.
+Guyon Volatility notes Veronesi - emprirical volatility the standard deviation of past realized
+changes in short term interest rates unprices securities
+
+Ho-Lee model
+$σ = std(r{t+\Delta} − r_t)$
+Black, Derman Troy model
+σ = std(log(rt+Δ) − log(rt))
+$σ = std(log(r{t+\Delta})− log(r_t)$
+- implied volatility. the level of interest rate variation that correctly prices the security2
+- stochastic volatility Affine and quadratice models p 782-4 affine factors
+quadratic specification ofthe short term interest rate as a function of factors
+- future realized volatility
+
+JULIEN GUYON and JORDAN LEKEUFACK VOLATILITY IS (MOSTLY) PATH-DEPENDENT
+Bloomberg L.P., Quantitative Research Ecole des Ponts ParisTech, CERMICS
+volatility is mostly path-dependent: up to 90 percent of the variance of the implied volatility of equity indexes explained endogenously by past index returns, and up to 65 percent for (noisy estimates of) future daily realized volatility. The path-dependency that we uncover is remarkably simple: a linear
+combination of a weighted sum of past daily returns and the square root of a weighted sum of past daily squared returns with different time-shifted power-law weights capturing both short and long memory. 
+
+This simple model, which is homogeneous in volatility, is shown to consistently outperform existing models across equity indexes and train/test sets for both implied and realized volatility. It suggests a simple continuoustime path-dependent volatility (PDV) model that may be fed historical or risk-neutral parameters. The
+weights can be approximated by superpositions of exponential kernels to produce Markovian models. In particular, we propose a 4-factor Markovian PDV model which captures all the important stylized facts of volatility, produces very realistic price and (rough-like) volatility paths, and jointly fits SPX and VIX smiles
+remarkably well. We thus show that a continuous-time Markovian parametric stochastic volatility (actually,PDV) model can practically solve the joint SPX/VIX smile calibration problem.
+
+
+It is crucial for the pricing, hedging, and risk-management of portfolios of derivatives to understand and correctly capture the joint dynamics of the underlying assets and their implied volatilities. For example pricing and hedging portfolios of S&P 500 (SPX) derivatives requires to precisely understand the joint
+dynamics of the SPX and VIX indices. It is also very useful to build accurate predictors of future realized volatility
+
+
+We thus aim to empirically explain volatility as an endogenous factor as best as we can. Our empirical study covers (a) learning implied volatility from past asset returns (e.g., learn the VIX from the SPX path), and (b) learning future realized volatility from past asset returns. We prove that volatility is mostly path-dependent. A surprisingly simple linear PDV model explains up to 90 percent of the variance of the implied volatility (depending on the equity index), and up to 65 percent of the variance of the (more noisy) future daily realized volatility, even on our very challenging test set (2019–2022). This proves that
+volatility is mostly endogenous. 
+
+The explicit path-dependency that we uncover is remarkably simple: a linear combination of a weighted sum R1 of past daily returns and the square root of a weighted sum R2 of past daily squared returns with different time-shifted power-law (TSPL) weights.
+lasso (least absolute shrinkage and selection operator; also Lasso or LASSO) is a regression analysis method that performs both variable selection and regularization in order to enhance the prediction accuracy and interpretability of the resulting statistical https://www.bing.com/search?q=lasso%20regression&
+pc=0MDS&ptag=C15N1004AA4EDF50958&form=CONBNT&conlogo=CT3210127
+Guyon model where historical volatility Σt.
+(3.12) Volatility  $V= \beta_0 + \beta_1 R_{1,t} + \beta_2\epsions_t$
+where volatilityt denotes either some implied volatility (e.g., the VIX) observed at t, or some future realized volatility right after t (e.g., realized over day t + 1). The model states that the volatility—not its square, the variance—is simply an affine combination of the trend feature $R_{1,t}$ and the historical volatility $\epsions_t$.
+Simple models Volatilityt denotes either some implied volatility (e.g., the VIX) observed at t, or some future realized volatility right after t (e.g., realized over day t + 1). Trend features are features that capture a recent trend in the asset price in order to learn the leverage effect, i.e., the fact that volatility
+tends to rise when asset prices fall. The most important example of a trend feature is a weighted sum of past daily returns
+(3.1)R1,t :=
+X
+K1(tti)rti
+where
+70
+(3.2)rti = StiSti1Sti1
+denotes the daily return between day ti−1 and day ti , and K1 : R￿0 → R￿0 is a convolution kernel that
+puts more or less weight on past daily returns based on the lag t − ti , i.e., on how far in the past the daily
+return was observed. The kernel K1 typically decreases towards zero: the impact of a given daily return
+fades away over time. Other examples o trend features include the weighted sum of negative parts of past
+daily returns (3.3) Nt := X ti￿t KN (t − ti)r − ti
+Activity features or volatility features are features that capture recent activity (volatility) in the
+asset price, regardless of its trend, in order to learn volatility clustering, i.e., the fact that periods of large
+volatility tend to be followed by periods of large volatility, and periods of small volatility tend to be followed
+by periods of small volatility. Volatility clustering also materializes in the fact that implied volatility tends
+to be larger when historical volatility is larger. The most important example of a volatility feature is a
+weighted sum of past squared daily returns
+(3.5)R2,t =
+X
+K2(tti)r2
+tti
+
+QARCH Model Quadratic GARCH: ARCH (QARCH) model of Sentana [52] expresses the instantaneous
+variance Volatility2 t as a general quadratic form of the past daily returns: (3.12) Volatility2
+t = β0 + β1R1,t + β2RQ
+2,t,RQ
+2,t :=
+Xtj
+ti
+K2(t−ti,t−tj )(rtirtj )
+. Chicheportiche and Bouchaud [16] have shown that in the US stock market the off-diagonal entries of the
+bidimensional kernel KQ2 are one order of magnitude smaller than the diagonal entries. The corresponding
+diagonal QARCH model reads (M1)
+Volatility2
+t = β0 + β1R1,t + β2,tK2(τ ) := KQ
+2 (τ, τ ).
+71
+Chicheportiche and Bouchaud do not provide explicit parametric forms for K1 and K2 but report powerlaw-
+like decays in [16, Figure 4]. The ZHawkes process of Blanc et al. [9] (M2)
+V olatility2
+t t = β0 + β1R2
+1,t + β2R2, t
+replaces the linear dependence of the variance V olatility2
+t on the trend feature R1,t by a quadratic dependence.
+See [21] for a microstructural foundation of this model. The discrete-time version of the QRHM [30]
+with null ￿0 can be written as (M3)
+V olatility2
+t = β0 + β1(R1, tβ2)2
+with a Mittag-Leffler kernel K1 such that K1(τ)01 and K1(τ ) + 1with(12) 1); and the discrete-time version
+of the threshold EWMA Heston model [49, Section 2.3] reads as (M4)
+V olatilityt = β0 + β1(β2R1,t)+
+with K1 an exponential kernel, K1(￿ ) = ￿e−￿￿ . Our model differs from the above models in several
+Peter Carr
+
+
+Bertolini et al Time series methodology: 
+volatility of interest rates - rises in advance of reserve
+settlement days - declines in high rate regimes - biweekly periodicity when Fed is perceived as committed to
+keeping rates close to the target. 
+
+
+
+$\nu_t$ is a mean zero, unit variance, i.i.d. error term
+The enoirical Fed Funds rate
+$r_t = \mu_t + \sigma_t \nu_t$
+
+$ \mu_t=r_{t-1}+\delta_s_t=\Kappa' k_t + \iota(\ast(r_t)-\as(r{_t-1})$
+
+$ \mu_t=r_{t-1}+\Phi(r_{t-1}=r_{t-2})+ \Phi(r_{t-2}=r_{t-3}) +delta_s_t=\Kappa' k_t + \iota(\ast(r_t)-\as(r{_t-1})$
+
+Variance of the FFR $\sigma^2_t=E[(r_t-\mu_t)^2]$
+
+Introduce exponential Garch effects, EGARCH (Nelson 1991)
+
+Allow for deviations of persistent log of conditional variance from its unconditional expected value $-\omega h_t -\psi \nu_t -(1+\gamma N_t)$. Add day if maintenance period effects
+
+The resulting variance for the FFR is
+$$log(\sigma^2_t -\omega h_t -\psi \nu_t -(1+\gamma N_t)=\sigma^2_{t=1}  -\omega h_{t-1} -\psi \nu_{t-1}  -(1+\gamma N_{t-1} )+\alpha \abs(\nu_{t-1} ) + \Theta \nu_{t-1} 
+
+Assume t distributions for innovations $\nu$
+Obtain maximum likelihood of the parameters, including the degrees of freedom of the t distribution,  by numerical optimization
+
+egarch_spec <- ugarchspec(variance.model = list(model = "eGARCH"), mean.model = list(armaOrder = c(0, 0)))
+> egarch_fit <- ugarchfit(spec = egarch_spec, data = rrbpts)
+Warning message:
+In .egarchfit(spec = spec, data = data, out.sample = out.sample,  : 
+ugarchfit-->warning: solver failer to converge.
+> egarch_fit <- ugarchfit(spec = egarch_spec, data = rrbpts)
+Warning message:
+In .egarchfit(spec = spec, data = data, out.sample = out.sample,  : 
+ugarchfit-->warning: solver failer to converge.
+> residuals <- residuals(egarch_fit)
+Error in xts(object@fit$residuals, D) : 
+  'order.by' cannot contain 'NA', 'NaN', or 'Inf'
+> egarch_spec
+
+*---------------------------------*
+*       GARCH Model Spec          *
+*---------------------------------*
+
+Conditional Variance Dynamics 	
+------------------------------------
+GARCH Model		: eGARCH(1,1)
+Variance Targeting	: FALSE 
+
+Conditional Mean Dynamics
+------------------------------------
+Mean Model		: ARFIMA(0,0,0)
+Include Mean		: TRUE 
+GARCH-in-Mean		: FALSE 
+
+Conditional Distribution
+------------------------------------
+Distribution	:  norm 
+Includes Skew	:  FALSE 
+Includes Shape	:  FALSE 
+Includes Lambda	:  FALSE 

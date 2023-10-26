@@ -25,6 +25,10 @@ library(viridis)
 library(Rfast)
 library(tidyr)
 library(dplyr)
+library(car)
+library(MASS)
+
+library(fitdistrplus)
 
 
 
@@ -198,15 +202,154 @@ library(ggplot2)
 # Create a QQ plot  add the median
 # see https://ggplot2.tidyverse.org/reference/geom_qq.html
 # https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/Distributions
-library(car)
 qqPlot(spread$PercentileE1)
 #ggplot(mtcars, aes(sample=mpg))+stat_qq()+theme_bw()
 
+# summary(cyber.data[,c(2,3)])# descriptive statistics of our dataset
+# summary(rrbp)
+# EFFR            OBFR            TGCR            BGCR            SOFR      
+# Min.   :  1.0   Min.   :  1.0   Min.   :  1.0   Min.   :  1.0   Min.   :  1.0  
+# 1st Qu.:  9.0   1st Qu.:  9.0   1st Qu.:  8.0   1st Qu.:  7.0   1st Qu.:  8.0  
+# Median : 91.0   Median : 81.0   Median : 79.0   Median : 80.0   Median : 91.0  
+# Mean   :108.3   Mean   :104.8   Mean   :104.4   Mean   :105.5   Mean   :108.1  
+# 3rd Qu.:190.0   3rd Qu.:184.5   3rd Qu.:184.5   3rd Qu.:186.5   3rd Qu.:190.0  
+# Max.   :433.0   Max.   :432.0   Max.   :525.0   Max.   :525.0   Max.   :525.0 
+
+colMeans(rrbp)
+# EFFR     OBFR     TGCR     BGCR     SOFR 
+# 108.2911 104.7686 104.3939 105.5336 108.0923 
+
+colMeans(selected_quantilesE)
+colMeans(selected_quantilesE)
+# EFFR      TargetUe      TargetDe  PercentileE1 PercentileE25 PercentileE75 PercentileE99 
+# 108.29106      94.09702      76.69492     118.69725     107.46639     109.32320     118.69725 
+
+colMeans(selected_quantilesS)
+# SOFR  PercentileS1 PercentileS25 PercentileS75 PercentileS99 
+# 108.0923      102.5026      146.5348      109.3986      120.3454 
+
+# Identify distribution
+# https://rpubs.com/eraldagjika/715261#:~:text=The%20function%20descdist()%20provides,may%20use%20argument%20discrete%3DTRUE.&text=Trying%20to%20fit%20probability%20distributions%20to%20the%20number%20of%20cyber%20attacs
+#hist(cyber.data[,2],col="green",main="Histogram attacs",xlab="number of attacs",ylab="Freq")
+breakpoints <- c(10, 20, 30, 40, 50, 60)
+num_bins <- 20
+distr_effr<-hist(rrbp[,1],breaks=num_bins, col="green",main="Histogram for EFFR",xlab="rates",ylab="Freq")
+print(distr_effr)
+#C:\Users\Owner\Documents\Research\MonetaryPolicy\Figures\Figures2
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_effr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_effr.png")
+
+
+distr_sofr<-hist(rrbp[,5],breaks=num_bins,col="orange",main="Histogram for SOFR",xlab="rates",ylab="Freq")
+print(distr_sofr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_sofr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_sofr.png")
+
+
+#Skewness-kurtosis graph for the choice of distributions (Cullen and Frey, 1999)
+#The function descdist() provides a skewness-kurtosis graph to help to choose the best candidate(s) to fit a given dataset. If we want to use it for discrete distributions we may use argument discrete=TRUE.
+# descdist(rrbp[,1], boot = 1000) function not available
+# try plotdist in https://www.rdocumentation.org/packages/fitdistrplus/versions/1.1-11
+#density_effr<-plotdist(rrbp[,1], distr, para, histo = TRUE, breaks = "default", 
+#         demp = FALSE, discrete) # ...
+density_effr<-plotdist(rrbp[,1], histo = TRUE, breaks = "default", 
+                       demp = TRUE, discrete=TRUE)
+print(density_effr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/density_effr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/density_effr.png")
+
+# Try this from url
+hist_obj$xlab <- "Effective Fed Funds rate"
+besthisteffr<-plotdist(rrbp[,1], breaks=num_bins,histo = TRUE, demp = TRUE)
+besthisteffr$xAxisTitle <- "Effective Fed Funds rate"
+print(besthisteffr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/besthisteffr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/besthisteffr.png")
+
+besthistsofr<-plotdist(rrbp[,5], breaks=num_bins, histo = TRUE, demp = TRUE)
+#besthistsofr$xAxisTitle <- "Secured overnight Fed Funds rate"
+print(besthistsofr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/besthistsofr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/besthistsofr.png")
+
+
+
+density_sofr<-plotdist(rrbp[,5], histo = TRUE, breaks = "default", 
+                       demp = TRUE, discrete=TRUE)
+print(density_sofr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/density_sofr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/density_sofr.png")
+
+skewkurt_effr<-descdist(rrbp[,1], discrete = TRUE, boot = NULL, method = "sample",
+         graph = TRUE, print = TRUE, obs.col = "green", obs.pch = 10, boot.col = "orange")
+print(skewkurt_effr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/skewkurt_effr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/skewkurt_effr.png")
+
+
+# QQ plots
 ggplot(rrbp, aes(sample = rrbp[,1])) +
   stat_qq() +
   stat_qq_line()+
 labs(x = "Theoretical Quantiles", y = "Sample Quantiles") +
   ggtitle("QQ Plot of EFFR  vs Normal Distribution")
+
+
+#pois
+ggplot(data = rrbp, aes(sample = EFFR)) +
+  geom_qq(distribution = qpois,dparams = list(lambda = 3), color = "blue") +
+  geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+  #qqline(PercentileE1, col = "steelblue", lwd = 2) +
+  labs(x = "Theoretical median", y = "Sample median") +
+  ggtitle("QQ Plot of EFFR vs Poisson Distribution")
+
+#nbinom
+ggplot(data = rrbp, aes(sample = EFFR)) +
+  geom_qq(distribution = qnbinom, dparams = list(size = 2, prob = 0.5), color = "blue") +
+  geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+  #qqline(PercentileE1, col = "steelblue", lwd = 2) +
+  labs(x = "Theoretical median", y = "Sample median") +
+  ggtitle("QQ Plot of EFFR vs Negative Binomial Distribution")
+
+# https://stackoverflow.com/questions/23480529/r-function-to-generate-a-mixture-distribution
+x<-rrbp[,1]
+dmix <- function(x){
+  prob <- (0.4 * dnorm(x,mean=2,sd=8)) + (0.2 * dcauchy(x,location=25,scale=2)) + (0.4 * dnorm(x,mean=10,sd=6))
+  return (prob)
+}
+
+
+rrbp <- data.frame(EFFR = c(rnegbin(50, size = 2, prob = 0.3), rpois(50, lambda = 5)))  # Mixture of negative binomial and Poisson
+
+# Custom distribution function representing the mixture
+custom_distribution <- function(n, size1, prob1, size2, lambda2) {
+  sample_data <- numeric(n)
+  indices <- sample(1:2, n, replace = TRUE, prob = c(0.5, 0.5))  # Equal probability for both distributions
+  sample_data[indices == 1] <- rnbinom(sum(indices == 1), size = size1, prob = prob1)
+  sample_data[indices == 2] <- rpois(sum(indices == 2), lambda = lambda2)
+  return(sample_data)
+}
+
+# Create a Q-Q plot with the custom mixture distribution
+x<-rrbp[,1]
+dmix <- function(x){
+  prob <- (0.4 * dnorm(x,mean=2,sd=8)) + (0.2 * dcauchy(x,location=25,scale=2)) + (0.4 * dnorm(x,mean=10,sd=6))
+  return (prob)
+}
+
+ggplot(data = rrbp, aes(sample = EFFR)) +
+  geom_qq(distribution = dmix, color = "blue") +
+  geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+  labs(x = "Theoretical median", y = "Sample median") +
+  ggtitle("QQ Plot of EFFR vs Mixture Distribution")
+foo = seq(-5,5,by = 0.01)
+vector = NULL
+for (i in 1:1000){
+  vector[i] <- dmix(foo[i])
+}
+hist(vector)
+
+#  geom_qq(distribution = dmix, dparams = list(n = length(rrbp$EFFR), size1 = 2, prob1 = 0.3, lambda2 = 5), color = "blue") +
 
 qqPlot(spread$EFFR)
 qqPlot(spread$SOFR)
@@ -217,12 +360,6 @@ ggplot(rrbp, aes(sample = rrbp[,5])) +
   labs(x = "Theoretical Quantiles", y = "Sample Quantiles") +
   ggtitle("QQ Plot of SOFR  vs Normal Distribution")
 
-ggplot(data = rrbp, aes(sample = rrbp[,1])) +
-  geom_qq(distribution = qnorm, color = "blue") +
-  geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
-  #qqline(PercentileE1, col = "steelblue", lwd = 2) +
-  labs(x = "Theoretical Quantiles", y = "EFFR") +
-  ggtitle("QQ Plot of EFFR vs Normal Distribution")
 
 ggplot(data = selected_quantilesE, aes(sample = PercentileE1)) +
   geom_qq(distribution = qf, color = "blue") +

@@ -28,6 +28,34 @@ library(dplyr)
 library(car)
 library(MASS)
 
+library("plyr")
+library(tidyverse)
+library(ggplot2)
+library(dslabs)
+library(lubridate)
+#library(vrtest)
+library('matlab')
+library(openai)
+library(tseries)
+library(kableExtra)
+library(lattice)
+#library(writexl)
+library(knitr)
+#library(tables)
+library(xtable)
+library(quarto)
+library(zoo)
+library(tidyr)
+library(gridExtra)
+library(e1071)
+library(ggridges)
+library(viridis)
+library(Rfast)
+library(tidyr)
+library(dplyr)
+library(car)
+library(MASS)
+
 library(fitdistrplus)
 
 
@@ -219,12 +247,12 @@ colMeans(rrbp)
 # EFFR     OBFR     TGCR     BGCR     SOFR 
 # 108.2911 104.7686 104.3939 105.5336 108.0923 
 
-colMeans(selected_quantilesE)
-colMeans(selected_quantilesE)
+effr_means<-colMeans(selected_quantilesE)
+# colMeans(selected_quantilesE)
 # EFFR      TargetUe      TargetDe  PercentileE1 PercentileE25 PercentileE75 PercentileE99 
 # 108.29106      94.09702      76.69492     118.69725     107.46639     109.32320     118.69725 
 
-colMeans(selected_quantilesS)
+sofr_means<-colMeans(selected_quantilesS)
 # SOFR  PercentileS1 PercentileS25 PercentileS75 PercentileS99 
 # 108.0923      102.5026      146.5348      109.3986      120.3454 
 
@@ -232,18 +260,6 @@ colMeans(selected_quantilesS)
 # https://rpubs.com/eraldagjika/715261#:~:text=The%20function%20descdist()%20provides,may%20use%20argument%20discrete%3DTRUE.&text=Trying%20to%20fit%20probability%20distributions%20to%20the%20number%20of%20cyber%20attacs
 #hist(cyber.data[,2],col="green",main="Histogram attacs",xlab="number of attacs",ylab="Freq")
 breakpoints <- c(10, 20, 30, 40, 50, 60)
-num_bins <- 20
-distr_effr<-hist(rrbp[,1],breaks=num_bins, col="green",main="Histogram for EFFR",xlab="rates",ylab="Freq")
-print(distr_effr)
-#C:\Users\Owner\Documents\Research\MonetaryPolicy\Figures\Figures2
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_effr.pdf")
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_effr.png")
-
-
-distr_sofr<-hist(rrbp[,5],breaks=num_bins,col="orange",main="Histogram for SOFR",xlab="rates",ylab="Freq")
-print(distr_sofr)
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_sofr.pdf")
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_sofr.png")
 
 
 #Skewness-kurtosis graph for the choice of distributions (Cullen and Frey, 1999)
@@ -395,6 +411,137 @@ ggplot(data = rrbp, aes(sample = rrbp[,5])) +
   labs(x = "Theoretical Quantiles", y = "SOFR") +
   ggtitle("QQ Plot of SOFR vs Normal Distribution")
 
+# ------------------ How to fit a distribution in R https://www.youtube.com/watch?v=srsTC9SXajw
+# prior work
+par(mfrow=(c(2,1))) # arrange 4 plots 2 in each of 2 rows
+num_bins <- 20
+distr_effr<-hist(rrbp[,1],breaks=num_bins, col="green",main="Histogram for EFFR",xlab="rates",ylab="Freq")
+print(distr_effr)
+#C:\Users\Owner\Documents\Research\MonetaryPolicy\Figures\Figures2
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_effr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_effr.png")
+
+
+distr_sofr<-hist(rrbp[,5],breaks=num_bins,col="orange",main="Histogram for SOFR",xlab="rates",ylab="Freq")
+print(distr_sofr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_sofr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/distr_sofr.png")
+
+par(mfrow=(c(2,1))) # arrange 4 plots 2 in each of 2 rows
+num_bins <- 20
+distr_effr<-hist(rrbp[,1],breaks=num_bins, col="green",main="Histogram for EFFR",xlab="rates",ylab="Freq")
+print(distr_effr)
+distr_sofr<-hist(rrbp[,5],breaks=num_bins,col="orange",main="Histogram for SOFR",xlab="rates",ylab="Freq")
+print(distr_sofr)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/hist_effr_sofr.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/hist_effr_sofr.png")
+
+# summary(rrbp[,1])
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.0     9.0    91.0   108.3   190.0   433.0 
+# > summary(rrbp[,5])
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.0     8.0    91.0   108.1   190.0   525.0 
+
+# summary(rrbp[,2])
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.0     9.0    81.0   104.8   184.5   432.0 
+
+# summary(rrbp[,3])
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.0     8.0    79.0   104.4   184.5   525.0 
+# > summary(rrbp[,4])
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+# 1.0     7.0    80.0   105.5   186.5   525.0 
+
+# a. fitdistr
+# b. fitur
+descdist(data=rrbp[,1],discrete=TRUE)
+numbin=20 #breaks=numbin,
+
+#EFFR
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normalE_<-fitdist(rrbp[,1],"norm")
+nbinE_<-fitdist(rrbp[,1],"nbinom")
+#pois_<-fitdist(rrbp[,1],"pois")
+
+normE<-plot(normal_)
+nbinE<-plot(nbin_)
+#plot(pois_)
+print(normE)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+
+# SOFR
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normalS_<-fitdist(rrbp[,5],"norm")
+nbinS_<-fitdist(rrbp[,5],"nbinom")
+#pois_<-fitdist(rrbp[,5],"pois")
+
+normS<-plot(normalS_)
+nbinS<-plot(nbinS_)
+#plot(pois_)
+print(normS)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normS.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normS.png")
+
+# not good
+# nbinE<-plot(nbin_)
+# print(nbinE)
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.pdf")
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.png")
+
+print(normalE_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.29106   2.371974
+# sd    98.11497   1.677240
+
+print(nbin_)
+# Fitting of the distribution ' nbinom ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# size   0.7834525 0.02365515
+# mu   108.2425026 2.96577371
+#print(pois_)
+
+print(normalS_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.09234   2.381956
+# sd    98.52771   1.684296
+
+summary(normal_)
+summary(nbin_)
+#summary(pois_)
+
+#b. fitur
+library(actuar)
+fitur::fit_dist_addin
+
+# 3 calculate standard deviation of normal distribution from percentiles
+# To calculate the standard deviation of a normal distribution from percentiles, you can use the following formula:
+#   σ = (P84 - P16) / 2.56
+sigma_effr<-(effr_means[6]-effr_means[5])/2.56
+print(sigma_effr) # 0.725316 
+sigma_effr99<-(effr_means[6]-effr_means[5])/2.56
+print(sigma_effr99) # 0.725316 
+
+
+sigma_sofr<-(sofr_means[4]-sofr_means[3])/2.56 
+print(sigma_sofr) #  -14.50632
+sigma_sofr<-(sofr_means[3]-sofr_means[4])/2.56 
+print(sigma_sofr) #  14.50632
+sigma_sofr99<-(sofr_means[5]-sofr_means[2])/2.56 
+print(sigma_sofr99) # 6.969837  
+
+#sigma_effr<-(spread$PercentileE75-spread$PercentileE25)/2.56 
+#sigma_sofr<-(spread$PercentileS75-spread$PercentileS25)/2.56
+
+
+# ----------------------------------------
 
 # box plots
 boxplot(spread$EFFR, 
@@ -710,15 +857,52 @@ cv<-sqrt(var_rrbp)/mean_rrbp
 #----------------------------------------
 #str(stats_rrbp)
 # 'data.frame':	5 obs. of  7 variables:
-#   $ mean_rrbp  : num  108 105 104 106 108
+# EFFR     OBFR     TGCR     BGCR     SOFR 
+# $ mean_rrbp  : num  108 105 104 106 108
 # $ median_rrbp: num  91 81 79 80 91
 # $ var_rrbp   : num  9635 9870 9730 9735 9716
+# $ sd_rrbp           98.14365 99.33823 98.62924 98.65061 98.55652 
 # $ kurtosis   : num  1 1 1 1 1
 # $ p.value    : num  2.83e-17 2.83e-17 2.83e-17 2.83e-17 2.83e-17
 # $ skewness   : num  -18.5 -18.5 -18.5 -18.5 -18.5
 # $ p.value.1  : num  0 0 0 0 0
 # $ cv         : num  0.906 0.948 0.944 0.935 0.912
 # #gender_table <- table(df$gender)
+sd_rrbp<-sqrt(var_rrbp)
+print(sd_rrbp)
+onrates_stats<-xtable(stats_rrbp)
+print( onrates_stats)
+
+# \begin{table}[ht]
+# \centering
+# \begin{tabular}{rrrrrrrrr}
+# \hline
+# & mean\_rrbp & median\_rrbp & sd\_rrbp & kurtosis & p.value & skewness & p.value.1 & cv\_rrbp \\ 
+# \hline
+# EFFR & 108.33 & 91.00 & 98.16 & 1.00 & 0.00 & -18.51 & 0.00 & 0.91 \\ 
+# OBFR & 104.81 & 81.00 & 99.35 & 1.00 & 0.00 & -18.51 & 0.00 & 0.95 \\ 
+# TGCR & 104.44 & 79.00 & 98.64 & 1.00 & 0.00 & -18.51 & 0.00 & 0.94 \\ 
+# BGCR & 105.58 & 80.00 & 98.66 & 1.00 & 0.00 & -18.51 & 0.00 & 0.93 \\ 
+# SOFR & 108.13 & 91.00 & 98.57 & 1.00 & 0.00 & -18.51 & 0.00 & 0.91 \\ 
+# \hline
+# \end{tabular}
+# \end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrrrrr}
+\hline
+mean_rrbp & median_rrbp & sd_rrbp & kurtosis & p.value & skewness & p.value.1 & cv_rrbp \\ 
+\hline
+EFFR & 108.33 & 91.00 & 98.16 & 1.00 & 0.00 & -18.51 & 0.00 & 0.91 \\ 
+OBFR & 104.81 & 81.00 & 99.35 & 1.00 & 0.00 & -18.51 & 0.00 & 0.95 \\ 
+TGCR & 104.44 & 79.00 & 98.64 & 1.00 & 0.00 & -18.51 & 0.00 & 0.94 \\ 
+BGCR & 105.58 & 80.00 & 98.66 & 1.00 & 0.00 & -18.51 & 0.00 & 0.93 \\ 
+SOFR & 108.13 & 91.00 & 98.57 & 1.00 & 0.00 & -18.51 & 0.00 & 0.91 \\ 
+\hline
+\end{tabular}
+\end{table}
+
 
 # str(metricE)
 # 'data.frame':	1710 obs. of  7 variables:
@@ -862,6 +1046,21 @@ qq(plot)
 
 
 # ------------------------ Daily episode rates and stats
+#1. normalcy   3/4/2016		7/31/2019      4  859
+#2. mid cycle adjustment 8/1/2019 - 10/31/2019 737660 
+#860 - 923
+#3. covid 11/1/2019	    3/16/2020   924  1032
+#4. zlb         3/17/2020- 3/16/2022     1032-1516
+#5. Taming inflation 03/17/2022 - 12/29/2022 1517-1714
+#NO! inflation   5/5/2022		12/29/2022 1517  1714
+# Redo -3 for each position for nrow=1710
+
+# norm <-rrbp %>% slice(1:856)
+# adjust <-rrbp %>% slice(857:920)
+# covid <-rrbp %>% slice(921:1029)
+# zlb <-rrbp %>% slice(1030:1513)
+# inflation <-rrbp %>% slice(1514:1710)
+
 begn<- c(4, 860, 924,  1033, 1517, 4)
 endn<- c(859, 923, 1032, 1516, 1714, 1714)
 # 
@@ -882,6 +1081,64 @@ selected_quantilesnormT <- spread[bgn:edn, selected_quantiles_namesT]
 selected_quantilesnormB <- spread[bgn:edn, selected_quantiles_namesB]
 selected_quantilesnormS <- spread[bgn:edn, selected_quantiles_namesS]
 
+# Plots  rates and quantiles
+
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Normalcy"}   
+effrrates_norm <- ggplot(metricE, aes(x = sdate)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal()
+print(effrrates_norm)
+
+
+
+# Distributions and histograms
+descdist(data=rrbp[,1],discrete=TRUE)
+numbin=20 #breaks=numbin,
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normal_<-fitdist(rrbp[,1],"norm")
+nbin_<-fitdist(rrbp[,1],"nbinom")
+#pois_<-fitdist(rrbp[,1],"pois")
+
+
+normE<-plot(normal_)
+nbinE<-plot(nbin_)
+#plot(pois_)
+print(normE)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+
+# not good
+# nbinE<-plot(nbin_)
+# print(nbinE)
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.pdf")
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.png")
+
+print(normal_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.29106   2.371974
+# sd    98.11497   1.677240
+
+print(nbin_)
+# Fitting of the distribution ' nbinom ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# size   0.7834525 0.02365515
+# mu   108.2425026 2.96577371
+#print(pois_)
+
+summary(normal_)
+summary(nbin_)
+#summary(pois_)
+
+
 #2. mid cycle adjustment 8/1/2019 - 10/31/2019 737660 #860 - 923
 K<-2
 bgn<-begn[k]
@@ -891,6 +1148,62 @@ selected_quantilesadjustE <- spread[bgn:edn, selected_quantiles_namesE]
 #selected_quantilesadjustT <- spread[bgn:edn, selected_quantiles_namesT]
 #selected_quantilesadjustB <- spread[bgn:edn, selected_quantiles_namesB]
 selected_quantilesadjustS <- spread[bgn:edn, selected_quantiles_namesS]
+
+
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Normalcy"}   
+effrrates_adjust <- ggplot(metricE, aes(x = sdate)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal()
+print(effrrates_adjust )
+
+
+# Distributions and histograms
+descdist(data=rrbp[,1],discrete=TRUE)
+numbin=20 #breaks=numbin,
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normal_<-fitdist(rrbp[,1],"norm")
+nbin_<-fitdist(rrbp[,1],"nbinom")
+#pois_<-fitdist(rrbp[,1],"pois")
+
+
+normE<-plot(normal_)
+nbinE<-plot(nbin_)
+#plot(pois_)
+print(normE)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+
+# not good
+# nbinE<-plot(nbin_)
+# print(nbinE)
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.pdf")
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.png")
+
+print(normal_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.29106   2.371974
+# sd    98.11497   1.677240
+
+print(nbin_)
+# Fitting of the distribution ' nbinom ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# size   0.7834525 0.02365515
+# mu   108.2425026 2.96577371
+#print(pois_)
+
+summary(normal_)
+summary(nbin_)
+#summary(pois_)
+
 
 #3. covid 11/1/2019	    3/16/2020   924  1032
 K<-3
@@ -902,6 +1215,116 @@ selected_quantilescovidT <- spread[bgn:edn, selected_quantiles_namesT]
 selected_quantilescovidB <- spread[bgn:edn, selected_quantiles_namesB]
 selected_quantilescovidS <- spread[bgn:edn, selected_quantiles_namesS]
 
+
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Covid"}   
+effrrates_covid <- ggplot(metricE, aes(x = sdate)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal()
+print(effrrates_covid)
+
+
+# Distributions and historams
+descdist(data=rrbp[,1],discrete=TRUE)
+numbin=20 #breaks=numbin,
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normal_<-fitdist(rrbp[,1],"norm")
+nbin_<-fitdist(rrbp[,1],"nbinom")
+#pois_<-fitdist(rrbp[,1],"pois")
+
+
+normE<-plot(normal_)
+nbinE<-plot(nbin_)
+#plot(pois_)
+print(normE)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+
+# not good
+# nbinE<-plot(nbin_)
+# print(nbinE)
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.pdf")
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.png")
+
+print(normal_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.29106   2.371974
+# sd    98.11497   1.677240
+
+print(nbin_)
+# Fitting of the distribution ' nbinom ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# size   0.7834525 0.02365515
+# mu   108.2425026 2.96577371
+#print(pois_)
+
+summary(normal_)
+summary(nbin_)
+#summary(pois_)
+
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Adjustment period"}   
+effrrates_adjust <- ggplot(metricE, aes(x = sdate)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal()
+print(effrrates_adjust)
+
+
+# Distributions and historams
+descdist(data=rrbp[,1],discrete=TRUE)
+numbin=20 #breaks=numbin,
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normal_<-fitdist(rrbp[,1],"norm")
+nbin_<-fitdist(rrbp[,1],"nbinom")
+#pois_<-fitdist(rrbp[,1],"pois")
+
+
+normE<-plot(normal_)
+nbinE<-plot(nbin_)
+#plot(pois_)
+print(normE)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+
+# not good
+# nbinE<-plot(nbin_)
+# print(nbinE)
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.pdf")
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.png")
+
+print(normal_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.29106   2.371974
+# sd    98.11497   1.677240
+
+print(nbin_)
+# Fitting of the distribution ' nbinom ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# size   0.7834525 0.02365515
+# mu   108.2425026 2.96577371
+#print(pois_)
+
+summary(normal_)
+summary(nbin_)
+#summary(pois_)
+
+
 #4. zlb         3/17/2020- 3/16/2022     1032-1516
 K<-4
 bgn<-begn[k]
@@ -911,6 +1334,62 @@ selected_quantileszlbE <- spread[bgn:edn, selected_quantiles_namesE]
 selected_quantileszlbT <- spread[bgn:edn, selected_quantiles_namesT]
 selected_quantileszlbB <- spread[bgn:edn, selected_quantiles_namesB]
 selected_quantileszlbS <- spread[bgn:edn, selected_quantiles_namesS]
+
+
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Zero lower bound"}   
+effrrates_zlb <- ggplot(metricE, aes(x = sdate)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal()
+print(effrrates_zlb)
+
+
+# Distributions and histograms
+descdist(data=rrbp[,1],discrete=TRUE)
+numbin=20 #breaks=numbin,
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normal_<-fitdist(rrbp[,1],"norm")
+nbin_<-fitdist(rrbp[,1],"nbinom")
+#pois_<-fitdist(rrbp[,1],"pois")
+
+
+normE<-plot(normal_)
+nbinE<-plot(nbin_)
+#plot(pois_)
+print(normE)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+
+# not good
+# nbinE<-plot(nbin_)
+# print(nbinE)
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.pdf")
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.png")
+
+print(normal_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.29106   2.371974
+# sd    98.11497   1.677240
+
+print(nbin_)
+# Fitting of the distribution ' nbinom ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# size   0.7834525 0.02365515
+# mu   108.2425026 2.96577371
+#print(pois_)
+
+summary(normal_)
+summary(nbin_)
+#summary(pois_)
+
 
 #5. Taming inflation 03/17/2022 - 12/29/2022 1517-1714
 #NO! inflation   5/5/2022		12/29/2022 1517  1714 CHECK
@@ -924,20 +1403,61 @@ selected_quantilespiB <- spread[bgn:edn, selected_quantiles_namesB]
 selected_quantilespiS <- spread[bgn:edn, selected_quantiles_namesS]
 
 
-#1. normalcy   3/4/2016		7/31/2019      4  859
-#2. mid cycle adjustment 8/1/2019 - 10/31/2019 737660 
-#860 - 923
-#3. covid 11/1/2019	    3/16/2020   924  1032
-#4. zlb         3/17/2020- 3/16/2022     1032-1516
-#5. Taming inflation 03/17/2022 - 12/29/2022 1517-1714
-#NO! inflation   5/5/2022		12/29/2022 1517  1714
-# Redo -3 for each position for nrow=1710
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Inflation targeting"}   
+effrrates_inflation <- ggplot(metricE, aes(x = sdate)) +
+  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal()
+print(effrrates_inflation)
 
-# norm <-rrbp %>% slice(1:856)
-# adjust <-rrbp %>% slice(857:920)
-# covid <-rrbp %>% slice(921:1029)
-# zlb <-rrbp %>% slice(1030:1513)
-# inflation <-rrbp %>% slice(1514:1710)
+
+# Distributions and historams
+descdist(data=rrbp[,1],discrete=TRUE)
+numbin=20 #breaks=numbin,
+par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
+normal_<-fitdist(rrbp[,1],"norm")
+nbin_<-fitdist(rrbp[,1],"nbinom")
+#pois_<-fitdist(rrbp[,1],"pois")
+
+
+normE<-plot(normal_)
+nbinE<-plot(nbin_)
+#plot(pois_)
+print(normE)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+
+# not good
+# nbinE<-plot(nbin_)
+# print(nbinE)
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.pdf")
+# ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/nbinE.png")
+
+print(normal_)
+# Fitting of the distribution ' norm ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# mean 108.29106   2.371974
+# sd    98.11497   1.677240
+
+print(nbin_)
+# Fitting of the distribution ' nbinom ' by maximum likelihood 
+# Parameters:
+#   estimate Std. Error
+# size   0.7834525 0.02365515
+# mu   108.2425026 2.96577371
+#print(pois_)
+
+summary(normal_)
+summary(nbin_)
+#summary(pois_)
+
+
 
 # episode stats
 # # Create a dataframe

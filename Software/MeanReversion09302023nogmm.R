@@ -1,32 +1,6 @@
 # Loading
           
-library("plyr")
-library(tidyverse)
-library(ggplot2)
-library(dslabs)
-library(lubridate)
-#library(vrtest)
-library('matlab')
-library(openai)
-library(tseries)
-library(kableExtra)
-library(lattice)
-#library(writexl)
-library(knitr)
-#library(tables)
-library(xtable)
-library(quarto)
-library(zoo)
-library(tidyr)
-library(gridExtra)
-library(e1071)
-library(ggridges)
-library(viridis)
-library(Rfast)
-library(tidyr)
-library(dplyr)
-library(car)
-library(MASS)
+
 
 library("plyr")
 library(tidyverse)
@@ -55,7 +29,6 @@ library(tidyr)
 library(dplyr)
 library(car)
 library(MASS)
-
 library(fitdistrplus)
 
 
@@ -75,7 +48,8 @@ begs <-which(sdate == as.Date("2016-03-04"))[1]
 ends <-which(sdate == as.Date("2022-12-29"))[1]
 print(begs)
 print(ends)
-
+#spread=spread[begs:ends]
+sdate=sdate[begs:ends]
 
 spread %>% replace(is.na(.),0)
 spread$TargetDe %>% replace(is.na(.),0)
@@ -1061,11 +1035,14 @@ qq(plot)
 # zlb <-rrbp %>% slice(1030:1513)
 # inflation <-rrbp %>% slice(1514:1710)
 
-begn<- c(4, 860, 924,  1033, 1517, 4)
-endn<- c(859, 923, 1032, 1516, 1714, 1714)
+#begn<- c(4, 860, 924,  1033, 1517, 4)
+#endn<- c(859, 923, 1032, 1516, 1714, 1714)
+
+begn<- c(1, 857, 921,  1020, 1514, 1)
+endn<- c(856, 920, 1029, 1513, 1711, 1711)
 # 
 # selected_quantilesE <- spread[begs:ends, selected_quantiles_namesE]
-# #selected_quantilesO <- spread[begs:ends, selected_quantiles_namesO]
+# selected_quantilesO <- spread[begs:ends, selected_quantiles_namesO]
 # selected_quantilesT <- spread[begs:ends, selected_quantiles_namesT]
 # selected_quantilesB <- spread[begs:ends, selected_quantiles_namesB]
 # selected_quantilesS <- spread[begs:ends, selected_quantiles_namesS]
@@ -1076,34 +1053,49 @@ k<-1
 bgn<-begn[k]
 edn<-endn[k]
 norm<-rrbp[bgn:edn,]
-selected_quantilesnormE <- spread[bgn:edn, selected_quantiles_namesE]
-selected_quantilesnormT <- spread[bgn:edn, selected_quantiles_namesT]
-selected_quantilesnormB <- spread[bgn:edn, selected_quantiles_namesB]
-selected_quantilesnormS <- spread[bgn:edn, selected_quantiles_namesS]
+metricEnorm <- spread[bgn:edn, selected_quantiles_namesE]
+#selected_quantilesnormO <- spread[bgn:edn, selected_quantiles_namesO]
+#selected_quantilesnormT <- spread[bgn:edn, selected_quantiles_namesT]
+#selected_quantilesnormB <- spread[bgn:edn, selected_quantiles_namesB]
+metricSnorm <- spread[bgn:edn, selected_quantiles_namesS]
 
 # Plots  rates and quantiles
 
 #```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Normalcy"}   
-effrrates_norm <- ggplot(metricE, aes(x = sdate)) +
-  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
-  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+effrrates_norm <- ggplot(metricEnorm, aes(x = sdate[begn[k]:endn[k]])) +
+  geom_line(aes(y = metricEnorm[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricEnorm[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEnorm[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEnorm[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEnorm[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
   labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
   scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
   theme_minimal()
 print(effrrates_norm)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_norm.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_norm.png")
 
-
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Normalcy"}   
+sofrrates_norm <- ggplot(metricSnorm, aes(x = sdate[begn[k]:endn[k]])) +
+  geom_line(aes(y = metricSnorm[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricSnorm[,2], color = "PercentileS1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricSnorm[,3], color = "PercentileS25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricSnorm[,4], color = "PercentileS75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricSnorm[,5], color = "PercentileS99",alpha = 0.25), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("SOFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal()
+print(sofrrates_norm)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/sofrrates_norm.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/sofrrates_norm.png")
 
 # Distributions and histograms
-descdist(data=rrbp[,1],discrete=TRUE)
+descdist(data=metricEnorm[,1],discrete=TRUE)
 numbin=20 #breaks=numbin,
 par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
-normal_<-fitdist(rrbp[,1],"norm")
-nbin_<-fitdist(rrbp[,1],"nbinom")
-#pois_<-fitdist(rrbp[,1],"pois")
+normal_<-fitdist(metricEnorm[,1],"norm")
+nbin_<-fitdist(metricEnorm[,1],"nbinom")
+pois_<-fitdist(metricEnorm[,1],"pois")
 
 
 normE<-plot(normal_)
@@ -1140,44 +1132,46 @@ summary(nbin_)
 
 
 #2. mid cycle adjustment 8/1/2019 - 10/31/2019 737660 #860 - 923
-K<-2
+K=2
 bgn<-begn[k]
 edn<-endn[k]
-adjust<-rrbp[bgn:endn,]
-selected_quantilesadjustE <- spread[bgn:edn, selected_quantiles_namesE]
+adjust<-rrbp[bgn:edn,]
+metricEadj <- spread[bgn:edn, selected_quantiles_namesE]
 #selected_quantilesadjustT <- spread[bgn:edn, selected_quantiles_namesT]
 #selected_quantilesadjustB <- spread[bgn:edn, selected_quantiles_namesB]
-selected_quantilesadjustS <- spread[bgn:edn, selected_quantiles_namesS]
+metricSadj <- spread[bgn:edn, selected_quantiles_namesS]
 
 
-#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Normalcy"}   
-effrrates_adjust <- ggplot(metricE, aes(x = sdate)) +
-  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
-  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Adjustment period"}   
+  effrrates_adjust <- ggplot(metricEadj, aes(x = sdate[begn[k]:endn[k]])) +
+  geom_line(aes(y = metricEadj[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricEadj[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEadj[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEadj[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEadj[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
   labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
   scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
   theme_minimal()
-print(effrrates_adjust )
+print(effrrates_adjust)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_adjust.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_adjust.png")
 
 
 # Distributions and histograms
-descdist(data=rrbp[,1],discrete=TRUE)
+descdist(data=metricEadj[,1],discrete=TRUE)
 numbin=20 #breaks=numbin,
 par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
-normal_<-fitdist(rrbp[,1],"norm")
-nbin_<-fitdist(rrbp[,1],"nbinom")
-#pois_<-fitdist(rrbp[,1],"pois")
+normal_<-fitdist(metricEadj[,1],"norm")
+nbin_<-fitdist(metricEadj[,1],"nbinom")
+#pois_<-fitdist(metricEadj[,1],"pois")
 
 
-normE<-plot(normal_)
-nbinE<-plot(nbin_)
+normEadj<-plot(normal_)
+nbinEadj<-plot(nbin_)
 #plot(pois_)
-print(normE)
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+print(normEadj)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEadj.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEadj.png")
 
 # not good
 # nbinE<-plot(nbin_)
@@ -1206,31 +1200,33 @@ summary(nbin_)
 
 
 #3. covid 11/1/2019	    3/16/2020   924  1032
-K<-3
+K=3
 bgn<-begn[k]
 edn<-endn[k]
 covid<-rrbp[bgn:edn,]
-selected_quantilescovidE <- spread[bgn:edn, selected_quantiles_namesE]
+metricEcovid  <- spread[bgn:edn, selected_quantiles_namesE]
 selected_quantilescovidT <- spread[bgn:edn, selected_quantiles_namesT]
 selected_quantilescovidB <- spread[bgn:edn, selected_quantiles_namesB]
-selected_quantilescovidS <- spread[bgn:edn, selected_quantiles_namesS]
+metricScovid <- spread[bgn:edn, selected_quantiles_namesS]
 
 
 #```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Covid"}   
-effrrates_covid <- ggplot(metricE, aes(x = sdate)) +
-  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
-  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+effrrates_covid <- ggplot(metricEcovid, aes(x = sdate[begn[k]:endn[k]])) +
+  geom_line(aes(y = metricEcovid[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricEcovid[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEcovid[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEcovid[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEcovid[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
   labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
   scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
   theme_minimal()
 print(effrrates_covid)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_covid.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_covid.png")
 
 
-# Distributions and historams
-descdist(data=rrbp[,1],discrete=TRUE)
+# Distributions and histograms
+descdist(data=metricEcovid[,1],discrete=TRUE)
 numbin=20 #breaks=numbin,
 par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
 normal_<-fitdist(rrbp[,1],"norm")
@@ -1238,12 +1234,12 @@ nbin_<-fitdist(rrbp[,1],"nbinom")
 #pois_<-fitdist(rrbp[,1],"pois")
 
 
-normE<-plot(normal_)
-nbinE<-plot(nbin_)
+normEcovid<-plot(normal_)
+nbinEcovid<-plot(nbin_)
 #plot(pois_)
-print(normE)
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+print(normEcovid)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEcovid.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEcovid.png")
 
 # not good
 # nbinE<-plot(nbin_)
@@ -1271,7 +1267,7 @@ summary(nbin_)
 #summary(pois_)
 
 #```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Adjustment period"}   
-effrrates_adjust <- ggplot(metricE, aes(x = sdate)) +
+effrrates_adjust <- ggplot(metricE, aes(x = sdate[begn[k]:endn[k]])) +
   geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
   geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
   geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
@@ -1281,9 +1277,11 @@ effrrates_adjust <- ggplot(metricE, aes(x = sdate)) +
   scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
   theme_minimal()
 print(effrrates_adjust)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_adjust.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_adjust.png")
 
 
-# Distributions and historams
+# Distributions and histograms
 descdist(data=rrbp[,1],discrete=TRUE)
 numbin=20 #breaks=numbin,
 par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
@@ -1326,44 +1324,46 @@ summary(nbin_)
 
 
 #4. zlb         3/17/2020- 3/16/2022     1032-1516
-K<-4
+k=4
 bgn<-begn[k]
 edn<-endn[k]
 zlb<-rrbp[bgn:edn,]
-selected_quantileszlbE <- spread[bgn:edn, selected_quantiles_namesE]
+metricEzlb <- spread[bgn:edn, selected_quantiles_namesE]
 selected_quantileszlbT <- spread[bgn:edn, selected_quantiles_namesT]
 selected_quantileszlbB <- spread[bgn:edn, selected_quantiles_namesB]
-selected_quantileszlbS <- spread[bgn:edn, selected_quantiles_namesS]
+metricSzlb  <- spread[bgn:edn, selected_quantiles_namesS]
 
 
 #```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Zero lower bound"}   
-effrrates_zlb <- ggplot(metricE, aes(x = sdate)) +
-  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
-  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+effrrates_zlb<- ggplot(metricEzlb, aes(x = sdate[begn[k]:endn[k]])) +
+  geom_line(aes(y = metricEzlb[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricEzlb[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEzlb[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEzlb[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEzlb[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
   labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
   scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
   theme_minimal()
 print(effrrates_zlb)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_zlb.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/effrrates_zlb.png")
 
 
 # Distributions and histograms
-descdist(data=rrbp[,1],discrete=TRUE)
+descdist(data=metricEzlb[,1],discrete=TRUE)
 numbin=20 #breaks=numbin,
 par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
-normal_<-fitdist(rrbp[,1],"norm")
-nbin_<-fitdist(rrbp[,1],"nbinom")
-#pois_<-fitdist(rrbp[,1],"pois")
+normal_<-fitdist(metricEzlb[,1],"norm")
+nbin_<-fitdist(metricEzlb[,1],"nbinom")
+#pois_<-fitdist(metricEzlb[,1],"pois")
 
 
-normE<-plot(normal_)
-nbinE<-plot(nbin_)
+normEzlb<-plot(normal_)
+nbinEzlb<-plot(nbin_)
 #plot(pois_)
-print(normE)
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+print(normEzlb)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEzlb.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEzlb.png")
 
 # not good
 # nbinE<-plot(nbin_)
@@ -1393,23 +1393,23 @@ summary(nbin_)
 
 #5. Taming inflation 03/17/2022 - 12/29/2022 1517-1714
 #NO! inflation   5/5/2022		12/29/2022 1517  1714 CHECK
-K<-5
+k=5
 bgn<-begn[k]
 edn<-endn[k]
 inflation<-rrbp[bgn:edn[],]
-selected_quantilespiE <- spread[bgn:edn, selected_quantiles_namesE]
+metricEinflation <- spread[bgn:edn, selected_quantiles_namesE]
 selected_quantilespiT <- spread[bgn:edn, selected_quantiles_namesT]
 selected_quantilespiB <- spread[bgn:edn, selected_quantiles_namesB]
-selected_quantilespiS <- spread[bgn:edn, selected_quantiles_namesS]
+metricSinflation <- spread[bgn:edn, selected_quantiles_namesS]
 
 
 #```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Inflation targeting"}   
-effrrates_inflation <- ggplot(metricE, aes(x = sdate)) +
-  geom_line(aes(y = metricE[,1], color = "EFFR"), linewidth =1) + 
-  geom_line(aes(y = metricE[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
-  geom_line(aes(y = metricE[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
+effrrates_inflation <- ggplot(metricEinflation, aes(x = sdate[begn[k]:endn[k]])) +
+  geom_line(aes(y = metricEinflation[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = metricEinflation[,4], color = "PercentileE1",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEinflation[,5], color = "PercentileE25",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEinflation[,6], color = "PercentileE75",alpha = 0.25), linewidth = 1) + 
+  geom_line(aes(y = metricEinflation[,7], color = "PercentileE99",alpha = 0.25), linewidth = 1) + 
   labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
   scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
   theme_minimal()
@@ -1417,20 +1417,20 @@ print(effrrates_inflation)
 
 
 # Distributions and historams
-descdist(data=rrbp[,1],discrete=TRUE)
+descdist(data=metricEinflation[,1],discrete=TRUE)
 numbin=20 #breaks=numbin,
 par(mfrow=(c(3,1))) # arrange 4 plots 2 in each of 2 rows
-normal_<-fitdist(rrbp[,1],"norm")
-nbin_<-fitdist(rrbp[,1],"nbinom")
-#pois_<-fitdist(rrbp[,1],"pois")
+normal_<-fitdist(metricEinflation[,1],"norm")
+nbin_<-fitdist(metricEinflation[,1],"nbinom")
+#pois_<-fitdist(metricEinflation[,1],"pois")
+print(normal_)
 
-
-normE<-plot(normal_)
-nbinE<-plot(nbin_)
+normEinflation<-plot(normal_)
+nbinEinflation<-plot(nbin_)
 #plot(pois_)
-print(normE)
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.pdf")
-ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normE.png")
+print(normEinflation)
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEinflation.pdf")
+ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/normEinflation.png")
 
 # not good
 # nbinE<-plot(nbin_)

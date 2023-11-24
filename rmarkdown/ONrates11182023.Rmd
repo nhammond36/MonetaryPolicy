@@ -1,0 +1,321 @@
+
+---
+title: "ONrates11182023"
+author: "Hammond"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: true
+header-includes:
+  - "\\usepackage{booktabs}"
+---
+
+
+
+```{r setup, include=FALSE}
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(xtable)
+library(tinytex)
+library(gridExtra)
+# Set global knitr options
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+    
+<!--
+Structure of article: IMRAD:
+Introduction
+Methodology
+Results and
+Discussion
+
+Conclusion
+Acknowledgements
+References
+Supporting Materials
+
+<!--
+Discussing figures in a scientific paper is an important aspect of effectively communicating your research findings. Figures, such as graphs, charts, and images, help illustrate your points and make your paper more accessible to readers. Here's a step-by-step guide on how to discuss figures in a scientific paper:
+1. Introduction:
+Start by introducing the figure and its purpose. Briefly explain what the figure represents and why it's important in the context of your study.
+2. Figure Description:
+Provide a clear and concise description of the figure. Include relevant details about the data, axes, labels, units, and any key components.
+3. Interpretation:
+Discuss the main findings or trends depicted in the figure. Highlight significant patterns, relationships, or differences. Use specific data points to support your interpretations.
+4. Connection to Hypotheses or Research Questions:
+Relate the figure's content to the research questions or hypotheses you're addressing in your study. Explain how the figure's information contributes to answering these questions or testing these hypotheses.
+5. Comparison with Previous Studies:
+If applicable, compare your findings in the figure with results from previous studies. Highlight similarities or differences and discuss potential reasons for these discrepancies.
+6. Limitations:
+Address any limitations or uncertainties associated with the figure. Discuss potential sources of error, assumptions made, or aspects that could impact the interpretation of the data.
+7. Implications:
+Discuss the broader implications of the figure's findings. How do the results depicted in the figure contribute to the field's understanding of the topic? How might these findings impact theory, practice, or future research?
+8. Integration with Text:
+Make sure to integrate your discussion of the figure smoothly within the overall flow of your paper. Refer to the figure by its number and provide context as needed.
+9. Clarity and Precision:
+Use clear and precise language. Avoid jargon that might confuse readers unfamiliar with your specific field.
+10. Visual Aids:
+As you discuss the figure, consider referring to specific elements within the figure to guide the reader's understanding. For example, you can mention specific data points, lines, or sections of the graph.
+11. Use of Citations:
+If you're comparing your figure's results with those from other studies, cite those studies appropriately. This adds credibility to your discussion and allows readers to explore the referenced work.
+12. Repetition and Synthesis:
+Ensure that the discussion of the figure complements the narrative you've established in the rest of the paper. Avoid repeating information but rather synthesize the figure's insights into the overall story you're telling.
+Remember that your goal is to help readers understand the figure's content, its significance, and its implications in the context of your research. By following these steps and maintaining a clear, organized writing style, you can effectively discuss figures in your scientific paper.
+-->
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+
+
+```{r, source file}
+# Source the external R script
+source("C:/Users/Owner/Documents/Research/MonetaryPolicy/Code/CodeMI/olsgmmv2.R")
+```
+```{r, read_data}
+headers=  read.csv('C:/Users/Owner/Documents/Research/MonetaryPolicy/Data/Final data files/dailyovernightrates090923v2.csv',header=F, nrows=1)
+spread <- read.csv('C:/Users/Owner/Documents/Research/MonetaryPolicy/Data/Final data files/dailyovernightrates090923v2.csv',header=TRUE, sep=",",dec=".",stringsAsFactors=FALSE);
+colnames(spread)=headers;
+print(colnames(spread))
+spread %>% replace(is.na(.),0);
+class(spread)
+sdate<-as.Date(spread$Time,"%m/%d/%Y")
+```
+```{r, select sample,echo=FALSE}
+begs <-which(sdate == as.Date("2016-03-04"))[1] # sample start date 3/04/2016
+ends <-which(sdate == as.Date("2022-12-29"))[1] # sample end  date  12/27/2022
+print(begs)
+print(ends)
+spread=spread[begs:ends,]
+sdate=sdate[begs:ends]
+```
+```{r, check nan values, echo=FALSE}
+# Handle missing values (replace NAs with a specific value or impute)
+spread_no_na <- na.omit(spread)
+# New from chatgpt----------------------------
+
+spread_no_na <- spread_no_na %>%
+  mutate_all(~ ifelse(is.numeric(.), .*100, .))
+# but change volumes back to xxx billions
+
+spread_no_na <- spread_no_na %>%
+  mutate_at(vars(VolumeEFFR, VolumeOBFR,VolumeTGCR,VolumeBGCR,VolumeSOFR), ~ ifelse(is.numeric(.), . * 0.01, .))
+```
+```{r, rrbp,echo=FALSE}
+rrbp<-  select(spread_no_na,EFFR,OBFR,TGCR,BGCR,SOFR);
+rrbp<-rrbp;
+```
+```{r, sdate}
+sdate<-as.Date(spread$Time,"%m/%d/%Y"); 
+```
+```{r, volumes dataframe}
+vold<-select(spread_no_na, VolumeEFFR,VolumeOBFR,VolumeTGCR,VolumeBGCR,VolumeSOFR);
+```
+
+```{r, daily rates volumes and percentiles, echo=TRUE}
+# print(colnames(spread))
+# Handle missing values (replace NAs with a specific value or impute)
+spread_no_na <- na.omit(spread)
+print(colnames(spread))
+spread_no_na <- spread_no_na %>%
+  mutate(sdate = as.Date(Time, "%m/%d/%Y"))
+spread_no_na <- spread_no_na %>%
+  mutate_all(~ ifelse(is.numeric(.), .*100, .))
+# REMEMBER TO DIVIDE VOLUME (BILLIONS_ BY 100) to change volumes back to xxx billions
+spread_no_na$VolumeEFFR <- spread_no_na$VolumeEFFR * 0.01
+spread_no_na$VolumeOBFR <- spread_no_na$VolumeOBFR * 0.01
+spread_no_na$VolumeTGCR <- spread_no_na$VolumeTGCR * 0.01
+spread_no_na$VolumeBGCR <- spread_no_na$VolumeBGCR * 0.01
+spread_no_na$VolumeSOFR <- spread_no_na$VolumeSOFR * 0.01
+# quantile data frames
+quantilesE <- spread_no_na[, c("sdate","EFFR","VolumeEFFR","TargetUe","TargetDe","PercentileE1","PercentileE25","PercentileE75","PercentileE99")]
+quantilesO <- spread_no_na[, c("sdate","OBFR","PercentileO1","PercentileO25","PercentileO75","PercentileO99")]
+quantilesT <- spread_no_na[, c("sdate","TGCR","PercentileT1","PercentileT25","PercentileT75","PercentileT99")]
+quantilesB <- spread_no_na[, c("sdate","BGCR","PercentileB1","PercentileB25","PercentileB75","PercentileB99")]
+quantilesS <- spread_no_na[, c("sdate","SOFR","PercentileS1","PercentileS25","PercentileS75","PercentileS99")]
+# print quantile data frames
+print(quantilesE)
+print(quantilesO)
+print(quantilesT)
+print(quantilesB)
+print(quantilesS)
+```
+
+  
+```{r, episodes}
+begn<- c(1, 857, 921,  1030, 1514, 1)
+endn<- c(856, 920, 1029, 1513, 1711, 1710)
+k<-1
+norm<-rrbp[begn[k]:endn[k],]
+K<-2
+adjust<-rrbp[begn[k]:endn[k],]
+K<-3
+covid<-rrbp[begn[k]:endn[k],]
+K<-4
+zlb<-rrbp[begn[k]:endn[k],]
+K<-5
+inflation<-rrbp[begn[k]:endn[k],]
+```
+
+
+# Introduction
+# Fed practise of monetary policy
+# Daily overnight rates
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
+## Daily rates
+
+
+```{r, sample daily rates 2018 to 2022, echo=FALSE}
+y_breaks=50
+y_limits=500
+dailyrates <- ggplot(rrbp, aes(x = sdate)) +
+  geom_line(aes(y = rrbp[,1], color = "EFFR"), linewidth =1) + 
+  geom_line(aes(y = rrbp[,2], color = "OBFR"), linewidth = 1) + 
+  geom_line(aes(y = rrbp[,3], color = "TGCR"), linewidth = 1) + 
+  geom_line(aes(y = rrbp[,4], color = "BGCR"), linewidth = 1) + 
+  geom_line(aes(y = rrbp[,5], color = "SOFR"), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "OBFR" = "blue", "TGCR" = "green", "BGCR" = "orange", "SOFR" = "red")) + 
+  scale_y_continuous(breaks = y_breaks, limits = y_limits) + 
+  theme_minimal()
+```
+
+
+
+```{r, effr rates volume targets, percentiles,echo=FALSE}
+print(quantilesE)
+
+effrrates <- ggplot(quantilesE, aes(x = sdate)) +
+  geom_line(aes(y = EFFR, color = "EFFR"), linewidth = 1) + 
+  geom_line(aes(y = PercentileE1, color = "PercentileE1"), linewidth = 1) + 
+  geom_line(aes(y = PercentileE25, color = "PercentileE25"), linewidth = 1) + 
+  geom_line(aes(y = PercentileE75, color = "PercentileE75"), linewidth = 1) + 
+  geom_line(aes(y = PercentileE99, color = "PercentileE99"), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)") + 
+  scale_color_manual(values = c("EFFR" = "black", "PercentileE1" = "yellow", "PercentileE25"= "green","PercentileE75" = "blue","PercentileE99" = "red")) + 
+  theme_minimal() +
+  scale_y_continuous(breaks = y_breaks, limits = y_limits)
+
+print(effrrates)
+
+```
+
+```{r, sofr }
+sofrrates <- ggplot(quantilesS, aes(x = sdate)) +
+  geom_line(aes(y = SOFR, color = "SOFR"), linewidth =1) + 
+  geom_line(aes(y = PercentileS1, color = "PercentileS1"), linewidth = 1) + 
+  geom_line(aes(y = PercentileS25, color = "PercentileS25"), linewidth = 1) + 
+  geom_line(aes(y = PercentileS75, color = "PercentileS75"), linewidth = 1) + 
+  geom_line(aes(y = PercentileS99, color = "PercentileS99"), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)") + 
+  scale_color_manual(values = c("SOFR" = "black", "PercentileS1" = "yellow", "PercentileS25"= "green","PercentileS75" = "blue","PercentileS99" = "red")) + 
+  theme_minimal() +
+  scale_y_continuous(breaks = y_breaks, limits = y_limits)
+
+```
+
+```{r, secured rates,volume, percentiles,echo=FALSE}
+securedrates <- ggplot(rrbp, aes(x = sdate)) +
+  geom_line(aes(y = TGCR, color = "TGCR"), linewidth = 1) + 
+  geom_line(aes(y = BGCR, color = "BGCR"), linewidth = 1) + 
+  #geom_line(aes(y = SOFR, color = "SOFR"), linewidth = 1) + 
+  labs(x = "Date", y = "basis points (bp)") + 
+  scale_color_manual(values = c("TGCR" = "red", "BGCR" = "blue")) + 
+  theme_minimal()
+```                                                                              
+<!--
+Problem
+It seems that TGCR and BGCR are used directly in aes(y = ...). However, in the earlier part of your R Markdown document, you were using quantilesS and quantilesE as data frames. It looks like securedrates is using a different data frame (rrbp).
+
+To fix this, make sure that rrbp has the columns sdate, TGCR, and BGCR. If sdate is not present in rrbp, you might need to add it, similar to what you did for the other data frames.
+
+If the issue persists, please check the structure of the rrbp data frame using str(rrbp) to ensure that the required columns are present. If you encounter further difficulties, feel free to share the structure of the rrbp data frame or any additional error messages you receive.
+-->
+
+```{r, combined rates graphs}
+grid_sample <- grid.arrange(effrrates, sofrrates, securedrates,nrow = 3)
+```
+
+```{r, volumes,echo=FALSE}
+dailyvolumes <- ggplot(vold, aes(x = sdate)) +
+  geom_point(aes(y = vold[,1], color = "EFFR"), shape = 16, size = 1) + 
+  geom_point(aes(y = vold[,2], color = "OBFR"), shape = 16, size = 1) + 
+  geom_point(aes(y = vold[,3], color = "TGCR"), shape = 16, size = 1) + 
+  geom_point(aes(y = vold[,4], color = "BGCR"), shape = 16, size = 1) + 
+  geom_point(aes(y = vold[,5], color = "SOFR"), shape = 16, size = 1) + 
+  labs(x = "Date", y = "basis points (bp)", color = "Lines") + 
+  scale_color_manual(values = c("EFFR" = "black", "OBFR" = "yellow", "TGCR"= "green","BGCR" = "blue","SOFR" = "red")) +
+  theme_minimal()
+```
+
+<!--
+data chunks for sample stats
+-->
+
+```{r, sample stats data, echo=FALSE}
+numeric_quantilesE <- select_if(quantilesE, is.numeric)
+Estats <- colMeans(numeric_quantilesE, na.rm = TRUE)
+Estatsnorm <- colMeans(numeric_quantilesE[bgn:edn,], na.rm = TRUE)
+
+numeric_quantilesS <- select_if(quantilesS, is.numeric)
+Sstats <- colMeans(numeric_quantilesS, na.rm = TRUE)
+
+numeric_quantilesT <- select_if(quantilesT, is.numeric)
+Tstats <- colMeans(numeric_quantilesT, na.rm = TRUE)
+
+numeric_quantilesB <- select_if(quantilesB, is.numeric)
+Bstats <- colMeans(numeric_quantilesB, na.rm = TRUE)
+
+#numeric_quantilesO <- select_if(quantilesO, is.numeric)
+#Ostats <- colMeans(numeric_quantilesO, na.rm = TRUE)
+```
+
+
+```{r,sample stats, echo=FALSE}
+statsall<-xtable(samplestats)
+print(xt, type = "latex")
+```
+
+<!--
+histograms, densities, boxplots
+-->
+
+
+
+## Episodes
+<!--
+line 964 in code
+norm_sdate <- sdate[1:856]
+adj_sdate <- sdate[857:920]
+covid_sdate <- sdate[921:1029]
+zlb_sdate <- sdate[1030:1513]
+inflation_sdate <- sdate[1514:1710]
+-->
+
+-->
+
+
+# Daily volumes
+
+# Volatility and dispersion measures hypothesis 2

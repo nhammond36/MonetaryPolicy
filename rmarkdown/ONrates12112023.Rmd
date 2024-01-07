@@ -1,0 +1,520 @@
+
+---
+title: "ONrates12022023"
+author: "Hammond"
+date: "`r format(Sys.Date(), '%Y-%m-%d')`"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: true
+echo: false  # Make sure this line is present and set to false
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{float}
+---
+
+```{r setup, include=FALSE}
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(knitr)
+library(xtable)
+library(tinytex)
+library(gridExtra)
+library(reshape2)
+library(bookdown)
+# Set global knitr options
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, clear environment, echo=TRUE}
+# Clear the environment
+#rm(list = ls())
+```
+#Load the environment from the RDS file
+```{r, load environment, echo=FALSE}
+my_envmp <- readRDS("C:/Users/Owner/Documents/Research/MonetaryPolicy/MPResults/LaTeX/my_environmentmp.RDS")
+```
+
+<!--
+https://rstudio.github.io/visual-markdown-editing/technical.html#:~:text=In%20raw%20markdown%2C%20you%20would,to%20escape%20the%20%40%20character).
+
+
+Structure of article: IMRAD:
+Introduction
+Methodology
+Results and
+Discussion
+
+Conclusion
+Acknowledgements
+References
+Supporting Materials
+
+Discussing figures in a scientific paper is an important aspect of effectively communicating your research findings. Figures, such as graphs, charts, and images, help illustrate your points and make your paper more accessible to readers. Here's a step-by-step guide on how to discuss figures in a scientific paper:
+1. Introduction:
+Start by introducing the figure and its purpose. Briefly explain what the figure represents and why it's important in the context of your study.
+2. Figure Description:
+Provide a clear and concise description of the figure. Include relevant details about the data, axes, labels, units, and any key components.
+3. Interpretation:
+Discuss the main findings or trends depicted in the figure. Highlight significant patterns, relationships, or differences. Use specific data points to support your interpretations.
+4. Connection to Hypotheses or Research Questions:
+Relate the figure's content to the research questions or hypotheses you're addressing in your study. Explain how the figure's information contributes to answering these questions or testing these hypotheses.
+5. Comparison with Previous Studies:
+If applicable, compare your findings in the figure with results from previous studies. Highlight similarities or differences and discuss potential reasons for these discrepancies.
+6. Limitations:
+Address any limitations or uncertainties associated with the figure. Discuss potential sources of error, assumptions made, or aspects that could impact the interpretation of the data.
+7. Implications:
+Discuss the broader implications of the figure's findings. How do the results depicted in the figure contribute to the field's understanding of the topic? How might these findings impact theory, practice, or future research?
+8. Integration with Text:
+Make sure to integrate your discussion of the figure smoothly within the overall flow of your paper. Refer to the figure by its number and provide context as needed.
+9. Clarity and Precision:
+Use clear and precise language. Avoid jargon that might confuse readers unfamiliar with your specific field.
+10. Visual Aids:
+As you discuss the figure, consider referring to specific elements within the figure to guide the reader's understanding. For example, you can mention specific data points, lines, or sections of the graph.
+11. Use of Citations:
+If you're comparing your figure's results with those from other studies, cite those studies appropriately. This adds credibility to your discussion and allows readers to explore the referenced work.
+12. Repetition and Synthesis:
+Ensure that the discussion of the figure complements the narrative you've established in the rest of the paper. Avoid repeating information but rather synthesize the figure's insights into the overall story you're telling.
+Remember that your goal is to help readers understand the figure's content, its significance, and its implications in the context of your research. By following these steps and maintaining a clear, organized writing style, you can effectively discuss figures in your scientific paper.
+-->
+
+
+```{r, main data spread, echo=FALSE}
+#Access the data frame stored in the environment
+my_data <- my_envmp$spread_no_na
+str(my_data)
+``` 
+
+
+```{r, sdate,echo=FALSE}
+sdate<-as.Date(my_data$Date,"%m/%d/%Y"); 
+```
+
+```{r, select sample,echo=FALSE}
+begs <-which(sdate == as.Date("2016-03-04"))[1] # sample start date 3/04/2016
+ends <-which(sdate == as.Date("2022-12-29"))[1] # sample end  date  12/27/2022
+print(begs)
+print(ends)
+#my_data=my_data[begs:ends,]
+#spread_no_na=my_data[begs:ends,]
+```
+
+
+```{r, daily quantile dataframes, echo=FALSE,  cache=FALSE,results='hide'}
+quantilesE <- spread_no_na[, c("sdate", "EFFR", "Volume_EFFR", "TargetUe_EFFR", "TargetDe_EFFR", "Percentile01_EFFR", "Percentile25_EFFR", "Percentile75_EFFR", "Percentile99_EFFR")]
+quantilesO <- spread_no_na[, c("sdate", "OBFR", "Volume_OBFR", "Percentile01_OBFR", "Percentile25_OBFR", "Percentile75_OBFR", "Percentile99_OBFR")]
+quantilesT <- spread_no_na[, c("sdate", "TGCR", "Volume_TGCR", "Percentile01_TGCR", "Percentile25_TGCR", "Percentile75_TGCR", "Percentile99_TGCR")]
+quantilesB <- spread_no_na[, c("sdate", "BGCR", "Volume_BGCR", "Percentile01_BGCR", "Percentile25_BGCR", "Percentile75_BGCR", "Percentile99_BGCR")]
+quantilesS <- spread_no_na[, c("sdate", "SOFR", "Volume_SOFR", "TargetUe_SOFR", "TargetDe_SOFR", "Percentile01_SOFR", "Percentile25_SOFR", "Percentile75_SOFR", "Percentile99_SOFR")]
+```
+
+# Introduction
+# Fed practise of monetary policy
+# Daily overnight rates
+
+## Daily rates
+
+From 2016, we see all overnight rates, EFFR, OBFR, TGFR, BGFR, SOFR? rising steadily from _ basis points in 2016 to_ July 2019 (see Figure \@ref(fig:Daily rates 2016-2022-plot).In 2019 rates began their decline in a 3 month period from August to October 2019. Rates then plunge with the onset of covid, from _ basis points in November 2019 to March 2020.  Rates plunge to near zero from Mar 2020 to March 022 during the zero lower bound. As the Fed began to fight inflation rates rose in steady 25 or 50 basis point increments from March 2022 to_ in December 2023.  Rates were held steady from _ basis points in 2016 to_  
+
+
+(see  Figure \@ref(fig:Daily Secured rates 2016-2022-plot)
+
+(see Figure \@ref(fig:EFFR, FOMC targets 2016-2023-plot)
+This pattern suggests the following episodes that may correspond with differing policy regimes or external shocks:
+
+1. normalcy   3/4/2016		7/31/2019      4  859
+2. mid cycle adjustment 8/1/2019 - 10/31/2019 737660  860 - 923
+3. covid 11/1/2019	    3/16/2020   924  1032
+4. zlb         3/17/2020- 3/16/2022     1032-1516
+5. Taming inflation 03/17/2022 - 12/14/2023 1517-1960  Correct with new end point
+
+The average weighted median for the EFFR during the sample is 157 basis points (pb). The money market rates TGCR,BGCR and SOFR 123-134 bp. Daily transaction volume in SOFR (billions of dollars ) is around 754 billion. The money market volumes in TGCR and BGCR around 300 billion.  Daily trade volume in EFFR is the low 79 billion.  The percentiles of rates reflect the same clustering around the EFFR and SOFR as their median rates.
+
+>!--
+Sample characteristics, weighted average  median values
+                  EFFR    TGCR   BGCR      SOFR
+Rates         & 156.97  & 132.83 & 132.85 & 134.32 \\ 
+Volume        & 78.91   & 296.95 & 311.23 & 754.37 \\  
+Percentile01  & 153.07  & 124.89 & 125.07 & 129.02 \\ 
+Percentile25 _& 156.15  & 132.36 & 132.37 & 132.51 \\ 
+Percentile75\_& 157.71  & 133.27 & 133.32 & 136.70 \\ 
+Percentile99\_& 169.06  & 138.75 & 141.19 & 143.53 \\ 
+--->
+
+Since the data are average weighed median values, the statistics for the sample include the median, the interquartile range (the 75th minus the 25 percentile, ), and the range (the 99th minus the one percentile),  The interquartile range for the money market rates TGCR and BGCR are under 1 bp, smaller than the 1.56 bp of the policy rate, EFFR. The SOFR has the largest IQR, some 4.2 bp. The OBFR, similar to the EFFR, was designed to track the policy rate.
+
+>!--
+        Median   IQR    Range
+EFFR & 156.97  & 1.56 & 15.99 \\
+OBFR & 156.28  & 1.94 & 23.16 \\ 
+TGCR & 132.83  & 0.92 & 13.86 \\  
+BGCR & 132.85  & 0.96 & 16.11 \\  
+SOFR & 134.32  & 4.20 & 14.51 \\ 
+--->
+
+
+>!--
+& Category & Median & IQR & RANGE \\ 
+  \hline
+EFFR & EFFR & 156.97 & 1.56 & 15.99 \\ 
+  OBFR & OBFR & 156.28 & 1.94 & 23.16 \\ 
+  TGCR & TGCR & 132.83 & 0.92 & 13.86 \\ 
+  BGCR & BBGCR & 132.85 & 0.96 & 16.11 \\ 
+  SOFR & SOFR & 134.32 & 4.20 & 14.51 \\ 
+  
+ & selected\_columnsE & Tstats & Bstats & selected\_columnsS \\ 
+  \hline
+EFFR & 156.97 & 132.83 & 132.85 & 134.32 \\ 
+  Volume\_EFFR & 78.91 & 296.95 & 311.23 & 754.37 \\ 
+  Percentile01\_EFFR & 153.07 & 124.89 & 125.07 & 129.02 \\ 
+  Percentile25\_EFFR & 156.15 & 132.36 & 132.37 & 132.51 \\ 
+  Percentile75\_EFFR & 157.71 & 133.27 & 133.32 & 136.70 \\ 
+  Percentile99\_EFFR & 169.06 & 138.75 & 141.19 & 143.53 \\ 
+--->
+
+```{r, 
+# Sample data in two lists
+categories = c('EFFR', 'OBFR', 'TGCR', 'BBGCR', 'SOFR')
+median_values = c(Estats[1], Ostats[1], Tstats[1], Bstats[1], Sstats[1])
+iqr_values =  c(Estats[7] - Estats[6], Ostats[5] - Ostats[4], Tstats[5] - Tstats[4], Bstats[5] - Bstats[4], Sstats[5] - Sstats[4])
+range_values = c(Estats[8] - Estats[5], Ostats[6] - Ostats[3], Tstats[6] - Tstats[3], Bstats[6] - Bstats[3], Sstats[6] - Sstats[3])
+samplestats <- data.frame(Category = categories, Median = median_values, IQR = iqr_values, RANGE = range_values)
+```
+
+```{r, 
+knitr::kable(samplestats, caption = "Key statistics rates 2016-2023")
+```
+
+```{r, sample statsdata, echo=FALSE}
+# Sample data in two lists
+categories = c('EFFR', 'OBFR', 'TGCR', 'BBGCR', 'SOFR')
+median_values = c(Estats[1], Ostats[1], Tstats[1], Bstats[1], Sstats[1])
+iqr_values = c(Estats[8] - Estats[7], Ostats[6] - Ostats[5], Tstats[6] - Tstats[5], Bstats[6] - Bstats[5], Sstats[8] - Sstats[7])
+range_values = c(Estats[9] - Estats[6], Ostats[7] - Ostats[4], Tstats[7] - Tstats[4], Bstats[7] - Bstats[4], Sstats[9] - Sstats[6])
+samplestats <- data.frame(Category = categories, Median = median_values, IQR = iqr_values, RANGE=range_values)
+samplestats2 <- xtable(samplestats)
+print(samplestats2)
+```
+
+```{r. sample stats, echo=FALSE}
+knitr::kable(samplestats, caption = "Key statistics rates 2016-2023")
+```
+```{r. sample characteristics, echo=FALSE}
+knitr::kable(samplestats, caption = "Descriptive  rates 2016-2023")
+```
+
+<!--
+#NO! inflation   5/5/2022		12/29/2022 1517  1714
+# Redo -3 for each position for nrow=1710
+line 964 in code
+norm_sdate <- sdate[1:856]
+adj_sdate <- sdate[857:920]
+covid_sdate <- sdate[921:1029]
+zlb_sdate <- sdate[1030:1513]
+inflation_sdate <- sdate[1514:1710]
+-->
+
+<!--
+Reference figures
+See Figure \@ref(fig:cars-plot).
+ Figure \@ref(fig:Daily rates 2016-2022-plot)
+ Figure \@ref(fig:Daily Secured rates 2016-2022-plot)
+ Figure \@ref(fig:EFFR, FOMC targets 2016-2023-plot
+```{r cars-plot, fig.cap="The cars data.", echo=FALSE}
+par(mar = c(4, 4, .2, .1))
+plot(cars)  # a scatterplot
+```
+--->
+
+```{r, fig.cap= "Daily rates 2016-2023", echo=FALSE, warning=FALSE, message=FALSE, fig.height=6, fig.width=8, eval=TRUE, cache=FALSE, dev='png', out.width='80%', , results='hide', fig.pos='H'}  
+y_breaks=25
+y_limits=400
+meltrrbp <- melt(rrbp,id="sdate")
+ rates <- ggplot(meltrrbp,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+   geom_point(size = 1) +
+   labs(x="Date",  y = "Basis Points (bp)", color = "Rate", shape = "Rate") +  
+   scale_y_continuous(breaks = seq(0, 500, by = 50), limits = c(0, 500)) + 
+   theme_minimal() + 
+  guides(shape = guide_legend(title = "Rate"))
+   print(rates)
+```
+
+
+```{r,fig.cap= "Daily secured rates", echo=FALSE, warning=FALSE, message=FALSE, fig.height=6, fig.width=8, eval=TRUE, cache=FALSE, dev='png', out.width='80%', , results='hide', fig.pos='H'}  
+meltsecured <- melt(secured,id="sdate")
+ securedrates <- ggplot(meltsecured,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+   geom_point(size = 1) +
+   labs(x="Date",  y = "Basis Points (bp)", color = "Rate", shape = "Rate") +  
+   scale_y_continuous(breaks = seq(0, 500, by = 50), limits = c(0, 500)) + 
+   theme_minimal() +
+  guides(shape = guide_legend(title = "Rate"))
+ print(securedrates)
+```
+
+
+```{r, effr quantiles,, echo=FALSE}
+#Access the data frame stored in the environment
+my_effr <- my_enveffr$melteffr
+``` 
+
+
+```{r,fig.cap= "EFFR, FOMC targets 2016-2023",echo=FALSE}
+quantilesE2 = subset( quantilesE, select = -c(Volume_EFFR,Percentile01_EFFR,Percentile99_EFFR))
+ melteffr <- melt(quantilesE2,id="sdate")
+ quantileseffr <- ggplot(melteffr,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+   geom_point(shape = 16, size = 1) +
+   labs(x="Date",  y = "Basis Points (bp)", color = "Rate", shape = "Rate") +  
+   scale_y_continuous(breaks = seq(0, 500, by = 50), limits = c(0, 500)) + 
+   theme_minimal() + guides(shape = guide_legend(title = "Rate"))
+ print(quantileseffr)
+```
+
+```{r, sofr quantiles, echo=FALSE}
+#Access the data frame stored in the environment
+my_sofr <- my_envsofr$meltsofr
+``` 
+
+ (see Figure \@ref(fig:SOFR, FOMC targets 2016-2023-plot)
+```{r, fig.cap= "SOFR, FOMC targets 2016-2023", echo=FALSE}
+quantilesS2 = subset( quantilesS, select = -c(Volume_SOFR, TargetUe_SOFR, TargetDe_SOFR,Percentile01_SOFR, Percentile99_SOFR) ) 
+ meltsofr <- melt(quantilesS2,id="sdate")
+ quantilessofr <- ggplot(meltsofr,aes(x=sdate,y=value,colour=variable,group=variable)) + geom_point(shape = 16, size = 1)+
+   labs(x="Date", y = "Basis Points (bp)", color = "Rate", shape = "Rate") +   
+   theme_minimal() + guides(shape = guide_legend(title = "Rate"))
+   # + theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5))
+ print(quantilessofr)
+```
+
+
+#data chunks for sample stats ----------------------------------------
+```{r, sample data description, echo=FALSE}
+numeric_quantilesE <- select_if(quantilesE, is.numeric)
+Estats <- colMeans(numeric_quantilesE, na.rm = TRUE)
+
+numeric_quantilesO <- select_if(quantilesO, is.numeric)
+Ostats <- colMeans(numeric_quantilesO, na.rm = TRUE)
+
+numeric_quantilesS <- select_if(quantilesS, is.numeric)
+Sstats <- colMeans(numeric_quantilesS, na.rm = TRUE)
+
+numeric_quantilesT <- select_if(quantilesT, is.numeric)
+Tstats <- colMeans(numeric_quantilesT, na.rm = TRUE)
+
+numeric_quantilesB <- select_if(quantilesB, is.numeric)
+Bstats <- colMeans(numeric_quantilesB, na.rm = TRUE)
+
+numeric_quantilesO <- select_if(quantilesO, is.numeric)
+Ostats <- colMeans(numeric_quantilesO, na.rm = TRUE)
+
+selected_columnsE <- Estats[c("EFFR","Volume_EFFR","Percentile01_EFFR", "Percentile25_EFFR","Percentile75_EFFR","Percentile99_EFFR")]
+selected_columnsS <- Sstats[c("SOFR","Volume_SOFR","Percentile01_SOFR", "Percentile25_SOFR","Percentile75_SOFR","Percentile99_SOFR")]
+sampleschar <- data.frame(selected_columnsE, Tstats,Bstats,selected_columnsS)
+samplechar2 <- xtable(sampleschar)
+print(samplechar2, include.rownames = TRUE)
+#str(samplechar)
+```
+
+
+<!--
+histograms, densities, boxplots
+-->
+
+
+
+```{r, episodes, echo=FALSE}
+begn<- c(1, 857, 921,  1030, 1514, 1)
+endn<- c(856, 920, 1029, 1513, 1711, 1710)
+k<-1
+norm<-rrbp[begn[k]:endn[k],]
+K<-2
+adjust<-rrbp[begn[k]:endn[k],]
+K<-3
+covid<-rrbp[begn[k]:endn[k],]
+K<-4
+zlb<-rrbp[begn[k]:endn[k],]
+K<-5
+inflation<-rrbp[begn[k]:endn[k],]
+```
+```{r, normalcy, echo=FALSE}
+#1. normalcy   3/4/2016		7/31/2019      4  859
+k=1
+bgn<-begn[k]
+edn<-endn[k]
+norm<-rrbp[bgn:edn,]
+qnormE=quantilesE[bgn:edn,]
+```
+
+ (see Figure \@ref(fig:EFFR during normalcy period  3/4/2016-7/31/2019-plot)
+```{r, fig.cap= "EFFR during normalcy period  3/4/2016-7/31/2019"}
+#norm2 = subset(norm, select = -c(sdate2)) 
+meltrates_norm <- melt(norm,id="sdate")
+rates_norm <- ggplot(meltrates_norm,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date", y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 350, by = 25), limits = c(0, 350)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(rates_norm)
+```
+<!--
+1. normalcy   3/4/2016-7/31/2019      4  859
+2. mid cycle adjustment 8/1/2019-10/31/2019 737660  860 - 923
+3. covid 11/1/2019-/16/2020   924  1032
+4. zlb         3/17/2020-3/16/2022     1032-1516
+5. Taming inflation 03/17/2022-12/14/2023 1517-1960  Correct with new end point
+-->
+
+```{r, adjustment period, echo=FALSE}
+#2.   3/4/2016		7/31/2019      4  859
+k=2
+bgn<-begn[k]
+edn<-endn[k]
+adjust<-rrbp[bgn:edn,]
+qadjustE=quantilesE[bgn:edn,]
+```
+
+(see Figure \@ref(fig:EFFR during adjustment period  8/1/2019 - 10/31/2019-plot)
+```{r, fig.cap= "EFFR during adjustment period  8/1/2019 - 10/31/2019"}
+#adjust2 = subset(adjust, select = -c(sdate2)) 
+meltrates_adjust <- melt(adjust,id="sdate")
+rates_adjust <- ggplot(meltrates_adjust,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date", y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(125, 250, by = 10), limits = c(125, 250)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(rates_adjust)
+```
+
+```{r, covid, echo=FALSE}
+#3. covid   3/4/2016		7/31/2019      4  859
+k=3
+bgn<-begn[k]
+edn<-endn[k]
+covid<-rrbp[bgn:edn,]
+qcovidE=quantilesE[bgn:edn,]
+```
+
+(see Figure \@ref(fig:EFFR during covid period 11/1/2019-3/16/2020-plot)
+```{r, fig.cap= "EFFR during covid period  11/1/2019-3/16/2020"}
+#covid2 = subset(covid, select = -c(sdate2)) 
+meltrates_covid <- melt(covid,id="sdate")
+rates_covid <- ggplot(meltrates_covid,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date", y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 200, by = 25), limits = c(0, 200)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(rates_covid)
+```
+
+
+```{r, zero lower bound, echo=FALSE}
+#4.zlb    3/4/2016		7/31/2019      4  859
+k=4
+bgn<-begn[k]
+edn<-endn[k]
+zlb<-rrbp[bgn:edn,]
+qzlbE=quantilesE[bgn:edn,]
+```
+
+(see Figure \@ref(fig:EFFR during zero lower bound (Zlb) period 3/17/2020-3/16/2022
+```{r, fig.cap= "EFFR during zero lower bound (zlb) period 3/17/2020-3/16/2022"}
+#zlb2 = subset(zlb, select = -c(sdate2)) 
+meltrates_zlb <- melt(zlb,id="sdate")
+rates_zlb <- ggplot(meltrates_zlb,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date", y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 15, by = 5), limits = c(0, 15)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(rates_zlb)
+```
+
+```{r, inflation, echo=FALSE}
+#5. inflation   3/4/2016		7/31/2019      4  859
+k=5
+bgn<-begn[k]
+edn<-endn[k]
+inflation<-rrbp[bgn:edn,]
+qinflationE=quantilesE[bgn:edn,]
+```
+
+(see Figure \@ref(fig:EFFR during inflation period 3/17/2022-12/14/2023-plot)
+```{r, fig.cap= "EFFR during inflation period 03/17/2022-12/14/2023"}
+#inflation2 = subset(inflation, select = -c(sdate2)) 
+meltrates_inflation <- melt(inflation,id="sdate")
+rates_inflation <- ggplot(meltrates_inflation,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date", y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 500, by = 50), limits = c(0, 500)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(rates_inflation)
+```
+
+```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Normalcy"}  
+qnormE2 = subset(qnormE, select = -c(Volume_EFFR, Percentile01_EFFR, Percentile99_EFFR) ) 
+quantEnorm <- melt(qnormE2,id="sdate")
+quantE_norm <- ggplot(quantEnorm ,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date",  y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 350, by = 25), limits = c(0, 350)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(quantE_norm)
+```
+
+```{r , echo=FALSE, fig.cap="Overnight rates EFFR percentiles adjustment period"}
+qadjustE2 = subset(qadjustE, select = -c(Volume_EFFR, Percentile01_EFFR, Percentile99_EFFR) ) 
+quantEadjust <- melt(qadjustE2,id="sdate")
+quantE_adjust <- ggplot(quantEadjust ,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date",  y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(125, 250, by = 25), limits = c(125, 250)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(quantE_adjust)
+```
+
+```{r, EFFR percentiles covid, echo=FALSE, fig.cap="Overnight rates EFFR percentiles during covid"}
+qcovidE2 = subset(qcovidE, select = -c(Volume_EFFR, Percentile01_EFFR, Percentile99_EFFR) ) 
+quantEcovid <- melt(qcovidE2,id="sdate")
+quantE_covid <- ggplot(quantEcovid ,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date",  y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 200, by = 25), limits = c(0, 200)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(quantE_covid)
+```
+
+```{r, EFFR percentiles zlb, echo=FALSE, fig.cap="Overnight rates EFFR percentiles zero lower bound"}
+qzlbE2 = subset(qzlbE, select = -c(Volume_EFFR, Percentile01_EFFR, Percentile99_EFFR) ) 
+quantEzlb <- melt(qzlbE2,id="sdate")
+quantE_zlb <- ggplot(quantEzlb ,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date",  y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 15, by = 5), limits = c(0, 15)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(quantE_zlb)
+```
+
+```{r, EFFR percentiles inflation, echo=FALSE, fig.cap="Overnight rates EFFR percentiles inflation"}
+qinflationE2 = subset(qinflationE, select = -c(Volume_EFFR, Percentile01_EFFR, Percentile99_EFFR) ) 
+quantEinflation <- melt(qinflationE2,id="sdate")
+quantE_inflation <- ggplot(quantEinflation ,aes(x=sdate,y=value,colour=variable,group=variable)) + 
+  geom_line() +
+  labs(x="Date",  y = "Basis Points (bp)", color = "Rate", linetype = "Rate") +  
+  scale_y_continuous(breaks = seq(0, 350, by = 25), limits = c(0, 350)) + 
+  theme_minimal()
+#theme(axis.title.x=element_blank(), axis.text.x= element_text(size=8,vjust =.5),plot.tag = element_text(size=8,hjust = 0),plot.tag.position = c(0.5,-.01))
+print(quantE_inflation)
+```
+
+# Daily volumes
+
+# Volatility and dispersion measures hypothesis 2

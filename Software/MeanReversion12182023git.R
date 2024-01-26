@@ -122,9 +122,10 @@ saveRDS(my_env, file = "C:/Users/Owner/Documents/Upwork/Bonds/my_environment.RDS
 
 # DAILY DATA
 filepath<-"C:/Users/Owner/Documents/Research//MonetaryPolicy/Data/Final data file
-spread <- read.csv('C:/Users/Owner/Documents/Research/MonetaryPolicy/Data/Final data files/NYFedReferenceRates_12172023v2.csv', header = TRUE, sep = ",", dec = ".", stringsAsFactors = FALSE)
+spread <- read.csv('C:/Users/Owner/Documents/Research/MonetaryPolicy/Data/Final data files/NYFedReferenceRates_1142023v2.csv', header = TRUE, sep = ",", dec = ".", stringsAsFactors = FALSE)
 # Set column names based on the first row
 colnames(spread) <- names(spread)
+print(colnames)
 sdate<-as.Date(spread$Date,"%m/%d/%Y")
 
 # Find the row number for the beginning and end dates of the sample: where  "3/4/2016" occurs and 12/29/2022 for the first time
@@ -140,9 +141,10 @@ str(spread)
 
 # --------------- Final
 spread_no_na <- spread
-spread_no_na <- mutate(spread_no_na, sdate = as.Date(Date, format = "%m/%d/%Y"))
+spread_no_na <- mutate(spread_no_na, sdate = as.Date(Date, format = "%m/%d/%Y")
 spread_no_na[is.na(spread_no_na)] <- 0
-columns_to_exclude <- c("Date","sdate", "Volume_EFFR","Volume_OBFR","Volume_TGCR", "Volume_BGCR","Volume_SOFR")  # Add other column names to exclude
+columns_to_exclude <- c("Date","sdate", "Volume_EFFR","Volume_OBFR","Volume_TGCR", "Volume_BGCR","Volume_SOFR")  
+# Add other column names to exclude
 # Check spread before mutating to see if variables are in basis points
 spread_no_na <- spread_no_na %>%
   #mutate(across(-all_of(columns_to_exclude), ~ . *0.01))
@@ -576,8 +578,199 @@ print(samplestats2)
 # begn<- c(1, 857, 921,  1020, 1516, 1)
 # endn<- c(856, 920, 1029, 1513, 1711, 1711)
 
-begn<- c(1, 859, 923,  1014, 1519, 1)
-endn<- c(858, 922, 1013, 1518, 1957, 1957)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # sdate[1957] # "2023-12-14" sample end date
 
 # CREATE ENV FOR episodes  
@@ -594,6 +787,8 @@ k=1 # normalcy period
 
 bgn<-begn[k]
 edn<-endn[k]
+print(bgn)
+print(edn)
 norm<-rrbp[bgn:edn,]
 qnormE=quantilesE[bgn:edn,]
 
@@ -603,16 +798,20 @@ Tstatsnorm <- colMeans(numeric_quantilesT[bgn:edn,], na.rm = TRUE)
 Bstatsnorm <- colMeans(numeric_quantilesB[bgn:edn,], na.rm = TRUE)
 Sstatsnorm <- colMeans(numeric_quantilesS[bgn:edn,], na.rm = TRUE)
 
-
+# episode characteristics
 selected_columnsE <- Estatsnorm[c("EFFR","Volume_EFFR","Percentile01_EFFR", "Percentile25_EFFR","Percentile75_EFFR","Percentile99_EFFR")]
-normstats <- rbind(selected_columnsE, Tstatsnorm,Bstatsnorm,Sstatsnorm)
-print(normstats)
-# Rate   Volume Percentile1 Percentile25 PercentileE75 Percentile99
-# EFFR 108.4163 28375.82    98.17213    107.59192     109.45023    118.83080
-# TGCR 104.5281 34779.27    76.00527     82.39637      83.42272     90.46077
-# BGCR 105.6604 56188.93    75.61124     81.99590      83.73888     91.08724
-# SOFR 108.2184 38410.13   102.62295    146.72892     109.52576    120.46780
+normchar <- rbind(selected_columnsE, Tstatsnorm,Bstatsnorm,Sstatsnorm)
+normchar2 <- xtable(normchar)
+print(normchar)
 
+# episode stats
+categories = c('EFFR', 'OBFR', 'TGCR', 'BBGCR', 'SOFR')
+median_values = c(Estatsnorm[1], Ostatsnorm[1], Tstatsnorm[1], Bstatsnorm[1], Sstatsnorm[1])
+iqr_values = c(Estatsnorm[7] - Estatsnorm[6], Ostatsnorm[5] - Ostatsnorm[4], Tstatsnorm[5] - Tstatsnorm[4], Bstatsnorm[5] - Bstatsnorm[4], Sstatsnorm[5] - Sstatsnorm[4])
+range_values = c(Estatsnorm[8] - Estatsnorm[5], Ostatsnorm[6] - Ostatsnorm[3], Tstatsnorm[6] - Tstatsnorm[3], Bstatsnorm[6] - Bstatsnorm[3], Sstatsnorm[6] - Sstatsnorm[3])
+normstats <- data.frame(Category = categories, Median = median_values, IQR = iqr_values, RANGE=range_values)
+normstats2 <- xtable(normstats)
+print(normstats2)
 
 # Plots  rates
 #norm2 = subset(norm, select = -c(sdate2)) 
@@ -631,6 +830,8 @@ ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/rates_
 k=2  
 bgn<-begn[k]
 edn<-endn[k]
+print(bgn)
+print(edn)
 adjust<-rrbp[bgn:edn,]  # rates plot
 qadjustE=quantilesE[bgn:edn,]
 
@@ -642,9 +843,18 @@ Tstatsadj <- colMeans(numeric_quantilesT[bgn:edn,], na.rm = TRUE)
 Bstatsadj <- colMeans(numeric_quantilesB[bgn:edn,], na.rm = TRUE)
 Sstatsadj <- colMeans(numeric_quantilesS[bgn:edn,], na.rm = TRUE)
 
-selected_columnsE <- Estatsadj[c("EFFR","Volume_EFFR","Percentile01_EFFR", "Percentile25_EFFR","Percentile75_EFFR","Percentile99_EFFR")]
-adjstats <- rbind(selected_columnsE, Tstatsadj,Bstatsadj,Sstatsadj)
-print(adjstats)
+
+selected_columnsE<- Estatsadj[c("EFFR","Volume_EFFR","Percentile01_EFFR", "Percentile25_EFFR","Percentile75_EFFR","Percentile99_EFFR")]
+adjchar <- rbind(selected_columnsE, Tstatsadj,Bstatsadj,Sstatsadj)
+adjchar2 <- xtable(adjchar)
+print(adjchar2)
+
+median_values = c(Estatsadj[1], Ostatsadj[1], Tstatsadj[1], Bstatsadj[1], Sstatsadj[1])
+iqr_values = c(Estatsadj[7] - Estatsadj[6], Ostatsadj[5] - Ostatsadj[4], Tstatsadj[5] - Tstatsadj[4], Bstatsadj[5] - Bstatsadj[4], Sstatsadj[5] - Sstatsadj[4])
+range_values = c(Estatsadj[8] - Estatsadj[5], Ostatsadj[6] - Ostatsadj[3], Tstatsadj[6] - Tstatsadj[3], Bstatsadj[6] - Bstatsadj[3], Sstatsadj[6] - Sstatsadj[3])
+adjstats <- data.frame(Category = categories, Median = median_values, IQR = iqr_values, RANGE=range_values)
+adjstats2 <- xtable(adjstats)
+print(adjstats2)
 
 # Plots  rates
 meltrates_adjust <- melt(adjust,id="sdate")
@@ -663,9 +873,10 @@ ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/rates_
 k=3  
 bgn<-begn[k]
 edn<-endn[k]
+print(bgn)
+print(edn)
 covid<-rrbp[bgn:edn,]
 qcovidE=quantilesE[bgn:edn,]
-
 # stats_covid<-colMeans(quantilesE[bgn_edn,]      #covid
 qcovidE=quantilesE[bgn:edn,]
 Estatscovid <- colMeans(numeric_quantilesE[bgn:edn,], na.rm = TRUE)
@@ -675,12 +886,16 @@ Bstatscovid <- colMeans(numeric_quantilesB[bgn:edn,], na.rm = TRUE)
 Sstatscovid <- colMeans(numeric_quantilesS[bgn:edn,], na.rm = TRUE)
 
 selected_columnsE <- Estatscovid[c("EFFR","Volume_EFFR","Percentile01_EFFR", "Percentile25_EFFR","Percentile75_EFFR","Percentile99_EFFR")]
-covidstats <- rbind(selected_columnsE, Tstatscovid,Bstatscovid,Sstatscovid)
-print(covidstats)
+covidchar <- rbind(selected_columnsE, Tstatscovid,Bstatscovid,Sstatscovid)
+covidchar2 <- xtable(covidchar)
+print(covidchar2)
 
-
-#```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Covid"} 
-#````
+median_values = c(Estatscovid[1], Ostatscovid[1], Tstatscovid[1], Bstatscovid[1], Sstatscovid[1])
+iqr_values = c(Estatscovid[7] - Estatscovid[6], Ostatscovid[5] - Ostatscovid[4], Tstatscovid[5] - Tstatscovid[4], Bstatscovid[5] - Bstatscovid[4], Sstatscovid[5] - Sstatscovid[4])
+range_values = c(Estatscovid[8] - Estatscovid[5], Ostatscovid[6] - Ostatscovid[3], Tstatscovid[6] - Tstatscovid[3], Bstatscovid[6] - Bstatscovid[3], Sstatscovid[6] - Sstatscovid[3])
+covidstats <- data.frame(Category = categories, Median = median_values, IQR = iqr_values, RANGE=range_values)
+covidstats2 <- xtable(covidstats)
+print(covidstats2)
 
 meltrates_covid <- melt(covid,id="sdate")
 rates_covid <- ggplot(meltrates_covid,aes(x=sdate,y=value,colour=variable,group=variable)) + 
@@ -697,6 +912,8 @@ ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/rates_
 k=4  
 bgn<-begn[k]
 edn<-endn[k]
+print(bgn)
+print(edn)
 zlb<-rrbp[bgn:edn,]
 qzlbE=quantilesE[bgn:edn,]
 
@@ -708,8 +925,16 @@ Bstatszlb <- colMeans(numeric_quantilesB[bgn:edn,], na.rm = TRUE)
 Sstatszlb <- colMeans(numeric_quantilesS[bgn:edn,], na.rm = TRUE)
 
 selected_columnsE <- Estatszlb[c("EFFR","Volume_EFFR","Percentile01_EFFR", "Percentile25_EFFR","Percentile75_EFFR","Percentile99_EFFR")]
-zlbstats <- rbind(selected_columnsE, Tstatszlb,Bstatszlb,Sstatszlb)
-print(zlbstats)
+zlbchar <- rbind(selected_columnsE, Tstatszlb,Bstatszlb,Sstatszlb)
+zlbchar2 <- xtable(zlbchar)
+print(zlbchar2)
+
+median_values = c(Estatszlb[1], Ostatszlb[1], Tstatszlb[1], Bstatszlb[1], Sstatszlb[1])
+iqr_values = c(Estatszlb[7] - Estatszlb[6], Ostatszlb[5] - Ostatszlb[4], Tstatszlb[5] - Tstatszlb[4], Bstatszlb[5] - Bstatszlb[4], Sstatszlb[5] - Sstatszlb[4])
+range_values = c(Estatszlb[8] - Estatszlb[5], Ostatszlb[6] - Ostatszlb[3], Tstatszlb[6] - Tstatszlb[3], Bstatszlb[6] - Bstatszlb[3], Sstatszlb[6] - Sstatszlb[3])
+zlbstats <- data.frame(Category = categories, Median = median_values, IQR = iqr_values, RANGE=range_values)
+zlbstats2 <- xtable(zlbstats)
+print(zlbstats2)
 
 # Plot rates
 #```{r ,  EFFR and percentiles, echo=FALSE, fig.cap="Overnight rates EFFR percentiles Zero lower bound"}   
@@ -732,6 +957,8 @@ ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/rates_
 k=5 
 bgn<-begn[k]
 edn<-endn[k]
+print(bgn)
+print(edn)
 inflation<-rrbp[bgn:edn,]
 qinflationE=quantilesE[bgn:edn,]
 
@@ -744,8 +971,17 @@ Bstatsinflation <- colMeans(numeric_quantilesB[bgn:edn,], na.rm = TRUE)
 Sstatsinflation <- colMeans(numeric_quantilesS[bgn:edn,], na.rm = TRUE)
 
 selected_columnsE <- Estatsinflation[c("EFFR","Volume_EFFR","Percentile01_EFFR", "Percentile25_EFFR","Percentile75_EFFR","Percentile99_EFFR")]
-inflationtats <- rbind(selected_columnsE, Tstatsinflation,Bstatsinflation,Sstatsinflation)
-print(inflationtats)
+inflationchar <- rbind(selected_columnsE, Tstatsinflation,Bstatsinflation,Sstatsinflation)
+inflationchar2 <- xtable(inflationchar)
+print(inflationchar2)
+
+median_values = c(Estatsinflation[1], Ostatsinflation[1], Tstatsinflation[1], Bstatsinflation[1], Sstatsinflation[1])
+iqr_values = c(Estatsinflation[7] - Estatsinflation[6], Ostatsinflation[5] - Ostatsinflation[4], Tstatsinflation[5] - Tstatsinflation[4], Bstatsinflation[5] - Bstatsinflation[4], Sstatsinflation[5] - Sstatsinflation[4])
+range_values = c(Estatsinflation[8] - Estatsinflation[5], Ostatsinflation[6] - Ostatsinflation[3], Tstatsinflation[6] - Tstatsinflation[3], Bstatsinflation[6] - Bstatsinflation[3], Sstatsinflation[6] - Sstatsinflation[3])
+inflationstats <- data.frame(Category = categories, Median = median_values, IQR = iqr_values, RANGE=range_values)
+inflationstats2 <- xtable(inflationstats)
+print(inflationstats2)
+
 
 # Plot rates
 meltrates_inflation <- melt(inflation,id="sdate")
@@ -758,7 +994,7 @@ print(rates_inflation)
 ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/rates_inflation.pdf")
 ggsave("C:/Users/Owner/Documents/Research/MonetaryPolicy/Figures/Figures2/rates_inflationline.png")
 
-episodechar<-rbind(normstats,adjstats, covidstats,zlbstats,inflationtats)
+episodechar<-rbind(normstats,zlbstats, covidstats,zlbstats,inflationtats)
 episodechar2 <- xtable(episodechar)
 
 # ------------------------ episode stats

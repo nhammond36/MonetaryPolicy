@@ -273,7 +273,7 @@ TS properties.  Many rate changes of half percent or more (annualized), and outl
 
 \end{itemize}
 
-
+# recover files rsrecovr::recovr(project_path = "all")
 COMMENT on Bertolini,Bertola, Prati ()  observation that that volatility in the federal funds rate is lower in high rate regimes or when Fed is perceived as committed to kee
 
 Results section:
@@ -847,9 +847,43 @@ During the initial years of the sample from 3/02/2016 until. reserves were aroun
 
 From 7/28/2017 to 6/24/2018, volume weighted median overnight money market rates are higher and normalized reserves are low,  0.19 or $\$$190 million  the week of 7/26/2017 (Figure \ref{figure:vmrates}). All rates reach a maximum at the end of June or first week of July 2018. The EFFR and OBFR reach their maximum value 179.56  and 387.74 basis points respectively during the week 6/24/2018.  The money market rates TGCR, BGCR, and SOFR reach their maxima the following  week 7/1/2018,  Reserves per deposits fell to 0.16 or $\$$160 million on 6/27/2018. All rates then decline, reaching their lowest level 4/5/2020 just as reserves begin to increase to 0.18 or or $\$$180 million . The EFFR reaches a low of 1.74 basis points. Reserves increase from  4/5/2020 to 9/15/2021, 0.24 or $\$$240 million then begin to decline.  From 3/13/2022 to the present, all rates rise steeply with the successive increases in the Fed policy rate response to inflation. The EFFR rises on 3/13/2022 from 1,74 to	27.36 basis points. Reserves decline slightly to 0.17 or $\$$170 million at the end of the sample 12/29/2022 (revise data)
 
-## Reserves
-\url{https://www.moneyandbanking.com/commentary/2020/11/8/the-case-of-the-treasury-account-at-the-federal-reserve}
+The level of reserves in the banking system can change either because
+1) the Federal Reserve buys or sells assets from banks, which changes the size of the Federal Reserve
+balance sheet
+2) because funds are transferred between reserves and non-reserve accounts at the Federal
+example \url{https://www.moneyandbanking.com/commentary/2020/11/8/the-case-of-the-treasury-account-at-the-federal-reserve}
 \ref{figure} Figure \@ref(fig:FedLiabilties).
+3) The Federal Reserve responds to volatility in the federal funds market by adjusting the reserve
+supply to keep the federal funds rate within its target range through repo and reverse repo operations each day
+
+
+The Federal Reserve changes the level of aggregate reserves by trading securities with banks.
+Federal Reserve purchases add assets to its balance sheet and issues reserves by crediting the Federal
+
+Temporary open market operations (TOMO), short-term repurchase and reverse repurchase agreements,
+support the Fed’s policy objectives for the desired range of the effective Federal Funds rate.
+Short-term repurchase and reverse repurchase agreements are designed to temporarily add or drain
+reserves available to the banking system and influence day-to-day trading in the Federal Funds market.
+
+Reserve accounts of the selling banks. (reverse repo, Fed is lender?)
+In a repo transaction, the Federal Reserve sells securities to banks. Aggregate reserves decline when the Fed debits the Federal Reserve accounts of the selling banks. (Fed repo as borrower)?
+The trading desk at the NY Fed dpnducts all repo and reverse repo operations, including small value exercises. https://www.newyorkfed.org/markets/desk-operations/
+
+In a repo transaction, the Desk purchases securities from a counterparty subject to an agreement to resell the securities at a later date, temporarily increasing the supply of reserve balances in the banking system and lowering the EFFR.
+
+In a repo transaction, the Desk purchases securities from a counterparty subject to an agreement
+to resell the securities at a later date. Each repo transaction is economically similar to a loan collateralized
+by securities, and temporarily increases the supply of reserve balances in the banking system.
+Conversely, in a reverse repo transaction, the Desk sells securities to a counterparty subject to an
+agreement to repurchase the securities at a later date. Reverse repo transactions temporarily reduce the
+supply of reserve balances in the banking system.
+The repo rate. interest” paid on that loan., is the difference between the original price and the
+second, higher price, Participants include
+
+When the Federal Reserve lends to counter parties in a reverse repo transaction, the Fed sale of securities lower aggregate reserves as funds are debited from depositor accounts. These operations are quick and are put in place within a matter of days. For example, in September 2019, the federal funds rate spiked up on September 16 and 17. On September 18-21 ... and dash for cash March 2020. Counterparties that lend to the Fed include primary dealers, hedge funds, insurance firms, money markets and financial firms with large pools of cash . CHECK
+
+
+
 
 
 ```{r, Fed liabilities, echo=FALSE}
@@ -859,11 +893,12 @@ From 7/28/2017 to 6/24/2018, volume weighted median overnight money market rates
 ```
 
 
-government income tends to be lumpy, while expenditures are smooth. And, like a household, the government wants to avoid having payments rejected for insufficient funds. To prevent such a calamity, the Treasury keeps a buffer either as deposits in Treasury Tax and Loan (TT&L) accounts at commercial banks (see here), or at the Fed.
 
-Other things equal, when the Treasury makes a deposit in its Federal Reserve account, this reduces reserves in the banking system one for one. That is, a $1 billion increase in the Treasury account immediately drains $1 billion in reserves; conversely, a decrease in government deposits adds reserves. Prior to 2008, when reserve levels were very low, a change of $1 billion was a big deal as it could move interbank lending rates substantially. To avoid unpleasant surprises, the Treasury and the Fed agreed to target an account level of $5 billion at the end of every business day. If the government thought they would miss, officials would alert the Fed staff in the morning so that they could use open-market operations to adjust. 
+the Treasury keeps an account at the Fed  or deposits in Treasury Tax and Loan (TT&L) accounts at commercial banks to provide a buffer to avoid payment issues.
 
-Over the years, the Treasury account grew. We can see this in the following chart, where we show the fraction of Federal Reserve liabilities accounted for by each of four categories (the colors match those in the previous chart). Focusing on the red portion, note that in 2007, when the target was $5 billion and the Fed’s liabilities were a relatively modest $750 billion, Treasury deposits accounted for less than 1 percent of the total. In the decade starting in 2008, Treasury balances rose to around $400 billion, accounting for an average of 5% of Fed liabilities. Since June 2020, there has been an enormous change, so that the Treasury deposits at the Fed now account for a whopping 23% of total liabilities. 
+A Treasury deposit reduces reserves in the banking system. A decrease in government deposits adds reserves.Prior to 2008, when reserve levels were very low, a change of $1 billion could move interbank lending rates substantially. To avoid unpleasant surprises, the Treasury and the Fed agreed to target an account level of $5 billion at the end of every business day. If the government thought they would miss, officials would alert the Fed staff in the morning so that they could use open-market operations to adjust. 
+
+When the target was $5 billion and the Fed’s liabilities were a relatively modest $750 billion, Treasury deposits accounted for less than 1 percent of the total. In the decade starting in 2008, Treasury balances rose to around $400 billion, accounting for an average of 5% of Fed liabilities. Since June 2020, Treasury deposits at the Fed now account 23 percent of total liabilities. 
 
 The level of reserves in the banking system can change either because
 1) the Federal Reserve buys or sells assets from banks, which changes the size of the Federal Reserve

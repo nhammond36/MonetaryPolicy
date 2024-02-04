@@ -194,8 +194,228 @@ Although overnight wholesale money market rates change in response to monetary p
 Summarize others' work:
 \emph{Duffie, Krishnamurthy}
 
+Hamilton (1996) adapts Nelson's (1991) model of daily stock return in a model of the conditional mean and the conditional variance of daily FFR federal funds rates to understand the effect of a FED OMO purchase. To Understand monetary policy and finance, one should begin the  federal funds market since overnight federal funds represent the shortest-term security actively traded, hence the base of any term structure
+relation. An open-market purchase injects new  reserves into the banking system and immediately affects the terms at which these reserves are loaned overnight
 
-Hamilton (1996) adapt Nelson's (1991) model of daily stock return in a model of the conditional mean and the conditional variance of  the FFR federal funds rate. The volatility consequences of upward and downward moves in interest rates are asymmetric. There is controversy if the FFR and overight rates, follow a random walk. Hamilton (1996) and others have concluded that the hypothesis that the FFR follows a martingale is inconsistent with observed daily changes in the federal funds rate. (Bertolini,Bertola, Prati ,) site frictions such as  transactions costs, interbank credit limits, overdraft penalties, obstacles to intra-period arbitrage preclude the FFR from following a martingale process.
+!>--
+USE this in poaper outline:  Section II provides a brief review of the current operation of re-
+ serve requirements and the federal funds market in the United
+ States. Section III develops a time-series description of daily changes
+ in the federal funds rate. 
+ 
+ Hamilton (1996) and others have concluded that the hypothesis that the FFR follows a martingale is inconsistent with observed daily changes in the federal funds rate. (Bertolini,Bertola, Prati ,) site frictions such as  transactions costs, interbank credit limits, overdraft penalties, obstacles to intra-period arbitrage preclude the FFR from following a martingale process.
+
+-->
+!>--
+ Hamilton provides a complete
+ empirical description of the time-series process that generates the
+ daily federal funds rate, simultaneously modeling the conditional
+ mean, variance, and overall shape of the probability distribution of
+ daily changes in the federal funds rate. These results are then used
+ to understand what happens to the federal funds rate when the Fed
+ makes an open-market purchase
+ 
+Hamilton (1996) adapts Nelson's (1991) model of daily stock return in a model of the conditional mean and the conditional variance of  the FFR federal funds rate. The volatility consequences of upward and downward moves in interest rates are asymmetric. There is controversy if the FFR and overight rates, follow a random walk. Hamilton (1996) and others have concluded that the hypothesis that the FFR follows a martingale is inconsistent with observed daily changes in the federal funds rate. (Bertolini,Bertola, Prati ,) site frictions such as  transactions costs, interbank credit limits, overdraft penalties, obstacles to intra-period arbitrage preclude the FFR from following a martingale process.
+
+Results suggest that interday speculation cannot  smooth out small fluctuations in the federal funds rate. A small temporary infusion of reserves through an overnight repurchase agreement by the Fed's trading desk,whether or not the open-market operation is anticipated in advance, lowers that day's federal funds rate by inducing movement along a schedule that represents lending banks' liquidity benefit from holding excess reserves.
+ 
+Transaction costs, rather minor institutional market detail, are central to the liquidity effect that enables the Federal Reserve to change the interest rate on .a daily basis
+ 
+Hamilton provides valuable evidence of  end-of-quarter and end-of-year effects since bank balance sheets are publically available, providing a snapshot of an institution's assets on the last day of the
+quarter or the last day of the year. Fridays, the federal funds market is soft. A federal funds loan on a Friday has a 3-day term rather than a 1-day term, and it is not altogether surprising that if the 
+martingale hypothesis fails, its failure might show up in part in the appearance of something different about Fridays. 
+ 
+ Mondays are independently estimated to be days of federal funds increases. If we accept the idea that the level of the  federal funds rate tends to be a little low on Fridays, the change from Friday to Monday by implication would be bigger than average.
+
+Spectacular outliers and autoregressive conditional heteroskedasticity (ARCH) effects that
+characterize these data should not be ignored.
+ 
+ 
+ <!--
+ Section
+ IV proposes a theoretical model of the federal funds market that
+ could account for these features as a result of line limits, transaction
+ costs, and weekend accounting conventions.
+ 
+ These results suggest that there is little, if any, interday speculation
+ that would smooth out small fluctuations in the federal funds rate. A
+ small temporary infusion of reserves through an overnight re-
+ purchase agreement by the Fed's trading desk lowers that day's fed-
+ eral funds rate by inducing movement along a schedule that repre-
+ sents lending banks' liquidity benefit from holding excess reserves.
+ 
+ The ability of the repurchase agreement to affect the interest does
+ not depend on whether the open-market operation is anticipated in
+ advance. 
+ 
+ I conclude that transaction costs, rather than a minor institu-
+ tional detail of this particular market, lie at the heart of the liquidity
+ effect that enables the Federal Reserve to change the interest rate on
+ a daily basis
+ 
+end-of-quarter and end-of-year effects as well. Public scrutiny of
+ many enterprises is based on their balance sheets, which typically
+ represent a snapshot of an institution's assets on the last day of the
+ quarter or the last day of the year. Some institutions appear willing
+ to hold certain assets on December 30 that they are unwilling to hold
+ on December 31. At the end of the year, there is a surge in asset
+ turnover and in corporations drawing on bank lines of credit, which
+ can generate a huge demand for short-term loans of good funds
+ around that date; see Allen and Saunders (1992) for further discus-
+ sion. Again at a minimum we want to allow for increased variability
+ of the federal funds rate at the end of the quarter and possibly tempo-
+ rary departures from the martingale hypothesis on these days as well
+ 
+ 
+ The model  In modeling the conditional mean, recall that the martingale hy-
+ pothesis does not restrict the process followed by it if t corresponds
+ to the first Thursday of a maintenance period. The last day of a
+ quarter may likewise reflect special circumstances, with limited substi-
+ tutability with reserves held on the day before or after. Thus if t is
+ the first day of a maintenance period or the first day of a quarter, I
+ describe the conditional mean for the federal funds rate with a pth-
+ order autoregression:
+ 
+ The mean 
+ \begin{align*}
+ i_t=\mu_t +\sigma_t \nu_t
+ \mu_t = i_{t-1} + \eta_{s_t} + \beta h_t
+ #y¯_t = [(sum_{i}^{}(v_{i,t}) times yhat_{i,t})]/(sum_{i}^{}v_{i,t})
+ \end{align*}
+ where re $s_t$ E {1, 2, . . ., 10} indicates which day of the maintenance
+ period is associated with observation t.
+  
+  Thus $\eta_2$ corresponds to the average change in the federal funds rate
+ between the first Thursday and Friday of a maintenance period,
+ whereas $\eta_10$ gives the average change of the federal funds rate on
+ settlement Wednesday. Under the martingale hypothesis, $\eta_j$ = 0 for j=2, 3, .. ., 10.
+ 
+ 
+To describe at', the conditional variance of the federal funds rate,
+ I adapt Nelson's (1991) model of daily stock returns
+ $log(\sigma^2_t)-\xi_{s_t}-\kappa h_t = (sum_{j=1}^{\tau}(log(\sigma^2_{t-j}) -\xi_{t-j}-\kappa h_{t-j} =
+ (\alpha abs(\nu_{t-1})-E(abs(\nu_{t-1})) + \chi\nu_{t-1})$  or $hi or \zeta$
+ 
+Empirical resultspp 38-44 
+ He finds deviations of the FFR from the FOMC target tend to dissipate quickly. (same for other rates?).  S fraction - ) of the cumulative change over the preceding two days is reversed on
+ day t:
+ $\mu_t = \eta_1 + i_{t-l} + \fi(i_{t-1} - i_{t - 3} + I'h_t $ (12)
+ 
+ the unconditional variance has the same value for days 2-7,
+ $ \xi_2 = \xi_2= cdot \xi_7 $ (13)
+ the generalized autoregressive conditional heteroskedasticity
+ effects are integrated:
+ $\delta_2 + \delta_2  + cdot + \delta_\tau= 1$
+ 
+Two magnitudes most useful for describing the conditional variance are (1) the conditional variance on the previous day and (2) the average deviation during the maintenance period (eqn 12)
+ 
+  The autoregressive coefficients that characterize the first day of a new maintenance pe-
+ riod or new quarter take the following form: some fraction - ) of
+ the cumulative change over the preceding two days is reversed on
+ day t. That is, these observations are described with the following
+ special case of (4):
+ $\mu_t = 91 + i_{t-l} + 4k(i_{t-1} - i_{t - 3} + I'h_t $ (12)
+ where I estimate + = - 0.81. This is clearly related to the conclusion
+ by Rudebusch (1994) that deviations of the funds rate from the value
+ targeted by the Fed tend to dissipate quickly. M
+ 
+ \url{https://bookdown.org/dalzelnm/bookdown-demo/mathematical-notation-in-r.html}
+ $Y_i \sim N( \mu, \sigma)$ makes  Yi∼N(μ,σ)
+ gridExtra::grid.arrange(g1,g2, g1,g2, ncol = 2)
+ .
+ The vector $h_t$ is a collection of zero-one dummy variables incorporating calendar effects.
+ Calendar effects nine elements of h_t :
+ t holidays (as captured by the first four elements of ht) matter for
+ the mean parameters (I) but not for the variance parameters (K). By
+ contrast, the end-of-quarter and end-of-year effects on the variance
+ were very dramati
+  j 1 Kj Meaning
+ 1 -.028 {.00} t precedes a 1-day holiday
+ (.020)
+ 2 -.031 {.00} t precedes a 3-day holiday
+ (.011)
+ 3 .023 {.00} t follows a 1-day holiday
+ (.020)
+ 4 .171 {.00} t follows a 3-day holiday
+ (.017)
+ 5 {.00} .853 t is the last day of quarter 1, 2, 3, or 4
+ (.379)
+ 6 {.00} .975 t is the last day of the year
+ (.765)
+ 7 {.00} 1.550 t is the day before, on, or after the last day of quarter 1,
+ (.216) 2, or 3
+ 8 {.00} {1.550} t is 2 days before, 1 day before, on, 1 day after, or 2 days
+ after the end of the year
+ 9 {.185} {.00} t is day 9 but precedes a 1-day holida
+ 
+  MAXIMUM LIKELIHOOD ESTIMATES OF OTHER PARAMETERS IN EQUATIONS
+ (7), (12), AND (15)
+ Parameter Value Meaning
+ $\fi$- .811 Fraction of $i_{t-1} - i_{t-3}$ that is expected to be reversed if t is
+ (.021) first day of a new period
+  $\delta$- .793 Weight on the previous day's log variance in determining
+ (.046) today's log variance
+   $\alpha$-.316 Weight on the absolute value of the previous day's innova-
+ (.036) tion in determining today's log variance
+ $\x$ .341 Additional effect of a positive previous day's innovation in
+ (.083) determining today's log variance
+  $\rho$- .861 Fraction of innovations drawn from distribution 1
+ (.026)
+ j 1{1.00} Standard deviation of distribution 1
+ T2 2.915 Standard deviation of distribution 2
+ (.200
+
+
+Fridays, the federal funds market is soft  the eta's
+ A federal funds loan on a Friday has a 3-day term rather
+ than a 1-day term, and it is not altogether surprising that if the mar-
+ tingale hypothesis fails, its failure might show up in part in the ap-
+ pearance of something different about Fridays. Likewise, days 3 and
+ 8 are both Mondays, and both are independently estimated to be days
+ of federal funds increases. If we accept the idea that the level of the
+ federal funds rate tends to be a little low on Fridays, the change from
+ Friday to Monday by implication would be bigger than average
+
+ proposes a complete
+ empirical description of the time-series process that generates the
+ daily federal funds rate, simultaneously modeling the conditional
+ mean, variance, and overall shape of the probability distribution of
+ daily changes in the federal funds rate. These results are then used
+ to understand what happens to the federal funds rate when the Fed
+ makes an open-market purchasThe federal funds market is a good place to start for an understand-
+ ing of either finance or monetary policy. From the point of view of
+ finance, overnight federal funds represent the shortest-term security
+ that is actively traded and thus form the base of any term structure
+ relation. Indeed, recent papers by Balduzzi, Bertola, and Foresi
+ (1993), Roberds, Runkle, and Whiteman (1994), and Rudebusch
+ (1994) suggest that several well-known puzzles in the term structure
+ of interest rates can be resolved by tracking these relations back to
+ daily changes in the federal funds rate.
+ From the point of view of monetary policy, the daily operating
+ procedures of the Federal Reserve System are also defined in terms
+ of the federal funds market. An open-market purchase injects neThe federal funds market is a good place to start for an understand-
+ ing of either finance or monetary policy. From the point of view of
+ finance, overnight federal funds represent the shortest-term security
+ that is actively traded and thus form the base of any term structure
+ relation. Indeed, recent papers by Balduzzi, Bertola, and Foresi
+ (1993), Roberds, Runkle, and Whiteman (1994), and Rudebusch
+ (1994) suggest that several well-known puzzles in the term structure
+ of interest rates can be resolved by tracking these relations back to
+ daily changes in the federal funds rate.
+ From the point of view of monetary policy, the daily operating
+ procedures of the Federal Reserve System are also defined in terms
+ of the federal funds market. An open-market purchase injects ne
+a consensus as to the nature of predictable changes in
+ the federal funds rate or the economic forces that produce them.
+ Earlier researchers have agreed that this daily interest rate fails to
+ follow a martingale, However,
+ none of these studies made allowance for the spectacular outliers
+ and autoregressive conditional heteroskedasticity (ARCH) effects that
+ characterize these data, and apart from Campbell (1987), none of-
+ fered a detailed description of how the findings could be reconciled
+ with profit maximization by banks.
+-->
+
 
 Krishnamurthy and VJ consider the implicit volatility of these reference rates a result of Fed discretionary policy, quantitative easing (QE) and ..asset purchase. Ample reserves paper?
 

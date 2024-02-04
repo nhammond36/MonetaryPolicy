@@ -910,11 +910,34 @@ multireturn_fit <- list(fit1, fit5)
 # Information Criteria
 # ------------------------------------
 #   
-#   Akaike       -24.190
+# Akaike       -24.190
+#    Akaike’s information criterion (AIC) compares the quality of a set of statistical models to each othe
+#    \url{https://www.statisticshowto.com/akaikes-information-criterion/}
+#    AIC = -2(log-likelihood) + 2K
+#    K number of model parameters plus the intercept
+#    Log-likelihood measure of model fit. The higher the number, the better the fit.
+
 # Bayes        -24.173
-# Shibata      -24.190
-# Hannan-Quinn -24.184
-# 
+# Bayesian Information Criterion
+# The BIC is a well-known general approach to model selection that favors more parsimonious models over more complex models (i.e., it adds a penalty based on the number of parameters being estimated in the model) (Schwarz, 1978; Raftery, 1995). One form for calculating the BIC is given by
+# (7) $BIC=T_m -df_m log()$
+#   
+# \url{https://www.sciencedirect.com/topics/social-sciences/bayesian-information-criterion}
+# where Tm is the chi-square statistic for the hypothesized model. 
+# BIC > 0 favors the saturated model (i.e., the model that allows all observed variables to be intercorrelated with no assumed model structure)
+# BIC < 0 favors the hypothesized model. 
+# Furthermore, the BIC can be used to assess two competing models.
+# between BICs od the two models is 0–2, ‘weak’ evidence in favor of the model with the smaller BIC; 
+# between 2 and 6 constitutes ‘positive’ evidence; 
+# between 6 and 10 constitutes ‘strong’ evidence;
+
+# Shibata      -24.190 see pdf in Papers, VOlatility
+
+# Hannan-Quinn -24.184 \url{https://www.rdocumentation.org/packages/qpcR/versions/1.3-7.1/topics/HQIC}
+# with $\mathcal{L}_{max}$ = maximum likelihood, $k$ = number of parameters and $n$ = number of observations.
+# $HQIC= -2 log(L_{max} + 2k log(log(n))$
+# The Determination of the Order of an Autoregression. Hannan EJ & Quinn BG. J Roy Stat Soc B (1979), 41: 190-195.
+
 # Weighted Ljung-Box Test on Standardized Residuals
 # ------------------------------------
 #   statistic p-value
@@ -925,6 +948,21 @@ multireturn_fit <- list(fit1, fit5)
 # H0 : No serial correlation
 # 
 # Weighted Ljung-Box Test on Standardized Squared Residuals
+# \url{https://stats.stackexchange.com/questions/468768/interpretation-of-ljung-box-tests-for-garch-models-from-the-rugarch-package-in}
+# A GARCH model assumes the standardized errors (shocks, innovations) are i.i.d. with zero mean and unit variance. 
+# After having fit a GARCH model, it makes sense to test whether this is the case. Some common checks are to examine presence of a
+# utocorrelation and/or autoregressive conditional heteroskedasticity in the standardized errors; under the i.i.d. assumption, there should be none. 
+# If any is found, the model assumptions are violated, so the face value of the modeling results cannot be trusted.
+# 
+# Ljung-Box (LB) test on standardized residuals tests for autocorrelation in standardized errors, while LB test on standardized squared residuals and 
+# ARCH-LM test test for autoregressive conditional heteroskedasticity. Autocorrelation and autoregressive conditional heteroskedasticity are not the same. 
+# You can have one, the other or both in a time series. Hence, you should not be surprised if some tests find presence of one but not the other.
+# A problem with applying any of these tests to standardized (squared) residuals from a GARCH model is that the test statistics have nonstandard distributions 
+# under the null. (They have their standard null distributions when applied to raw data, but not when applied to residuals of a GARCH model.)* 
+# As far as I know, this is not accounted for in the rugarch package. Hence, you should take the test results with a grain of salt.
+# *There are papers and (I think) textbooks showing that ARCH-LM test should be substituted by Li-Mak test to have the correct distribution 
+# under the null if the mean of the process is modelled as a constant (not as ARMA as in your case). Similar corrections are needed for the LB tests. 
+# When the mean is not modelled as a constant, I am not sure whether there exists any test at all with a known null distribution. See my answer in the thread "Remaining heteroskedasticity even after GARCH estimation" for some references.
 # ------------------------------------
 #   statistic p-value
 # Lag[1]                   0.002779   0.958
@@ -940,6 +978,8 @@ multireturn_fit <- list(fit1, fit5)
 # ARCH Lag[7]  0.011130 2.315 1.543  1.0000
 # 
 # Nyblom stability test
+#\url{https://stats.stackexchange.com/questions/201165/garch-model-diagnostics-how-to-interpret-test-results}
+# A good source of information on diagnostic testing of univariate GARCH models is "rugarch" vignette by Alexios Ghalanos.
 # ------------------------------------
 #   Joint Statistic:  601.2937
 # Individual Statistics:              
@@ -983,7 +1023,7 @@ egarch.fit.tstr()
 signbias(egarch.fit)
 
 
-# EGARCH EFFR + vlumne, FOMC rates, IQR and range
+# EGARCH EFFR + volume, FOMC rates, IQR and range
 # Optimal Parameters
 # ------------------------------------
 #   Estimate  Std. Error    t value Pr(>|t|)
@@ -1008,7 +1048,7 @@ signbias(egarch.fit)
 # Information Criteria
 # ------------------------------------
 #   
-#   Akaike       -24.190
+# Akaike       -24.190
 # Bayes        -24.173
 # Shibata      -24.190
 # Hannan-Quinn -24.184
